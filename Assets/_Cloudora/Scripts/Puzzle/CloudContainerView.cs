@@ -183,6 +183,11 @@ namespace Cloudora.Puzzle
                 WeatherType.Snow =>
                     new Color(0.82f, 0.94f, 1f),
 
+                WeatherType.Wind => new Color(0.56f, 0.84f, 0.78f),
+                WeatherType.Moon => new Color(0.56f, 0.49f, 0.95f),
+                WeatherType.Lightning => new Color(1f, 0.82f, 0.40f),
+                WeatherType.Rainbow => new Color(0.95f, 0.55f, 0.78f),
+
                 _ => Color.magenta
             };
         }

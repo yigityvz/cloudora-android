@@ -23,3 +23,9 @@ Automated/build verification is recorded in the commit that closes this phase.
 The prototype constant was replaced by serializable `LevelDefinition`/`CloudDefinition` data and a dedicated authored catalog. Fifteen deterministic onboarding levels now carry level, world, capacity, seed, and minimal visual cue metadata. The controller supports level loading, restart from the exact authored state, continue flow, and an Inspector debug start level/context action.
 
 Manual smoke test: set `Debug Start Level` to 1, 6, 10, and 15; enter Play Mode; verify the correct board, header, cue, restart state, and continue transition.
+
+## Phase 4 - Procedural Generator
+
+Added pure C# `CloudState`, `PuzzleState`, `Move`, and `PuzzleRules` domain logic. Level 16+ now uses a deterministic generator that begins solved, applies controlled reversible moves, stores a known legal solution, rejects invalid/already-solved boards, and assigns a reproducible difficulty score. Seed override and debug start-level loading support broken-level reproduction.
+
+Batch verification generates hundreds of boards, checks determinism/invariants, and replays every known solution to solved state.

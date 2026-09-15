@@ -48,7 +48,9 @@ namespace Cloudora.Puzzle
 
         public void LoadLevel(int levelNumber)
         {
-            _currentLevel = AuthoredLevelCatalog.Get(levelNumber);
+            _currentLevel = levelNumber <= AuthoredLevelCatalog.Count
+                ? AuthoredLevelCatalog.Get(levelNumber)
+                : LevelGenerator.Generate(levelNumber);
             LoadState(_currentLevel.CreateBoard());
             _overlay.SetLevelInfo(_currentLevel.levelId, _currentLevel.worldId);
             _overlay.SetTutorialCue(_currentLevel.tutorialCue);
@@ -228,7 +230,7 @@ namespace Cloudora.Puzzle
 
         private void HandleContinue()
         {
-            LoadLevel(Mathf.Min(_currentLevel.levelId + 1, AuthoredLevelCatalog.Count));
+            LoadLevel(_currentLevel.levelId + 1);
         }
     }
 }

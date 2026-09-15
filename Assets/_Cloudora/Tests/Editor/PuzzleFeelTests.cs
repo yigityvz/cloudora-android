@@ -1,5 +1,6 @@
 using Cloudora.Puzzle;
 using Cloudora.Level;
+using Cloudora.Core;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,6 +69,42 @@ namespace Cloudora.Tests.Editor
                     Assert.That(count, Is.EqualTo(definition.capacity), $"Level {level} has invalid weather totals");
                 }
             }
+        }
+
+        [Test]
+        public void GeneratedLevelsAreDeterministicAndKnownSolvable()
+        {
+            for (int level = 16; level < 516; level++)
+            {
+                LevelDefinition first = LevelGenerator.Generate(level);
+                LevelDefinition second = LevelGenerator.Generate(level);
+                Assert.That(PuzzleValidator.Validate(first, out string error), Is.True, $"Level {level}: {error}");
+                Assert.That(first.seed, Is.EqualTo(second.seed));
+                Assert.That(BoardKey(first), Is.EqualTo(BoardKey(second)), $"Level {level} was not deterministic");
+                Assert.That(first.difficultyScore, Is.GreaterThan(0f));
+            }
+        }
+
+        [Test]
+        public void PureRulesApplyGroupedMoveAndDetectSolved()
+        {
+            var state = new PuzzleState(new[]
+            {
+                new CloudState(4, new[] { WeatherType.Sun, WeatherType.Sun }),
+                new CloudState(4, new[] { WeatherType.Sun, WeatherType.Sun }),
+                new CloudState(4, System.Array.Empty<WeatherType>())
+            });
+
+            Assert.That(PuzzleRules.TryApply(state, new Move(0, 1, 2, WeatherType.Sun)), Is.True);
+            Assert.That(PuzzleRules.IsSolved(state), Is.True);
+        }
+
+        private static string BoardKey(LevelDefinition definition)
+        {
+            var parts = new System.Collections.Generic.List<string>();
+            foreach (CloudDefinition cloud in definition.clouds)
+                parts.Add(string.Join(",", cloud.elements));
+            return string.Join("|", parts);
         }
 
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)

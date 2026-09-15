@@ -8,6 +8,10 @@
     {
         Sun,
         Rain,
-        Snow
+        Snow,
+        Wind,
+        Moon,
+        Lightning,
+        Rainbow
     }
 }
