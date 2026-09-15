@@ -78,7 +78,7 @@ namespace Cloudora.Tests.Editor
         [Test]
         public void GeneratedLevelsAreDeterministicAndKnownSolvable()
         {
-            for (int level = 16; level < 516; level++)
+            for (int level = 16; level < 2016; level++)
             {
                 LevelDefinition first = LevelGenerator.Generate(level);
                 LevelDefinition second = LevelGenerator.Generate(level);
@@ -238,6 +238,16 @@ namespace Cloudora.Tests.Editor
             for (int level = 10; level <= 13; level++) Assert.That(policy.RegisterCompletion(level, now.AddMinutes(1)), Is.False);
             Assert.That(policy.RegisterCompletion(14, now.AddMinutes(6)), Is.True);
             Assert.That(new AdMobAdService().IsAvailable, Is.False);
+        }
+
+        [Test]
+        public void DifficultyWaveHasFinaleAndEasyWorldReset()
+        {
+            Assert.That(BalanceProfile.BandFor(20), Is.EqualTo(DifficultyBand.WorldFinale));
+            Assert.That(BalanceProfile.BandFor(21), Is.EqualTo(DifficultyBand.Easy));
+            Assert.That(BalanceProfile.BandFor(22), Is.EqualTo(DifficultyBand.Easy));
+            Assert.That(BalanceProfile.ShuffleDepth(100), Is.GreaterThan(BalanceProfile.ShuffleDepth(101)));
+            Assert.That(BalanceProfile.DurationTarget(10), Is.EqualTo((30, 60)));
         }
 
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)

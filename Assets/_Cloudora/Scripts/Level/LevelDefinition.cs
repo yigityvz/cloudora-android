@@ -16,6 +16,7 @@ namespace Cloudora.Level
         public CloudDefinition[] clouds;
         public bool generated;
         public float difficultyScore;
+        public DifficultyBand difficultyBand;
         [NonSerialized] public Move[] knownSolution;
         public ModifierData[] modifiers = Array.Empty<ModifierData>();
 
@@ -27,6 +28,7 @@ namespace Cloudora.Level
             seed = 0;
             this.tutorialCue = tutorialCue;
             this.clouds = new CloudDefinition[clouds.Length];
+            difficultyBand = BalanceProfile.BandFor(levelId);
             for (int i = 0; i < clouds.Length; i++)
             {
                 this.clouds[i] = new CloudDefinition { elements = (WeatherType[])clouds[i].Clone() };

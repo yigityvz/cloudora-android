@@ -21,7 +21,7 @@ namespace Cloudora.Level
             int emptyCount = levelNumber % 10 == 9 ? 1 : 2;
             if (levelNumber >= 41 && levelNumber <= 80) emptyCount = Math.Max(2, emptyCount) + 1;
             int seed = seedOverride ?? DeterministicSeed(levelNumber);
-            int shuffleDepth = 12 + Math.Min(70, levelNumber / 2);
+            int shuffleDepth = BalanceProfile.ShuffleDepth(levelNumber);
 
             for (int attempt = 0; attempt < 24; attempt++)
             {

@@ -63,3 +63,9 @@ Gameplay depends only on `IAdService`. Validation builds instantiate `FakeAdServ
 ## Phase 12 - Full UI/UX, Art & Accessibility
 
 Added an original runtime-generated visual system: soft sky gradient, rounded frosted panels, cloud-lobed vessels, subtle shadows, selection lift, and color plus unique high-contrast weather patterns. Main Menu, Gameplay HUD, World, Settings, No Moves/Lives, and Level Complete surfaces now share the palette. Large touch targets, sound/haptic toggles, responsive layout, and pulsing minimal tutorial cues support one-thumb and non-color-only play without licensed assets.
+
+## Phase 13 - Difficulty Balancing & Content Validation
+
+Difficulty is config-driven through named bands and a repeating easy/medium/hard/medium/very-hard wave, with explicit world finales and easy resets. Shuffle depth follows the band instead of rising forever; duration targets are 30-60 seconds early, 1-3 minutes midgame, and 3-5 minutes for later challenge content. `Cloudora/Validate 10,000 Levels` provides reproducible batch QA across endless seeds, modifiers, capacity, and world cycles.
+
+Validation result (2026-09-15, Unity 6000.5.9f1): 10,000/10,000 generated levels passed with zero invariant/known-solution failures; observed difficulty score range 29.9-108.3. The EditMode regression suite separately generated 2,000 levels and passed 23/23 tests.
