@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,16 +20,24 @@ namespace Cloudora.Puzzle
         private Color _normalBackgroundColor;
 
         private Action<CloudContainerView> _onClicked;
+        private Coroutine _feedbackRoutine;
 
         public int Capacity { get; private set; }
 
         public int ElementCount => _elements.Count;
+
+        public IReadOnlyList<WeatherType> Elements => _elements;
 
         public bool IsEmpty => _elements.Count == 0;
 
         public bool IsFull => _elements.Count >= Capacity;
 
         private void Awake()
+        {
+            EnsureComponents();
+        }
+
+        private void EnsureComponents()
         {
             _button = GetComponent<Button>();
             _background = GetComponent<Image>();
@@ -43,6 +52,7 @@ namespace Cloudora.Puzzle
             IEnumerable<WeatherType> initialElements,
             Action<CloudContainerView> onClicked)
         {
+            EnsureComponents();
             Capacity = capacity;
 
             _elements.Clear();
@@ -155,11 +165,11 @@ namespace Cloudora.Puzzle
                     _elements[elementIndex];
 
                 slotImage.color =
-                    GetWeatherColor(element);
+                    GetColor(element);
             }
         }
 
-        private static Color GetWeatherColor(
+        public static Color GetColor(
             WeatherType element)
         {
             return element switch
@@ -193,6 +203,18 @@ namespace Cloudora.Puzzle
                 _background.color =
                     _normalBackgroundColor;
             }
+        }
+
+        public WeatherType[] CaptureElements()
+        {
+            return _elements.ToArray();
+        }
+
+        public void RestoreElements(IEnumerable<WeatherType> elements)
+        {
+            _elements.Clear();
+            _elements.AddRange(elements);
+            RefreshVisuals();
         }
 
         public bool TryGetTopElement(
@@ -254,6 +276,8 @@ namespace Cloudora.Puzzle
 
             return count;
         }
+
+        public int TopGroupCount => GetTopGroupCount();
 
         public bool TryMoveTopGroupTo(
             CloudContainerView target)
@@ -334,6 +358,66 @@ namespace Cloudora.Puzzle
             }
 
             return true;
+        }
+
+        public void PlayInvalidFeedback()
+        {
+            StartFeedback(InvalidFeedbackRoutine());
+        }
+
+        public void PlaySolvedFeedback()
+        {
+            StartFeedback(SolvedFeedbackRoutine());
+        }
+
+        private void StartFeedback(IEnumerator routine)
+        {
+            if (_feedbackRoutine != null)
+            {
+                StopCoroutine(_feedbackRoutine);
+                transform.localScale = Vector3.one;
+            }
+
+            _feedbackRoutine = StartCoroutine(routine);
+        }
+
+        private IEnumerator InvalidFeedbackRoutine()
+        {
+            RectTransform rect = (RectTransform)transform;
+            Vector2 origin = rect.anchoredPosition;
+            const float duration = 0.18f;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float strength = Mathf.Lerp(12f, 0f, elapsed / duration);
+                rect.anchoredPosition = origin + Vector2.right * Mathf.Sin(elapsed * 75f) * strength;
+                yield return null;
+            }
+
+            rect.anchoredPosition = origin;
+            _feedbackRoutine = null;
+        }
+
+        private IEnumerator SolvedFeedbackRoutine()
+        {
+            const float duration = 0.34f;
+            float elapsed = 0f;
+            Color originColor = _background.color;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float wave = Mathf.Sin(elapsed / duration * Mathf.PI);
+                transform.localScale = Vector3.one * (1f + wave * 0.08f);
+                _background.color = Color.Lerp(originColor, new Color(0.75f, 1f, 0.9f), wave * 0.55f);
+                yield return null;
+            }
+
+            transform.localScale = Vector3.one;
+            _background.color = originColor;
+            _feedbackRoutine = null;
         }
     }
 }
