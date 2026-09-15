@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cloudora.Services;
 using Cloudora.UI;
 using Cloudora.Level;
+using Cloudora.Progression;
 using UnityEngine;
 
 namespace Cloudora.Puzzle
@@ -23,6 +24,8 @@ namespace Cloudora.Puzzle
         private GameFeedbackService _feedback;
         private GameplayOverlay _overlay;
         private AdaptiveBoardLayout _boardLayout;
+        private WorldScreenController _worldScreen;
+        private ProgressionManager _progression;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -32,10 +35,12 @@ namespace Cloudora.Puzzle
             _moveAnimator = gameObject.AddComponent<MoveAnimator>();
             _feedback = gameObject.AddComponent<GameFeedbackService>();
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
-            _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue);
+            _progression = new ProgressionManager(debugStartLevel);
+            _worldScreen = WorldScreenController.Create(canvas);
+            _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle);
             _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
             if (_boardLayout == null) _boardLayout = boardRoot.gameObject.AddComponent<AdaptiveBoardLayout>();
-            LoadLevel(debugStartLevel);
+            LoadLevel(_progression.CurrentLevel);
         }
 
         public void RestartLevel()
@@ -58,6 +63,7 @@ namespace Cloudora.Puzzle
             _overlay.SetLevelInfo(_currentLevel.levelId, _currentLevel.worldId);
             _overlay.SetTutorialCue(_currentLevel.tutorialCue);
             _boardLayout.Configure(_currentLevel.clouds.Length, _currentLevel.capacity);
+            _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
         }
 
         [ContextMenu("Load Debug Level")]
@@ -227,6 +233,8 @@ namespace Cloudora.Puzzle
             }
 
             _isCompleted = true;
+            _progression.CompleteCurrentLevel();
+            _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
             _overlay.ShowComplete(true);
             _feedback.Complete();
             Debug.Log("Level completed!");
@@ -234,7 +242,8 @@ namespace Cloudora.Puzzle
 
         private void HandleContinue()
         {
-            LoadLevel(_currentLevel.levelId + 1);
+            _progression.Advance();
+            LoadLevel(_progression.CurrentLevel);
         }
     }
 }

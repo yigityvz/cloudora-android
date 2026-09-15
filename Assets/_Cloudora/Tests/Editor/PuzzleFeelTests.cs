@@ -2,6 +2,7 @@ using Cloudora.Puzzle;
 using Cloudora.Level;
 using Cloudora.Core;
 using Cloudora.UI;
+using Cloudora.Progression;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -122,6 +123,21 @@ namespace Cloudora.Tests.Editor
             Assert.That(usedWidth, Is.LessThanOrEqualTo(available.x + 0.1f));
             Assert.That(usedHeight, Is.LessThanOrEqualTo(available.y + 0.1f));
             Assert.That(metrics.CellSize.x, Is.GreaterThanOrEqualTo(80f));
+        }
+
+        [Test]
+        public void WorldProgressionCrossesBoundaryAndRestoresInStages()
+        {
+            WorldDefinition valley = WorldCatalog.ForLevel(1);
+            Assert.That(RestorationManager.GetStage(valley, 5), Is.EqualTo(1));
+            Assert.That(RestorationManager.GetStage(valley, 20), Is.EqualTo(4));
+            Assert.That(RestorationManager.GetProgress(valley, 20), Is.EqualTo(1f));
+
+            var progression = new ProgressionManager(20, 19);
+            progression.CompleteCurrentLevel();
+            progression.Advance();
+            Assert.That(progression.CurrentLevel, Is.EqualTo(21));
+            Assert.That(progression.CurrentWorld.Id, Is.EqualTo("rainy-coast"));
         }
 
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)

@@ -35,3 +35,7 @@ Batch verification generates hundreds of boards, checks determinism/invariants, 
 Cloud state/view capacity is data-driven across 4, 5, 6, and 7 slots. `AdaptiveBoardLayout` calculates column count, cell aspect, and spacing for 5-12 clouds, anchors the board inside portrait safe regions, and recalculates after resolution changes. Automated cases cover 720x1280, 1080x1920, 1080x2400, and 1440x3200 portrait spaces without overlap.
 
 Physical Android readability remains part of the Phase 14 device checklist and cannot be truthfully marked complete without a connected device.
+
+## Phase 6 - World, Restoration & Progression
+
+Thirteen data-driven worlds now define level ranges, capacity, new-rule cadence, and theme colors through level 400. Pure progression and restoration services calculate unlocks, four roughly five-level milestones, 100% completion, and world transitions. Gameplay exposes a themed world panel with restoration state and upcoming rule.

@@ -11,7 +11,7 @@ namespace Cloudora.UI
         private Text _levelLabel;
         private Text _tutorialLabel;
 
-        public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue)
+        public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue, Action onWorld)
         {
             var root = new GameObject("GameplayOverlay", typeof(RectTransform));
             root.transform.SetParent(canvas.transform, false);
@@ -25,6 +25,8 @@ namespace Cloudora.UI
             overlay._tutorialLabel = CreateTopLabel(root.transform, string.Empty, new Vector2(0f, -145f), 30);
             CreateButton(root.transform, "Restart", new Vector2(-130f, 120f), onRestart);
             overlay._undoButton = CreateButton(root.transform, "Undo", new Vector2(130f, 120f), onUndo);
+            Button worldButton = CreateButton(root.transform, "World", new Vector2(390f, 120f), onWorld);
+            worldButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 88f);
             overlay._completePanel = CreateCompletePanel(root.transform, onContinue);
             overlay._completePanel.SetActive(false);
             return overlay;
