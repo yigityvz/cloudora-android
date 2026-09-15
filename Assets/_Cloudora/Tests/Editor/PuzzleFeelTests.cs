@@ -3,6 +3,7 @@ using Cloudora.Level;
 using Cloudora.Core;
 using Cloudora.UI;
 using Cloudora.Progression;
+using Cloudora.Modifiers;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -138,6 +139,34 @@ namespace Cloudora.Tests.Editor
             progression.Advance();
             Assert.That(progression.CurrentLevel, Is.EqualTo(21));
             Assert.That(progression.CurrentWorld.Id, Is.EqualTo("rainy-coast"));
+        }
+
+        [Test]
+        public void RainbowIsWildcardWithoutAmbiguousSolvedState()
+        {
+            var solved = new PuzzleState(new[]
+            {
+                new CloudState(4, new[] { WeatherType.Sun, WeatherType.Rainbow, WeatherType.Sun, WeatherType.Sun })
+            });
+            var mixed = new PuzzleState(new[]
+            {
+                new CloudState(4, new[] { WeatherType.Sun, WeatherType.Rainbow, WeatherType.Rain, WeatherType.Sun })
+            });
+            Assert.That(PuzzleRules.IsSolved(solved), Is.True);
+            Assert.That(PuzzleRules.IsSolved(mixed), Is.False);
+        }
+
+        [TestCase(45, ModifierType.Frozen)]
+        [TestCase(65, ModifierType.Locked)]
+        [TestCase(85, ModifierType.Fog)]
+        [TestCase(105, ModifierType.Rainbow)]
+        [TestCase(155, ModifierType.Night)]
+        [TestCase(180, ModifierType.Wind)]
+        public void GeneratorIntroducesExpectedModifier(int level, ModifierType expected)
+        {
+            LevelDefinition definition = LevelGenerator.Generate(level);
+            Assert.That(definition.modifiers, Has.Some.Matches<ModifierData>(m => m.type == expected));
+            Assert.That(PuzzleValidator.Validate(definition, out string error), Is.True, error);
         }
 
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)

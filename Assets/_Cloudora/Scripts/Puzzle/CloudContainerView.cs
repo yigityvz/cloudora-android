@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cloudora.Modifiers;
 
 namespace Cloudora.Puzzle
 {
@@ -21,6 +22,8 @@ namespace Cloudora.Puzzle
 
         private Action<CloudContainerView> _onClicked;
         private Coroutine _feedbackRoutine;
+        private bool _hideContents;
+        private Text _modifierBadge;
 
         public int Capacity { get; private set; }
 
@@ -164,8 +167,9 @@ namespace Cloudora.Puzzle
                 WeatherType element =
                     _elements[elementIndex];
 
-                slotImage.color =
-                    GetColor(element);
+                slotImage.color = GetColor(element);
+                if (_hideContents && visualIndex > emptySlotCount)
+                    slotImage.color = new Color(0.72f, 0.78f, 0.86f, 0.22f);
             }
         }
 
@@ -252,7 +256,7 @@ namespace Cloudora.Puzzle
             WeatherType topElement =
                 _elements[^1];
 
-            return topElement == element;
+            return topElement == element || topElement == WeatherType.Rainbow || element == WeatherType.Rainbow;
         }
 
         private int GetTopGroupCount()
@@ -351,18 +355,36 @@ namespace Cloudora.Puzzle
                 return false;
             }
 
-            WeatherType firstElement = _elements[0];
-
-            // Bütün elementler aynı tür mü?
-            for (int i = 1; i < _elements.Count; i++)
+            WeatherType? resolved = null;
+            for (int i = 0; i < _elements.Count; i++)
             {
-                if (_elements[i] != firstElement)
-                {
-                    return false;
-                }
+                if (_elements[i] == WeatherType.Rainbow) continue;
+                if (resolved.HasValue && _elements[i] != resolved.Value) return false;
+                resolved = _elements[i];
             }
 
             return true;
+        }
+
+        public void SetModifierState(ModifierType type, bool hideContents, bool blocked)
+        {
+            _hideContents = hideContents;
+            if (_modifierBadge == null)
+            {
+                var badge = new GameObject("ModifierBadge", typeof(RectTransform), typeof(Text));
+                badge.transform.SetParent(transform, false);
+                _modifierBadge = badge.GetComponent<Text>();
+                _modifierBadge.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                _modifierBadge.fontSize = 24;
+                _modifierBadge.alignment = TextAnchor.UpperCenter;
+                _modifierBadge.raycastTarget = false;
+                _modifierBadge.rectTransform.anchorMin = new Vector2(0f, 0.82f);
+                _modifierBadge.rectTransform.anchorMax = Vector2.one;
+                _modifierBadge.rectTransform.offsetMin = _modifierBadge.rectTransform.offsetMax = Vector2.zero;
+            }
+            _modifierBadge.text = type == ModifierType.None ? string.Empty : type.ToString().ToUpperInvariant();
+            _modifierBadge.color = blocked ? new Color(0.85f, 0.32f, 0.38f) : new Color(0.15f, 0.22f, 0.29f);
+            RefreshVisuals();
         }
 
         public void PlayInvalidFeedback()

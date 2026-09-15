@@ -4,6 +4,7 @@ using Cloudora.Services;
 using Cloudora.UI;
 using Cloudora.Level;
 using Cloudora.Progression;
+using Cloudora.Modifiers;
 using UnityEngine;
 
 namespace Cloudora.Puzzle
@@ -26,6 +27,7 @@ namespace Cloudora.Puzzle
         private AdaptiveBoardLayout _boardLayout;
         private WorldScreenController _worldScreen;
         private ProgressionManager _progression;
+        private ModifierRuntime _modifierRuntime;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -36,6 +38,7 @@ namespace Cloudora.Puzzle
             _feedback = gameObject.AddComponent<GameFeedbackService>();
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
             _progression = new ProgressionManager(debugStartLevel);
+            _modifierRuntime = new ModifierRuntime();
             _worldScreen = WorldScreenController.Create(canvas);
             _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle);
             _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
@@ -111,6 +114,7 @@ namespace Cloudora.Puzzle
                 cloud.Initialize(_currentLevel.capacity, levelData[i], HandleCloudClicked);
                 _containers.Add(cloud);
             }
+            _modifierRuntime.Initialize(_currentLevel, _containers.ToArray());
         }
 
         private void HandleCloudClicked(CloudContainerView clickedCloud)
@@ -132,6 +136,15 @@ namespace Cloudora.Puzzle
             if (_selectedCloud == clickedCloud)
             {
                 ClearSelection();
+                return;
+            }
+
+            int sourceIndex = _containers.IndexOf(_selectedCloud);
+            int targetIndex = _containers.IndexOf(clickedCloud);
+            if (!_modifierRuntime.CanMove(sourceIndex, targetIndex))
+            {
+                clickedCloud.PlayInvalidFeedback();
+                _feedback.Invalid();
                 return;
             }
 
@@ -160,6 +173,7 @@ namespace Cloudora.Puzzle
             {
                 _undoHistory.Push(beforeMove);
                 _feedback.Move();
+                _modifierRuntime.OnSuccessfulMove(_containers.IndexOf(source), _containers.IndexOf(target));
                 _overlay.SetUndoAvailable(true);
                 CelebrateNewlySolvedClouds();
                 CheckWin();

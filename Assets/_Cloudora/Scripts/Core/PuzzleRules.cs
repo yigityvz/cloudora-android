@@ -16,7 +16,7 @@ namespace Cloudora.Core
             return !source.IsEmpty && source.Top == move.Weather &&
                    move.Count <= source.TopGroupCount() &&
                    move.Count <= target.Capacity - target.Count &&
-                   (target.IsEmpty || target.Top == move.Weather);
+                   (target.IsEmpty || target.Top == move.Weather || target.Top == Puzzle.WeatherType.Rainbow || move.Weather == Puzzle.WeatherType.Rainbow);
         }
 
         public static bool TryApply(PuzzleState state, Move move)
@@ -35,9 +35,12 @@ namespace Cloudora.Core
             {
                 if (cloud.IsEmpty) continue;
                 if (!cloud.IsFull) return false;
-                for (int i = 1; i < cloud.Count; i++)
+                Puzzle.WeatherType? resolved = null;
+                for (int i = 0; i < cloud.Count; i++)
                 {
-                    if (cloud.Elements[i] != cloud.Elements[0]) return false;
+                    if (cloud.Elements[i] == Puzzle.WeatherType.Rainbow) continue;
+                    if (resolved.HasValue && cloud.Elements[i] != resolved.Value) return false;
+                    resolved = cloud.Elements[i];
                 }
             }
             return true;

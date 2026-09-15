@@ -1,6 +1,7 @@
 using System;
 using Cloudora.Puzzle;
 using Cloudora.Core;
+using Cloudora.Modifiers;
 
 namespace Cloudora.Level
 {
@@ -16,6 +17,7 @@ namespace Cloudora.Level
         public bool generated;
         public float difficultyScore;
         [NonSerialized] public Move[] knownSolution;
+        public ModifierData[] modifiers = Array.Empty<ModifierData>();
 
         public LevelDefinition(int levelId, string worldId, int capacity, string tutorialCue, params WeatherType[][] clouds)
         {

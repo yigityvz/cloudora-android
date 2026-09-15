@@ -42,6 +42,8 @@ namespace Cloudora.Core
             for (int i = 0; i < count; i++) _elements.Add(weather);
         }
 
+        internal void SetAt(int index, WeatherType weather) => _elements[index] = weather;
+
         public CloudState Clone() => new(Capacity, _elements);
         public WeatherType[] ToArray() => _elements.ToArray();
     }

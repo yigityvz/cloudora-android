@@ -39,3 +39,7 @@ Physical Android readability remains part of the Phase 14 device checklist and c
 ## Phase 6 - World, Restoration & Progression
 
 Thirteen data-driven worlds now define level ranges, capacity, new-rule cadence, and theme colors through level 400. Pure progression and restoration services calculate unlocks, four roughly five-level milestones, 100% completion, and world transitions. Gameplay exposes a themed world panel with restoration state and upcoming rule.
+
+## Phase 7 - Modifier System
+
+An extensible `ICloudModifierRule` registry drives modifier behavior independently of views. Frozen blocks a reserved cloud for two successful moves; Locked depends on a key cloud becoming solved; Fog reveals after interaction; Rainbow is a true wildcard in receive and solved rules; Night hides lower tokens; Wind is registered for later-level composition. Generated boards reserve blocked clouds from the known solution path and validate wildcard deficits.
