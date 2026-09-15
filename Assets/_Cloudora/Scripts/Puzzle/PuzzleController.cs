@@ -17,6 +17,7 @@ namespace Cloudora.Puzzle
 
         [Header("Level Debug")]
         [SerializeField, Min(1)] private int debugStartLevel = 1;
+        [SerializeField] private bool useDebugStartLevel;
         private readonly List<CloudContainerView> _containers = new();
         private readonly Stack<WeatherType[][]> _undoHistory = new();
         private readonly HashSet<CloudContainerView> _celebratedSolvedClouds = new();
@@ -32,6 +33,8 @@ namespace Cloudora.Puzzle
         private BoosterManager _boosterManager;
         private int _moveCount;
         private int _shuffleUseCount;
+        private ISaveService _saveService;
+        private SaveData _saveData;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -41,16 +44,29 @@ namespace Cloudora.Puzzle
             _moveAnimator = gameObject.AddComponent<MoveAnimator>();
             _feedback = gameObject.AddComponent<GameFeedbackService>();
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
-            _progression = new ProgressionManager(debugStartLevel);
+            _saveService = new LocalJsonSaveService();
+            _saveData = _saveService.Load();
+            int startLevel = useDebugStartLevel ? debugStartLevel : _saveData.currentLevel;
+            _progression = new ProgressionManager(startLevel, _saveData.highestCompletedLevel);
             _modifierRuntime = new ModifierRuntime();
-            _lifeManager = new LifeManager();
-            _boosterManager = new BoosterManager();
+            System.DateTime nextLife = _saveData.nextLifeUtcTicks > 0 ? new System.DateTime(_saveData.nextLifeUtcTicks, System.DateTimeKind.Utc) : default;
+            _lifeManager = new LifeManager(_saveData.lives, nextLife);
+            _boosterManager = new BoosterManager(_saveData.undoCharges, _saveData.extraCloudCharges, _saveData.safeShuffleCharges);
+            _feedback.SoundEnabled = _saveData.soundEnabled;
+            _feedback.HapticsEnabled = _saveData.hapticsEnabled;
             _worldScreen = WorldScreenController.Create(canvas);
             _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle, UseExtraCloud, UseSafeShuffle);
             _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
             if (_boardLayout == null) _boardLayout = boardRoot.gameObject.AddComponent<AdaptiveBoardLayout>();
             LoadLevel(_progression.CurrentLevel);
         }
+
+        private void OnApplicationPause(bool paused)
+        {
+            if (paused) SaveProgress();
+        }
+
+        private void OnApplicationQuit() => SaveProgress();
 
         private void Update()
         {
@@ -77,6 +93,7 @@ namespace Cloudora.Puzzle
 
             StopAllCoroutines();
             LoadState(_currentLevel.CreateBoard());
+            SaveProgress();
         }
 
         public void LoadLevel(int levelNumber)
@@ -118,6 +135,7 @@ namespace Cloudora.Puzzle
             _overlay.ShowComplete(false);
             _overlay.SetUndoAvailable(_undoHistory.Count > 0);
             RefreshMetaUI();
+            SaveProgress();
         }
 
         private void LoadState(WeatherType[][] levelData)
@@ -283,16 +301,19 @@ namespace Cloudora.Puzzle
 
             _isCompleted = true;
             _progression.CompleteCurrentLevel();
+            if (_currentLevel.levelId <= 15) _saveData.tutorialFlags[_currentLevel.levelId - 1] = true;
             _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
             _overlay.ShowComplete(true);
             _feedback.Complete();
             Debug.Log("Level completed!");
+            SaveProgress();
         }
 
         private void HandleContinue()
         {
             _progression.Advance();
             LoadLevel(_progression.CurrentLevel);
+            SaveProgress();
         }
 
         private void UseExtraCloud()
@@ -312,6 +333,7 @@ namespace Cloudora.Puzzle
             _modifierRuntime.Initialize(_currentLevel, _containers.ToArray());
             _overlay.HideBlock();
             RefreshMetaUI();
+            SaveProgress();
         }
 
         private void UseSafeShuffle()
@@ -327,6 +349,7 @@ namespace Cloudora.Puzzle
             LoadState(_currentLevel.CreateBoard());
             _overlay.HideBlock();
             RefreshMetaUI();
+            SaveProgress();
         }
 
         private bool HasLegalMove()
@@ -344,6 +367,22 @@ namespace Cloudora.Puzzle
         {
             if (_overlay != null)
                 _overlay.SetBoosters(_boosterManager.UndoCharges, _boosterManager.ExtraCloudCharges, _boosterManager.SafeShuffleCharges);
+        }
+
+        private void SaveProgress()
+        {
+            if (_saveService == null || _saveData == null || _progression == null) return;
+            _saveData.currentLevel = _progression.CurrentLevel;
+            _saveData.highestCompletedLevel = _progression.HighestCompletedLevel;
+            _saveData.lives = _lifeManager.Lives;
+            _saveData.nextLifeUtcTicks = _lifeManager.NextLifeUtc == default ? 0 : _lifeManager.NextLifeUtc.Ticks;
+            _saveData.undoCharges = _boosterManager.UndoCharges;
+            _saveData.extraCloudCharges = _boosterManager.ExtraCloudCharges;
+            _saveData.safeShuffleCharges = _boosterManager.SafeShuffleCharges;
+            _saveData.soundEnabled = _feedback.SoundEnabled;
+            _saveData.hapticsEnabled = _feedback.HapticsEnabled;
+            _saveData.lastGeneratedSeed = _currentLevel != null ? _currentLevel.seed : 0;
+            _saveService.Save(_saveData);
         }
     }
 }

@@ -47,3 +47,7 @@ An extensible `ICloudModifierRule` registry drives modifier behavior independent
 ## Phase 8 - Lives & Boosters
 
 Added a five-life, 30-minute UTC regeneration model with tutorial grace and retry cost only after meaningful progress. Undo now spends charges; Extra Cloud expands the live board and layout; Safe Shuffle replaces generated boards only with a newly validated deterministic board. HUD counters, regeneration countdown, out-of-lives, no-moves, and depleted-booster panels are wired to gameplay. Reward acquisition remains an abstraction hook until fake ads in Phase 11.
+
+## Phase 9 - Persistence
+
+Implemented schema-versioned local JSON persistence for current/highest level, derived world restoration, lives and UTC timer, tutorial completion flags, sound/haptics, booster inventory, and generated seed metadata. Writes use a temporary file plus previous-save backup; load falls back to backup or safe defaults after corruption, and migration clamps invalid legacy values.

@@ -4,6 +4,7 @@ using Cloudora.Core;
 using Cloudora.UI;
 using Cloudora.Progression;
 using Cloudora.Modifiers;
+using Cloudora.Services;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -191,6 +192,28 @@ namespace Cloudora.Tests.Editor
             Assert.That(boosters.TryUseUndo(), Is.True);
             Assert.That(boosters.TryUseUndo(), Is.False);
             Assert.That(boosters.UndoCharges, Is.Zero);
+        }
+
+        [Test]
+        public void SaveRoundTripsAndCorruptPrimaryFallsBackToBackup()
+        {
+            string directory = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "cloudora-save-test-" + System.Guid.NewGuid().ToString("N"));
+            string path = System.IO.Path.Combine(directory, "save.json");
+            var service = new LocalJsonSaveService(path);
+            var first = SaveData.Defaults();
+            first.currentLevel = 42;
+            first.lives = 2;
+            service.Save(first);
+            first.currentLevel = 43;
+            service.Save(first);
+
+            SaveData loaded = service.Load();
+            Assert.That(loaded.currentLevel, Is.EqualTo(43));
+            System.IO.File.WriteAllText(path, "{broken json");
+            loaded = service.Load();
+            Assert.That(loaded.currentLevel, Is.EqualTo(42));
+            Assert.That(loaded.schemaVersion, Is.EqualTo(SaveData.CurrentSchemaVersion));
+            System.IO.Directory.Delete(directory, true);
         }
 
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)
