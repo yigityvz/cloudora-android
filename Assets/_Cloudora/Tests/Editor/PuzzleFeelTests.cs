@@ -216,6 +216,15 @@ namespace Cloudora.Tests.Editor
             System.IO.Directory.Delete(directory, true);
         }
 
+        [Test]
+        public void AnalyticsRejectsPersonalDataKeys()
+        {
+            var safe = new System.Collections.Generic.Dictionary<string, object> { ["level"] = 12, ["world"] = "green-valley" };
+            Assert.DoesNotThrow(() => AnalyticsPrivacy.Validate(AnalyticsEvents.LevelStarted, safe));
+            var unsafeValues = new System.Collections.Generic.Dictionary<string, object> { ["email_address"] = "hidden" };
+            Assert.Throws<System.ArgumentException>(() => AnalyticsPrivacy.Validate(AnalyticsEvents.LevelStarted, unsafeValues));
+        }
+
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));

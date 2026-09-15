@@ -35,6 +35,8 @@ namespace Cloudora.Puzzle
         private int _shuffleUseCount;
         private ISaveService _saveService;
         private SaveData _saveData;
+        private IAnalyticsService _analytics;
+        private float _levelStartedAt;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -46,6 +48,8 @@ namespace Cloudora.Puzzle
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
             _saveService = new LocalJsonSaveService();
             _saveData = _saveService.Load();
+            _analytics = new FirebaseAnalyticsService();
+            _analytics.Track(AnalyticsEvents.GameStarted, Params("save_schema", _saveData.schemaVersion));
             int startLevel = useDebugStartLevel ? debugStartLevel : _saveData.currentLevel;
             _progression = new ProgressionManager(startLevel, _saveData.highestCompletedLevel);
             _modifierRuntime = new ModifierRuntime();
@@ -93,6 +97,7 @@ namespace Cloudora.Puzzle
 
             StopAllCoroutines();
             LoadState(_currentLevel.CreateBoard());
+            _analytics.Track(AnalyticsEvents.LevelRestarted, LevelParams());
             SaveProgress();
         }
 
@@ -106,6 +111,11 @@ namespace Cloudora.Puzzle
             _overlay.SetTutorialCue(_currentLevel.tutorialCue);
             _boardLayout.Configure(_currentLevel.clouds.Length, _currentLevel.capacity);
             _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
+            _levelStartedAt = Time.realtimeSinceStartup;
+            _analytics.Track(AnalyticsEvents.LevelStarted, LevelParams());
+            if (_currentLevel.modifiers != null)
+                foreach (ModifierData modifier in _currentLevel.modifiers)
+                    _analytics.Track(AnalyticsEvents.ModifierEncountered, Params("type", modifier.type.ToString(), "level", _currentLevel.levelId));
         }
 
         [ContextMenu("Load Debug Level")]
@@ -135,6 +145,7 @@ namespace Cloudora.Puzzle
             _overlay.ShowComplete(false);
             _overlay.SetUndoAvailable(_undoHistory.Count > 0);
             RefreshMetaUI();
+            _analytics.Track(AnalyticsEvents.UndoUsed, Params("level", _currentLevel.levelId, "remaining", _boosterManager.UndoCharges));
             SaveProgress();
         }
 
@@ -229,7 +240,10 @@ namespace Cloudora.Puzzle
                 CelebrateNewlySolvedClouds();
                 CheckWin();
                 if (!_isCompleted && !HasLegalMove())
+                {
+                    _analytics.Track(AnalyticsEvents.LevelFailed, Params("level", _currentLevel.levelId, "reason", "no_moves", "move_count", _moveCount));
                     _overlay.ShowBlock("No Moves", "Use Undo, Extra Cloud, or Safe Shuffle");
+                }
             }
 
             ClearSelection();
@@ -305,6 +319,9 @@ namespace Cloudora.Puzzle
             _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
             _overlay.ShowComplete(true);
             _feedback.Complete();
+            _analytics.Track(AnalyticsEvents.LevelCompleted, Params("level", _currentLevel.levelId, "duration_seconds", Time.realtimeSinceStartup - _levelStartedAt, "move_count", _moveCount, "seed", _currentLevel.seed));
+            if (_currentLevel.levelId == _progression.CurrentWorld.LastLevel)
+                _analytics.Track(AnalyticsEvents.WorldCompleted, Params("world", _progression.CurrentWorld.Id));
             Debug.Log("Level completed!");
             SaveProgress();
         }
@@ -333,6 +350,7 @@ namespace Cloudora.Puzzle
             _modifierRuntime.Initialize(_currentLevel, _containers.ToArray());
             _overlay.HideBlock();
             RefreshMetaUI();
+            _analytics.Track(AnalyticsEvents.ExtraCloudUsed, LevelParams());
             SaveProgress();
         }
 
@@ -349,6 +367,7 @@ namespace Cloudora.Puzzle
             LoadState(_currentLevel.CreateBoard());
             _overlay.HideBlock();
             RefreshMetaUI();
+            _analytics.Track(AnalyticsEvents.SafeShuffleUsed, LevelParams());
             SaveProgress();
         }
 
@@ -383,6 +402,18 @@ namespace Cloudora.Puzzle
             _saveData.hapticsEnabled = _feedback.HapticsEnabled;
             _saveData.lastGeneratedSeed = _currentLevel != null ? _currentLevel.seed : 0;
             _saveService.Save(_saveData);
+        }
+
+        private Dictionary<string, object> LevelParams()
+        {
+            return Params("level", _currentLevel.levelId, "world", _currentLevel.worldId, "seed", _currentLevel.seed, "difficulty", _currentLevel.difficultyScore);
+        }
+
+        private static Dictionary<string, object> Params(params object[] pairs)
+        {
+            var result = new Dictionary<string, object>();
+            for (int i = 0; i + 1 < pairs.Length; i += 2) result[(string)pairs[i]] = pairs[i + 1];
+            return result;
         }
     }
 }

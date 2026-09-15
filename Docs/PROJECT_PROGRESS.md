@@ -51,3 +51,7 @@ Added a five-life, 30-minute UTC regeneration model with tutorial grace and retr
 ## Phase 9 - Persistence
 
 Implemented schema-versioned local JSON persistence for current/highest level, derived world restoration, lives and UTC timer, tutorial completion flags, sound/haptics, booster inventory, and generated seed metadata. Writes use a temporary file plus previous-save backup; load falls back to backup or safe defaults after corruption, and migration clamps invalid legacy values.
+
+## Phase 10 - Analytics
+
+Added an `IAnalyticsService` boundary, canonical no-PII event dictionary, privacy-key rejection, and instrumentation for game/level lifecycle, duration, moves, worlds, modifiers, failures, lives, and boosters. `FirebaseAnalyticsService` discovers the Firebase Unity SDK at runtime when present and otherwise mirrors events to a debug sink, keeping builds credential-free until Google configuration is supplied.
