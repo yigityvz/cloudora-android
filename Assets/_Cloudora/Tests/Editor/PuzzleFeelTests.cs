@@ -225,6 +225,21 @@ namespace Cloudora.Tests.Editor
             Assert.Throws<System.ArgumentException>(() => AnalyticsPrivacy.Validate(AnalyticsEvents.LevelStarted, unsafeValues));
         }
 
+        [Test]
+        public void AdPolicyProtectsEarlyLevelsAndFrequencyCaps()
+        {
+            System.DateTime now = new System.DateTime(2026, 1, 1, 10, 0, 0, System.DateTimeKind.Utc);
+            var policy = new AdPlacementPolicy(System.TimeSpan.FromMinutes(5));
+            for (int level = 1; level <= 5; level++) Assert.That(policy.RegisterCompletion(level, now), Is.False);
+            Assert.That(policy.RegisterCompletion(6, now), Is.False);
+            Assert.That(policy.RegisterCompletion(7, now), Is.False);
+            Assert.That(policy.RegisterCompletion(8, now), Is.False);
+            Assert.That(policy.RegisterCompletion(9, now), Is.True);
+            for (int level = 10; level <= 13; level++) Assert.That(policy.RegisterCompletion(level, now.AddMinutes(1)), Is.False);
+            Assert.That(policy.RegisterCompletion(14, now.AddMinutes(6)), Is.True);
+            Assert.That(new AdMobAdService().IsAvailable, Is.False);
+        }
+
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));

@@ -37,6 +37,8 @@ namespace Cloudora.Puzzle
         private SaveData _saveData;
         private IAnalyticsService _analytics;
         private float _levelStartedAt;
+        private IAdService _adService;
+        private AdPlacementPolicy _adPolicy;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -49,6 +51,8 @@ namespace Cloudora.Puzzle
             _saveService = new LocalJsonSaveService();
             _saveData = _saveService.Load();
             _analytics = new FirebaseAnalyticsService();
+            _adService = new FakeAdService(_analytics);
+            _adPolicy = new AdPlacementPolicy();
             _analytics.Track(AnalyticsEvents.GameStarted, Params("save_schema", _saveData.schemaVersion));
             int startLevel = useDebugStartLevel ? debugStartLevel : _saveData.currentLevel;
             _progression = new ProgressionManager(startLevel, _saveData.highestCompletedLevel);
@@ -91,7 +95,11 @@ namespace Cloudora.Puzzle
 
             if (_moveCount > 0 && !_lifeManager.TryConsumeRetry(System.DateTime.UtcNow, _currentLevel.levelId <= 5))
             {
-                _overlay.ShowBlock("Out of Lives", "A life returns every 30 minutes. Reward hooks are available.");
+                _adService.ShowRewarded(RewardedPlacement.Life, success =>
+                {
+                    if (success) { _lifeManager.Grant(1); RefreshMetaUI(); SaveProgress(); }
+                });
+                _overlay.ShowBlock("Out of Lives", "Fake rewarded life granted. Tap Restart again.");
                 return;
             }
 
@@ -136,7 +144,8 @@ namespace Cloudora.Puzzle
 
             if (!_boosterManager.TryUseUndo())
             {
-                _overlay.ShowBlock("No Undo Charges", "Reward hook: +3 Undo");
+                _adService.ShowRewarded(RewardedPlacement.Undo, success => { if (success) { _boosterManager.GrantUndo(); RefreshMetaUI(); SaveProgress(); } });
+                _overlay.ShowBlock("Undo Refilled", "Fake reward granted +3. Tap Undo again.");
                 return;
             }
 
@@ -322,6 +331,8 @@ namespace Cloudora.Puzzle
             _analytics.Track(AnalyticsEvents.LevelCompleted, Params("level", _currentLevel.levelId, "duration_seconds", Time.realtimeSinceStartup - _levelStartedAt, "move_count", _moveCount, "seed", _currentLevel.seed));
             if (_currentLevel.levelId == _progression.CurrentWorld.LastLevel)
                 _analytics.Track(AnalyticsEvents.WorldCompleted, Params("world", _progression.CurrentWorld.Id));
+            if (_adPolicy.RegisterCompletion(_currentLevel.levelId, System.DateTime.UtcNow))
+                _adService.ShowInterstitial();
             Debug.Log("Level completed!");
             SaveProgress();
         }
@@ -337,7 +348,8 @@ namespace Cloudora.Puzzle
         {
             if (_inputLocked || !_boosterManager.TryUseExtraCloud())
             {
-                _overlay.ShowBlock("Extra Cloud Unavailable", "Reward hook: Extra Cloud for this level");
+                _adService.ShowRewarded(RewardedPlacement.ExtraCloud, success => { if (success) { _boosterManager.GrantExtraCloud(); RefreshMetaUI(); SaveProgress(); } });
+                _overlay.ShowBlock("Extra Cloud Refilled", "Fake reward granted. Tap Extra again.");
                 return;
             }
 
@@ -358,7 +370,8 @@ namespace Cloudora.Puzzle
         {
             if (_inputLocked || !_boosterManager.TryUseSafeShuffle())
             {
-                _overlay.ShowBlock("Shuffle Unavailable", "Reward hook: solvability-preserving shuffle");
+                _adService.ShowRewarded(RewardedPlacement.SafeShuffle, success => { if (success) { _boosterManager.GrantSafeShuffle(); RefreshMetaUI(); SaveProgress(); } });
+                _overlay.ShowBlock("Shuffle Refilled", "Fake reward granted. Tap Shuffle again.");
                 return;
             }
 

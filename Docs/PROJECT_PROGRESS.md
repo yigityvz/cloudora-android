@@ -55,3 +55,7 @@ Implemented schema-versioned local JSON persistence for current/highest level, d
 ## Phase 10 - Analytics
 
 Added an `IAnalyticsService` boundary, canonical no-PII event dictionary, privacy-key rejection, and instrumentation for game/level lifecycle, duration, moves, worlds, modifiers, failures, lives, and boosters. `FirebaseAnalyticsService` discovers the Firebase Unity SDK at runtime when present and otherwise mirrors events to a debug sink, keeping builds credential-free until Google configuration is supplied.
+
+## Phase 11 - Ad Abstraction / Fake Monetization
+
+Gameplay depends only on `IAdService`. Validation builds instantiate `FakeAdService`, log every rewarded/interstitial opportunity, and grant life/Undo/Extra Cloud/Safe Shuffle rewards deterministically. Interstitial policy blocks levels 1-5, requires four eligible completions, and applies a five-minute cap. `AdMobAdService` is an unavailable no-op stub; no SDK, ad unit, or real monetization is enabled.
