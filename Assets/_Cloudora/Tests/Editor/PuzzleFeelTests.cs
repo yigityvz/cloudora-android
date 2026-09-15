@@ -169,6 +169,30 @@ namespace Cloudora.Tests.Editor
             Assert.That(PuzzleValidator.Validate(definition, out string error), Is.True, error);
         }
 
+        [Test]
+        public void LivesRegenerateOfflineAndRespectCap()
+        {
+            System.DateTime start = new System.DateTime(2026, 1, 1, 10, 0, 0, System.DateTimeKind.Utc);
+            var lives = new LifeManager(2, start.AddMinutes(30));
+            lives.Refresh(start.AddMinutes(95));
+            Assert.That(lives.Lives, Is.EqualTo(5));
+            Assert.That(lives.NextLifeUtc, Is.EqualTo(default(System.DateTime)));
+            Assert.That(lives.TryConsumeRetry(start.AddMinutes(96), false), Is.True);
+            Assert.That(lives.Lives, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void TutorialRetryIsFreeAndBoostersCannotUnderflow()
+        {
+            var lives = new LifeManager(0);
+            Assert.That(lives.TryConsumeRetry(System.DateTime.UtcNow, true), Is.True);
+            Assert.That(lives.Lives, Is.EqualTo(0));
+            var boosters = new BoosterManager(1, 0, 0);
+            Assert.That(boosters.TryUseUndo(), Is.True);
+            Assert.That(boosters.TryUseUndo(), Is.False);
+            Assert.That(boosters.UndoCharges, Is.Zero);
+        }
+
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));

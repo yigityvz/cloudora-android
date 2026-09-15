@@ -28,6 +28,10 @@ namespace Cloudora.Puzzle
         private WorldScreenController _worldScreen;
         private ProgressionManager _progression;
         private ModifierRuntime _modifierRuntime;
+        private LifeManager _lifeManager;
+        private BoosterManager _boosterManager;
+        private int _moveCount;
+        private int _shuffleUseCount;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -39,17 +43,35 @@ namespace Cloudora.Puzzle
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
             _progression = new ProgressionManager(debugStartLevel);
             _modifierRuntime = new ModifierRuntime();
+            _lifeManager = new LifeManager();
+            _boosterManager = new BoosterManager();
             _worldScreen = WorldScreenController.Create(canvas);
-            _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle);
+            _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle, UseExtraCloud, UseSafeShuffle);
             _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
             if (_boardLayout == null) _boardLayout = boardRoot.gameObject.AddComponent<AdaptiveBoardLayout>();
             LoadLevel(_progression.CurrentLevel);
+        }
+
+        private void Update()
+        {
+            if (_overlay == null) return;
+            System.DateTime now = System.DateTime.UtcNow;
+            _lifeManager.Refresh(now);
+            System.TimeSpan remaining = _lifeManager.TimeUntilNext(now);
+            string countdown = remaining == System.TimeSpan.Zero ? string.Empty : $"{(int)remaining.TotalMinutes:00}:{remaining.Seconds:00}";
+            _overlay.SetLives(_lifeManager.Lives, countdown);
         }
 
         public void RestartLevel()
         {
             if (_inputLocked)
             {
+                return;
+            }
+
+            if (_moveCount > 0 && !_lifeManager.TryConsumeRetry(System.DateTime.UtcNow, _currentLevel.levelId <= 5))
+            {
+                _overlay.ShowBlock("Out of Lives", "A life returns every 30 minutes. Reward hooks are available.");
                 return;
             }
 
@@ -85,10 +107,17 @@ namespace Cloudora.Puzzle
                 return;
             }
 
+            if (!_boosterManager.TryUseUndo())
+            {
+                _overlay.ShowBlock("No Undo Charges", "Reward hook: +3 Undo");
+                return;
+            }
+
             RestoreSnapshot(_undoHistory.Pop());
             _isCompleted = false;
             _overlay.ShowComplete(false);
             _overlay.SetUndoAvailable(_undoHistory.Count > 0);
+            RefreshMetaUI();
         }
 
         private void LoadState(WeatherType[][] levelData)
@@ -104,8 +133,11 @@ namespace Cloudora.Puzzle
             _celebratedSolvedClouds.Clear();
             _isCompleted = false;
             _inputLocked = false;
+            _moveCount = 0;
             _overlay.ShowComplete(false);
             _overlay.SetUndoAvailable(false);
+            _overlay.HideBlock();
+            RefreshMetaUI();
 
             for (int i = 0; i < levelData.Length; i++)
             {
@@ -172,11 +204,14 @@ namespace Cloudora.Puzzle
             if (source.TryMoveTopGroupTo(target))
             {
                 _undoHistory.Push(beforeMove);
+                _moveCount++;
                 _feedback.Move();
                 _modifierRuntime.OnSuccessfulMove(_containers.IndexOf(source), _containers.IndexOf(target));
                 _overlay.SetUndoAvailable(true);
                 CelebrateNewlySolvedClouds();
                 CheckWin();
+                if (!_isCompleted && !HasLegalMove())
+                    _overlay.ShowBlock("No Moves", "Use Undo, Extra Cloud, or Safe Shuffle");
             }
 
             ClearSelection();
@@ -258,6 +293,57 @@ namespace Cloudora.Puzzle
         {
             _progression.Advance();
             LoadLevel(_progression.CurrentLevel);
+        }
+
+        private void UseExtraCloud()
+        {
+            if (_inputLocked || !_boosterManager.TryUseExtraCloud())
+            {
+                _overlay.ShowBlock("Extra Cloud Unavailable", "Reward hook: Extra Cloud for this level");
+                return;
+            }
+
+            CloudContainerView cloud = Instantiate(cloudPrefab, boardRoot);
+            cloud.name = $"Cloud_{_containers.Count + 1}_Extra";
+            cloud.Initialize(_currentLevel.capacity, System.Array.Empty<WeatherType>(), HandleCloudClicked);
+            _containers.Add(cloud);
+            _undoHistory.Clear();
+            _boardLayout.Configure(_containers.Count, _currentLevel.capacity);
+            _modifierRuntime.Initialize(_currentLevel, _containers.ToArray());
+            _overlay.HideBlock();
+            RefreshMetaUI();
+        }
+
+        private void UseSafeShuffle()
+        {
+            if (_inputLocked || !_boosterManager.TryUseSafeShuffle())
+            {
+                _overlay.ShowBlock("Shuffle Unavailable", "Reward hook: solvability-preserving shuffle");
+                return;
+            }
+
+            if (_currentLevel.generated)
+                _currentLevel = LevelGenerator.Generate(_currentLevel.levelId, _currentLevel.seed + (++_shuffleUseCount * 997));
+            LoadState(_currentLevel.CreateBoard());
+            _overlay.HideBlock();
+            RefreshMetaUI();
+        }
+
+        private bool HasLegalMove()
+        {
+            for (int source = 0; source < _containers.Count; source++)
+            {
+                if (!_containers[source].TryGetTopElement(out WeatherType type)) continue;
+                for (int target = 0; target < _containers.Count; target++)
+                    if (source != target && _modifierRuntime.CanMove(source, target) && _containers[target].CanReceive(type)) return true;
+            }
+            return false;
+        }
+
+        private void RefreshMetaUI()
+        {
+            if (_overlay != null)
+                _overlay.SetBoosters(_boosterManager.UndoCharges, _boosterManager.ExtraCloudCharges, _boosterManager.SafeShuffleCharges);
         }
     }
 }
