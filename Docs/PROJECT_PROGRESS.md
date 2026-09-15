@@ -59,3 +59,7 @@ Added an `IAnalyticsService` boundary, canonical no-PII event dictionary, privac
 ## Phase 11 - Ad Abstraction / Fake Monetization
 
 Gameplay depends only on `IAdService`. Validation builds instantiate `FakeAdService`, log every rewarded/interstitial opportunity, and grant life/Undo/Extra Cloud/Safe Shuffle rewards deterministically. Interstitial policy blocks levels 1-5, requires four eligible completions, and applies a five-minute cap. `AdMobAdService` is an unavailable no-op stub; no SDK, ad unit, or real monetization is enabled.
+
+## Phase 12 - Full UI/UX, Art & Accessibility
+
+Added an original runtime-generated visual system: soft sky gradient, rounded frosted panels, cloud-lobed vessels, subtle shadows, selection lift, and color plus unique high-contrast weather patterns. Main Menu, Gameplay HUD, World, Settings, No Moves/Lives, and Level Complete surfaces now share the palette. Large touch targets, sound/haptic toggles, responsive layout, and pulsing minimal tutorial cues support one-thumb and non-color-only play without licensed assets.

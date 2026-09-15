@@ -13,6 +13,14 @@ namespace Cloudora.UI
         private Text _livesLabel;
         private Text _boosterLabel;
         private GameObject _blockingPanel;
+        private float _pulse;
+
+        private void Update()
+        {
+            if (_tutorialLabel == null || string.IsNullOrEmpty(_tutorialLabel.text)) return;
+            _pulse += Time.unscaledDeltaTime * 4f;
+            _tutorialLabel.transform.localScale = Vector3.one * (1f + Mathf.Sin(_pulse) * 0.035f);
+        }
 
         public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue, Action onWorld, Action onExtraCloud, Action onSafeShuffle)
         {

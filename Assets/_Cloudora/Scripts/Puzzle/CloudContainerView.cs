@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cloudora.Modifiers;
+using Cloudora.UI;
 
 namespace Cloudora.Puzzle
 {
@@ -11,6 +12,7 @@ namespace Cloudora.Puzzle
     {
         private readonly List<WeatherType> _elements = new();
         private readonly List<Image> _slotImages = new();
+        private readonly List<Text> _slotLabels = new();
 
         private Button _button;
 
@@ -24,6 +26,7 @@ namespace Cloudora.Puzzle
         private Coroutine _feedbackRoutine;
         private bool _hideContents;
         private Text _modifierBadge;
+        private bool _visualPrepared;
 
         public int Capacity { get; private set; }
 
@@ -48,6 +51,17 @@ namespace Cloudora.Puzzle
             _normalBackgroundColor = _background.color;
 
             _button.targetGraphic = _background;
+            if (!_visualPrepared)
+            {
+                _visualPrepared = true;
+                _background.sprite = CloudoraVisuals.CloudVessel;
+                _background.type = Image.Type.Sliced;
+                _background.color = new Color(0.93f, 0.97f, 1f, 0.96f);
+                Shadow shadow = GetComponent<Shadow>() ?? gameObject.AddComponent<Shadow>();
+                shadow.effectColor = new Color(0.15f, 0.28f, 0.42f, 0.16f);
+                shadow.effectDistance = new Vector2(0f, -7f);
+                _normalBackgroundColor = _background.color;
+            }
         }
 
         public void Initialize(
@@ -78,6 +92,7 @@ namespace Cloudora.Puzzle
         private void BuildSlots()
         {
             _slotImages.Clear();
+            _slotLabels.Clear();
 
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
@@ -130,6 +145,21 @@ namespace Cloudora.Puzzle
                     slotObject.GetComponent<Image>();
 
                 slotImage.raycastTarget = false;
+                slotImage.sprite = CloudoraVisuals.RoundedPanel;
+                slotImage.type = Image.Type.Sliced;
+
+                var labelObject = new GameObject("Pattern", typeof(RectTransform), typeof(Text));
+                labelObject.transform.SetParent(slotObject.transform, false);
+                Text label = labelObject.GetComponent<Text>();
+                label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                label.fontSize = 22;
+                label.fontStyle = FontStyle.Bold;
+                label.alignment = TextAnchor.MiddleCenter;
+                label.color = new Color(0.15f, 0.22f, 0.29f, 0.85f);
+                label.raycastTarget = false;
+                label.rectTransform.anchorMin = Vector2.zero;
+                label.rectTransform.anchorMax = Vector2.one;
+                label.rectTransform.offsetMin = label.rectTransform.offsetMax = Vector2.zero;
 
                 LayoutElement layoutElement =
                     slotObject.GetComponent<LayoutElement>();
@@ -138,6 +168,7 @@ namespace Cloudora.Puzzle
                 layoutElement.flexibleWidth = 1f;
 
                 _slotImages.Add(slotImage);
+                _slotLabels.Add(label);
             }
         }
 
@@ -157,6 +188,7 @@ namespace Cloudora.Puzzle
                 {
                     slotImage.color =
                         new Color(1f, 1f, 1f, 0.08f);
+                    _slotLabels[visualIndex].text = string.Empty;
 
                     continue;
                 }
@@ -168,6 +200,7 @@ namespace Cloudora.Puzzle
                     _elements[elementIndex];
 
                 slotImage.color = GetColor(element);
+                _slotLabels[visualIndex].text = GetPattern(element);
                 if (_hideContents && visualIndex > emptySlotCount)
                     slotImage.color = new Color(0.72f, 0.78f, 0.86f, 0.22f);
             }
@@ -206,13 +239,27 @@ namespace Cloudora.Puzzle
                         _normalBackgroundColor,
                         Color.white,
                         0.35f);
+                transform.localScale = Vector3.one * 1.04f;
             }
             else
             {
                 _background.color =
                     _normalBackgroundColor;
+                transform.localScale = Vector3.one;
             }
         }
+
+        private static string GetPattern(WeatherType type) => type switch
+        {
+            WeatherType.Sun => "*",
+            WeatherType.Rain => "///",
+            WeatherType.Snow => "+",
+            WeatherType.Wind => "~~~",
+            WeatherType.Moon => ")",
+            WeatherType.Lightning => "!!",
+            WeatherType.Rainbow => "<>",
+            _ => "?"
+        };
 
         public WeatherType[] CaptureElements()
         {

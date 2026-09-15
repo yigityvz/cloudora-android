@@ -39,6 +39,7 @@ namespace Cloudora.Puzzle
         private float _levelStartedAt;
         private IAdService _adService;
         private AdPlacementPolicy _adPolicy;
+        private MainMenuController _mainMenu;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -67,6 +68,9 @@ namespace Cloudora.Puzzle
             _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
             if (_boardLayout == null) _boardLayout = boardRoot.gameObject.AddComponent<AdaptiveBoardLayout>();
             LoadLevel(_progression.CurrentLevel);
+            _mainMenu = MainMenuController.Create(canvas, _currentLevel.worldId, _currentLevel.levelId, _worldScreen.Toggle,
+                () => _feedback.SoundEnabled, value => { _feedback.SoundEnabled = value; SaveProgress(); },
+                () => _feedback.HapticsEnabled, value => { _feedback.HapticsEnabled = value; SaveProgress(); });
         }
 
         private void OnApplicationPause(bool paused)
