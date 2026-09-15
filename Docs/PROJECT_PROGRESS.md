@@ -29,3 +29,9 @@ Manual smoke test: set `Debug Start Level` to 1, 6, 10, and 15; enter Play Mode;
 Added pure C# `CloudState`, `PuzzleState`, `Move`, and `PuzzleRules` domain logic. Level 16+ now uses a deterministic generator that begins solved, applies controlled reversible moves, stores a known legal solution, rejects invalid/already-solved boards, and assigns a reproducible difficulty score. Seed override and debug start-level loading support broken-level reproduction.
 
 Batch verification generates hundreds of boards, checks determinism/invariants, and replays every known solution to solved state.
+
+## Phase 5 - Capacity & Adaptive Layout
+
+Cloud state/view capacity is data-driven across 4, 5, 6, and 7 slots. `AdaptiveBoardLayout` calculates column count, cell aspect, and spacing for 5-12 clouds, anchors the board inside portrait safe regions, and recalculates after resolution changes. Automated cases cover 720x1280, 1080x1920, 1080x2400, and 1440x3200 portrait spaces without overlap.
+
+Physical Android readability remains part of the Phase 14 device checklist and cannot be truthfully marked complete without a connected device.

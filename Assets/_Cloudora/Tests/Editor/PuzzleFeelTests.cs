@@ -1,6 +1,7 @@
 using Cloudora.Puzzle;
 using Cloudora.Level;
 using Cloudora.Core;
+using Cloudora.UI;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -105,6 +106,22 @@ namespace Cloudora.Tests.Editor
             foreach (CloudDefinition cloud in definition.clouds)
                 parts.Add(string.Join(",", cloud.elements));
             return string.Join("|", parts);
+        }
+
+        [TestCase(1080, 1920, 5, 4)]
+        [TestCase(1080, 2400, 8, 5)]
+        [TestCase(1440, 3200, 10, 7)]
+        [TestCase(720, 1280, 12, 6)]
+        public void AdaptiveLayoutFitsPortraitBounds(float width, float height, int clouds, int capacity)
+        {
+            var available = new Vector2(width * 0.9f, height * 0.62f);
+            LayoutMetrics metrics = AdaptiveBoardLayout.Calculate(available, clouds, capacity);
+            int rows = Mathf.CeilToInt(clouds / (float)metrics.Columns);
+            float usedWidth = metrics.CellSize.x * metrics.Columns + metrics.Spacing.x * (metrics.Columns - 1);
+            float usedHeight = metrics.CellSize.y * rows + metrics.Spacing.y * (rows - 1);
+            Assert.That(usedWidth, Is.LessThanOrEqualTo(available.x + 0.1f));
+            Assert.That(usedHeight, Is.LessThanOrEqualTo(available.y + 0.1f));
+            Assert.That(metrics.CellSize.x, Is.GreaterThanOrEqualTo(80f));
         }
 
         private static CloudContainerView CreateCloud(string name, params WeatherType[] elements)

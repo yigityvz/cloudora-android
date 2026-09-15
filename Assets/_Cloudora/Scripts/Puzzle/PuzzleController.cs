@@ -22,6 +22,7 @@ namespace Cloudora.Puzzle
         private MoveAnimator _moveAnimator;
         private GameFeedbackService _feedback;
         private GameplayOverlay _overlay;
+        private AdaptiveBoardLayout _boardLayout;
         private bool _isCompleted;
         private bool _inputLocked;
         private LevelDefinition _currentLevel;
@@ -32,6 +33,8 @@ namespace Cloudora.Puzzle
             _feedback = gameObject.AddComponent<GameFeedbackService>();
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
             _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue);
+            _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
+            if (_boardLayout == null) _boardLayout = boardRoot.gameObject.AddComponent<AdaptiveBoardLayout>();
             LoadLevel(debugStartLevel);
         }
 
@@ -54,6 +57,7 @@ namespace Cloudora.Puzzle
             LoadState(_currentLevel.CreateBoard());
             _overlay.SetLevelInfo(_currentLevel.levelId, _currentLevel.worldId);
             _overlay.SetTutorialCue(_currentLevel.tutorialCue);
+            _boardLayout.Configure(_currentLevel.clouds.Length, _currentLevel.capacity);
         }
 
         [ContextMenu("Load Debug Level")]
