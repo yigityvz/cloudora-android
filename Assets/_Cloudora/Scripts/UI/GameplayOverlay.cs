@@ -8,6 +8,8 @@ namespace Cloudora.UI
     {
         private Button _undoButton;
         private GameObject _completePanel;
+        private Text _levelLabel;
+        private Text _tutorialLabel;
 
         public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue)
         {
@@ -19,6 +21,8 @@ namespace Cloudora.UI
             rootRect.offsetMin = rootRect.offsetMax = Vector2.zero;
 
             var overlay = root.AddComponent<GameplayOverlay>();
+            overlay._levelLabel = CreateTopLabel(root.transform, "Level 1", new Vector2(0f, -80f), 42);
+            overlay._tutorialLabel = CreateTopLabel(root.transform, string.Empty, new Vector2(0f, -145f), 30);
             CreateButton(root.transform, "Restart", new Vector2(-130f, 120f), onRestart);
             overlay._undoButton = CreateButton(root.transform, "Undo", new Vector2(130f, 120f), onUndo);
             overlay._completePanel = CreateCompletePanel(root.transform, onContinue);
@@ -28,6 +32,26 @@ namespace Cloudora.UI
 
         public void SetUndoAvailable(bool available) => _undoButton.interactable = available;
         public void ShowComplete(bool show) => _completePanel.SetActive(show);
+        public void SetLevelInfo(int level, string world) => _levelLabel.text = $"{ToTitle(world)}  •  Level {level}";
+        public void SetTutorialCue(string cue) => _tutorialLabel.text = string.IsNullOrWhiteSpace(cue) ? string.Empty : $"☝  {cue}";
+
+        private static Text CreateTopLabel(Transform parent, string value, Vector2 position, int size)
+        {
+            Text text = CreateText(parent, value, size, TextAnchor.MiddleCenter);
+            RectTransform rect = text.rectTransform;
+            rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 1f);
+            rect.sizeDelta = new Vector2(880f, 60f);
+            rect.anchoredPosition = position;
+            text.color = new Color(0.15f, 0.22f, 0.29f);
+            return text;
+        }
+
+        private static string ToTitle(string value)
+        {
+            return string.IsNullOrWhiteSpace(value)
+                ? "Cloudora"
+                : System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(value.Replace('-', ' '));
+        }
 
         private static Button CreateButton(Transform parent, string label, Vector2 position, Action action)
         {

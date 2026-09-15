@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cloudora.Services;
 using Cloudora.UI;
+using Cloudora.Level;
 using UnityEngine;
 
 namespace Cloudora.Puzzle
@@ -12,7 +13,8 @@ namespace Cloudora.Puzzle
         [SerializeField] private Transform boardRoot;
         [SerializeField] private CloudContainerView cloudPrefab;
 
-        private const int PrototypeCapacity = 4;
+        [Header("Level Debug")]
+        [SerializeField, Min(1)] private int debugStartLevel = 1;
         private readonly List<CloudContainerView> _containers = new();
         private readonly Stack<WeatherType[][]> _undoHistory = new();
         private readonly HashSet<CloudContainerView> _celebratedSolvedClouds = new();
@@ -22,15 +24,7 @@ namespace Cloudora.Puzzle
         private GameplayOverlay _overlay;
         private bool _isCompleted;
         private bool _inputLocked;
-
-        private static readonly WeatherType[][] PrototypeLevel =
-        {
-            new[] { WeatherType.Sun, WeatherType.Rain, WeatherType.Snow, WeatherType.Sun },
-            new[] { WeatherType.Rain, WeatherType.Snow, WeatherType.Sun, WeatherType.Rain },
-            new[] { WeatherType.Snow, WeatherType.Sun, WeatherType.Rain, WeatherType.Snow },
-            new WeatherType[] { },
-            new WeatherType[] { }
-        };
+        private LevelDefinition _currentLevel;
 
         private void Start()
         {
@@ -38,7 +32,7 @@ namespace Cloudora.Puzzle
             _feedback = gameObject.AddComponent<GameFeedbackService>();
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
             _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue);
-            LoadState(CloneState(PrototypeLevel));
+            LoadLevel(debugStartLevel);
         }
 
         public void RestartLevel()
@@ -49,7 +43,24 @@ namespace Cloudora.Puzzle
             }
 
             StopAllCoroutines();
-            LoadState(CloneState(PrototypeLevel));
+            LoadState(_currentLevel.CreateBoard());
+        }
+
+        public void LoadLevel(int levelNumber)
+        {
+            _currentLevel = AuthoredLevelCatalog.Get(levelNumber);
+            LoadState(_currentLevel.CreateBoard());
+            _overlay.SetLevelInfo(_currentLevel.levelId, _currentLevel.worldId);
+            _overlay.SetTutorialCue(_currentLevel.tutorialCue);
+        }
+
+        [ContextMenu("Load Debug Level")]
+        private void LoadDebugLevel()
+        {
+            if (Application.isPlaying)
+            {
+                LoadLevel(debugStartLevel);
+            }
         }
 
         public void Undo()
@@ -85,7 +96,7 @@ namespace Cloudora.Puzzle
             {
                 CloudContainerView cloud = Instantiate(cloudPrefab, boardRoot);
                 cloud.name = $"Cloud_{i + 1}";
-                cloud.Initialize(PrototypeCapacity, levelData[i], HandleCloudClicked);
+                cloud.Initialize(_currentLevel.capacity, levelData[i], HandleCloudClicked);
                 _containers.Add(cloud);
             }
         }
@@ -199,16 +210,6 @@ namespace Cloudora.Puzzle
             CelebrateNewlySolvedClouds();
         }
 
-        private static WeatherType[][] CloneState(WeatherType[][] source)
-        {
-            var clone = new WeatherType[source.Length][];
-            for (int i = 0; i < source.Length; i++)
-            {
-                clone[i] = (WeatherType[])source[i].Clone();
-            }
-            return clone;
-        }
-
         private void CheckWin()
         {
             foreach (CloudContainerView container in _containers)
@@ -227,7 +228,7 @@ namespace Cloudora.Puzzle
 
         private void HandleContinue()
         {
-            RestartLevel();
+            LoadLevel(Mathf.Min(_currentLevel.levelId + 1, AuthoredLevelCatalog.Count));
         }
     }
 }
