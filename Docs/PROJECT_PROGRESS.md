@@ -69,3 +69,7 @@ Added an original runtime-generated visual system: soft sky gradient, rounded fr
 Difficulty is config-driven through named bands and a repeating easy/medium/hard/medium/very-hard wave, with explicit world finales and easy resets. Shuffle depth follows the band instead of rising forever; duration targets are 30-60 seconds early, 1-3 minutes midgame, and 3-5 minutes for later challenge content. `Cloudora/Validate 10,000 Levels` provides reproducible batch QA across endless seeds, modifiers, capacity, and world cycles.
 
 Validation result (2026-09-15, Unity 6000.5.9f1): 10,000/10,000 generated levels passed with zero invariant/known-solution failures; observed difficulty score range 29.9-108.3. The EditMode regression suite separately generated 2,000 levels and passed 23/23 tests.
+
+## Phase 14 - Mobile Optimization, QA & Release Engineering
+
+Android settings are enforced as portrait 1080x1920 reference, package `com.yigityvz.cloudora`, version 0.1.0, min API 26, target API 36, IL2CPP, and ARM64. Build settings now use the gameplay scene. Runtime targets 60 FPS and low-priority background loading; pause/save and offline life math are covered. The Windows batch wrapper handles a Java 17 NIO pipe failure in the Unicode user profile. A development APK built successfully with Unity BuildPlayer on 2026-09-16 (52,492,065 bytes; zero build errors), then the wrapper repeated the successful build. The final Phase 14 EditMode suite passed 23/23. Release AAB and physical touch/FPS/cutout testing remain open until separately verified.
