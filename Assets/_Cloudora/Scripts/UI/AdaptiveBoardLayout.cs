@@ -31,6 +31,9 @@ namespace Cloudora.UI
         private void Apply()
         {
             if (_grid == null || _rect == null || _cloudCount <= 0) return;
+            (Vector2 safeMin, Vector2 safeMax) = SafeAreaFitter.CalculateAnchors(Screen.safeArea, new Vector2(Screen.width, Screen.height));
+            _rect.anchorMin = new Vector2(Mathf.Lerp(safeMin.x, safeMax.x, 0.05f), Mathf.Lerp(safeMin.y, safeMax.y, 0.2f));
+            _rect.anchorMax = new Vector2(Mathf.Lerp(safeMin.x, safeMax.x, 0.95f), Mathf.Lerp(safeMin.y, safeMax.y, 0.82f));
             _lastSize = _rect.rect.size;
             LayoutMetrics metrics = Calculate(_lastSize, _cloudCount, _capacity);
             _grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;

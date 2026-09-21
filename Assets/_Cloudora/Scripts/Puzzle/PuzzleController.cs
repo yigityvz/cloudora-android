@@ -59,7 +59,7 @@ namespace Cloudora.Puzzle
             _saveService = new LocalJsonSaveService();
             _saveData = _saveService.Load();
             _analytics = new FirebaseAnalyticsService();
-            _adService = new FakeAdService(_analytics);
+            _adService = Debug.isDebugBuild ? new FakeAdService(_analytics) : new AdMobAdService();
             _adPolicy = new AdPlacementPolicy();
             _analytics.Track(AnalyticsEvents.GameStarted, Params("save_schema", _saveData.schemaVersion));
             int startLevel = useDebugStartLevel ? debugStartLevel : _saveData.currentLevel;
@@ -138,11 +138,12 @@ namespace Cloudora.Puzzle
             LoadState(_currentLevel.CreateBoard());
             _overlay.SetLevelInfo(_currentLevel.levelId, _currentLevel.worldId);
             _overlay.SetTutorialCue(_currentLevel.tutorialCue);
+            _overlay.SetShuffleAvailable(_currentLevel.generated);
             _boardLayout.Configure(_currentLevel.clouds.Length, _currentLevel.capacity);
             _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
             _mainMenu?.SetProgress(_currentLevel.worldId, _currentLevel.levelId);
             _attemptBlocked = !_lifeManager.CanBeginAttempt(System.DateTime.UtcNow, _currentLevel.levelId <= 5);
-            if (_attemptBlocked) _overlay.ShowBlock("Out of Lives", "Wait for a life or tap Restart for a fake reward.");
+            if (_attemptBlocked) _overlay.ShowBlock("Out of Lives", _adService.IsAvailable ? "Wait for a life or tap Restart for a reward." : "Wait for the next life to regenerate.");
             _levelStartedAt = Time.realtimeSinceStartup;
             _analytics.Track(AnalyticsEvents.LevelStarted, LevelParams());
             if (_currentLevel.modifiers != null)
@@ -168,8 +169,7 @@ namespace Cloudora.Puzzle
 
             if (!_boosterManager.TryUseUndo())
             {
-                _adService.ShowRewarded(RewardedPlacement.Undo, success => { if (success) { _boosterManager.GrantUndo(); RefreshMetaUI(); SaveProgress(); } });
-                _overlay.ShowBlock("Undo Refilled", "Fake reward granted +3. Tap Undo again.");
+                RequestReward(RewardedPlacement.Undo, () => _boosterManager.GrantUndo(), "Undo Refilled", "Reward granted +3. Tap Undo again.");
                 return;
             }
 
@@ -246,6 +246,7 @@ namespace Cloudora.Puzzle
             if (_selectedCloud.TryGetTopElement(out WeatherType type) && clickedCloud.CanReceive(type))
             {
                 int count = Mathf.Min(_selectedCloud.TopGroupCount, clickedCloud.Capacity - clickedCloud.ElementCount);
+                count = _modifierRuntime.AdjustMoveCount(sourceIndex, targetIndex, count);
                 StartCoroutine(PerformMove(_selectedCloud, clickedCloud, type, count));
                 return;
             }
@@ -264,7 +265,7 @@ namespace Cloudora.Puzzle
             PuzzleSnapshot beforeMove = CaptureSnapshot();
             yield return _moveAnimator.Animate(source, target, type, count);
 
-            if (source.TryMoveTopGroupTo(target))
+            if (source.TryMoveTopGroupTo(target, count))
             {
                 _undoHistory.Push(beforeMove);
                 _moveCount++;
@@ -380,8 +381,7 @@ namespace Cloudora.Puzzle
             if (_inputLocked || _attemptBlocked || _isCompleted) return;
             if (!_boosterManager.TryUseExtraCloud())
             {
-                _adService.ShowRewarded(RewardedPlacement.ExtraCloud, success => { if (success) { _boosterManager.GrantExtraCloud(); RefreshMetaUI(); SaveProgress(); } });
-                _overlay.ShowBlock("Extra Cloud Refilled", "Fake reward granted. Tap Extra again.");
+                RequestReward(RewardedPlacement.ExtraCloud, () => _boosterManager.GrantExtraCloud(), "Extra Cloud Refilled", "Reward granted. Tap Extra again.");
                 return;
             }
 
@@ -401,15 +401,18 @@ namespace Cloudora.Puzzle
         private void UseSafeShuffle()
         {
             if (_inputLocked || _attemptBlocked || _isCompleted) return;
+            if (!_currentLevel.generated)
+            {
+                _overlay.ShowBlock("Safe Shuffle Locked", "Available on generated levels after Level 15.");
+                return;
+            }
             if (!_boosterManager.TryUseSafeShuffle())
             {
-                _adService.ShowRewarded(RewardedPlacement.SafeShuffle, success => { if (success) { _boosterManager.GrantSafeShuffle(); RefreshMetaUI(); SaveProgress(); } });
-                _overlay.ShowBlock("Shuffle Refilled", "Fake reward granted. Tap Shuffle again.");
+                RequestReward(RewardedPlacement.SafeShuffle, () => _boosterManager.GrantSafeShuffle(), "Shuffle Refilled", "Reward granted. Tap Shuffle again.");
                 return;
             }
 
-            if (_currentLevel.generated)
-                _currentLevel = LevelGenerator.Generate(_currentLevel.levelId, _currentLevel.seed + (++_shuffleUseCount * 997));
+            _currentLevel = LevelGenerator.Generate(_currentLevel.levelId, _currentLevel.seed + (++_shuffleUseCount * 997));
             LoadState(_currentLevel.CreateBoard());
             _overlay.HideBlock();
             RefreshMetaUI();
@@ -430,15 +433,34 @@ namespace Cloudora.Puzzle
 
         private void OfferLifeReward()
         {
-            _adService.ShowRewarded(RewardedPlacement.Life, success =>
+            RequestReward(RewardedPlacement.Life, () =>
             {
-                if (!success) return;
                 _lifeManager.Grant(1);
                 _attemptBlocked = false;
+            }, "Life Restored", "Reward granted. Tap again to continue.");
+        }
+
+        private void RequestReward(RewardedPlacement placement, System.Action grant, string successTitle, string successMessage)
+        {
+            if (!_adService.IsAvailable)
+            {
+                _overlay.ShowBlock("Reward Unavailable", "Rewarded ads are disabled in this build.");
+                return;
+            }
+
+            _overlay.ShowBlock("Reward Pending", "Complete the reward to continue.");
+            _adService.ShowRewarded(placement, success =>
+            {
+                if (!success)
+                {
+                    _overlay.ShowBlock("Reward Unavailable", "The reward could not be completed.");
+                    return;
+                }
+                grant?.Invoke();
                 RefreshMetaUI();
                 SaveProgress();
+                _overlay.ShowBlock(successTitle, successMessage);
             });
-            _overlay.ShowBlock("Out of Lives", "Fake rewarded life granted. Tap again to continue.");
         }
 
         private void RefreshMetaUI()

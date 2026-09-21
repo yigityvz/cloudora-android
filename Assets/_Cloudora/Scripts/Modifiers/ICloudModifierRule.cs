@@ -10,4 +10,9 @@ namespace Cloudora.Modifiers
         void OnSuccessfulMove(ModifierData data, int sourceIndex, int targetIndex);
         bool HidesContents(ModifierData data);
     }
+
+    public interface IMoveCountModifier
+    {
+        int AdjustMoveCount(ModifierData data, int sourceIndex, int targetIndex, int proposedCount);
+    }
 }

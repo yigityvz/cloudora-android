@@ -41,7 +41,12 @@ namespace Cloudora.Modifiers
     }
 
     public sealed class RainbowModifierRule : PassiveModifierRule { public override ModifierType Type => ModifierType.Rainbow; }
-    public sealed class WindModifierRule : PassiveModifierRule { public override ModifierType Type => ModifierType.Wind; }
+    public sealed class WindModifierRule : PassiveModifierRule, IMoveCountModifier
+    {
+        public override ModifierType Type => ModifierType.Wind;
+        public int AdjustMoveCount(ModifierData data, int sourceIndex, int targetIndex, int proposedCount)
+            => sourceIndex == data.cloudIndex ? System.Math.Min(1, proposedCount) : proposedCount;
+    }
     public sealed class NightModifierRule : PassiveModifierRule
     {
         public override ModifierType Type => ModifierType.Night;

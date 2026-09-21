@@ -1,4 +1,5 @@
 using System;
+using Cloudora.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ namespace Cloudora.UI
             CloudoraVisuals.AddSkyGradient(canvas);
             var host = new GameObject("MainMenuController", typeof(RectTransform));
             host.transform.SetParent(canvas.transform, false);
+            SafeAreaFitter.Attach(host);
             var controller = host.AddComponent<MainMenuController>();
             controller.Build(world, level, onWorld, sound, setSound, haptics, setHaptics);
             return controller;
@@ -35,10 +37,23 @@ namespace Cloudora.UI
             Button(_menu.transform, "SETTINGS", new Vector2(0f, -300f), () => _settings.SetActive(true));
             _settings = Panel(transform, "Settings", new Color(0.96f, 0.98f, 1f, 0.99f));
             Label(_settings.transform, "SETTINGS", 58, new Vector2(0.1f, 0.72f), new Vector2(0.9f, 0.88f));
-            Button(_settings.transform, "SOUND", new Vector2(0f, 70f), () => setSound(!sound()));
-            Button(_settings.transform, "HAPTICS", new Vector2(0f, -50f), () => setHaptics(!haptics()));
-            Button(_settings.transform, "CLOSE", new Vector2(0f, -210f), () => _settings.SetActive(false));
+            Button soundButton = Button(_settings.transform, string.Empty, new Vector2(0f, 100f), null);
+            soundButton.onClick.AddListener(() => { setSound(!sound()); SetToggleLabel(soundButton, "SOUND", sound()); });
+            SetToggleLabel(soundButton, "SOUND", sound());
+            Button hapticsButton = Button(_settings.transform, string.Empty, new Vector2(0f, -10f), null);
+            hapticsButton.onClick.AddListener(() => { setHaptics(!haptics()); SetToggleLabel(hapticsButton, "HAPTICS", haptics()); });
+            SetToggleLabel(hapticsButton, "HAPTICS", haptics());
+            if (ReleaseConfiguration.HasPrivacyPolicy)
+                Button(_settings.transform, "PRIVACY", new Vector2(0f, -120f), () => Application.OpenURL(ReleaseConfiguration.Current.privacyPolicyUrl));
+            if (ReleaseConfiguration.HasSupportEmail)
+                Button(_settings.transform, "SUPPORT", new Vector2(0f, -230f), () => Application.OpenURL("mailto:" + ReleaseConfiguration.Current.supportEmail));
+            Button(_settings.transform, "CLOSE", new Vector2(0f, -350f), () => _settings.SetActive(false));
             _settings.SetActive(false);
+        }
+
+        private static void SetToggleLabel(Button button, string label, bool enabled)
+        {
+            button.GetComponentInChildren<Text>().text = $"{label}: {(enabled ? "ON" : "OFF")}";
         }
 
         private static GameObject Panel(Transform parent, string name, Color color)

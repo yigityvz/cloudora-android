@@ -62,6 +62,17 @@ namespace Cloudora.Modifiers
             return true;
         }
 
+        public int AdjustMoveCount(int source, int target, int proposedCount)
+        {
+            int adjusted = proposedCount;
+            foreach (ModifierData data in _data)
+            {
+                if (!_rules.TryGetValue(data.type, out ICloudModifierRule rule) || rule is not IMoveCountModifier countModifier) continue;
+                adjusted = countModifier.AdjustMoveCount(data, source, target, adjusted);
+            }
+            return System.Math.Max(0, adjusted);
+        }
+
         public void OnSuccessfulMove(int source, int target)
         {
             foreach (ModifierData data in _data)

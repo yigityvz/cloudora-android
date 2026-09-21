@@ -69,11 +69,12 @@ namespace Cloudora.Level
                 int group = source.TopGroupCount();
                 int max = Math.Min(group, target.Capacity - target.Count);
                 if (max <= 0) continue;
+                WeatherType weather = source.Top;
+                if (!target.IsEmpty && target.Top == weather) continue;
                 int count = random.Next(1, max + 1);
                 if (count == group && count < source.Count) count--;
                 if (count <= 0) continue;
 
-                WeatherType weather = source.Top;
                 source.RemoveTop(count);
                 target.Add(weather, count);
                 inverse = new Move(targetIndex, sourceIndex, count, weather);

@@ -13,9 +13,9 @@ namespace Cloudora.Core
 
             CloudState source = state.Clouds[move.SourceIndex];
             CloudState target = state.Clouds[move.TargetIndex];
+            int maximumMove = source.IsEmpty ? 0 : System.Math.Min(source.TopGroupCount(), target.Capacity - target.Count);
             return !source.IsEmpty && source.Top == move.Weather &&
-                   move.Count <= source.TopGroupCount() &&
-                   move.Count <= target.Capacity - target.Count &&
+                   move.Count == maximumMove &&
                    (target.IsEmpty || target.Top == move.Weather || target.Top == Puzzle.WeatherType.Rainbow || move.Weather == Puzzle.WeatherType.Rainbow);
         }
 

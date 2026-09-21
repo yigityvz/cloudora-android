@@ -336,7 +336,7 @@ namespace Cloudora.Puzzle
         public int TopGroupCount => GetTopGroupCount();
 
         public bool TryMoveTopGroupTo(
-            CloudContainerView target)
+            CloudContainerView target, int maxCount = int.MaxValue)
         {
             if (target == this)
             {
@@ -363,7 +363,7 @@ namespace Cloudora.Puzzle
                 target.Capacity - target.ElementCount;
 
             int moveCount =
-                Mathf.Min(groupCount, availableSpace);
+                Mathf.Min(groupCount, availableSpace, maxCount);
 
             if (moveCount <= 0)
             {

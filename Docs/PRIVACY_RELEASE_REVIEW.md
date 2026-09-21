@@ -4,7 +4,8 @@
 
 - Local save: progress, highest level, lives and UTC regeneration time, tutorial flags, sound/haptic settings, booster balances, and generated seed metadata in `Application.persistentDataPath`. The game does not implement accounts or cloud save.
 - Analytics interface: gameplay event names and bounded gameplay parameters are routed to a local debug sink. Firebase discovery is optional and no Firebase project file or credential is included. The privacy guard rejects obvious personal-data parameter keys; this is a code safeguard, not a full compliance guarantee.
-- Advertising: only `FakeAdService` is instantiated. `AdMobAdService` is an unavailable stub; no live ad unit or production request is configured.
+- Advertising: development builds use `FakeAdService`; non-development builds bind the unavailable `AdMobAdService` stub. No live ad unit or production request is configured, so release builds cannot grant unlimited fake rewards.
+- Network permission: release manifests remove `android.permission.INTERNET` while network services are disabled. Re-enabling it requires the explicit `CLOUDORA_ENABLE_NETWORK` build flag and a fresh privacy/data-safety review.
 - Unused Unity Analytics, IAP, and Multiplayer Center template packages were removed from direct dependencies. Engine modules and any remaining transitive services still require a final binary/runtime network audit; the current code-level fake-service statement alone is insufficient for a legal privacy claim.
 
 ## Required decisions and evidence before publication

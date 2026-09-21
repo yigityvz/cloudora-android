@@ -5,6 +5,7 @@ using Cloudora.UI;
 using Cloudora.Progression;
 using Cloudora.Modifiers;
 using Cloudora.Services;
+using Cloudora.Editor;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -101,6 +102,60 @@ namespace Cloudora.Tests.Editor
 
             Assert.That(PuzzleRules.TryApply(state, new Move(0, 1, 2, WeatherType.Sun)), Is.True);
             Assert.That(PuzzleRules.IsSolved(state), Is.True);
+        }
+
+        [Test]
+        public void PureRulesRejectPartialGroupMoveThatPlayerCannotChoose()
+        {
+            var state = new PuzzleState(new[]
+            {
+                new CloudState(4, new[] { WeatherType.Rain, WeatherType.Sun, WeatherType.Sun }),
+                new CloudState(4, System.Array.Empty<WeatherType>())
+            });
+
+            Assert.That(PuzzleRules.CanApply(state, new Move(0, 1, 1, WeatherType.Sun)), Is.False);
+            Assert.That(PuzzleRules.CanApply(state, new Move(0, 1, 2, WeatherType.Sun)), Is.True);
+        }
+
+        [Test]
+        public void WindMovesOneElementFromModifiedCloud()
+        {
+            CloudContainerView source = CreateCloud("WindSource", WeatherType.Rain, WeatherType.Sun, WeatherType.Sun);
+            CloudContainerView target = CreateCloud("WindTarget");
+            var definition = new LevelDefinition(180, "aurora-peaks", 4, string.Empty,
+                source.CaptureElements(), target.CaptureElements());
+            definition.modifiers = new[] { new ModifierData { type = ModifierType.Wind, cloudIndex = 0 } };
+            var runtime = new ModifierRuntime();
+            runtime.Initialize(definition, new[] { source, target });
+
+            int count = runtime.AdjustMoveCount(0, 1, source.TopGroupCount);
+            Assert.That(count, Is.EqualTo(1));
+            Assert.That(source.TryMoveTopGroupTo(target, count), Is.True);
+            Assert.That(source.ElementCount, Is.EqualTo(2));
+            Assert.That(target.ElementCount, Is.EqualTo(1));
+            Assert.That(runtime.AdjustMoveCount(1, 0, 3), Is.EqualTo(3));
+
+            Object.DestroyImmediate(source.gameObject);
+            Object.DestroyImmediate(target.gameObject);
+        }
+
+        [Test]
+        public void SafeAreaAnchorsRespectCutoutInsets()
+        {
+            (Vector2 min, Vector2 max) = SafeAreaFitter.CalculateAnchors(new Rect(0f, 80f, 1080f, 2240f), new Vector2(1080f, 2400f));
+            Assert.That(min.x, Is.EqualTo(0f));
+            Assert.That(min.y, Is.EqualTo(80f / 2400f).Within(0.0001f));
+            Assert.That(max.x, Is.EqualTo(1f));
+            Assert.That(max.y, Is.EqualTo(2320f / 2400f).Within(0.0001f));
+        }
+
+        [Test]
+        public void ManifestFilterRemovesOnlyInternetPermission()
+        {
+            const string manifest = "<manifest xmlns:android='http://schemas.android.com/apk/res/android'><uses-permission android:name='android.permission.INTERNET'/><uses-permission android:name='android.permission.VIBRATE'/><application/></manifest>";
+            string filtered = CloudoraAndroidManifestPostprocessor.RemoveInternetPermission(manifest);
+            Assert.That(filtered, Does.Not.Contain("android.permission.INTERNET"));
+            Assert.That(filtered, Does.Contain("android.permission.VIBRATE"));
         }
 
         private static string BoardKey(LevelDefinition definition)
@@ -270,6 +325,26 @@ namespace Cloudora.Tests.Editor
             loaded = service.Load();
             Assert.That(loaded.currentLevel, Is.EqualTo(42));
             Assert.That(loaded.schemaVersion, Is.EqualTo(SaveData.CurrentSchemaVersion));
+            System.IO.Directory.Delete(directory, true);
+        }
+
+        [Test]
+        public void ValidSchemaSaveStillNormalizesUnsafeFields()
+        {
+            string directory = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "cloudora-save-normalize-" + System.Guid.NewGuid().ToString("N"));
+            string path = System.IO.Path.Combine(directory, "save.json");
+            System.IO.Directory.CreateDirectory(directory);
+            System.IO.File.WriteAllText(path, "{\"schemaVersion\":2,\"currentLevel\":0,\"lives\":99,\"nextLifeUtcTicks\":9223372036854775807,\"undoCharges\":-4,\"extraCloudCharges\":-3,\"safeShuffleCharges\":-2,\"tutorialFlags\":[true]}" );
+
+            SaveData loaded = new LocalJsonSaveService(path).Load();
+            Assert.That(loaded.currentLevel, Is.EqualTo(1));
+            Assert.That(loaded.lives, Is.EqualTo(LifeManager.MaxLives));
+            Assert.That(loaded.nextLifeUtcTicks, Is.Zero);
+            Assert.That(loaded.undoCharges, Is.Zero);
+            Assert.That(loaded.extraCloudCharges, Is.Zero);
+            Assert.That(loaded.safeShuffleCharges, Is.Zero);
+            Assert.That(loaded.tutorialFlags.Length, Is.EqualTo(15));
+            Assert.That(loaded.tutorialFlags[0], Is.True);
             System.IO.Directory.Delete(directory, true);
         }
 

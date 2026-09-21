@@ -51,16 +51,18 @@ namespace Cloudora.Services
 
         private static SaveData Migrate(SaveData data)
         {
-            if (data.schemaVersion < 2)
-            {
-                if (data.tutorialFlags == null || data.tutorialFlags.Length != 15) data.tutorialFlags = new bool[15];
-                if (data.undoCharges < 0) data.undoCharges = 0;
-                if (data.extraCloudCharges < 0) data.extraCloudCharges = 0;
-                if (data.safeShuffleCharges < 0) data.safeShuffleCharges = 0;
-            }
+            var tutorialFlags = new bool[15];
+            if (data.tutorialFlags != null)
+                Array.Copy(data.tutorialFlags, tutorialFlags, Math.Min(data.tutorialFlags.Length, tutorialFlags.Length));
+            data.tutorialFlags = tutorialFlags;
+            data.undoCharges = Math.Max(0, data.undoCharges);
+            data.extraCloudCharges = Math.Max(0, data.extraCloudCharges);
+            data.safeShuffleCharges = Math.Max(0, data.safeShuffleCharges);
             data.currentLevel = Math.Max(1, data.currentLevel);
             data.highestCompletedLevel = Math.Max(0, data.highestCompletedLevel);
             data.lives = Math.Max(0, Math.Min(Progression.LifeManager.MaxLives, data.lives));
+            if (data.nextLifeUtcTicks < DateTime.MinValue.Ticks || data.nextLifeUtcTicks > DateTime.MaxValue.Ticks || data.lives >= Progression.LifeManager.MaxLives)
+                data.nextLifeUtcTicks = 0;
             data.schemaVersion = SaveData.CurrentSchemaVersion;
             return data;
         }

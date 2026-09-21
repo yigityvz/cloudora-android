@@ -7,6 +7,7 @@ namespace Cloudora.UI
     public sealed class GameplayOverlay : MonoBehaviour
     {
         private Button _undoButton;
+        private Button _shuffleButton;
         private GameObject _completePanel;
         private Text _levelLabel;
         private Text _tutorialLabel;
@@ -30,6 +31,7 @@ namespace Cloudora.UI
             rootRect.anchorMin = Vector2.zero;
             rootRect.anchorMax = Vector2.one;
             rootRect.offsetMin = rootRect.offsetMax = Vector2.zero;
+            SafeAreaFitter.Attach(root);
 
             var overlay = root.AddComponent<GameplayOverlay>();
             overlay._levelLabel = CreateTopLabel(root.transform, "Level 1", new Vector2(0f, -80f), 42);
@@ -41,8 +43,8 @@ namespace Cloudora.UI
             worldButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 88f);
             Button extraButton = CreateButton(root.transform, "Extra", new Vector2(-390f, 22f), onExtraCloud);
             extraButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 76f);
-            Button shuffleButton = CreateButton(root.transform, "Shuffle", new Vector2(-155f, 22f), onSafeShuffle);
-            shuffleButton.GetComponent<RectTransform>().sizeDelta = new Vector2(220f, 76f);
+            overlay._shuffleButton = CreateButton(root.transform, "Shuffle", new Vector2(-155f, 22f), onSafeShuffle);
+            overlay._shuffleButton.GetComponent<RectTransform>().sizeDelta = new Vector2(220f, 76f);
             Button menuButton = CreateButton(root.transform, "Menu", new Vector2(350f, 22f), onMenu);
             menuButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 76f);
             overlay._boosterLabel = CreateTopLabel(root.transform, string.Empty, new Vector2(250f, -150f), 25);
@@ -54,6 +56,7 @@ namespace Cloudora.UI
         }
 
         public void SetUndoAvailable(bool available) => _undoButton.interactable = available;
+        public void SetShuffleAvailable(bool available) => _shuffleButton.interactable = available;
         public void ShowComplete(bool show) => _completePanel.SetActive(show);
         public void SetLevelInfo(int level, string world) => _levelLabel.text = $"{ToTitle(world)}  •  Level {level}";
         public void SetTutorialCue(string cue) => _tutorialLabel.text = string.IsNullOrWhiteSpace(cue) ? string.Empty : $"☝  {cue}";

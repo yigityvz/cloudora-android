@@ -15,6 +15,7 @@ namespace Cloudora.UI
         {
             var host = new GameObject("WorldScreen", typeof(RectTransform));
             host.transform.SetParent(canvas.transform, false);
+            SafeAreaFitter.Attach(host);
             var controller = host.AddComponent<WorldScreenController>();
             controller.Build();
             controller._panel.SetActive(false);
