@@ -3,6 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEditor.Build;
+using UnityEditor.Android;
 using UnityEngine;
 
 namespace Cloudora.Editor
@@ -51,8 +52,31 @@ namespace Cloudora.Editor
             PlayerSettings.Android.targetSdkVersion = (AndroidSdkVersions)36;
             PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
             PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
+            ConfigureIcons();
             EditorUserBuildSettings.buildAppBundle = appBundle;
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(GameplayScene, true) };
+        }
+
+        private static void ConfigureIcons()
+        {
+            Texture2D foreground = LoadIcon("cloudora-adaptive-foreground-512.png");
+            Texture2D background = LoadIcon("cloudora-adaptive-background-512.png");
+            SetIcons(AndroidPlatformIconKind.Adaptive, background, foreground);
+        }
+
+        private static Texture2D LoadIcon(string fileName)
+        {
+            string path = "Assets/_Cloudora/Art/" + fileName;
+            Texture2D texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            if (texture == null) throw new FileNotFoundException($"Android icon asset is missing: {path}");
+            return texture;
+        }
+
+        private static void SetIcons(PlatformIconKind kind, params Texture2D[] textures)
+        {
+            PlatformIcon[] slots = PlayerSettings.GetPlatformIcons(NamedBuildTarget.Android, kind);
+            foreach (PlatformIcon slot in slots) slot.SetTextures(textures);
+            PlayerSettings.SetPlatformIcons(NamedBuildTarget.Android, kind, slots);
         }
     }
 }

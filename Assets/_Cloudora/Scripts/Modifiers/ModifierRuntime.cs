@@ -31,6 +31,26 @@ namespace Cloudora.Modifiers
             ApplyVisuals();
         }
 
+        public ModifierData[] CaptureSnapshot()
+        {
+            var snapshot = new ModifierData[_data.Count];
+            for (int i = 0; i < _data.Count; i++) snapshot[i] = _data[i].Clone();
+            return snapshot;
+        }
+
+        public void RestoreSnapshot(ModifierData[] snapshot)
+        {
+            _data.Clear();
+            foreach (ModifierData item in snapshot) _data.Add(item.Clone());
+            ApplyVisuals();
+        }
+
+        public void UpdateClouds(CloudContainerView[] clouds)
+        {
+            _clouds = clouds;
+            ApplyVisuals();
+        }
+
         public bool CanMove(int source, int target)
         {
             foreach (ModifierData data in _data)

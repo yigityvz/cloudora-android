@@ -33,6 +33,12 @@ namespace Cloudora.Progression
             return true;
         }
 
+        public bool CanBeginAttempt(DateTime utcNow, bool tutorialGrace)
+        {
+            Refresh(utcNow);
+            return tutorialGrace || Lives > 0;
+        }
+
         public void Grant(int amount)
         {
             Lives = Math.Min(MaxLives, Lives + Math.Max(0, amount));

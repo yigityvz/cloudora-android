@@ -8,6 +8,10 @@ namespace Cloudora.UI
     {
         private GameObject _menu;
         private GameObject _settings;
+        private Text _progressLabel;
+
+        public void Show() => _menu.SetActive(true);
+        public void SetProgress(string world, int level) => _progressLabel.text = $"{world.Replace('-', ' ')}  •  Level {level}".ToUpperInvariant();
 
         public static MainMenuController Create(Canvas canvas, string world, int level, Action onWorld, Func<bool> sound, Action<bool> setSound, Func<bool> haptics, Action<bool> setHaptics)
         {
@@ -24,7 +28,8 @@ namespace Cloudora.UI
             _menu = Panel(transform, "MainMenu", new Color(0.91f, 0.97f, 1f, 0.98f));
             Label(_menu.transform, "CLOUDORA", 76, new Vector2(0.1f, 0.76f), new Vector2(0.9f, 0.9f));
             Label(_menu.transform, "Fix the sky. Restore the world.", 30, new Vector2(0.1f, 0.68f), new Vector2(0.9f, 0.77f));
-            Label(_menu.transform, $"{world.Replace('-', ' ')}  •  Level {level}", 34, new Vector2(0.12f, 0.5f), new Vector2(0.88f, 0.62f));
+            _progressLabel = Label(_menu.transform, string.Empty, 34, new Vector2(0.12f, 0.5f), new Vector2(0.88f, 0.62f));
+            SetProgress(world, level);
             Button(_menu.transform, "CONTINUE", new Vector2(0f, -80f), () => _menu.SetActive(false));
             Button(_menu.transform, "WORLD", new Vector2(0f, -190f), () => { _menu.SetActive(false); onWorld?.Invoke(); });
             Button(_menu.transform, "SETTINGS", new Vector2(0f, -300f), () => _settings.SetActive(true));

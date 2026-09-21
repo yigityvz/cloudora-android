@@ -15,14 +15,13 @@ $method = if ($Mode -eq 'release') { 'Cloudora.Editor.CloudoraBuildTools.BuildRe
 $logPath = Join-Path $ProjectPath "Logs\android-$Mode-build.log"
 New-Item -ItemType Directory -Force -Path (Split-Path $logPath) | Out-Null
 
-# JDK 17 NIO pipe creation fails in the Unicode Windows profile temp path on this host.
-# Unity strips JAVA_TOOL_OPTIONS from Gradle, but preserves JDK_JAVA_OPTIONS set before launch.
-$previousOptions = $env:JDK_JAVA_OPTIONS
+# Java 17 NIO sockets fail when the Windows profile temp path contains non-ASCII characters.
+# An ASCII TEMP/TMP path avoids inherited JVM notices that Android Gradle Plugin treats as errors.
+$previousTemp = $env:TEMP
+$previousTmp = $env:TMP
 try {
-    $pipeOption = "-Djdk.net.unixdomain.tmpdir=$ProjectPath\Library"
-    if ($previousOptions -notlike '*jdk.net.unixdomain.tmpdir*') {
-        $env:JDK_JAVA_OPTIONS = (($previousOptions, $pipeOption) -join ' ').Trim()
-    }
+    $env:TEMP = Join-Path $ProjectPath 'Library'
+    $env:TMP = $env:TEMP
     $arguments = @('-batchmode', '-nographics', '-quit', '-projectPath', $ProjectPath, '-executeMethod', $method, '-logFile', $logPath)
     $process = Start-Process -FilePath $UnityPath -ArgumentList $arguments -WindowStyle Hidden -Wait -PassThru
     if ($process.ExitCode -ne 0) { throw "Unity exited with code $($process.ExitCode). See $logPath" }
@@ -31,5 +30,6 @@ try {
     }
     Write-Output "Unity Android $Mode build succeeded. Log: $logPath"
 } finally {
-    $env:JDK_JAVA_OPTIONS = $previousOptions
+    $env:TEMP = $previousTemp
+    $env:TMP = $previousTmp
 }

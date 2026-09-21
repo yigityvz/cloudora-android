@@ -22,7 +22,7 @@ namespace Cloudora.UI
             _tutorialLabel.transform.localScale = Vector3.one * (1f + Mathf.Sin(_pulse) * 0.035f);
         }
 
-        public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue, Action onWorld, Action onExtraCloud, Action onSafeShuffle)
+        public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue, Action onWorld, Action onExtraCloud, Action onSafeShuffle, Action onMenu)
         {
             var root = new GameObject("GameplayOverlay", typeof(RectTransform));
             root.transform.SetParent(canvas.transform, false);
@@ -43,6 +43,8 @@ namespace Cloudora.UI
             extraButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 76f);
             Button shuffleButton = CreateButton(root.transform, "Shuffle", new Vector2(-155f, 22f), onSafeShuffle);
             shuffleButton.GetComponent<RectTransform>().sizeDelta = new Vector2(220f, 76f);
+            Button menuButton = CreateButton(root.transform, "Menu", new Vector2(350f, 22f), onMenu);
+            menuButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 76f);
             overlay._boosterLabel = CreateTopLabel(root.transform, string.Empty, new Vector2(250f, -150f), 25);
             overlay._completePanel = CreateCompletePanel(root.transform, onContinue);
             overlay._blockingPanel = CreateBlockingPanel(root.transform);

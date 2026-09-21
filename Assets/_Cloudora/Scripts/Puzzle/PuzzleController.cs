@@ -19,7 +19,7 @@ namespace Cloudora.Puzzle
         [SerializeField, Min(1)] private int debugStartLevel = 1;
         [SerializeField] private bool useDebugStartLevel;
         private readonly List<CloudContainerView> _containers = new();
-        private readonly Stack<WeatherType[][]> _undoHistory = new();
+        private readonly Stack<PuzzleSnapshot> _undoHistory = new();
         private readonly HashSet<CloudContainerView> _celebratedSolvedClouds = new();
         private CloudContainerView _selectedCloud;
         private MoveAnimator _moveAnimator;
@@ -42,7 +42,14 @@ namespace Cloudora.Puzzle
         private MainMenuController _mainMenu;
         private bool _isCompleted;
         private bool _inputLocked;
+        private bool _attemptBlocked;
         private LevelDefinition _currentLevel;
+
+        private sealed class PuzzleSnapshot
+        {
+            public WeatherType[][] board;
+            public ModifierData[] modifiers;
+        }
 
         private void Start()
         {
@@ -64,7 +71,7 @@ namespace Cloudora.Puzzle
             _feedback.SoundEnabled = _saveData.soundEnabled;
             _feedback.HapticsEnabled = _saveData.hapticsEnabled;
             _worldScreen = WorldScreenController.Create(canvas);
-            _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle, UseExtraCloud, UseSafeShuffle);
+            _overlay = GameplayOverlay.Create(canvas, RestartLevel, Undo, HandleContinue, _worldScreen.Toggle, UseExtraCloud, UseSafeShuffle, () => _mainMenu?.Show());
             _boardLayout = boardRoot.GetComponent<AdaptiveBoardLayout>();
             if (_boardLayout == null) _boardLayout = boardRoot.gameObject.AddComponent<AdaptiveBoardLayout>();
             LoadLevel(_progression.CurrentLevel);
@@ -85,6 +92,12 @@ namespace Cloudora.Puzzle
             if (_overlay == null) return;
             System.DateTime now = System.DateTime.UtcNow;
             _lifeManager.Refresh(now);
+            if (_attemptBlocked && _lifeManager.CanBeginAttempt(now, _currentLevel.levelId <= 5))
+            {
+                _attemptBlocked = false;
+                _overlay.HideBlock();
+                SaveProgress();
+            }
             System.TimeSpan remaining = _lifeManager.TimeUntilNext(now);
             string countdown = remaining == System.TimeSpan.Zero ? string.Empty : $"{(int)remaining.TotalMinutes:00}:{remaining.Seconds:00}";
             _overlay.SetLives(_lifeManager.Lives, countdown);
@@ -97,13 +110,15 @@ namespace Cloudora.Puzzle
                 return;
             }
 
+            if (_attemptBlocked)
+            {
+                OfferLifeReward();
+                return;
+            }
+
             if (_moveCount > 0 && !_lifeManager.TryConsumeRetry(System.DateTime.UtcNow, _currentLevel.levelId <= 5))
             {
-                _adService.ShowRewarded(RewardedPlacement.Life, success =>
-                {
-                    if (success) { _lifeManager.Grant(1); RefreshMetaUI(); SaveProgress(); }
-                });
-                _overlay.ShowBlock("Out of Lives", "Fake rewarded life granted. Tap Restart again.");
+                OfferLifeReward();
                 return;
             }
 
@@ -115,6 +130,8 @@ namespace Cloudora.Puzzle
 
         public void LoadLevel(int levelNumber)
         {
+            _progression.DebugJump(levelNumber);
+            _shuffleUseCount = 0;
             _currentLevel = levelNumber <= AuthoredLevelCatalog.Count
                 ? AuthoredLevelCatalog.Get(levelNumber)
                 : LevelGenerator.Generate(levelNumber);
@@ -123,6 +140,9 @@ namespace Cloudora.Puzzle
             _overlay.SetTutorialCue(_currentLevel.tutorialCue);
             _boardLayout.Configure(_currentLevel.clouds.Length, _currentLevel.capacity);
             _worldScreen.Refresh(_progression.CurrentWorld, _progression.HighestCompletedLevel);
+            _mainMenu?.SetProgress(_currentLevel.worldId, _currentLevel.levelId);
+            _attemptBlocked = !_lifeManager.CanBeginAttempt(System.DateTime.UtcNow, _currentLevel.levelId <= 5);
+            if (_attemptBlocked) _overlay.ShowBlock("Out of Lives", "Wait for a life or tap Restart for a fake reward.");
             _levelStartedAt = Time.realtimeSinceStartup;
             _analytics.Track(AnalyticsEvents.LevelStarted, LevelParams());
             if (_currentLevel.modifiers != null)
@@ -141,7 +161,7 @@ namespace Cloudora.Puzzle
 
         public void Undo()
         {
-            if (_inputLocked || _undoHistory.Count == 0)
+            if (_inputLocked || _attemptBlocked || _undoHistory.Count == 0)
             {
                 return;
             }
@@ -154,6 +174,7 @@ namespace Cloudora.Puzzle
             }
 
             RestoreSnapshot(_undoHistory.Pop());
+            _moveCount = Mathf.Max(0, _moveCount - 1);
             _isCompleted = false;
             _overlay.ShowComplete(false);
             _overlay.SetUndoAvailable(_undoHistory.Count > 0);
@@ -193,7 +214,7 @@ namespace Cloudora.Puzzle
 
         private void HandleCloudClicked(CloudContainerView clickedCloud)
         {
-            if (_isCompleted || _inputLocked)
+            if (_isCompleted || _inputLocked || _attemptBlocked)
             {
                 return;
             }
@@ -240,7 +261,7 @@ namespace Cloudora.Puzzle
         private IEnumerator PerformMove(CloudContainerView source, CloudContainerView target, WeatherType type, int count)
         {
             _inputLocked = true;
-            WeatherType[][] beforeMove = CaptureSnapshot();
+            PuzzleSnapshot beforeMove = CaptureSnapshot();
             yield return _moveAnimator.Animate(source, target, type, count);
 
             if (source.TryMoveTopGroupTo(target))
@@ -295,24 +316,25 @@ namespace Cloudora.Puzzle
             _selectedCloud = null;
         }
 
-        private WeatherType[][] CaptureSnapshot()
+        private PuzzleSnapshot CaptureSnapshot()
         {
             var snapshot = new WeatherType[_containers.Count][];
             for (int i = 0; i < _containers.Count; i++)
             {
                 snapshot[i] = _containers[i].CaptureElements();
             }
-            return snapshot;
+            return new PuzzleSnapshot { board = snapshot, modifiers = _modifierRuntime.CaptureSnapshot() };
         }
 
-        private void RestoreSnapshot(WeatherType[][] snapshot)
+        private void RestoreSnapshot(PuzzleSnapshot snapshot)
         {
             ClearSelection();
             _celebratedSolvedClouds.Clear();
-            for (int i = 0; i < snapshot.Length && i < _containers.Count; i++)
+            for (int i = 0; i < snapshot.board.Length && i < _containers.Count; i++)
             {
-                _containers[i].RestoreElements(snapshot[i]);
+                _containers[i].RestoreElements(snapshot.board[i]);
             }
+            _modifierRuntime.RestoreSnapshot(snapshot.modifiers);
             CelebrateNewlySolvedClouds();
         }
 
@@ -343,6 +365,11 @@ namespace Cloudora.Puzzle
 
         private void HandleContinue()
         {
+            if (!_lifeManager.CanBeginAttempt(System.DateTime.UtcNow, _progression.CurrentLevel + 1 <= 5))
+            {
+                OfferLifeReward();
+                return;
+            }
             _progression.Advance();
             LoadLevel(_progression.CurrentLevel);
             SaveProgress();
@@ -350,7 +377,8 @@ namespace Cloudora.Puzzle
 
         private void UseExtraCloud()
         {
-            if (_inputLocked || !_boosterManager.TryUseExtraCloud())
+            if (_inputLocked || _attemptBlocked || _isCompleted) return;
+            if (!_boosterManager.TryUseExtraCloud())
             {
                 _adService.ShowRewarded(RewardedPlacement.ExtraCloud, success => { if (success) { _boosterManager.GrantExtraCloud(); RefreshMetaUI(); SaveProgress(); } });
                 _overlay.ShowBlock("Extra Cloud Refilled", "Fake reward granted. Tap Extra again.");
@@ -363,7 +391,7 @@ namespace Cloudora.Puzzle
             _containers.Add(cloud);
             _undoHistory.Clear();
             _boardLayout.Configure(_containers.Count, _currentLevel.capacity);
-            _modifierRuntime.Initialize(_currentLevel, _containers.ToArray());
+            _modifierRuntime.UpdateClouds(_containers.ToArray());
             _overlay.HideBlock();
             RefreshMetaUI();
             _analytics.Track(AnalyticsEvents.ExtraCloudUsed, LevelParams());
@@ -372,7 +400,8 @@ namespace Cloudora.Puzzle
 
         private void UseSafeShuffle()
         {
-            if (_inputLocked || !_boosterManager.TryUseSafeShuffle())
+            if (_inputLocked || _attemptBlocked || _isCompleted) return;
+            if (!_boosterManager.TryUseSafeShuffle())
             {
                 _adService.ShowRewarded(RewardedPlacement.SafeShuffle, success => { if (success) { _boosterManager.GrantSafeShuffle(); RefreshMetaUI(); SaveProgress(); } });
                 _overlay.ShowBlock("Shuffle Refilled", "Fake reward granted. Tap Shuffle again.");
@@ -399,6 +428,19 @@ namespace Cloudora.Puzzle
             return false;
         }
 
+        private void OfferLifeReward()
+        {
+            _adService.ShowRewarded(RewardedPlacement.Life, success =>
+            {
+                if (!success) return;
+                _lifeManager.Grant(1);
+                _attemptBlocked = false;
+                RefreshMetaUI();
+                SaveProgress();
+            });
+            _overlay.ShowBlock("Out of Lives", "Fake rewarded life granted. Tap again to continue.");
+        }
+
         private void RefreshMetaUI()
         {
             if (_overlay != null)
@@ -408,7 +450,7 @@ namespace Cloudora.Puzzle
         private void SaveProgress()
         {
             if (_saveService == null || _saveData == null || _progression == null) return;
-            _saveData.currentLevel = _progression.CurrentLevel;
+            _saveData.currentLevel = _progression.ResumeLevel(_isCompleted);
             _saveData.highestCompletedLevel = _progression.HighestCompletedLevel;
             _saveData.lives = _lifeManager.Lives;
             _saveData.nextLifeUtcTicks = _lifeManager.NextLifeUtc == default ? 0 : _lifeManager.NextLifeUtc.Ticks;

@@ -143,6 +143,19 @@ namespace Cloudora.Tests.Editor
         }
 
         [Test]
+        public void CompletedLevelResumesAtNextLevelWithoutAdvancingActiveScreen()
+        {
+            var progression = new ProgressionManager(20, 19);
+            Assert.That(progression.ResumeLevel(false), Is.EqualTo(20));
+            progression.CompleteCurrentLevel();
+            Assert.That(progression.CurrentLevel, Is.EqualTo(20));
+            Assert.That(progression.ResumeLevel(true), Is.EqualTo(21));
+            progression.Advance();
+            Assert.That(progression.CurrentLevel, Is.EqualTo(21));
+            Assert.That(progression.ResumeLevel(false), Is.EqualTo(21));
+        }
+
+        [Test]
         public void RainbowIsWildcardWithoutAmbiguousSolvedState()
         {
             var solved = new PuzzleState(new[]
@@ -192,6 +205,50 @@ namespace Cloudora.Tests.Editor
             Assert.That(boosters.TryUseUndo(), Is.True);
             Assert.That(boosters.TryUseUndo(), Is.False);
             Assert.That(boosters.UndoCharges, Is.Zero);
+        }
+
+        [Test]
+        public void ZeroLivesBlocksNewNormalAttemptButNotTutorialOrPaidCurrentAttempt()
+        {
+            System.DateTime now = new System.DateTime(2026, 1, 1, 10, 0, 0, System.DateTimeKind.Utc);
+            var lives = new LifeManager(1);
+            Assert.That(lives.CanBeginAttempt(now, false), Is.True);
+            Assert.That(lives.TryConsumeRetry(now, false), Is.True);
+            Assert.That(lives.Lives, Is.Zero);
+            Assert.That(lives.CanBeginAttempt(now, false), Is.False);
+            Assert.That(lives.CanBeginAttempt(now, true), Is.True);
+            lives.Grant(1);
+            Assert.That(lives.CanBeginAttempt(now, false), Is.True);
+        }
+
+        [Test]
+        public void ModifierSnapshotAndExtraCloudPreserveDynamicCounters()
+        {
+            CloudContainerView first = CreateCloud("First", WeatherType.Sun);
+            CloudContainerView second = CreateCloud("Second", WeatherType.Rain);
+            CloudContainerView extra = CreateCloud("Extra");
+            var definition = new LevelDefinition(85, "storm-islands", 4, string.Empty,
+                new[] { WeatherType.Sun }, new[] { WeatherType.Rain });
+            definition.modifiers = new[]
+            {
+                new ModifierData { type = ModifierType.Frozen, cloudIndex = 0, counter = 2 },
+                new ModifierData { type = ModifierType.Fog, cloudIndex = 1, counter = 1 }
+            };
+            var runtime = new ModifierRuntime();
+            runtime.Initialize(definition, new[] { first, second });
+            ModifierData[] before = runtime.CaptureSnapshot();
+            runtime.OnSuccessfulMove(1, 0);
+            runtime.UpdateClouds(new[] { first, second, extra });
+            ModifierData[] afterExtra = runtime.CaptureSnapshot();
+            Assert.That(afterExtra[0].counter, Is.EqualTo(1));
+            Assert.That(afterExtra[1].counter, Is.Zero);
+            runtime.RestoreSnapshot(before);
+            ModifierData[] restored = runtime.CaptureSnapshot();
+            Assert.That(restored[0].counter, Is.EqualTo(2));
+            Assert.That(restored[1].counter, Is.EqualTo(1));
+            Object.DestroyImmediate(first.gameObject);
+            Object.DestroyImmediate(second.gameObject);
+            Object.DestroyImmediate(extra.gameObject);
         }
 
         [Test]

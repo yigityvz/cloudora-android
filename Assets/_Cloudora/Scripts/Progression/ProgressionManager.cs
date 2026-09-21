@@ -22,6 +22,8 @@ namespace Cloudora.Progression
             if (HighestCompletedLevel >= CurrentLevel) CurrentLevel++;
         }
 
+        public int ResumeLevel(bool currentAttemptCompleted) => currentAttemptCompleted ? CurrentLevel + 1 : CurrentLevel;
+
         public void DebugJump(int level) => CurrentLevel = System.Math.Max(1, level);
     }
 }
