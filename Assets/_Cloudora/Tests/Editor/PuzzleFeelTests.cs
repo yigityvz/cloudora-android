@@ -150,6 +150,20 @@ namespace Cloudora.Tests.Editor
         }
 
         [Test]
+        public void StartupRepairsInvisibleRootCanvas()
+        {
+            var root = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas));
+            Canvas canvas = root.GetComponent<Canvas>();
+            root.transform.localScale = Vector3.zero;
+
+            Assert.That(MobileRuntimeBootstrap.EnsureCanvasVisible(canvas), Is.True);
+            Assert.That(root.transform.localScale, Is.EqualTo(Vector3.one));
+            Assert.That(MobileRuntimeBootstrap.EnsureCanvasVisible(canvas), Is.False);
+
+            Object.DestroyImmediate(root);
+        }
+
+        [Test]
         public void ManifestFilterRemovesOnlyInternetPermission()
         {
             const string manifest = "<manifest xmlns:android='http://schemas.android.com/apk/res/android'><uses-permission android:name='android.permission.INTERNET'/><uses-permission android:name='android.permission.VIBRATE'/><application/></manifest>";

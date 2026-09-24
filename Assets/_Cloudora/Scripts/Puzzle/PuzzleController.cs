@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cloudora.Core;
 using Cloudora.Services;
 using Cloudora.UI;
 using Cloudora.Level;
@@ -56,6 +57,13 @@ namespace Cloudora.Puzzle
             _moveAnimator = gameObject.AddComponent<MoveAnimator>();
             _feedback = gameObject.AddComponent<GameFeedbackService>();
             Canvas canvas = boardRoot.GetComponentInParent<Canvas>();
+            if (canvas == null)
+            {
+                Debug.LogError("Cloudora could not start because BoardRoot is not under a Canvas.");
+                enabled = false;
+                return;
+            }
+            MobileRuntimeBootstrap.EnsureCanvasVisible(canvas);
             _saveService = new LocalJsonSaveService();
             _saveData = _saveService.Load();
             _analytics = new FirebaseAnalyticsService();
