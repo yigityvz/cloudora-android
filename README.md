@@ -5,7 +5,7 @@
 ![Cloudora feature art](StoreAssets/Play/cloudora-feature-1024x500.png)
 
 ## Product and architecture
-
+   
 - Fifteen authored onboarding levels lead into seed-reproducible generated puzzles. The generator reverse-shuffles solved boards and records a legal solution, then validates invariants before accepting a level.
 - Cloud capacity progresses from four to seven slots. Thirteen world definitions span levels 1–400, with restoration milestones, new weather, modifiers, and difficulty waves.
 - Rule logic lives in pure C# state and move classes; Unity cloud views, animations, responsive board layout, HUD, world screen, and settings sit around that core. Modifier rules are registered independently of the views.
