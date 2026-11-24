@@ -1,0 +1,2913 @@
+{
+  "source": "1ee4334c4591ddf969c14a549f394833af4ed2ef",
+  "bahadir": "5a838a104cdce93e342c353c930288e08099ceab",
+  "sameBoards": [
+    3
+  ],
+  "changedBoards": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "sameFullEntries": [],
+  "oursCap": {
+    "4": 18,
+    "5": 82
+  },
+  "bahadirCap": {
+    "4": 15,
+    "5": 65,
+    "6": 20
+  },
+  "entries": [
+    {
+      "level": 1,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "26",
+        "score": "10.3775005",
+        "moves": "4",
+        "board": "SSSR/RRSR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "12",
+        "score": "11.5149994",
+        "moves": "4",
+        "board": "SSRR/SRRS//"
+      }
+    },
+    {
+      "level": 2,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "10",
+        "score": "11.5475",
+        "moves": "4",
+        "board": "SRSS/SRRR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "28",
+        "score": "12.1025",
+        "moves": "5",
+        "board": "SRSR/SSRR//"
+      }
+    },
+    {
+      "level": 3,
+      "ios": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "4",
+        "score": "13.685",
+        "moves": "5",
+        "board": "RRSS/SRSR//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "4",
+        "score": "13.485",
+        "moves": "5",
+        "board": "RRSS/SRSR//"
+      }
+    },
+    {
+      "level": 4,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "52",
+        "score": "11.9075",
+        "moves": "4",
+        "board": "RRSS/RSSR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "9",
+        "score": "12.4972219",
+        "moves": "5",
+        "board": "SRRS/RSSR//"
+      }
+    },
+    {
+      "level": 5,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "4",
+        "seed": "5",
+        "score": "15.4378567",
+        "moves": "7",
+        "board": "RSRS/RSRS//"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "4",
+        "seed": "8",
+        "score": "14.4117861",
+        "moves": "6",
+        "board": "RSRS/SRRS//"
+      }
+    },
+    {
+      "level": 6,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "350",
+        "score": "15.1264391",
+        "moves": "6",
+        "board": "NRNN/RNSS/SSRR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "206",
+        "score": "15.5",
+        "moves": "6",
+        "board": "NSNN/SRRR/NRSS//"
+      }
+    },
+    {
+      "level": 7,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "359",
+        "score": "15.4593487",
+        "moves": "10",
+        "board": "RSNS/NRSR/NNSR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "270",
+        "score": "15.8084307",
+        "moves": "9",
+        "board": "RNNR/SRNR/SSNS//"
+      }
+    },
+    {
+      "level": 8,
+      "ios": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "107",
+        "score": "18.1184616",
+        "moves": "8",
+        "board": "RSRS/NRNN/NRSS//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "201",
+        "score": "17.4955559",
+        "moves": "8",
+        "board": "SNSN/RRRN/SRNS//"
+      }
+    },
+    {
+      "level": 9,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "70",
+        "score": "15.7816668",
+        "moves": "6",
+        "board": "NNNN/SRRS/SRSR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "351",
+        "score": "16.1000748",
+        "moves": "7",
+        "board": "SSRN/RNNS/RRSN//"
+      }
+    },
+    {
+      "level": 10,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "4",
+        "seed": "386",
+        "score": "20.24196",
+        "moves": "10",
+        "board": "SRNR/SNSR/NSNR//"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "4",
+        "seed": "225",
+        "score": "19.0116673",
+        "moves": "8",
+        "board": "NNRN/NSRS/RSSR//"
+      }
+    },
+    {
+      "level": 11,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "370",
+        "score": "16.1306553",
+        "moves": "10",
+        "board": "SNRR/NSNS/RNRS//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "231",
+        "score": "16.4114819",
+        "moves": "7",
+        "board": "RSRR/SRNN/NSSN//"
+      }
+    },
+    {
+      "level": 12,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "83",
+        "score": "16.4717426",
+        "moves": "7",
+        "board": "SRSR/SNNN/NSRR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "14",
+        "score": "16.7341671",
+        "moves": "7",
+        "board": "NSNR/RRSS/SNNR//"
+      }
+    },
+    {
+      "level": 13,
+      "ios": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "42",
+        "score": "18.7877827",
+        "moves": "9",
+        "board": "SNSR/SNNR/NRSR//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "166",
+        "score": "18.5112038",
+        "moves": "8",
+        "board": "RSNN/NRRS/NSRS//"
+      }
+    },
+    {
+      "level": 14,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "220",
+        "score": "16.8008327",
+        "moves": "7",
+        "board": "NRRN/SNRN/RSSS//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "82",
+        "score": "17.0062733",
+        "moves": "10",
+        "board": "SNRS/SNRN/SRRN//"
+      }
+    },
+    {
+      "level": 15,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "4",
+        "seed": "281",
+        "score": "21.3457355",
+        "moves": "10",
+        "board": "RSRN/SNRS/RNSN//"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "4",
+        "seed": "386",
+        "score": "20.0688839",
+        "moves": "10",
+        "board": "SRNR/SNSR/NSNR//"
+      }
+    },
+    {
+      "level": 16,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "6",
+        "score": "17.1592865",
+        "moves": "7",
+        "board": "SRNR/NNSS/SRRN//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "339",
+        "score": "17.9952717",
+        "moves": "11",
+        "board": "NSR/SNSNR/SRRSR/NN/"
+      }
+    },
+    {
+      "level": 17,
+      "ios": {
+        "band": "Medium",
+        "capacity": "4",
+        "seed": "61",
+        "score": "17.4838886",
+        "moves": "7",
+        "board": "SRS/NNR/NSN/RRS/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "341",
+        "score": "18.56228",
+        "moves": "12",
+        "board": "RRNRS/SSNRN/RNSNS//"
+      }
+    },
+    {
+      "level": 18,
+      "ios": {
+        "band": "Hard",
+        "capacity": "4",
+        "seed": "400",
+        "score": "19.82144",
+        "moves": "9",
+        "board": "NRNS/SRSS/RNRN//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "334",
+        "score": "20.4965744",
+        "moves": "9",
+        "board": "NNSSN/NRRSS/RNRSR//"
+      }
+    },
+    {
+      "level": 19,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "31",
+        "score": "17.8012428",
+        "moves": "11",
+        "board": "RSSNR/NNRNS/SRRSN//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "308",
+        "score": "19.1163883",
+        "moves": "9",
+        "board": "NNRRS/RNSSS/NRSNR//"
+      }
+    },
+    {
+      "level": 20,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "80",
+        "score": "22.5391674",
+        "moves": "10",
+        "board": "RNRSS/SNSNR/SRRNN//"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "1752",
+        "score": "23.2712078",
+        "moves": "11",
+        "board": "SNSRN/RSNRN/RRSSN/"
+      }
+    },
+    {
+      "level": 21,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "82",
+        "score": "18.1076946",
+        "moves": "10",
+        "board": "RSR/NNNRS/NRS/SRNS"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "14291",
+        "score": "19.724123",
+        "moves": "11",
+        "board": "RSRSN/RRSRN/SNSNN/"
+      }
+    },
+    {
+      "level": 22,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "356",
+        "score": "18.4758339",
+        "moves": "8",
+        "board": "NSSNS/RSRRR/SNNNR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "16288",
+        "score": "20.2001781",
+        "moves": "11",
+        "board": "SNRSR/NSNRR/SNNRS/"
+      }
+    },
+    {
+      "level": 23,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "334",
+        "score": "20.7743511",
+        "moves": "9",
+        "board": "NNSSN/NRRSS/RNRSR//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "135",
+        "score": "22.4653149",
+        "moves": "11",
+        "board": "NRNSN/RSRRS/SRSNN//"
+      }
+    },
+    {
+      "level": 24,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "347",
+        "score": "18.79695",
+        "moves": "8",
+        "board": "SNNN/RRS/SRRSN/NRS/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "6350",
+        "score": "21.0906429",
+        "moves": "9",
+        "board": "RRNSS/NNRNS/RRSNS/"
+      }
+    },
+    {
+      "level": 25,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "16",
+        "score": "23.7456951",
+        "moves": "12",
+        "board": "RNSNR/NSRSR/SSNRN//"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "11710",
+        "score": "25.4133568",
+        "moves": "11",
+        "board": "SNRSR/NRSSR/NNSNR/"
+      }
+    },
+    {
+      "level": 26,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "142",
+        "score": "19.1169071",
+        "moves": "10",
+        "board": "NNRSS/RNRSS/RNSRN/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "2497",
+        "score": "21.4628868",
+        "moves": "11",
+        "board": "NRSNS/RRNSS/RNRNS/"
+      }
+    },
+    {
+      "level": 27,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "71",
+        "score": "19.4659615",
+        "moves": "12",
+        "board": "NNRS/SRSR/NSR/NSRN/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "163",
+        "score": "21.925",
+        "moves": "10",
+        "board": "RRSSR/RNNSN/NSNRS//"
+      }
+    },
+    {
+      "level": 28,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "264",
+        "score": "21.789999",
+        "moves": "10",
+        "board": "RNNRS/NSRRN/RSNSS//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "15910",
+        "score": "24.49541",
+        "moves": "11",
+        "board": "SRNSN/NRSSN/RRSRN/"
+      }
+    },
+    {
+      "level": 29,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "124",
+        "score": "19.8236046",
+        "moves": "9",
+        "board": "RS/RSRNR/SSNR/NNNS/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "4141",
+        "score": "22.6072311",
+        "moves": "11",
+        "board": "NRNRS/RNRSS/NNSRS/"
+      }
+    },
+    {
+      "level": 30,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "106",
+        "score": "24.9350224",
+        "moves": "11",
+        "board": "NNRSR/RNS/SNRNS/RS"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "2166",
+        "score": "28.9601822",
+        "moves": "10",
+        "board": "NSRNN/SSNSR/SRNRR/"
+      }
+    },
+    {
+      "level": 31,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "28",
+        "score": "20.0173111",
+        "moves": "12",
+        "board": "WRRW/SWNR/NN/W/RNWSS/RSSN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "385",
+        "score": "22.9972477",
+        "moves": "16",
+        "board": "RWN/SWN/RWN/SW/RRRWS/SNSN"
+      }
+    },
+    {
+      "level": 32,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "340",
+        "score": "20.23298",
+        "moves": "13",
+        "board": "NSW/RRRS/WNN/RWN/WRSWS/SN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "7231",
+        "score": "24.3161621",
+        "moves": "10",
+        "board": "RRRRN/NWWRS/WNSSS/NWWSN/"
+      }
+    },
+    {
+      "level": 33,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "82",
+        "score": "22.3946648",
+        "moves": "16",
+        "board": "NSNWR/SNNR/N/WSWR/SWR/SWR"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "7133",
+        "score": "25.495203",
+        "moves": "16",
+        "board": "RWRSW/RNWNS/NRSSN/WRNWS/"
+      }
+    },
+    {
+      "level": 34,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "43",
+        "score": "20.4755478",
+        "moves": "14",
+        "board": "SNRSR/WWWR/RN/SNW/NR/SNWS"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "19752",
+        "score": "25.3288765",
+        "moves": "11",
+        "board": "RRRRS/NNSWN/WNRSS/SWWNW/"
+      }
+    },
+    {
+      "level": 35,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "275",
+        "score": "25.1090927",
+        "moves": "16",
+        "board": "SWR/WRNW/S/SRRSW/WNRN/SNN"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "115",
+        "score": "28.1427422",
+        "moves": "16",
+        "board": "RNSWR/SRSNW/NWRSS/NWWRN//"
+      }
+    },
+    {
+      "level": 36,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "244",
+        "score": "20.5733643",
+        "moves": "14",
+        "board": "NRR/SRSN/SNWWS/RWNWN/WSR"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "212",
+        "score": "24.5538864",
+        "moves": "12",
+        "board": "SSRNW/RNWWS/SSRRR/WNNWN//"
+      }
+    },
+    {
+      "level": 37,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "4",
+        "score": "20.9423828",
+        "moves": "12",
+        "board": "S/RRNN/RNW/SSNR/NSWW/RWWS"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "246",
+        "score": "24.5600758",
+        "moves": "13",
+        "board": "SRWWW/SWNSS/NRNNS/RRWNR//"
+      }
+    },
+    {
+      "level": 38,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "203",
+        "score": "23.3070221",
+        "moves": "14",
+        "board": "WR/WSRN/NWS/RNNS/WNW/RRSS"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "15631",
+        "score": "26.9915047",
+        "moves": "14",
+        "board": "NSWRR/SWRWR/NNSNS/WWRNS/"
+      }
+    },
+    {
+      "level": 39,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "320",
+        "score": "21.1655388",
+        "moves": "13",
+        "board": "RS/WSNRS/RNWWW/SSW/NNRNR/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "146",
+        "score": "24.4672623",
+        "moves": "16",
+        "board": "RWNNS/RNWNW/SRRWS/NSWSR//"
+      }
+    },
+    {
+      "level": 40,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "17",
+        "score": "26.1050339",
+        "moves": "14",
+        "board": "NRSS/WWWR/NWN/SWRSR/NRNS/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "11908",
+        "score": "28.8076859",
+        "moves": "16",
+        "board": "SWRNS/WNRWR/NSWRR/SWNSN/"
+      }
+    },
+    {
+      "level": 41,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "195",
+        "score": "21.4817486",
+        "moves": "13",
+        "board": "SNSN/WRRSN/RWWW/NSRS/RNW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "370",
+        "score": "24.6225815",
+        "moves": "14",
+        "board": "WWRNS/WRRSW/NNWSR/NRNSS//"
+      }
+    },
+    {
+      "level": 42,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "271",
+        "score": "21.64874",
+        "moves": "15",
+        "board": "NS/WRWS/NSRSN/NWR/RRNS/WW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "230",
+        "score": "25.0429974",
+        "moves": "12",
+        "board": "NNWNS/WRWWS/WSRRR/SRNNS//"
+      }
+    },
+    {
+      "level": 43,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "157",
+        "score": "24.1059818",
+        "moves": "15",
+        "board": "WSNWN/WRRSS/N/NRWNR/WSSR/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "2",
+        "score": "27.76484",
+        "moves": "16",
+        "board": "NNNSW/WRWRN/SRWRS/WSNSR//"
+      }
+    },
+    {
+      "level": 44,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "54",
+        "score": "21.88289",
+        "moves": "14",
+        "board": "SNR/WRNRS/RN/SW/WWRW/NSSN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "9279",
+        "score": "26.9075966",
+        "moves": "12",
+        "board": "SSRWN/NRSSW/WRRSN/RNNWW/"
+      }
+    },
+    {
+      "level": 45,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "270",
+        "score": "26.691",
+        "moves": "14",
+        "board": "RNWS/SRNN/SWSRR/NWR/WSNW/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "6982",
+        "score": "30.5744343",
+        "moves": "14",
+        "board": "NWNRS/WNNWR/SSNWS/RWSRR/"
+      }
+    },
+    {
+      "level": 46,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "324",
+        "score": "22.1210938",
+        "moves": "15",
+        "board": "NSRSR/R/R/SNSRW/NWWN/SNWW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "15718",
+        "score": "27.3913326",
+        "moves": "14",
+        "board": "RWWNR/WRWSN/SWSSR/SNRNN/"
+      }
+    },
+    {
+      "level": 47,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "124",
+        "score": "22.35222",
+        "moves": "13",
+        "board": "NWR/NWSS/WWWS/NRRS/R/NRSN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "172",
+        "score": "26.5489922",
+        "moves": "15",
+        "board": "WNNRR/WSSRW/WNSSW/RSNRN//"
+      }
+    },
+    {
+      "level": 48,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "231",
+        "score": "24.9096127",
+        "moves": "15",
+        "board": "RWSN/RNSWS/WWSN/NRS/WRRN/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "53",
+        "score": "28.8797417",
+        "moves": "16",
+        "board": "WWNSR/SWRNS/SNWNR/NSRWR//"
+      }
+    },
+    {
+      "level": 49,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "157",
+        "score": "22.5623875",
+        "moves": "14",
+        "board": "WSNWN/WRRSS/NNRWN/RWSSR//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "4343",
+        "score": "27.4286175",
+        "moves": "14",
+        "board": "RWWNN/WRNWN/SRNSR/WSSRS/"
+      }
+    },
+    {
+      "level": 50,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "284",
+        "score": "27.3757172",
+        "moves": "16",
+        "board": "NSWRN/SWNNR/WSRWS/WNRSR/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "291",
+        "score": "30.1743584",
+        "moves": "16",
+        "board": "NNSRW/RSWRS/NWSSN/NRWRW//"
+      }
+    },
+    {
+      "level": 51,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "324",
+        "score": "22.82379",
+        "moves": "15",
+        "board": "NSRSR/RRSNS/RWNWW/NSNWW//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "76",
+        "score": "26.5548515",
+        "moves": "13",
+        "board": "WSRSW/WNWSS/RWRRS/NNNRN//"
+      }
+    },
+    {
+      "level": 52,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "97",
+        "score": "23.0603561",
+        "moves": "14",
+        "board": "WWNNS/SRRRW/WNSNR/WNSRS//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "7792",
+        "score": "27.0199661",
+        "moves": "15",
+        "board": "SWRRN/WNSRW/NSNWR/SSWNR/"
+      }
+    },
+    {
+      "level": 53,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "71",
+        "score": "25.68258",
+        "moves": "13",
+        "board": "RNNRR/WRWNW/NWSSR/SSWSN//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "2276",
+        "score": "29.7277679",
+        "moves": "12",
+        "board": "SNRRN/WSSNS/WWWSR/NWNRR/"
+      }
+    },
+    {
+      "level": 54,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "234",
+        "score": "23.2950134",
+        "moves": "14",
+        "board": "WRS/NWRR/WNRR/NSNSS/NSWW/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "11646",
+        "score": "27.6436768",
+        "moves": "15",
+        "board": "RWSRS/NNRSS/NRSWN/WRWNW/"
+      }
+    },
+    {
+      "level": 55,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "387",
+        "score": "27.9678",
+        "moves": "15",
+        "board": "RNRWR/RWSSW/SNRNW/NSSNW/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "5394",
+        "score": "33.4551",
+        "moves": "11",
+        "board": "NWRNN/RSNRR/WWNSS/SSWWR/"
+      }
+    },
+    {
+      "level": 56,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "239",
+        "score": "23.5288353",
+        "moves": "16",
+        "board": "WSRN/SRW/R/NRWS/RWNS/SNWN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "145",
+        "score": "27.406332",
+        "moves": "14",
+        "board": "WSWNW/SWRRS/NNRNS/NWSRR//"
+      }
+    },
+    {
+      "level": 57,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "211",
+        "score": "23.76678",
+        "moves": "15",
+        "board": "RNWNR/NRW/RSWN/SNS/WR/SSW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "19375",
+        "score": "28.03754",
+        "moves": "13",
+        "board": "NNWRS/NWWSS/RRNSW/WNRSR/"
+      }
+    },
+    {
+      "level": 58,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "332",
+        "score": "26.4873219",
+        "moves": "13",
+        "board": "NRSSW/RNSSN/RNRWR/WWWNS//"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "173",
+        "score": "29.3883114",
+        "moves": "14",
+        "board": "WRWNW/RWSSW/RRSSN/NNSNR//"
+      }
+    },
+    {
+      "level": 59,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "890",
+        "score": "24.1860447",
+        "moves": "13",
+        "board": "RSSNW/SSRWN/WRRNN/WSWRN/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "2609",
+        "score": "28.2459984",
+        "moves": "15",
+        "board": "NRSNS/RWRNS/NSWWW/WRNRS/"
+      }
+    },
+    {
+      "level": 60,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "1962",
+        "score": "29.0060062",
+        "moves": "14",
+        "board": "WRRRW/WNNWM/SSMMN/RMSSR/MWNNS/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "11974",
+        "score": "35.47807",
+        "moves": "15",
+        "board": "SSRNR/WNSWW/NRSWN/RSRNW/"
+      }
+    },
+    {
+      "level": 61,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "2165",
+        "score": "23.8410835",
+        "moves": "16",
+        "board": "WNS/SMMS/RRNMM/MSNWR/NWR/SRWWN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "239",
+        "score": "27.9962749",
+        "moves": "18",
+        "board": "SMNR/WRMS/NNM/WMNSM/WRWWN/RSSR/"
+      }
+    },
+    {
+      "level": 62,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "360",
+        "score": "24.192009",
+        "moves": "17",
+        "board": "WSNR/SSRS/NM/MWS/NWWM/MNM/RRWRN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "45774",
+        "score": "28.38936",
+        "moves": "17",
+        "board": "SWMMS/NRNWS/MMSRN/RMWWS/WNRRN/"
+      }
+    },
+    {
+      "level": 63,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "145",
+        "score": "26.5780087",
+        "moves": "18",
+        "board": "RSS/RWMSN/MSNN/RWMM/WMWN/SWRNR/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "84088",
+        "score": "32.5642",
+        "moves": "18",
+        "board": "RMWNM/WRMNS/MWNRN/WRWMR/SSSSN/"
+      }
+    },
+    {
+      "level": 64,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "384",
+        "score": "24.32842",
+        "moves": "15",
+        "board": "MMSSN/WWSW/NRN/NRRWM/SWRRN/SMM/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "355",
+        "score": "28.7280045",
+        "moves": "16",
+        "board": "RMRRR/SNSWW/SMNNN/WNSWW/MMRMS//"
+      }
+    },
+    {
+      "level": 65,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "78",
+        "score": "28.564827",
+        "moves": "19",
+        "board": "WRS/MRNMN/RM/SMNWW/NRWMN/WSRSS/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "314",
+        "score": "33.067318",
+        "moves": "20",
+        "board": "NMMNR/NRRWS/WMSSR/NWSWS/NRMWM//"
+      }
+    },
+    {
+      "level": 66,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "643",
+        "score": "24.6266975",
+        "moves": "16",
+        "board": "WMMSN/SMRRS/NWSRW/SNN/MW/RRNMW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "64308",
+        "score": "29.204092",
+        "moves": "16",
+        "board": "WSSRN/NSSRR/WRWNR/SMNMM/MNMWW/"
+      }
+    },
+    {
+      "level": 67,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "74",
+        "score": "24.6911812",
+        "moves": "15",
+        "board": "MMN/NMN/SSMRW/RRWS/SS/NMW/WRRNW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "254",
+        "score": "29.422348",
+        "moves": "19",
+        "board": "MRRNW/NSSWM/RWRMM/NSNRS/SWMWN//"
+      }
+    },
+    {
+      "level": 68,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "242",
+        "score": "27.1578484",
+        "moves": "16",
+        "board": "NSSW/MRSW/NWW/SWNMM/RRRMR/NSNM/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "383",
+        "score": "32.6901321",
+        "moves": "17",
+        "board": "SNNMM/SMSRN/NNRWR/WWMMW/RSRWS//"
+      }
+    },
+    {
+      "level": 69,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "353",
+        "score": "24.9368839",
+        "moves": "15",
+        "board": "NWWWN/MRW/SMRMR/NNMM/RNSW/RSSS/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "241",
+        "score": "29.5474854",
+        "moves": "17",
+        "board": "WSWWM/MMRRN/RWSSR/WNRMS/NNSNM//"
+      }
+    },
+    {
+      "level": 70,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "217",
+        "score": "29.1609859",
+        "moves": "19",
+        "board": "NWRR/NMWN/SMNN/MSMSW/SRRW/MWSR/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "85002",
+        "score": "34.10766",
+        "moves": "19",
+        "board": "MNWSW/RMNSR/NNSRS/WRMMS/RWNWM/"
+      }
+    },
+    {
+      "level": 71,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "1560",
+        "score": "24.945528",
+        "moves": "17",
+        "board": "SRSSR/WSWM/NSN/RMMN/NRWW/MWNRM"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "329",
+        "score": "30.0510712",
+        "moves": "16",
+        "board": "WSRSS/SSWNN/MRMMN/RWMWW/NMRNR//"
+      }
+    },
+    {
+      "level": 72,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "83",
+        "score": "25.2605915",
+        "moves": "17",
+        "board": "N/NNMMW/RRWSS/SMSWN/WMSRR/WMRN/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "214",
+        "score": "30.53704",
+        "moves": "17",
+        "board": "NMMSS/SRNWS/RWNRR/NNRWM/WMMSW//"
+      }
+    },
+    {
+      "level": 73,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "240",
+        "score": "27.8960133",
+        "moves": "17",
+        "board": "WSW/WNSSW/NMM/NRRS/WRRNM/SRMMN/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "31293",
+        "score": "32.84903",
+        "moves": "18",
+        "board": "NNWRS/RRNSW/MMWMR/WSNSM/MNRWS/"
+      }
+    },
+    {
+      "level": 74,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "129",
+        "score": "25.3459644",
+        "moves": "16",
+        "board": "SWMWM/RSNWR/NNMMN/RRSSS/MWWRN//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "24563",
+        "score": "30.8227482",
+        "moves": "16",
+        "board": "SSMNR/WNWRN/SRRMM/NMNWW/RWSSM/"
+      }
+    },
+    {
+      "level": 75,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "4758",
+        "score": "30.0592155",
+        "moves": "16",
+        "board": "NRR/NWWSW/SMNSN/MMSMR/WWN/RSRM"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "4",
+        "score": "35.7051735",
+        "moves": "20",
+        "board": "RNWNW/SWMMS/MWSSN/MRSNR/RMRNW//"
+      }
+    },
+    {
+      "level": 76,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "1512",
+        "score": "25.5263977",
+        "moves": "17",
+        "board": "WWRMR/SM/NNMR/MRNSS/NWSWW/RMSN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "301",
+        "score": "31.0796528",
+        "moves": "19",
+        "board": "RNRSR/WNMWN/SSNSM/MWWNS/RMMWR//"
+      }
+    },
+    {
+      "level": 77,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "99",
+        "score": "25.8419971",
+        "moves": "15",
+        "board": "NMRRR/WMSSR/SMSNN/RNMNS/MWWWW//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "348",
+        "score": "31.5991478",
+        "moves": "17",
+        "board": "NSRSR/MMMMN/SWNNW/RWRSS/WMNRW//"
+      }
+    },
+    {
+      "level": 78,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "1516",
+        "score": "28.1855488",
+        "moves": "18",
+        "board": "NWSWM/WNSSR/SSRWN/MRMMR/NMWNR/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "210",
+        "score": "34.3909836",
+        "moves": "19",
+        "board": "WRNNM/MSRSM/NRNWM/RWWMS/RWSSN//"
+      }
+    },
+    {
+      "level": 79,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "17",
+        "score": "25.9964466",
+        "moves": "17",
+        "board": "WWNRS/RSWNN/SMMSM/RMNMS/RRWWN//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "10862",
+        "score": "33.7288857",
+        "moves": "19",
+        "board": "NSNRW/NNRSM/WRWMS/RWNWM/SSMMR/"
+      }
+    },
+    {
+      "level": 80,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "400",
+        "score": "30.5564728",
+        "moves": "18",
+        "board": "SNNW/WRRMM/MWSN/WSRNN/MRS/MSRW/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "148",
+        "score": "36.8293",
+        "moves": "20",
+        "board": "WSSRW/RWSNM/RMMNR/WNSSM/RNMWN//"
+      }
+    },
+    {
+      "level": 81,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "203",
+        "score": "26.4942417",
+        "moves": "17",
+        "board": "NRNW/WRW/SNNR/SMM/RWSW/MSR/MMNS"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "260",
+        "score": "32.74381",
+        "moves": "20",
+        "board": "NSWNNR/MSMSM/RRRM/WNWSR/MRSSNM/WWWN/"
+      }
+    },
+    {
+      "level": 82,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "147",
+        "score": "26.7715664",
+        "moves": "18",
+        "board": "NRN/WMSS/SWN/SNWM/SMR/MRRW/RMWN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "91",
+        "score": "32.791256",
+        "moves": "20",
+        "board": "NWWM/RRNSS/SSR/RMNMRN/MWSWWS/MWMRNN/"
+      }
+    },
+    {
+      "level": 83,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "211",
+        "score": "28.9928551",
+        "moves": "18",
+        "board": "NRW/MSS/WMMR/NS/WMSN/SWNRM/NWRR"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "6",
+        "seed": "307",
+        "score": "35.8081474",
+        "moves": "20",
+        "board": "WSSSNN/MWMNWW/MRNRSM/RRSSRM/WWNRMN//"
+      }
+    },
+    {
+      "level": 84,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "145",
+        "score": "27.0560322",
+        "moves": "18",
+        "board": "RSSR/WMSN/MS/NNRW/MMWMW/NS/WRNR"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "69655",
+        "score": "34.78038",
+        "moves": "19",
+        "board": "RSNNNN/RNWSMM/SWRRMS/NSRSMW/WWRWMM/"
+      }
+    },
+    {
+      "level": 85,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "57",
+        "score": "31.10256",
+        "moves": "19",
+        "board": "NSN/SMMSM/NR/WM/WSRM/WWRWN/NRRS"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "6",
+        "seed": "147",
+        "score": "39.6163521",
+        "moves": "20",
+        "board": "MRMNRR/NSSSSW/MRSSMM/NWNNWN/RWRWWM//"
+      }
+    },
+    {
+      "level": 86,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "44",
+        "score": "27.3220463",
+        "moves": "19",
+        "board": "WWN/RMR/NSRM/NRNWM/M/SNMS/WSRWS"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "54997",
+        "score": "33.8081856",
+        "moves": "23",
+        "board": "MNMS/NRRWR/WMSNW/RWNNRM/NSWM/SRMSWS"
+      }
+    },
+    {
+      "level": 87,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "2875",
+        "score": "27.5360146",
+        "moves": "19",
+        "board": "MSRRN/WSMSM/SRWSM/RNWNW/NM/RWN"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "91",
+        "score": "34.2333221",
+        "moves": "21",
+        "board": "NWWMRR/NSSSSR/RMNMRN/MWSWWS/MWMRNN//"
+      }
+    },
+    {
+      "level": 88,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "208",
+        "score": "30.0157585",
+        "moves": "18",
+        "board": "NWRR/MWSWS/SMRRS/NW/RMM/N/SWNMN"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "6",
+        "seed": "134",
+        "score": "36.74558",
+        "moves": "24",
+        "board": "SWMNWR/NWRWRM/SNMMRR/MSNSSN/MRWNSW//"
+      }
+    },
+    {
+      "level": 89,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "239",
+        "score": "27.88469",
+        "moves": "18",
+        "board": "SMNR/WRMS/NNM/WMNSM/WRWWN/RSSR/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "5704",
+        "score": "35.35779",
+        "moves": "21",
+        "board": "MMMMWN/SNSMRW/WSWRSR/RWRNNS/RSWMNN/"
+      }
+    },
+    {
+      "level": 90,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "143",
+        "score": "32.0145569",
+        "moves": "17",
+        "board": "SWMNM/WRMR/MNNNN/WSRRW/SSM/WSR/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "6",
+        "seed": "14462",
+        "score": "39.80644",
+        "moves": "22",
+        "board": "RMNSSS/SNSRMW/MNRRWN/RSRWNM/NMWMWW/"
+      }
+    },
+    {
+      "level": 91,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "2043",
+        "score": "28.1446342",
+        "moves": "17",
+        "board": "RRMN/WSSN/SNNWS/WMRM/MRSRW/NWM"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "132",
+        "score": "34.6962128",
+        "moves": "21",
+        "board": "NNSRMR/MMWNSS/MSNMSR/WRRMWW/WWNRSN//"
+      }
+    },
+    {
+      "level": 92,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "51",
+        "score": "28.411581",
+        "moves": "18",
+        "board": "WRWNR/WNM/MSWR/RMNSR/NWSSS/MMN/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "260",
+        "score": "34.8122673",
+        "moves": "22",
+        "board": "NSWNNR/MSMSMR/RRMWNW/SRMRSS/NMWWWN//"
+      }
+    },
+    {
+      "level": 93,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "183",
+        "score": "31.040081",
+        "moves": "18",
+        "board": "MR/RNNSS/MWSW/WSSWN/RRMN/MNMWR/"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "6",
+        "seed": "335",
+        "score": "37.73993",
+        "moves": "21",
+        "board": "WRNNMM/RRMSWR/SSNNRW/WNMWSS/MSWNMR//"
+      }
+    },
+    {
+      "level": 94,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "313",
+        "score": "28.6684074",
+        "moves": "16",
+        "board": "NNSSM/NMRMS/WRSRN/NSWWW/RRWMM//"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "89317",
+        "score": "35.81331",
+        "moves": "22",
+        "board": "SSNSNR/NWWRSR/MWNWRM/RMMMRS/WSWNMN/"
+      }
+    },
+    {
+      "level": 95,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "2320",
+        "score": "33.3713379",
+        "moves": "19",
+        "board": "NRNM/MNSWM/MWSNR/RSWN/WWSR/SMR"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "6",
+        "seed": "192",
+        "score": "42.44721",
+        "moves": "22",
+        "board": "MRMMNM/NSWNRR/RSNRWM/SSSNWS/RWWMNW//"
+      }
+    },
+    {
+      "level": 96,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "281",
+        "score": "28.9466553",
+        "moves": "19",
+        "board": "NWN/RSWR/MNNM/MR/NSRS/MSS/WRWMW"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "258",
+        "score": "35.8338966",
+        "moves": "21",
+        "board": "NNWMSM/WWMSRN/RMMRWM/SNNNSW/RWSRRS//"
+      }
+    },
+    {
+      "level": 97,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "1990",
+        "score": "29.191021",
+        "moves": "19",
+        "board": "SNSW/SWR/MRSMW/WWMN/NNRMS/RMNR"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "79194",
+        "score": "35.9363251",
+        "moves": "23",
+        "board": "SWNRWS/RMMSNN/RRSWRN/MWMNSM/WSNRMW/"
+      }
+    },
+    {
+      "level": 98,
+      "ios": {
+        "band": "Hard",
+        "capacity": "5",
+        "seed": "788",
+        "score": "31.945528",
+        "moves": "18",
+        "board": "NMWW/SRMNR/WNSN/RWR/MSSR/SMNMW"
+      },
+      "bahadir": {
+        "band": "Hard",
+        "capacity": "6",
+        "seed": "276",
+        "score": "40.4277",
+        "moves": "23",
+        "board": "SNSWSW/MSWNRR/WNMNMR/NSWRWM/SMMRRN//"
+      }
+    },
+    {
+      "level": 99,
+      "ios": {
+        "band": "Medium",
+        "capacity": "5",
+        "seed": "147",
+        "score": "29.5017853",
+        "moves": "19",
+        "board": "NRN/WMSSS/WNSN/WMSM/RMRRW/RMWN/"
+      },
+      "bahadir": {
+        "band": "Medium",
+        "capacity": "6",
+        "seed": "73971",
+        "score": "36.4226151",
+        "moves": "21",
+        "board": "WNWNRM/RSMNNN/MWRRWN/RWMWMS/SMSSSR/"
+      }
+    },
+    {
+      "level": 100,
+      "ios": {
+        "band": "VeryHard",
+        "capacity": "5",
+        "seed": "784",
+        "score": "34.0321655",
+        "moves": "18",
+        "board": "WMWRR/MNSMN/NWSSR/SMWMN/SNWRR/"
+      },
+      "bahadir": {
+        "band": "VeryHard",
+        "capacity": "6",
+        "seed": "262028",
+        "score": "42.5042",
+        "moves": "23",
+        "board": "MRRWNR/WSNSWM/RMMNSN/SSWRWM/WNNMRS/"
+      }
+    }
+  ],
+  "direction": "iOS reference -> Android cloudora-bahadir (before delivery docs)",
+  "fileChanges": [
+    {
+      "status": "A",
+      "paths": [
+        "Assets/Resources/BillingMode.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/Resources/BillingMode.json.meta"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "\"Assets/Settings/Build Profiles/Android\\342\\204\\242.asset\""
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "\"Assets/Settings/Build Profiles/Android\\342\\204\\242.asset.meta\""
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/CampaignMoonRollout.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/CampaignMoonRollout.cs.meta"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/_Cloudora/Editor/CloudoraAndroidManifestPostprocessor.cs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/_Cloudora/Editor/CloudoraAndroidManifestPostprocessor.cs.meta"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/_Cloudora/Editor/CloudoraBuildTools.cs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/_Cloudora/Editor/CloudoraBuildTools.cs.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Editor/DesignQuality.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Editor/LevelCandidateSelector.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3LadderBuilder.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3LadderBuilder.cs.meta"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3LevelBuilder.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3LevelBuilder.cs.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3LevelTool.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3ThemeBuilder.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Editor/V3ThemeBuilder.cs.meta"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/_Cloudora/Editor/V41LevelBuilder.cs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Assets/_Cloudora/Editor/V41LevelBuilder.cs.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/006df.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/05725.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/05e75.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/0e0cb.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/12cdb.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/1603c.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/16c49.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/1a3ce.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/22aa2.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/232d2.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/249a4.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/2bf57.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/2ce2b.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/2ceb3.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/329e9.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/34a1f.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/3ae59.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/3c5bb.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/40038.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/480b9.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/4b2fc.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/4c96c.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/4e035.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/50b49.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/56480.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/57814.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/5941f.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/64132.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/654dc.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/6565a.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/6621d.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/6ca6c.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/72720.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/7465e.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/84576.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/8758e.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/88c3d.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/8c480.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/8da82.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/90fcc.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/91521.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/91f4f.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/92bf0.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/982c2.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/9864a.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/9c136.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/9e0d3.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/a5f3a.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/a7fd1.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/ab7f3.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/acd7e.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/ad73d.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/b3e5d.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/b44ef.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/b6f1c.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/ba2f9.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/bef7c.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/c0f0e.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/c190e.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/c51f5.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/c6a3b.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/d0de5.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/d4098.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/d58f1.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/d703a.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/da4f7.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/dbecc.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/de635.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/dff46.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/e8e2c.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/ee931.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/f0c41.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/f3a6a.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/f745e.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/f787f.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/fa776.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/fac64.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Resources/Design/ffaa1.png.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/Level/AuthoredLevelCatalog.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/Level/PuzzleSolver.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/Level/V3LevelData.Generated.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/Level/V3LevelPlan.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/Puzzle/PuzzleController.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/UI/AdaptiveBoardLayout.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Scripts/UI/GameplayOverlay.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/LevelToolTests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/MoonRolloutTests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/MoonRolloutTests.cs.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/PuzzleFeelTests.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/RenderingReuseTests.cs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V31GameplayTests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32LadderTests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32LadderTests.cs.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32NoMovesTests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32Theme3Tests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32Theme3Tests.cs.meta"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32ThemeTests.cs"
+      ]
+    },
+    {
+      "status": "D",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V32ThemeTests.cs.meta"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Assets/_Cloudora/Tests/Editor/V3LevelBuildTests.cs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Build-Android.ps1"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Build-iOS.sh"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "ClaudoraRelease.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/ANDROID_BUILD.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/COIN_EKONOMISI.html"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/GOOGLE_PLAY_SUBMISSION.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/IOS_FARKLARI.html"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/IOS_FARKLARI.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Docs/PRIVACY_RELEASE_REVIEW.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Docs/PROJECT_PROGRESS.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Docs/PROJE_HAFIZASI.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Docs/RELEASE_CHECKLIST.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/TEMA_ATLASI.html"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Docs/V3_BOLUM_VE_ZORLUK_TASARIMI.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Docs/V3_SABLON.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/V41_BOLUM_HARITASI.html"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "Docs/V41_TASARIM.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Packages/manifest.json"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "Packages/packages-lock.json"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "StoreAssets/Export-PlayAssets.ps1"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "StoreAssets/Play/cloudora-adaptive-background-512.png"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "StoreAssets/Play/cloudora-adaptive-foreground-512.png"
+      ]
+    },
+    {
+      "status": "R100",
+      "paths": [
+        "StoreAssets/Artwork/cloudora-feature-1024x500.png",
+        "StoreAssets/Play/cloudora-feature-1024x500.png"
+      ]
+    },
+    {
+      "status": "R100",
+      "paths": [
+        "StoreAssets/Artwork/cloudora-icon-512.png",
+        "StoreAssets/Play/cloudora-icon-512.png"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "StoreAssets/README.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "StoreAssets/STORE_COPY.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "crVersion.md"
+      ]
+    }
+  ]
+}

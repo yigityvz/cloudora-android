@@ -1,5 +1,7 @@
 # iOS sürümünün v3.2'den farkları ve Android v4
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 > **Durum:** son hal, 2026-10-19 13:09. Android'e birebir uyarlandı (v4); fark incelemesi (§1–10), ölçüm (§10b), uyarlama (§10c) ve telefon testi (§11). Görsel özet: `Docs/IOS_FARKLARI.html`.
 > **v4.1 notu (2026-10-19):** v4.1'de Ç1 (başarısızlık yeniden yalnızca hiç hamle kalmayınca), Ç3 (Ay 61'de, Frost Peaks ile) değişti; Karıştır 15'te; bölümler yeniden kuruldu, `CampaignMoonRollout` kaldırıldı. Ayrıntı `Docs/V41_TASARIM.md`.
 > **Kullanıcı kararı:** "ios'da neyse aynısı olsun" — §10'daki çelişkilerin hiçbiri değiştirilmedi; ileride ayrı ayrı karar verilecek.
@@ -345,4 +347,3 @@ Hepsi: 87 A. Dosya adları depoda; tek tek listelenmedi.
 ### Figma kaynakları (Docs/DesignSources) (73)
 
 Hepsi: 73 A. Dosya adları depoda; tek tek listelenmedi.
-

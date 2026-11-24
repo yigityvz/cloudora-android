@@ -1,5 +1,7 @@
 # Şişe içi element simgeleri — 18 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Yedi element, tek bir 24 birimlik vektör ailesiyle yeniden çizildi. Eski dolu bitmapler ve gökkuşağının elmas metin karakteri yerine ince, tutarlı çizgiler kullanılır:
 
 - Güneş: halkalı merkez ve kısa yuvarlak ışınlar.

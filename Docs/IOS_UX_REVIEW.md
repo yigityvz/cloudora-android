@@ -1,5 +1,7 @@
 # UX ve çözümsüzlük düzeltmesi — 17 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Güncel kapsam: tanıtım **1–14**, Yeşil Vadi **15–30**, Rainy Coast **31–60**, Frost Peaks **61–100**. Önceki belgelerdeki 16–40/41–70/71–100 aralıklarının yerini alır.
 
 ## Mantık ve can

@@ -1,36 +1,49 @@
-## Contributors
+# Cloudora — güncel ekip projesi
 
-- [@yigityvz](https://github.com/yigityvz) – original author of the project
-- [@bahadir-aktas](https://github.com/bahadir-aktas) – contributor (Unity development and Android builds)
+**Gökyüzünü düzelt. Dünyayı yeniden canlandır.** Unity6000.5.9f1 ile dikey, tek parmakla oynanan hava sıralama bulmacası.
 
-Team repository: [yigityvz/cloudora-android](https://github.com/yigityvz/cloudora-android) · Bahadır's line: [`cloudora-bahadir`](https://github.com/yigityvz/cloudora-android/tree/cloudora-bahadir), mirrored at [bahadir-aktas/cloudora-android](https://github.com/bahadir-aktas/cloudora-android)
+Yiğit'in24 Kasım2026 kararıyla **güncel taban Bahadır'ın v4.1 dalıdır**: `cloudora-bahadir@5a838a1`. Ekip başlangıç dalı artık **bu reponun main dalı**. Önceki iOS1ee4334/cloudora-yigit kaynak teslimi tarihsel referanstır; bu sürüme eski kuralları dayatmaz.
 
-# Cloudora
+**Yeni ekip üyesi ve Claude Code önce [CLAUDE.md](CLAUDE.md)'yi okusun.**
 
-**Fix the sky. Restore the world.** Cloudora is an Android-first, portrait, cozy weather-sorting puzzle built in Unity 6000.5.9f1 (Universal 2D). Tap a source cloud and then a compatible destination; matching top weather moves as a group. No level countdown or drag gesture is required.
+- [Güncel ürün ve teknik durum](Docs/GUNCEL_DURUM.md)
+- [Aşamalı öğrenme ve ekibe açıklama yönergesi](Docs/EKIP_ONBOARDING.md)
+- [Bütün kod, test ve belge okuma haritası](Docs/DOSYA_OKUMA_HARITASI.md)
+- [v4.1 bölüm tasarımı](Docs/V41_TASARIM.md) / [100 bölümün görsel haritası](Docs/V41_BOLUM_HARITASI.html)
+- [Sonraki işler ve karar bekleyen fikirler](Docs/SONRAKI_ADIMLAR.md)
+- [Önceki iOS tabanıyla farklar](Docs/DAL_KARSILASTIRMASI_2026-11-24.md)
 
-![Cloudora feature art](StoreAssets/Play/cloudora-feature-1024x500.png)
+## İndir ve aç
 
-## Product and architecture
+Git/Git LFS ve Python3.9+ kur:
 
-- Fifteen authored onboarding levels lead into seed-reproducible generated puzzles. Since v3, levels 1–100 use boards picked by an editor-only solver tool to follow a fixed difficulty pattern (Medium, Medium, Hard, Medium, Very hard per five levels), with one new element at a time (weather type, capacity, single empty cloud, cloud layout) and trap levels that grow more frequent; see [the level map](Docs/V3_BOLUM_HARITASI.html). Levels 101+ still come from the generator, which reverse-shuffles solved boards and records a legal solution, then validates invariants before accepting a level.
-- Since v4 (Android port of the iOS build `yigityvz/cloudora-ios` @ `1ee4334`): Figma redesign with Turkish UI, glass vessels and per-element transfer/completion animations; completed vessels lock; the level fails as soon as the board becomes unsolvable; the Moon arrives at level 60; three worlds and a campaign that ends at level 100; rewards 100/200/300 coins, continue 500. See [the iOS diff](Docs/IOS_FARKLARI.md).
-- Since v4.1: levels 1–100 rebuilt by a new solver-driven builder (`V41LevelBuilder`) for a harder, trap-based difficulty: two simulated "thinking" players (2 and 3 moves of lookahead) keep traps fair for careful players, every 5-level cycle mixes high/medium/zero trap levels, No Moves never before the 4th move; the level fails again only when no legal move is left; Shuffle unlocks at 15, the Moon arrives with Frost Peaks at 61, capacity 6 from 81. See the [v4.1 design](Docs/V41_TASARIM.md) and the [level map](Docs/V41_BOLUM_HARITASI.html).
-- Since v3.1, Shuffle reorders a single chosen cloud (unlocks at level 16), Restart is removed, and running out of moves fails the level: retry for a life, or continue via ad or coins from the last solvable state.
-- Cloud capacity progresses from four to seven slots. Thirteen world definitions span levels 1–400, with restoration milestones, new weather, modifiers, and difficulty waves.
-- Rule logic lives in pure C# state and move classes; Unity cloud views, animations, responsive board layout, HUD, world screen, and settings sit around that core. Modifier rules are registered independently of the views.
-- Local JSON save data includes progress, life regeneration, tutorial flags, settings, boosters, coins and a failed-level snapshot, with schema migration and backup recovery. No account, backend, or cloud-save service is required for the puzzle loop.
-- Analytics and advertising are behind interfaces. This repository binds fake ads and a credential-free analytics fallback. Real AdMob is not enabled; no public release is authorized.
+```sh
+git clone --branch main --single-branch https://github.com/yigityvz/cloudora-android.git cloudora
+cd cloudora
+git lfs install --local
+git lfs pull
+git lfs fsck
+python3 Tools/verify_reference_snapshot.py
+```
 
-## Run and test
+Windows Python komutu `py -3` olabilir. Unity Hub'da6000.5.9f1 ile proje kökünü aç; paketleri yükseltme. Başlangıç sahnesi `Assets/_Cloudora/Scenes/02_Gameplay.unity`. Assets, Packages, ProjectSettings ve.meta birlikte kalır. Unity Play Mode ve EditMode Test Runner ile başla.
 
-1. Open the project in Unity 6000.5.9f1 and load `Assets/_Cloudora/Scenes/02_Gameplay.unity`.
-2. Enter Play Mode to inspect the initial menu, one-finger puzzle loop, world and settings surfaces.
-3. Run EditMode tests in Unity Test Runner. `Cloudora/Validate 10,000 Levels` runs the deterministic content stress check.
-4. Use `Cloudora/Build/Android Development APK` for an internal build. See [Android build and device QA](Docs/ANDROID_BUILD.md) for the ASCII-only path requirement and open physical-device checks.
+## Bugünkü oyun
 
-The latest EditMode result (v4.1) passed 194 of 197 tests (3 skipped: two that need a graphics device and one manual measurement); an earlier separate content stress check passed 10,000/10,000 generated-level validations. These checks do not substitute for Android PlayMode/device smoke tests or prove real-world difficulty quality. See [phase progress](Docs/PROJECT_PROGRESS.md) and the [release checklist](Docs/RELEASE_CHECKLIST.md) for exact status and blockers.
+100 bölüm: tanıtım1–14, Yeşil Vadi15–30, Rainy Coast31–60, Frost Peaks61–100. Ay61'de beşinci tür, Karıştır15'te; kapasite1–15'te4,16–80'de5,81–100'de6. Dolu tamamlanan hazne kilitlenir. v4.1 kayıp yalnız legal hamle kalmayınca; çözüm yolu kalmayan ama hamle yapılabilen durumlarda oyuncu yardımcı kullanır.
 
-## Store/portfolio package
+Bölümler Editor/V41LevelBuilder ile seçilmiş sabit tablodur;2/3 hamle ileri bakan sanal oyuncu ve tuzak ölçüleri vardır. Ödül100/200/300 coin, devam500; başlangıç0coin/5can. Sabit cam, elemente özel üstten aktarım, birleşik sıvı ve7 bitiriş efekti korunur. Detay [güncel sözleşmede](Docs/GUNCEL_DURUM.md).
 
-The [store-art pack](StoreAssets/README.md) contains an original icon and feature illustration, plus exact-size PNG candidates; [English and Turkish store copy](StoreAssets/STORE_COPY.md) is a draft. These are not gameplay screenshots. Authentic Android screenshots, release signing, privacy-policy approval, and publication remain separate owner-controlled gates. See the [privacy release review](Docs/PRIVACY_RELEASE_REVIEW.md).
+## Platform ve test kanıtı
+
+Android Build Support/SDK/NDK/OpenJDK gerekir. Dahili QA: `Cloudora/Build/Android Device QA APK`; Windows wrapper `Build-Android.ps1 -Mode qa`. ASCII/boşluksuz yol ve QA/üretim imzası ayrımı için [ANDROID_BUILD](Docs/ANDROID_BUILD.md), [Google Play süreci](Docs/GOOGLE_PLAY_SUBMISSION.md) ve kodu oku.
+
+iOS araçları dalda kalır; [IOS_BUILD](Docs/IOS_BUILD.md) önceki iOS hattının rehberidir. Bu aktarım iOS reposunu veya iPhone kurulumunu değiştirmez.
+
+V4.1 tarihsel test kaydı197 toplam/194 geçti/3 atlama/0 hata; Editor ve Android QA oynanış notları V41_TASARIM/PROJE_HAFIZASI içindedir. Bu main aktarımında kaynak/LFS/belge eşliği kontrol edilir; Unity testleri veya cihaz testleri bugün yeniden yapılmış gibi sunulmaz. FakeAd gerçek reklam, dahili imza mağaza yayını değildir.
+
+## Fikirler ve paylaşım
+
+[Tema Atlası](Docs/TEMA_ATLASI.html) ve [Coin Ekonomisi](Docs/COIN_EKONOMISI.html) geleceğe yönelik seçim sayfalarıdır;101–500/market/IAP mevcut oyuna eklenmiş değildir. Oyuncu kayıtları, Builds/Logs/Library, imza/sertifika ve gizli anahtarlar Git dışındadır. Yeni sürüm etiketi veya mağaza yayını bu teslimde oluşturulmaz.
+
+Katkıda bulunanlar: [@yigityvz](https://github.com/yigityvz), [@bahadir-aktas](https://github.com/bahadir-aktas). Geçmiş kararlar Git ve tarihli belgelerde korunur.

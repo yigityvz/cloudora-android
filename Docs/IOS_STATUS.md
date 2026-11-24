@@ -1,5 +1,7 @@
 # iOS aktarım ve tasarım durumu — 2026-10-17
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Kaynak: `yigityvz/cloudora-android`, `cloudora-bahadir`, `d7c9416` (v3.2 + belge kayıtları). Hedef: `yigityvz/cloudora-ios`, `main`.
 
 ## İlk platform aktarımında korunan kapsam (16 Ekim)

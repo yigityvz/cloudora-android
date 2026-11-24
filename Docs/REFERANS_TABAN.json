@@ -1,0 +1,2912 @@
+{
+  "gameplay_commit": "5a838a104cdce93e342c353c930288e08099ceab",
+  "source": "yigityvz/cloudora-android/cloudora-bahadir",
+  "target": "yigityvz/cloudora-android/main",
+  "protected_roots": [
+    "Assets/",
+    "Packages/",
+    "ProjectSettings/",
+    "StoreAssets/"
+  ],
+  "protected_files": [
+    "Build-iOS.sh",
+    "Build-Android.ps1",
+    ".gitignore",
+    ".gitattributes"
+  ],
+  "text_comparison": "UTF-8 CRLF normalized to LF; LFS SHA-256 refers to real object bytes",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "git_blob": "5eb96286670e75fea831ee29bb21a48473f7fc6e",
+      "kind": "text",
+      "sha256": "28441eec622f0d0129f760d67750bd60cf4747fdbdab63774f278923dbae2a9e"
+    },
+    {
+      "path": ".gitignore",
+      "git_blob": "748e807be79dd606866afe918dfb46577fb4f662",
+      "kind": "text",
+      "sha256": "def2305467e38b1c7fa79b66efa539e66b0e847bc9b2510c42372443048c9f5c"
+    },
+    {
+      "path": "Assets/Plugins.meta",
+      "git_blob": "8608e32c57615b27548982eafe68d0a20321e7a1",
+      "kind": "text",
+      "sha256": "af080527f782c56d441d539e0dc8f4ffeb44afee52cedaf26b66665603048d8b"
+    },
+    {
+      "path": "Assets/Plugins/iOS.meta",
+      "git_blob": "b99f5aef2539e20344616fcb6685a18822fd4b0f",
+      "kind": "text",
+      "sha256": "258ed509e6574ca4cc63c709166f36ce22af711c55c6ceba7cc3ce9a2d485991"
+    },
+    {
+      "path": "Assets/Plugins/iOS/CloudoraAccessibility.mm",
+      "git_blob": "dcd2c03088bbe1642a4cc14731b465f81269f38e",
+      "kind": "text",
+      "sha256": "8e48ca94a16d408333a31fb4f365355e8b3a2ad84045811b56e134b946eafc54"
+    },
+    {
+      "path": "Assets/Plugins/iOS/CloudoraAccessibility.mm.meta",
+      "git_blob": "ae4bdbe6dc1b06c90a8c37f02b51fb780cd299bd",
+      "kind": "text",
+      "sha256": "0e6b6189c4aa7f887fba7b36a710be716d5e3641f96f28a48b791847fb670e68"
+    },
+    {
+      "path": "Assets/Resources.meta",
+      "git_blob": "6aabde2ae3800529daa5c3b0cb7e649e48141d29",
+      "kind": "text",
+      "sha256": "600edd55532b1bdf20e4f175a8be9502cea0a568a64d2c5487a5adf66a70f4b0"
+    },
+    {
+      "path": "Assets/Resources/BillingMode.json",
+      "git_blob": "6f4bfb7103071e200d5ab43220bc4cda34c35b5b",
+      "kind": "text",
+      "sha256": "7b15cfeef90aebae19207b130175fbc1726b66f7d42d105abc0426cee002ba92"
+    },
+    {
+      "path": "Assets/Resources/BillingMode.json.meta",
+      "git_blob": "f832e4bb4f3eab87a451ff6615b16eee02726b16",
+      "kind": "text",
+      "sha256": "8c9027dd96c057877b924eedd1633b761442254f07ca7d594f2eedda0a02734b"
+    },
+    {
+      "path": "Assets/Resources/CloudoraReleaseConfig.json",
+      "git_blob": "8df42f70afdb3abf3d8aff893a8d6630b515cb52",
+      "kind": "text",
+      "sha256": "058f29de02afbd36dfc97d7d05000878a5e3fc462036a1039e02ccf894e20296"
+    },
+    {
+      "path": "Assets/Resources/CloudoraReleaseConfig.json.meta",
+      "git_blob": "3aa5253f9805a5ca84d8e31f18838aaab1e744f2",
+      "kind": "text",
+      "sha256": "05395b35afdfd9c74a9624b950e7523e94444461741b2a2e277cb0f52f9e2228"
+    },
+    {
+      "path": "Assets/Scenes.meta",
+      "git_blob": "ee467141b79fc69e20fb397f93d6f35fcdcf7243",
+      "kind": "text",
+      "sha256": "a80a7b316e7d7ce80c8a01ecb374702a04e91228a0729629c894c70250baea5d"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "git_blob": "7b420f6ebd3ce91e13736fea44dc79263dcf2c94",
+      "kind": "text",
+      "sha256": "387d8216a517be775b6ecc2ab55b97ece687c3372322da2ba027a96908014912"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity.meta",
+      "git_blob": "963ff8e93e313df20c3b205dabb060c57ad969f9",
+      "kind": "text",
+      "sha256": "204f446bc13539151c15af875550a7fa6f791662e967572a1b4b06fd0005dad1"
+    },
+    {
+      "path": "Assets/Settings.meta",
+      "git_blob": "b36ca5e96ed8dba4a5f22a745ffaf3dbd4d1c844",
+      "kind": "text",
+      "sha256": "0b5ba35daae66cbfcfa17bf61091aeab7f3bed07681f8db7bed3fb72d178c2d4"
+    },
+    {
+      "path": "Assets/Settings/Build Profiles.meta",
+      "git_blob": "c927b5e4acf63f555b2b578758d6d9c47cb4a090",
+      "kind": "text",
+      "sha256": "7effcb32fd36e2cc5cfe4c6407a074e0f6e6545045e48b1b030e5483707f29b5"
+    },
+    {
+      "path": "Assets/Settings/Build Profiles/Android™.asset",
+      "git_blob": "3fa750480166364b7664f0da7c95691375b92d2e",
+      "kind": "text",
+      "sha256": "0ba3abeb09b6aebcbaa9c9562b1b9914646ce584ef3fa12f8d6daee62c75b7fa"
+    },
+    {
+      "path": "Assets/Settings/Build Profiles/Android™.asset.meta",
+      "git_blob": "ef8547d243ac119449911c19fefefda2c1661385",
+      "kind": "text",
+      "sha256": "959cef60a530b837eb9af37be9e0abd4ef5fd5875c8e5f894fc2ed7ef613463f"
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "git_blob": "8cea4d2a81168a4d21f91d99146ad5782c8f17b4",
+      "kind": "text",
+      "sha256": "4789b43834dd5efb32eec4c3b436baf0895c9f8cf2a0624121da8dd812ee984a"
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset.meta",
+      "git_blob": "5383e5d8863c21b502bdef0b55e8fad6475a5d8e",
+      "kind": "text",
+      "sha256": "037700fc76ee8e15bf57a6608bf0229b50b9ba78a1095a943fe0add01a6bf5c5"
+    },
+    {
+      "path": "Assets/Settings/InputSystem_Actions.inputactions",
+      "git_blob": "1a12cb91b67132fda366ae04ba2662092ed8781d",
+      "kind": "text",
+      "sha256": "1c6cbb519d65ecfe19a29231735b7f54741a20ac1a8ad4f46a18e1bfb28a3c39"
+    },
+    {
+      "path": "Assets/Settings/InputSystem_Actions.inputactions.meta",
+      "git_blob": "e786d3e33258f626941675d35c75b774ac1de988",
+      "kind": "text",
+      "sha256": "e2df3de96691137dc24b37bd9009e7be17040f3e5cd6d5401b2cd9d8ae2c9c1d"
+    },
+    {
+      "path": "Assets/Settings/Lit2DSceneTemplate.scenetemplate",
+      "git_blob": "57b5b8f900b4322ba6c3bc74c2a6e82b7a4ceebc",
+      "kind": "text",
+      "sha256": "ca928761bf976c878d54df524a3742c5f1bca53a013b4061abd2c752c8a212aa"
+    },
+    {
+      "path": "Assets/Settings/Lit2DSceneTemplate.scenetemplate.meta",
+      "git_blob": "0364f69cc833bc7ce4d3ee64af0eaedd0b061fde",
+      "kind": "text",
+      "sha256": "d4cc0f73332c3228945aa64f9c5019f1c1950d77703728c5e9674a0367c5e4d1"
+    },
+    {
+      "path": "Assets/Settings/Renderer2D.asset",
+      "git_blob": "aca5e70597ab63c6086d7f0184736ccd19a8ebe2",
+      "kind": "text",
+      "sha256": "900455794d0d788504847c3aa54e03a0374fd3635afa295ed05c2f646f974705"
+    },
+    {
+      "path": "Assets/Settings/Renderer2D.asset.meta",
+      "git_blob": "99dc6c5772a99f6720e9665641a6a6ff6b7221f8",
+      "kind": "text",
+      "sha256": "9689252004910cfad653e8a8d09b8c96befb560e1fb583033630db0f5bb76420"
+    },
+    {
+      "path": "Assets/Settings/Scenes.meta",
+      "git_blob": "65e05a4cc1ccb5e5eec62f811e1589175e34bace",
+      "kind": "text",
+      "sha256": "705b24f629af6836450c9fd2085f781fe11d8633bcaa0c7b3197058b93a766e5"
+    },
+    {
+      "path": "Assets/Settings/Scenes/URP2DSceneTemplate.unity",
+      "git_blob": "10756afa1888bb0c9d59137208f93fb86bea7046",
+      "kind": "text",
+      "sha256": "f6fb3e91aaa90417e2920b7f903066833b3b9aea72ddcb5e46b91afa729c2e90"
+    },
+    {
+      "path": "Assets/Settings/Scenes/URP2DSceneTemplate.unity.meta",
+      "git_blob": "c1e3c88e1cf25569cfffa5347eb9289085ed7d63",
+      "kind": "text",
+      "sha256": "e7391ff924b7defdf30e0b0b235f8113618481c93f567e0c699c8895a9534579"
+    },
+    {
+      "path": "Assets/Settings/UniversalRP.asset",
+      "git_blob": "7d47b05bba039aef11d06a239218ce379e56c79f",
+      "kind": "text",
+      "sha256": "2defc3c74f9757f7b801f994d10cd813757b09a39ee075af79fa514661206afa"
+    },
+    {
+      "path": "Assets/Settings/UniversalRP.asset.meta",
+      "git_blob": "6f92f2d98b9d714d7e50e76065f78e4b8775e04d",
+      "kind": "text",
+      "sha256": "8b7653265c1a9a054461264fc7b03bdbafc030149949fce5bf9e85924fb565a5"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "git_blob": "3dd3545a2f582f7123ebf28a2345046e02ee98c5",
+      "kind": "text",
+      "sha256": "9c6b5ce7465a44588db80eae27bd18c9aa5953dbdd09d94d8445f23b25f97ae3"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta",
+      "git_blob": "46b340a0c6d0d33b1b3dbaaf106e9f05b8269233",
+      "kind": "text",
+      "sha256": "746a38b93f8f49b644ff6893456cf24db401e5c342aaae3864e91560d37c5422"
+    },
+    {
+      "path": "Assets/_Cloudora.meta",
+      "git_blob": "a36bef744177e2b7e84675489d12dff6da14f64e",
+      "kind": "text",
+      "sha256": "986b198d94667e7b1c7283340e6ac7a115715aa0bfa394954229664bb78608a0"
+    },
+    {
+      "path": "Assets/_Cloudora/Art.meta",
+      "git_blob": "7de4904077c6fc4d66a3b4167e1fab69da51460b",
+      "kind": "text",
+      "sha256": "920ada0774c58672d048fab2d301b11becd4facb657997059c0ac82e16969bd8"
+    },
+    {
+      "path": "Assets/_Cloudora/Art/cloudora-adaptive-background-512.png",
+      "git_blob": "57ef3c00e5185a83689c87200d288223552853a2",
+      "kind": "lfs",
+      "sha256": "7d26cf242e072e0123abb7c2cf8a40bc7e50915985b32bdfff047532d77d6291"
+    },
+    {
+      "path": "Assets/_Cloudora/Art/cloudora-adaptive-background-512.png.meta",
+      "git_blob": "d25886c3a452ec34c4bc2bb565ca5be14369de80",
+      "kind": "text",
+      "sha256": "5bb90b7fa5376af1c1d387f343339789e51be5ba9c3361edb93541954c0f6aa5"
+    },
+    {
+      "path": "Assets/_Cloudora/Art/cloudora-adaptive-foreground-512.png",
+      "git_blob": "edd1b56819b249bbbd4d265a48ab197fb9637d9c",
+      "kind": "lfs",
+      "sha256": "19f563eeb1b9ee16f18c02b571209f85b644bf06132685887123c8e9d6f4d49e"
+    },
+    {
+      "path": "Assets/_Cloudora/Art/cloudora-adaptive-foreground-512.png.meta",
+      "git_blob": "3a734d6e5559a5ac70d0835342a4cfb0df8cdd60",
+      "kind": "text",
+      "sha256": "cb7b3c6d113d570d1c71784d2ebd6b619a326bf4922e52717548a90e57a29070"
+    },
+    {
+      "path": "Assets/_Cloudora/Art/cloudora-icon-512.png",
+      "git_blob": "51667bc96306cfb544c5bd1854286b99e85d18cc",
+      "kind": "lfs",
+      "sha256": "1ccc9ec9b8ef412752ab900293d3a6509d2346e089ab5c06a3c44e39f0b429b3"
+    },
+    {
+      "path": "Assets/_Cloudora/Art/cloudora-icon-512.png.meta",
+      "git_blob": "40dbf500ca0b832695fe5ea99c506bb1a5ecf8ce",
+      "kind": "text",
+      "sha256": "d4430b8b30ca8f2d409290e553b14df09c02af66a4bc14d43cdb93cfca8d821c"
+    },
+    {
+      "path": "Assets/_Cloudora/Audio.meta",
+      "git_blob": "9d7f8583226279975ac47cc48bc4edc171440d5f",
+      "kind": "text",
+      "sha256": "d6084359d223b65d9088571b3999d0955e1e705e413f87a5e7932a3e9e2b01b3"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor.meta",
+      "git_blob": "0a69a2e7db017e3d468f2efdc0aad84c75af2e34",
+      "kind": "text",
+      "sha256": "4ec316bbc98f1b9c42bfb8eacf1d6c4573aa7a57f2b828221afc87aaf69446ff"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/CloudoraAndroidManifestPostprocessor.cs",
+      "git_blob": "0d40c5b5c94fa8197162e9ead78cbd8836d55767",
+      "kind": "text",
+      "sha256": "0996a6a707d208a0aed511600a1a4d26de65030be9a6d90820512b17f0cdf75d"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/CloudoraAndroidManifestPostprocessor.cs.meta",
+      "git_blob": "ab190e6cb5510b14ac497291e9c9245a74b093f4",
+      "kind": "text",
+      "sha256": "a2b8670e7f8acdeeb29cdfa0a42ccab27a9d3030d2e0780c7c89f2faed5a6eac"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/CloudoraBuildTools.cs",
+      "git_blob": "6e2fe20e8167c6b21ec856e5dcce5006ff4172b5",
+      "kind": "text",
+      "sha256": "5caa406adfe12f511de2536ee23f8c6bf23b7c40f7d34c5968eb32ab34fdcba7"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/CloudoraBuildTools.cs.meta",
+      "git_blob": "c8c6c05b18a8de7eb836e3de8dfeecc2b0167333",
+      "kind": "text",
+      "sha256": "aef7910b23c9143e653665f7b71962ac62f45e1f2fa9f300939cbe3be2f954fa"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/CloudoraIosBuildTools.cs",
+      "git_blob": "1b238551716d7f82023c5bc1074f6d4aa0ef72c0",
+      "kind": "text",
+      "sha256": "fb246a91dad328f1924ddfdd0f41d4ee235d5b935238d4f5669f36a7000cc8ed"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/CloudoraIosBuildTools.cs.meta",
+      "git_blob": "5877a1b4ad05cdce7fe9288c092adfb0419c7234",
+      "kind": "text",
+      "sha256": "05dcadbcd38b262b5709c7fbd38819103e67c1c693446c6f5d37024648dbb2da"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/ContentValidationTool.cs",
+      "git_blob": "d93b1d9a99793188fe6874f46d3f926e7f2e88fb",
+      "kind": "text",
+      "sha256": "30dfac8ba5f355dd0d3744028d60af7847dfb3c212028ec4842f1b34aef6eeee"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/ContentValidationTool.cs.meta",
+      "git_blob": "795957c7d7054587586032f7853bcd000c4445a1",
+      "kind": "text",
+      "sha256": "ebc54a0229321797306552022923e9d0690cdc836486cd11427780481e1aa7df"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/DesignPreview.cs",
+      "git_blob": "e92fbf451339d4ea07bf086183c10b445063b68c",
+      "kind": "text",
+      "sha256": "e86de7fd7111391358eeb7ced4c3ae613ef8c324d03749d02987860178ea4213"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/DesignPreview.cs.meta",
+      "git_blob": "9edb43e0d165f78a2a8dd67747a3d4e221b9f731",
+      "kind": "text",
+      "sha256": "adfb2be39cd2a0dbf6761417ab2c0e1d0c723e118ccc69d6e975adf94ad2ff47"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/DesignQuality.cs",
+      "git_blob": "1e692d859b1b6f1c72e57ba6b6a288334bfae736",
+      "kind": "text",
+      "sha256": "e76b0c04d1cebcf3f92c72f73c6347fee1346560cd05216344dd8b9102f2d09c"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/DesignQuality.cs.meta",
+      "git_blob": "9f4b03aa3546092b3b77291fbc2aabe989f2be6c",
+      "kind": "text",
+      "sha256": "6039d7751dfdb9787f88a9863c8de4fab942334537ccc045ce6c44a49f93739a"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/LevelCandidateFactory.cs",
+      "git_blob": "b97ecd0bc6c34632e340b32a1ec17f8929e4cb69",
+      "kind": "text",
+      "sha256": "34153751fe2c51e71868514d3f2d874c314ecf0ddb49316c815d01016ca40eaa"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/LevelCandidateFactory.cs.meta",
+      "git_blob": "0ac8f3c2ea2e5c0158b59bfdfbf9475abc1a0260",
+      "kind": "text",
+      "sha256": "3ba92bb937b7c754a8c23037cb8bf7f6266155c64f7c176216439ba98d8cf09e"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/LevelCandidateSelector.cs",
+      "git_blob": "9e3a31f5d3bbe3a20fded552f8d1fcd4948a4341",
+      "kind": "text",
+      "sha256": "4e8b40c1b516a9cecfef38a523995d5ad71c3488e1e9cb8b938bb4d2f0eca9d6"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/LevelCandidateSelector.cs.meta",
+      "git_blob": "39ebc3a1d5ca5487e7bbedfb26029c41f3770dcd",
+      "kind": "text",
+      "sha256": "1e2744e5e350ec8076c3f80e8f41c435ed1f81ca6e0443c197e8f83b4153c5c6"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/OpeningSplashPreview.cs",
+      "git_blob": "bd1d61cb47d22085fb2692b2136b99631308ab6e",
+      "kind": "text",
+      "sha256": "8de64d603a71986e0414b4083f7a98bdfea836d3c2454d782454702da398b84f"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/OpeningSplashPreview.cs.meta",
+      "git_blob": "db7a0636cc69be90b3801011d6ba9bd90b71713c",
+      "kind": "text",
+      "sha256": "2b63fe55d77f86f5a8277b3a04a3ce6aff9b0cf99ac3f071570ebb84763d3767"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/RenderingPerformanceBenchmark.cs",
+      "git_blob": "f4b69c2e23384659a3a31b2a4e3ddc21b6b2e608",
+      "kind": "text",
+      "sha256": "4bc839538e65e7d496a0f9e60a7b6f99d100ec2c74a14619bdd231bb911f1116"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/RenderingPerformanceBenchmark.cs.meta",
+      "git_blob": "9f41eba458ea3165fb223bbf5a2bfa354740398d",
+      "kind": "text",
+      "sha256": "a813b73fcb3a22661b82401407665da52ea81bcad541c70cd33149ee5d9f9d2a"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/V3LevelTool.cs",
+      "git_blob": "5b91c2bd2c5680fa0a9c33da2505195bd90ac0b7",
+      "kind": "text",
+      "sha256": "da5797d48e5e1c82427bc8b2b978c730a8f0f8a958d3dbd37f4bfaaba4db3abd"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/V3LevelTool.cs.meta",
+      "git_blob": "f59dfed627b22b96dac036a75eaced1a75e0ca4e",
+      "kind": "text",
+      "sha256": "065deb3d1f203d4e423a2077fe5c34518c1f1799170a7e95f9c1e56d8e4495b7"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/V41LevelBuilder.cs",
+      "git_blob": "63bb3df2af3f9b716cf94c5af5091d3f28bc64cf",
+      "kind": "text",
+      "sha256": "a73355b2a2368bb11d853be1a064d3e7cf31b0e9bc6da871e2a7c7338a97bc72"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/V41LevelBuilder.cs.meta",
+      "git_blob": "5d32b3ffb19fa5b49199b4301107a8eb8d61109b",
+      "kind": "text",
+      "sha256": "c1ec75dd7104dfbeece946f14a0a75fcf14d265d03404104a490e15bc50f6730"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/WeatherSymbolPreview.cs",
+      "git_blob": "afe86d1c7585803403185f084eb8bb86a014e86c",
+      "kind": "text",
+      "sha256": "47f27b1e3fb2e6096953cc2232353bc7ce2f4c6cf71799edcc6b1a2139fb3529"
+    },
+    {
+      "path": "Assets/_Cloudora/Editor/WeatherSymbolPreview.cs.meta",
+      "git_blob": "da5da9ef4f35d86d321782da6766cf3d27c4e74b",
+      "kind": "text",
+      "sha256": "da478c67e64f543d0c983b4e99513ea4d4b25f79d4f7559983c4235e8ce9b63b"
+    },
+    {
+      "path": "Assets/_Cloudora/Materials.meta",
+      "git_blob": "02e705fa0e6e165cc7bb8267f817a04b67387a9c",
+      "kind": "text",
+      "sha256": "f2982b49dfcb15fc161ca155342dc41fba246636625208e27276fc5aa3e3cf90"
+    },
+    {
+      "path": "Assets/_Cloudora/Prefabs.meta",
+      "git_blob": "a076d20d2c1c8d443a081fed19aca8c18cf3b4f2",
+      "kind": "text",
+      "sha256": "eb65fe43e7df693d7e32311e76b0746b13bc19adc37070c2de73c2d80e06609c"
+    },
+    {
+      "path": "Assets/_Cloudora/Prefabs/CloudContainer.prefab",
+      "git_blob": "ce224ce15ef91afa4f21e44e202ba470e0f19d41",
+      "kind": "text",
+      "sha256": "8ae3284a483e7a08f242f236510f773ce138731987ecf07e36ece4c62b3a7926"
+    },
+    {
+      "path": "Assets/_Cloudora/Prefabs/CloudContainer.prefab.meta",
+      "git_blob": "2373bf01b6133dd2a83b1919da470739a9236aea",
+      "kind": "text",
+      "sha256": "e516a6dec1cefe91354a323cefc9e86d3bd073f539a21b245d2150e9f93a38a1"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources.meta",
+      "git_blob": "c643e8baf89a13714e65ff0e18efc43c12daedce",
+      "kind": "text",
+      "sha256": "ee0a27f35fc94311d5ce2c7077d553eece3bca47c48b9186eaf41521b9b103c8"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design.meta",
+      "git_blob": "97801f931cc771987564c1f605f47fc7e2226bc2",
+      "kind": "text",
+      "sha256": "9fc7a5387f87f812dfbd0a41813ddbf7e800afc080707f898f0a2f9c15151f23"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/006df.png",
+      "git_blob": "42b7dde266557cc3a50c6b066f6408dbb5ff76dd",
+      "kind": "lfs",
+      "sha256": "13bb7472c3940a2833343aaf27176e633f6816296c755106b3f969bd7ebd05f7"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/006df.png.meta",
+      "git_blob": "e5bb1e3ff456bd6a0945cf9aeb7211deefe7a5d1",
+      "kind": "text",
+      "sha256": "8c3a9f85f2fde4738ae679f8f56a8a76cca64a9aec18ce63656f5e7458649b27"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/05725.png",
+      "git_blob": "55b09fd9029565fd656d02909bbe357f78c3ccbb",
+      "kind": "lfs",
+      "sha256": "92d957de019db2209442633dfbf867c862cd4d4a859b7787287b019be0ceeeaa"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/05725.png.meta",
+      "git_blob": "ce4bc1e86b35183791bd6be4bc271706ef7765b1",
+      "kind": "text",
+      "sha256": "46d4a19777faf8db58d49594c7e17cbba2bfb3ed29803ce99dd8e9510b729f62"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/05e75.png",
+      "git_blob": "8b97c2dc9e9531e1b1d21b934154f4a59f24f416",
+      "kind": "lfs",
+      "sha256": "1884192540025e2d4ffa7ab2462244fcb17812d49f588d36297ebdbed83d13dd"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/05e75.png.meta",
+      "git_blob": "6142313504ee9c685aed2da2180daa4dafc09a1c",
+      "kind": "text",
+      "sha256": "a91c6271015576bc26a7e703b72c77e124b610d2140ac0e35e2c90e985792e41"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/0e0cb.png",
+      "git_blob": "499f7d68d4ceadb542857b3247941f6717f4e472",
+      "kind": "lfs",
+      "sha256": "a4ef972745bd1984ef721ac52bc9c8db99a7b337fd2f6f9c4bdda885a0207f7f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/0e0cb.png.meta",
+      "git_blob": "4f4156ddb78c43c2b337726b1837ae9a1bb0af5a",
+      "kind": "text",
+      "sha256": "aa8069b7c0d7b5acc5186b8e622c5589afc295d36e7df255045a71f64265ee12"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/12cdb.png",
+      "git_blob": "0f36a9e6611aa1d20cba1a7c2fbb24f1b36606ae",
+      "kind": "lfs",
+      "sha256": "99da6fef0cb1a3ccfdb74dd440a74f8dfbc0a45afa7dec1e401d3820da0a3b47"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/12cdb.png.meta",
+      "git_blob": "27cd2fe2fd39838f114ef0229c69bec2355a8a62",
+      "kind": "text",
+      "sha256": "0e8831428397913874dc55fe7652da5cca6d7f435ee3c176d0042245ec0d0449"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/1603c.png",
+      "git_blob": "f202b27691b1c25446db58f423f24ead5153b711",
+      "kind": "lfs",
+      "sha256": "d09ce75ebf7b29c2a715de4f8d4ad80ddd83d4ecd5dab2fbcedc0d2f2a3e478b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/1603c.png.meta",
+      "git_blob": "c9928d2f02fbc72b7ee7c7198cc9920b6ab5757a",
+      "kind": "text",
+      "sha256": "790c0e59ce0d7a12e59e37a19fe2360303b749ecd0f4cdfa5addb1f8119786d4"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/16c49.png",
+      "git_blob": "ddbec5163b5eb84a064db4824683b57bcf4fe371",
+      "kind": "lfs",
+      "sha256": "d7b512c8791a7cb2107a716cd6c0b43c7dfc6445f14415e02cccad50a18bd31f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/16c49.png.meta",
+      "git_blob": "490995571542e4180c2748dcfcec9c4fb4ae5973",
+      "kind": "text",
+      "sha256": "c8f65af4a85b93670b82a6ceb5b75f8c7b88042a83549e3207d02ef5a3fd51e7"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/1a3ce.png",
+      "git_blob": "b858cd17704ab38858692c0f4d1440897ea502e1",
+      "kind": "lfs",
+      "sha256": "a05c8bd1f625e8c01161b67f8e552193309298ce53b8568b17769e822aec1f0f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/1a3ce.png.meta",
+      "git_blob": "3e3f6ee5d03af07f16beb20d622d2862b2cfd37f",
+      "kind": "text",
+      "sha256": "55b3b8b42f35892457c6322de967e86b8e4a3829b850f3aad633072b2328211e"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/22aa2.png",
+      "git_blob": "3ed5a086ca12905d9d34a76a32945d69bb7ffe5b",
+      "kind": "lfs",
+      "sha256": "a0af63fccdf8740344b580effff021415d4c5885b67f5470d94c019a5df31fc8"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/22aa2.png.meta",
+      "git_blob": "654a56129b1391cda2d74acb3a44e0492873af94",
+      "kind": "text",
+      "sha256": "dd8fe1d622c63550fefb330be217df1dff2e1f9333eaeb9c5b7838be637f8b58"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/232d2.png",
+      "git_blob": "3ae81be46a446eb752453b7fd20312dab40a3b6b",
+      "kind": "lfs",
+      "sha256": "a9b2844541a1d4ea7d2a329e4c17cc258dc11af8c342149129ff5a8d6b5a4693"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/232d2.png.meta",
+      "git_blob": "eb735894b69d1f8956e0e148909b59a4e214ff6b",
+      "kind": "text",
+      "sha256": "cdc9d5f6dc69d1b75b70dc8e4960427d9cedcc3cf801f75d300a7eddfb6723b3"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/249a4.png",
+      "git_blob": "21fc5f8dd924b1dbd1aa4bad1e5bfad620229d61",
+      "kind": "lfs",
+      "sha256": "a27f63c939a7343485215c2fe34d42acb44e33a2ff73f5ea23862aceae51a8ed"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/249a4.png.meta",
+      "git_blob": "be73f7e574657b1c196dfdbc93cc80b94850d2d0",
+      "kind": "text",
+      "sha256": "68d60a36b0c0fcdd00c59306d0510719738ddbfec05c29962af400a3802906e7"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/2bf57.png",
+      "git_blob": "a047ed22066ef99b5eb63addd70e0dcebfd4b2e3",
+      "kind": "lfs",
+      "sha256": "5c616c1cbfda7c8c99c6c1efe143b2fb1e05c1d0a881d3071b3e25390e27df8b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/2bf57.png.meta",
+      "git_blob": "b8e35fe58ac843a21df1fcf16559b16458c66d62",
+      "kind": "text",
+      "sha256": "42b219bec154e3bd0e82e297ffb4691246486821da569e675a19d79ba447486e"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/2ce2b.png",
+      "git_blob": "99fe0209aab1bf8131c81c0adb280c927bbc554d",
+      "kind": "lfs",
+      "sha256": "7c91750489e610a7eaec6a3aaa726347f87bff55c5101b6da246a396fdc699ca"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/2ce2b.png.meta",
+      "git_blob": "c5cdfd92300211f231dbf01cf6205c985a1f9599",
+      "kind": "text",
+      "sha256": "bde2e858c2748a14c66dde131b6885c0236579b9850e66e7773a63de51cc0a1e"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/2ceb3.png",
+      "git_blob": "77a0de24e9fb79fb13214285433d98519698ee3a",
+      "kind": "lfs",
+      "sha256": "62e643c359daa6dbfc4f42efac4be4734f6e76cbc2bb3bb6f04f7b790637d8d8"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/2ceb3.png.meta",
+      "git_blob": "bbcb823978fea4d6ad47bfd8156304440e58b1ab",
+      "kind": "text",
+      "sha256": "a28c0fcf54f70cf88dd26187cc6d3198300e5ddb40124378f6cc219b81b70303"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/329e9.png",
+      "git_blob": "2cc4ef1d9539895cd20ed3491ebff49f20032f3e",
+      "kind": "lfs",
+      "sha256": "6b42ecf7aad506e85e632b6071176a09af29aa51431eed6c5e5f862e12506875"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/329e9.png.meta",
+      "git_blob": "0df9602ad53bf98da493c2ef72680593d80b11ed",
+      "kind": "text",
+      "sha256": "8938b4075afdb843979ac50a20ab24c9ea21027f26007d391f62771817ddd1c3"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/34a1f.png",
+      "git_blob": "c302007efde30aad8dc3498c139f0c21c03b9053",
+      "kind": "lfs",
+      "sha256": "9f9cc63ec33ea53b30302721aa9b1ebdda0a3dc005483d5e377a49ae02096033"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/34a1f.png.meta",
+      "git_blob": "d494d3be324bce8ff82e84423695e03caa1f594b",
+      "kind": "text",
+      "sha256": "2c7374eec008375479f847e550395b46a78ff5ab995b8110950fe20c2598a267"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/3ae59.png",
+      "git_blob": "f9cd17068a5a0a024ad5a0843c981090608fad0f",
+      "kind": "lfs",
+      "sha256": "26929efca9536745a82cc64fdf14982d5e7d7503607d855842e5262d5bac7c1b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/3ae59.png.meta",
+      "git_blob": "0f50725bd9187d7801ddc2487348a141021f8ac0",
+      "kind": "text",
+      "sha256": "1de749107d544cc2440650af425d25cf6f1a0aba0ed2a7256b6b602ea667c149"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/3c5bb.png",
+      "git_blob": "48075daf4e45a64c5008ab69e37c4685edd530cd",
+      "kind": "lfs",
+      "sha256": "7368cdda08e7d796b4acd76680a2a4c549cedf94371515873a9f080eda200b73"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/3c5bb.png.meta",
+      "git_blob": "0e11195e243c64c841024e5108e92b1be6caf11e",
+      "kind": "text",
+      "sha256": "b2ee4977f73e9ebfccb29dbaf0d8e04be0427618ae6382a8b6779907b07348f9"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/40038.png",
+      "git_blob": "94dc9001ec41ba6501c4414f88acd74d7adfe57f",
+      "kind": "lfs",
+      "sha256": "c5211ccaa9936b8cbf278490fda417a7f06711e8fdc4d7962be0b554d02f011a"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/40038.png.meta",
+      "git_blob": "4fe2a262e237a7c75be70240f913b781ad885ec9",
+      "kind": "text",
+      "sha256": "8b238f32f997e1989b03607abd0289c9f021b77035a89fadae260c22c84bd0fa"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/480b9.png",
+      "git_blob": "8c2aa5c10fb961af4a6d1ee1fe57d1f8965059bd",
+      "kind": "lfs",
+      "sha256": "9e6455bcf21f7ef090ce67997dd46091f07eaa1060ceb6bab3d763bc1a917c91"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/480b9.png.meta",
+      "git_blob": "291fe0daadbcf97e5b727725e1a6d7c97ccb9269",
+      "kind": "text",
+      "sha256": "d47ffce7d35a86e530b758c78885b05e4c90661aa2485ad0e1f28ea961d3659b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/4b2fc.png",
+      "git_blob": "b589e5decd48d0869e799c7676da57ad9d97c71b",
+      "kind": "lfs",
+      "sha256": "4484dc11af737d51f6d73515aa0745ea1a08bbc76d1eaa01d6c25b7c694e3330"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/4b2fc.png.meta",
+      "git_blob": "31832a319fe2c5ae5240d853ed3089401a838b09",
+      "kind": "text",
+      "sha256": "3912900622c53630a80d97d8740b137813eebbcc25decaa7ec4c9cbff4416814"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/4c96c.png",
+      "git_blob": "5600486e9a56964d04dbc8a0a806242fa1630e3a",
+      "kind": "lfs",
+      "sha256": "8afd3aaa28ee6471355c86acf4e4b1213eebbcf67cfc8bc591e11c770bacda20"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/4c96c.png.meta",
+      "git_blob": "7d453ae2a441ef96fc98aa086618bce48302d8f3",
+      "kind": "text",
+      "sha256": "eb9937952edb963ee00995e4376f26f6f171aa383f5e69c33861094c752f04cf"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/4e035.png",
+      "git_blob": "14fb2e2af66387d72a38e9cfc97ad615c7abe5da",
+      "kind": "lfs",
+      "sha256": "2faaa9f1ab95b842fd38c7f658eda38ff907ce06205111965763e77798108af3"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/4e035.png.meta",
+      "git_blob": "c9d5a1820f32b64a3c27a05ae6305f80d891311a",
+      "kind": "text",
+      "sha256": "fd40c9984fee51d7c9ce7c2e88df6fd7bd11a44af702f821156953f2cdcbdcd9"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/50b49.png",
+      "git_blob": "ffca1395e2e963b285c6d67126f335e231985238",
+      "kind": "lfs",
+      "sha256": "970ddbe1eae518e2860afc502f115a88cc1cb69e5fca5f6604e2c0b4d3cd43b5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/50b49.png.meta",
+      "git_blob": "008c8fac425c930809c9e862bf477e78b726621e",
+      "kind": "text",
+      "sha256": "723fddc0cd74e2b23f1e1f5f1a705195a1d9c54ac115f308de3b878b37fe8ca9"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/56480.png",
+      "git_blob": "db8289f9e1d4221e8745d56eb0420d3bd28c7037",
+      "kind": "lfs",
+      "sha256": "2b674a65c0221df124d4f5eac79eb36fa83c2d793241b60ce3248a60355b6ea2"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/56480.png.meta",
+      "git_blob": "dd98c8aeeec9d0a8a1c69fa023b8238172a2e96f",
+      "kind": "text",
+      "sha256": "2b2606dd219446cb91ab8d9582c6d6bd504903e45f85575b5c0646047e6f7703"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/57814.png",
+      "git_blob": "af3947b9c96152b0c204e13eff163585779abcaa",
+      "kind": "lfs",
+      "sha256": "051b433291e74622bb86fa8ca83c872f247e55502cf405118a2910f57ff84a71"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/57814.png.meta",
+      "git_blob": "b9e3986b83c7b102a24b1052b95849cbffe81bdf",
+      "kind": "text",
+      "sha256": "d9aa67ac70563219849f7e1f8871fd18896a8671877609f3d7dbbf66e8f53709"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/5941f.png",
+      "git_blob": "484f4d62f96ab8e5a6cad643add0a3381bcd3faf",
+      "kind": "lfs",
+      "sha256": "104d113c6e1cd7817d10a2385a018aa1bf94f6f3f9e26b9a261ee96dab7515e5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/5941f.png.meta",
+      "git_blob": "790be3d35ff06a7a9e4b60000967ab2a4bc2a9c4",
+      "kind": "text",
+      "sha256": "4e61fad35431254f2e3aaa5ea2fcb5dbe01d5c41c9088de7a76f4f9dcaaa16c4"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/64132.png",
+      "git_blob": "e74f7be1e0ada96f72ef49eab5a2a89a1e9cdc13",
+      "kind": "lfs",
+      "sha256": "5366de8a8bd7f7e8676339b4eb05235867762938af3d8684777a03b887972251"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/64132.png.meta",
+      "git_blob": "3bc5cd2311c30113316e408ad0f2686328ef9993",
+      "kind": "text",
+      "sha256": "20c7a7cee36bb397e7156627e65ee96acafb07803c4f96d6abf42ae24dbfa874"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/654dc.png",
+      "git_blob": "e20de3b7c16c20d46e1317f217e712bfb457d5c0",
+      "kind": "lfs",
+      "sha256": "72f3e6284351fa48c39ee6befabcd995c2cefa727308ad8c37f834a5a4f18527"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/654dc.png.meta",
+      "git_blob": "780880e2183cd3575b9ebd822415a358d6cbe0c5",
+      "kind": "text",
+      "sha256": "687a2eb7a215053cc9efe03877af895009f943b01defa82a35910986ba6f912f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/6565a.png",
+      "git_blob": "978d4ce222a200f0462c1e2181f2174f5a1ba84b",
+      "kind": "lfs",
+      "sha256": "dd1f9b4d47b5f36790d7278d72f104c69ae3040fd68ad5b03896149052796fb3"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/6565a.png.meta",
+      "git_blob": "82e2a70ecb2b2ac9a07c9e0944b8e7387c1d1841",
+      "kind": "text",
+      "sha256": "4eb76fbaf4e8e7c4d2b6ba60c0c522dfe28b7219c2a79a08c11fb6147dde3a86"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/6621d.png",
+      "git_blob": "6240f3131d0b17b6d3e2ac50adeccd7d264480cb",
+      "kind": "lfs",
+      "sha256": "7ab54ce509f498f334f8427af4482a7e3a73fccc7894bac5989e44be2babd5eb"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/6621d.png.meta",
+      "git_blob": "d516d1a87929b48bb9c99ded6e462f8ebfc0092a",
+      "kind": "text",
+      "sha256": "e29b276579c09d32bad79f562b2698acca594de3ddbdbb3f6d57303a64936970"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/6ca6c.png",
+      "git_blob": "fb56ac287d486b3327542055fccf80235e3f18e6",
+      "kind": "lfs",
+      "sha256": "70e00fade23eceb6048ee54aa18f0dfdfcdbab17abd4bc8978831156c8bd99d5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/6ca6c.png.meta",
+      "git_blob": "2be39d6052942bd275c6dabb015238551136a2ee",
+      "kind": "text",
+      "sha256": "eb3f384fcbdc3820b189fe0b8afa7b3b965deb5e1c425cbc600aed2f79760c24"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/72720.png",
+      "git_blob": "6ac74c6caad25742c694be01ca20040d0db67bca",
+      "kind": "lfs",
+      "sha256": "6fa0d530fbc201ff8c9b4a772b3241ddafa5bdbadf495e01205bec2f25032a94"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/72720.png.meta",
+      "git_blob": "fa8d19d1eb71d2c779f18784ee4c24ab6d74a436",
+      "kind": "text",
+      "sha256": "d32c604bccb98374dd25ef1d03d93f226c492a96f7b01fd8d2c8b4ec93a3a09f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/7465e.png",
+      "git_blob": "41ece9cb69a757c7646d73b2080483baef09d9c7",
+      "kind": "lfs",
+      "sha256": "3642711b502d52291e331d33061b9bc2306e47c3404a57c22d8261bf52525660"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/7465e.png.meta",
+      "git_blob": "5f2a4669c8ebccfb555ef33507533fbc2da9fb8a",
+      "kind": "text",
+      "sha256": "a1723d6607d253659cd7008b87b5eb56759c711e8683c279c2639014adb18ed4"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/84576.png",
+      "git_blob": "fa93500abf8ea83b8574e23a10f6e93a046e877d",
+      "kind": "lfs",
+      "sha256": "8f5ebf06b7487bda623a45dde2a1260c6df4c1bff6be3f3b1d63a32c13ca634a"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/84576.png.meta",
+      "git_blob": "f4c64c3940c8d7bcec522010a7702707286de8c3",
+      "kind": "text",
+      "sha256": "22bfcf2573cbf4a81567f2171e597e426cb75e7f7b49cca1fcc2845f355a7bd3"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/8758e.png",
+      "git_blob": "d85715a6fc7f1b37ad37541a5b555b1a16ae6c50",
+      "kind": "lfs",
+      "sha256": "7cf8a89b270831773f8ec73d7853bb01510d06cd5bacedd1a1e8498b2730ac61"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/8758e.png.meta",
+      "git_blob": "b21dbd7d18adcb6dca04cd8640880f1a7ec66c60",
+      "kind": "text",
+      "sha256": "d35281c2bd5b79f580fc4012c054dc9143393954cd002a0a68e94a0489738200"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/88c3d.png",
+      "git_blob": "900246f11d26a21364f37d74a707e07bf226181c",
+      "kind": "lfs",
+      "sha256": "3f52eb6c0666bf2e39510a9b5f2136493e780fa72d2d57ddc9f75d6ab94102dd"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/88c3d.png.meta",
+      "git_blob": "6f476b9d3527ba5df54cc353e381c44719b572ff",
+      "kind": "text",
+      "sha256": "cf1bfc0f6c0b60bdebcd3b6f033f3f7d09543188aebebf6cf32b5d4c56030d24"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/8c480.png",
+      "git_blob": "8b675b357f0081a12fd11b1cf90e41587275c09a",
+      "kind": "lfs",
+      "sha256": "cb4fb61a670239d75324ce169b8b3e9c74bec714dec01b603d62f9fa9be2a5cb"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/8c480.png.meta",
+      "git_blob": "36a1d4035755908c0dfc28d8b9296fb58910fd55",
+      "kind": "text",
+      "sha256": "61ce80b2176e677028c8d751b7d61df6d82810ed53934bc05997b7b04d52a79d"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/8da82.png",
+      "git_blob": "67c508fcf06b0033ca927d3f630ca6494ff08447",
+      "kind": "lfs",
+      "sha256": "737864260e1bfb48ad1d4a14abaa8a2fe84c6d69820384ed451b6fdaca32a6c0"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/8da82.png.meta",
+      "git_blob": "93cc3087914c5c0f834d03a7a540e23777b5834e",
+      "kind": "text",
+      "sha256": "d2ec8db730a22a976d387beecaa33666ecd3fded23989d0661a3fdcc1a7e86f5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/90fcc.png",
+      "git_blob": "3b789e91da0457f628cb0cb3d2989d2f594552aa",
+      "kind": "lfs",
+      "sha256": "a32af06d9cc4deb8934f01f306620d859ebaa888a842c624a65b0c88420dbad2"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/90fcc.png.meta",
+      "git_blob": "7ac0bb5d3931394661be6d67763c3f60439ca0fb",
+      "kind": "text",
+      "sha256": "6c30eb471e498e830aaf0dfcff66a921d9af2bff484e5da0e551085e8b6bf6c2"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/91521.png",
+      "git_blob": "934528d2aa521823aa586e61840136ea349e6914",
+      "kind": "lfs",
+      "sha256": "ed5288d3e45285c489005891c32c96127946820d897cd3c25b65bb0a2ac71809"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/91521.png.meta",
+      "git_blob": "5ad6d60d58c6bfea743777e3379142ce66311de9",
+      "kind": "text",
+      "sha256": "0d9da4d3e01148bed2fef79290f978779d51b59b9bd43fcbb47c51e75ba9425a"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/91f4f.png",
+      "git_blob": "6240f3131d0b17b6d3e2ac50adeccd7d264480cb",
+      "kind": "lfs",
+      "sha256": "7ab54ce509f498f334f8427af4482a7e3a73fccc7894bac5989e44be2babd5eb"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/91f4f.png.meta",
+      "git_blob": "d50a88e6ba13db2412a6ec279d5f7eeb0e4dac52",
+      "kind": "text",
+      "sha256": "f3d4ba8ce56fe81104feb0b50aad2b08e7f114a9049eac62a46f6a91e77aa8f5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/92bf0.png",
+      "git_blob": "6240f3131d0b17b6d3e2ac50adeccd7d264480cb",
+      "kind": "lfs",
+      "sha256": "7ab54ce509f498f334f8427af4482a7e3a73fccc7894bac5989e44be2babd5eb"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/92bf0.png.meta",
+      "git_blob": "18b2345ca676f80baed1bd11e120873870190f90",
+      "kind": "text",
+      "sha256": "49e11f0c26c131e93e7caaea8f3101ca48d9e031e929f6220ade1fd4ba48fa00"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/982c2.png",
+      "git_blob": "ee6eb0c20b3c0a969a9fd867c02b46042a9c9f96",
+      "kind": "lfs",
+      "sha256": "82fd4aa745f4c6f52ec636a1bbc0944c012fe7c30296747690f9801498daa9e5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/982c2.png.meta",
+      "git_blob": "e08f8657f24e85e42756cb32862d6ef7a775b371",
+      "kind": "text",
+      "sha256": "12ab03e83cc6b7bf3968701bbb27be9d4d2f1b216580f25f0b4a96bbae85a5f1"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/9864a.png",
+      "git_blob": "c10f760aac5f8eabd4530cf535c980118c30a9ae",
+      "kind": "lfs",
+      "sha256": "e5ef2e41cd846fa1a5f6d7cd46e2c06e59fc7a47b2327f7e0043751782d01516"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/9864a.png.meta",
+      "git_blob": "2ee5048593829f392dacc309a06a2fc9ec49678b",
+      "kind": "text",
+      "sha256": "cce14b7ddead814b8dfd4ee441e13131cad27831e737087794457b3ceac3d15c"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/9c136.png",
+      "git_blob": "558f9443b876310878fe55a00d7763f87b46c3b3",
+      "kind": "lfs",
+      "sha256": "fcecd17653d08ed7e75c2f4288ae63fc666feffd3c83963afcaa852d8ed6908c"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/9c136.png.meta",
+      "git_blob": "89963c68a657f6141ff5ff77bb8bc5f8b970e76b",
+      "kind": "text",
+      "sha256": "249886603aa8b287aeee297eddabc8dd2cde0b13673aa801b3d34a0d538892dd"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/9e0d3.png",
+      "git_blob": "fa8720da6b4bdea7ca5bd705e3e4200740aa2640",
+      "kind": "lfs",
+      "sha256": "593b6ad30c60ca7694f0a0e1ca6e1b84369bfaf13238e7b70849d3fac7c3b8ea"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/9e0d3.png.meta",
+      "git_blob": "bee7761181287b64ec9cf6f18a0ba9212421c5f5",
+      "kind": "text",
+      "sha256": "071953056ea7b83768444d2674e4126e752de967ff9b031a92ade27e0c6febd4"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/Nunito-ExtraBold.ttf",
+      "git_blob": "726d428e57f5635628e3097ff1e01686affa2862",
+      "kind": "lfs",
+      "sha256": "3bbcaa39ba2ef6fbd2df9743c38ba2083854b2329517629b2e35d5e44ad04c3b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/Nunito-ExtraBold.ttf.meta",
+      "git_blob": "2f4231d08c29c1b6a49bdd5ddbd02e384fa9a761",
+      "kind": "text",
+      "sha256": "297ab3e39bebb112382e59100b2d8cd6acd410a8ad7bf10b0b04a5b30035794d"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/a5f3a.png",
+      "git_blob": "fb56ac287d486b3327542055fccf80235e3f18e6",
+      "kind": "lfs",
+      "sha256": "70e00fade23eceb6048ee54aa18f0dfdfcdbab17abd4bc8978831156c8bd99d5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/a5f3a.png.meta",
+      "git_blob": "a0bf40f4757524b8579b0d21d6db5b82fbb91ed3",
+      "kind": "text",
+      "sha256": "9e376efca5adef819f2dc870d6956499548eab4e8e35eb7561ee2da9df6eeb15"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/a7fd1.png",
+      "git_blob": "45efe066b377d4436f293a9ae74104d37983e080",
+      "kind": "lfs",
+      "sha256": "df71576ae08a5d4f6d187919271d60ea4d4db944e9ab465cae27a001a0f5f48f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/a7fd1.png.meta",
+      "git_blob": "551fd19b9c13471dc89d8535bfb49053156ade8b",
+      "kind": "text",
+      "sha256": "798a6c67ac1dacca6969dba461647803ddc9cd1ef65cb0bf63770e75fb7401f9"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ab7f3.png",
+      "git_blob": "847619c681c528a41304ab3598ee4ddb5efcf088",
+      "kind": "lfs",
+      "sha256": "96b9b546eb43db2d45579cf020119c23e69431be8308507324766f9d7467f458"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ab7f3.png.meta",
+      "git_blob": "ea2f5218fc4fd4e4d07ced529367c38d2cd239ed",
+      "kind": "text",
+      "sha256": "488550c6fb5a3049ee892b4ecc77dd2b91aa1db090f7ae29d14c6b6fd8873eab"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/acd7e.png",
+      "git_blob": "af3947b9c96152b0c204e13eff163585779abcaa",
+      "kind": "lfs",
+      "sha256": "051b433291e74622bb86fa8ca83c872f247e55502cf405118a2910f57ff84a71"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/acd7e.png.meta",
+      "git_blob": "5fc15fbeddc503e6f72fa344c90c9bb9f0b72310",
+      "kind": "text",
+      "sha256": "03d9f63e421ddc0198a567ab6399ba33564de27b4169be8652297614e67d6a2b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ad73d.png",
+      "git_blob": "4b15aaa4132c81833127222e8e610dd5754c149c",
+      "kind": "lfs",
+      "sha256": "111fd0e983872c33f6178f87e7bd70fded149a5aab54b9a09e2687ff5fc85955"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ad73d.png.meta",
+      "git_blob": "790eeb9630bb28230bc7113d64f727de0be84abd",
+      "kind": "text",
+      "sha256": "452cba5d8ec5afaafee282576ee573404a1d412a02f4418266225de594f09f84"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/b3e5d.png",
+      "git_blob": "a3d1e9e7a2b525330de452e8c11de21d47f53c26",
+      "kind": "lfs",
+      "sha256": "5395767d1f342984c358a8b703e0f478b011e6814cc4b792133a021bfcfd4d9b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/b3e5d.png.meta",
+      "git_blob": "56a78860570ae4a7dc4a67c31df40ffacb362c7e",
+      "kind": "text",
+      "sha256": "a5cfbeefd1487a2d33b64eef1948e5e83fae7413412a481ab3c8bf0153fb4e0d"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/b44ef.png",
+      "git_blob": "478c5ed48f2246ac3b89240da153d354eef9ab5d",
+      "kind": "lfs",
+      "sha256": "01955c800985a89b82d7e4c325c6857efbef0628c2126cfe4340a10cc086c691"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/b44ef.png.meta",
+      "git_blob": "67e1d5852a4114b7b4b9243775e95501ca120125",
+      "kind": "text",
+      "sha256": "23e578d0e2e19c5f944714877f0c562ea1b6ad5f0f82685880497d039b414ee6"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/b6f1c.png",
+      "git_blob": "fa8720da6b4bdea7ca5bd705e3e4200740aa2640",
+      "kind": "lfs",
+      "sha256": "593b6ad30c60ca7694f0a0e1ca6e1b84369bfaf13238e7b70849d3fac7c3b8ea"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/b6f1c.png.meta",
+      "git_blob": "48987f801a317db4e83a3f4d67348a56feaa7018",
+      "kind": "text",
+      "sha256": "d6caf8e044d870eaefb6d16505181910a01e73bf88c5b3fa686b473a943e580f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ba2f9.png",
+      "git_blob": "5f2fcbc41fe881e72adc9c5d42ca3b3fb4b619b4",
+      "kind": "lfs",
+      "sha256": "0cb5b9b0af51f39ca5766129778bea614839da82eea5560dac204f0e25e63146"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ba2f9.png.meta",
+      "git_blob": "b3eadf58c342e6be2a715f0d659a82400d7cf065",
+      "kind": "text",
+      "sha256": "b60ccf4880e99e339e262c3d71dd0b3f60d26456e1831ad70284f6efb72c1834"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/bef7c.png",
+      "git_blob": "3fc29432741ad63ec3f01b3767b38b60e6f64c3b",
+      "kind": "lfs",
+      "sha256": "7edd4091c17a3c327e11ad29177ae3c2adfc5cfe13f1a6519fbabc507b330954"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/bef7c.png.meta",
+      "git_blob": "49db57c10f17b89dc22bc880edf878d4086ec848",
+      "kind": "text",
+      "sha256": "ffba3dd47fe76cb2fbeb63115f2d81ab541dffc2d86cac63833aca12a04b5147"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c0f0e.png",
+      "git_blob": "09bec7c84221187e035194bed31226a6b9287113",
+      "kind": "lfs",
+      "sha256": "6e158b4021b531ec8807d598478299b5c6d4f3c8364a784709090655985d5536"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c0f0e.png.meta",
+      "git_blob": "62600859e5ae48a27be573f8b94ce4cc0b459102",
+      "kind": "text",
+      "sha256": "a6fdd2df763c682257463a6dd3d2df3bdb79e43eff7d81e9c197b97e3d4aa019"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c190e.png",
+      "git_blob": "cc868cb16126a484c94a0c759019963894166045",
+      "kind": "lfs",
+      "sha256": "28a3676a472c95fe4b7324d4746d0dc1acd48e818fbab8dc4312487c4fdae2ea"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c190e.png.meta",
+      "git_blob": "5c85b5174014f07a40234d2c701fa88a7695c965",
+      "kind": "text",
+      "sha256": "2d6edee3c452f19188c13492fedc39e52911835a049516c1fdec10da557baa89"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c51f5.png",
+      "git_blob": "5f08b2e815c195c29cfc7dd0e750094ad319bcc3",
+      "kind": "lfs",
+      "sha256": "d43976fd388590fd24bb1bfbc4bb9a0b030210525cc8ec07529734177efc4b31"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c51f5.png.meta",
+      "git_blob": "2d5588ade9cdba87bd63a2469df91611ae53b0d2",
+      "kind": "text",
+      "sha256": "6230b5e237c4e1ea0c5d384f9183ffe2f15bed999776aac2116f2f6601b88890"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c6a3b.png",
+      "git_blob": "c20556195853485ef7d5a7d0b17aa887d08fa84b",
+      "kind": "lfs",
+      "sha256": "f592bda99f12d921459618fbda9a7fd955a950bcd1f31672873caa39a526348c"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/c6a3b.png.meta",
+      "git_blob": "5e92e78188fad0da6655a7917cdea7514708438e",
+      "kind": "text",
+      "sha256": "ec0bbfb77e90c977448c567b5b84923213e07bad286b40b7952dd2c84c532dbb"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d0de5.png",
+      "git_blob": "01ba9e7c5000ab35c947ffc46478ee19ddad6231",
+      "kind": "lfs",
+      "sha256": "f20974e988644b7261ed7b0077f7128e35448605b62026ad40f15c46454216aa"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d0de5.png.meta",
+      "git_blob": "1e0764a6e5064d3d26a3a6eb6de240954b5fd3fe",
+      "kind": "text",
+      "sha256": "c322e9c116c2ba9912b8703a3001b0d283fb73ba9b2ba9bb96c44d5b7aa2c9e7"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d4098.png",
+      "git_blob": "66f0767d07bdce22cd1a7e839c2dbf77e7cb347d",
+      "kind": "lfs",
+      "sha256": "8a88dd2b2ea8220bac3308f2ac26882ad74358a9e191ac30c563feb4a3edb725"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d4098.png.meta",
+      "git_blob": "3703a73fd972d1454ead426277b3af5ccc7e72cb",
+      "kind": "text",
+      "sha256": "e9492164a5a15a59a9507bb71ad96f2e842d74ae467c3e95ad4b8076e4311480"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d58f1.png",
+      "git_blob": "bec5e3c57a15102a59fecb1b7859be469488fb61",
+      "kind": "lfs",
+      "sha256": "399c95c5ab3611909e8e332fdb46f994ec114af27f68abb974df2801b7136eba"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d58f1.png.meta",
+      "git_blob": "3a4612d876ba34fe3d89b64d186d2db6ecd0321e",
+      "kind": "text",
+      "sha256": "d9a4909a1868c7adad1ff71d874246ce6232c40b674d68684a30f9939578466c"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d703a.png",
+      "git_blob": "cf88a1b5f65019f2745b6322c568a8de5c24c7d7",
+      "kind": "lfs",
+      "sha256": "41eb37a51230b40ab06b4e6114df87cfd64d67b69b787d4d35c9ef93d73bae22"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/d703a.png.meta",
+      "git_blob": "cf7477587d36b0eb81ec22212386282c0745c897",
+      "kind": "text",
+      "sha256": "5f1a68f49692100babe23c3f92e841abad0e305eb45a4135fed7564dc31096e4"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/da4f7.png",
+      "git_blob": "95bc2981915acff85248581f8bf12983fa61112b",
+      "kind": "lfs",
+      "sha256": "2850619d10c535aa44a464ccd6a35bd8fccf462d04571e0de44fdbed069983a0"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/da4f7.png.meta",
+      "git_blob": "23c080bf40ee3c02a3c23c0601de89736ad5d2ed",
+      "kind": "text",
+      "sha256": "e57b9a10ed7e4ef6d9b59961b9258d63f4624bf9bb8776ccc8e370841f3d0b23"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/dbecc.png",
+      "git_blob": "3fc29432741ad63ec3f01b3767b38b60e6f64c3b",
+      "kind": "lfs",
+      "sha256": "7edd4091c17a3c327e11ad29177ae3c2adfc5cfe13f1a6519fbabc507b330954"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/dbecc.png.meta",
+      "git_blob": "6d0eff6ed206ab7a3c58efedfba7f012b9526885",
+      "kind": "text",
+      "sha256": "56dd3146786860a5b405a189249a4f79658dae8f3d390d66cde7892dd4b3ac92"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/de635.png",
+      "git_blob": "f3df6dc8367372ed770ebc8a88e6ca241c574afd",
+      "kind": "lfs",
+      "sha256": "36172a0b2e830aa90ebedabc4b217ac6da98833f1aa1dada61dd49a1404aea0d"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/de635.png.meta",
+      "git_blob": "b9fdfbacd71663e6cd3dc31970ab4912a403e06b",
+      "kind": "text",
+      "sha256": "87ee68306d89e3d3706197d75490e29459a84aed1b14804e1b3c75f5a2797822"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/dff46.png",
+      "git_blob": "abeece85754361fa4499405ca6cbcec3dd4e360a",
+      "kind": "lfs",
+      "sha256": "f277158f1b3bca72a036137c0b2318873c8bc64388318f32261a38f03cc50a4b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/dff46.png.meta",
+      "git_blob": "06feec0dc64dcf13b9bef1ab97f8d10531da741f",
+      "kind": "text",
+      "sha256": "738470632ba6b67b93c4b65ebac7a0cdde1e2bf7e1fe4b70a2ab11610553cc05"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/e8e2c.png",
+      "git_blob": "f5f698a85ffbb328a655489f001c6a536e260d09",
+      "kind": "lfs",
+      "sha256": "9515a76e15fb5ef5bad999cce8bd2f50c700332ff452e17794f6e35c27485d69"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/e8e2c.png.meta",
+      "git_blob": "12cb71f95c47d654234e2613069063bf76ef74bb",
+      "kind": "text",
+      "sha256": "1a31d485802d671963515a4376d96f861a8ad3a7b00d45fec11450dcaa748b04"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ee931.png",
+      "git_blob": "7a9597c40ed97bf3b407e1409a78cbe490c025fd",
+      "kind": "lfs",
+      "sha256": "834c360b53fa584f5c175b248aa493714374b444df293683e0187db1cf6ce79d"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ee931.png.meta",
+      "git_blob": "e59ff8d32e60ea84747500c8e5a64383eb5355c6",
+      "kind": "text",
+      "sha256": "289b2239301b0258ce2c06353fe1a75ecb31014799c031ce7fb25d7537469103"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f0c41.png",
+      "git_blob": "af3947b9c96152b0c204e13eff163585779abcaa",
+      "kind": "lfs",
+      "sha256": "051b433291e74622bb86fa8ca83c872f247e55502cf405118a2910f57ff84a71"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f0c41.png.meta",
+      "git_blob": "e4128f0e07895803fcb1427425dd4130bc8c9a63",
+      "kind": "text",
+      "sha256": "d051e05e40f90c4b655c385228aa2b9b8d4fcfd091324605bcd5a96e0a708bff"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f3a6a.png",
+      "git_blob": "10a4fd227db2716e08853f8b69e7a3ebd656b9e5",
+      "kind": "lfs",
+      "sha256": "85b5f44f2212ea492f41eb804fd50da1362739696d98e1056b2e8e2470300f7c"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f3a6a.png.meta",
+      "git_blob": "8f6e82ac3f5056847b435a40cfe88ec13c46abf3",
+      "kind": "text",
+      "sha256": "737438bf43abe0d48fdf58f57b833e10849b8f61d2049cde7fe04cb9525d66db"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f745e.png",
+      "git_blob": "67afa022b7f4476cb568e3ce41ab3ffaf761fbf1",
+      "kind": "lfs",
+      "sha256": "ebac823b5c4544e2f80712ec7e47a5cc69b79f4ee19a317a16fd9cf0d71edddf"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f745e.png.meta",
+      "git_blob": "bcd2d5a4d399fc5c252df48096028c2221b15f8d",
+      "kind": "text",
+      "sha256": "336c50b0fe8e40f84795b8b8e23310cfe4d75312410a847335bcdbace2314a5b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f787f.png",
+      "git_blob": "263953e509836ac4ce2c8aa491ebf59ffad5eac6",
+      "kind": "lfs",
+      "sha256": "657d40e9c4ac4882c105a72a80a267c099e529922c660ae10564b32edc2f0d66"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/f787f.png.meta",
+      "git_blob": "25bc18a512b35dabe8ccd8acfe3e61e511939e35",
+      "kind": "text",
+      "sha256": "4c182c53ee967cc8818f204d93b6673fcde94bd680720cb900d9801c8692a57f"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/fa776.png",
+      "git_blob": "bda3a1b3f1a118a1442d4c6fb04092eef9826b7a",
+      "kind": "lfs",
+      "sha256": "8b7068513373462f7caf11f2e7ce01f779e8a97055822da4788343accd59a866"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/fa776.png.meta",
+      "git_blob": "514f74e1637fb60123f0a3948ec3b072c03bd857",
+      "kind": "text",
+      "sha256": "10aeac72471210c5294669e0d020d40be7cc65de8f468ba3ef610b6ab5808bd3"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/fac64.png",
+      "git_blob": "1135b00d25af4552633f7e0874f0770412f8fd38",
+      "kind": "lfs",
+      "sha256": "200bbe9a90b0142732a8547f138590d6a2c0e0b39854f5a9d2777d6ec3e31889"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/fac64.png.meta",
+      "git_blob": "d731784b3a0c709cc9a1dc0ec5921d8f93f7c12c",
+      "kind": "text",
+      "sha256": "d8df76c552f58ab877c3d47c355c8cb3b2417d6e080cc5495fb0324bc7613683"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ffaa1.png",
+      "git_blob": "7fc9a5fd2aa750afbd33fc431e0c07ab36771b86",
+      "kind": "lfs",
+      "sha256": "d708ac68c38fe58fae70d7b2303c6baeadde49e12b19e8c9ddad09b07f1022ea"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Design/ffaa1.png.meta",
+      "git_blob": "7213657f033deb7f6804c176a965db3e0094a7f4",
+      "kind": "text",
+      "sha256": "16178e6983bdff1e9568abe71994f703085e06b334fe9c247c91462589aa08ee"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash.meta",
+      "git_blob": "74d45c72aa7efd62591d33efa9b1ca126e279683",
+      "kind": "text",
+      "sha256": "1f69f0e498ada6a4f340b8fcc5917d05e0123985be4f2f40f018c94d6d3d6da5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Back_Left.png",
+      "git_blob": "5d38cab2ea03fecc25cfd0e3acbee40498bf0e8e",
+      "kind": "lfs",
+      "sha256": "8c3dd627f9115a4657c00aa542cbfc2f7ee730ec1b24b215001db79df36b4871"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Back_Left.png.meta",
+      "git_blob": "bb4e13be7405888fd4cd8ac5fc0a34231ab4be10",
+      "kind": "text",
+      "sha256": "9cbdae0782f3f5ed2111daf4dc7253fb84099e5754b3b89d24974513c122c213"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Back_Right.png",
+      "git_blob": "c4497c021d07ff646b5d8ec2976882b5c86d5f77",
+      "kind": "lfs",
+      "sha256": "1da05526b630dd4bc5b830276309a98038cdd9901c85e2d9f3956dc3246951e9"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Back_Right.png.meta",
+      "git_blob": "2a94c8ddaee5dd5b8fba30ee68d041f07afe988e",
+      "kind": "text",
+      "sha256": "9973f1b9d706cb7eae4009d7aa7606bf7afd48857b943f0030e70735fab2ced0"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Front_Left.png",
+      "git_blob": "bcaaace6619e29aab8c9781ad71f96756651a269",
+      "kind": "lfs",
+      "sha256": "8cfe89e2b99a2d8bf58fa66cf07ebf0ccbd7ec3475999ba2aff12d9665b03f8b"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Front_Left.png.meta",
+      "git_blob": "cd5571aed4493739ee004d1dc3a681a0a143df08",
+      "kind": "text",
+      "sha256": "0879713ce4fb2365f1fc58f93567f5472be6ac5468616674ea8e3f71762d566a"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Front_Right.png",
+      "git_blob": "59db400086fbee230f9b6f9eca8eef25ab718669",
+      "kind": "lfs",
+      "sha256": "f39c58339638e25c9a539df9096eb4f6d0ffd5c0f0ef160e674436f10c1c5454"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Cloud_Front_Right.png.meta",
+      "git_blob": "879307ba3277b55ca2950032b74efe9f0d419243",
+      "kind": "text",
+      "sha256": "234d5f97b98b2094ce6bde2501a6f308c586d4eb8852418263f24ad8c5e27122"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Glint.png",
+      "git_blob": "45f35d4d33b6a822d6f9a3bf152a828505f1935a",
+      "kind": "lfs",
+      "sha256": "a01ee71c2be829870519a9150321fdda5034ea8fb94f226f1f058e52ec94252e"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Glint.png.meta",
+      "git_blob": "66afe701a4609746171d65e8a0ce32077ba1abd7",
+      "kind": "text",
+      "sha256": "a64a08a9164554e5d5dba69dd2e1a0d9e4569b6eb4803656591eb68663db7a78"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Logo_CLOUDORA.png",
+      "git_blob": "484f4d62f96ab8e5a6cad643add0a3381bcd3faf",
+      "kind": "lfs",
+      "sha256": "104d113c6e1cd7817d10a2385a018aa1bf94f6f3f9e26b9a261ee96dab7515e5"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Logo_CLOUDORA.png.meta",
+      "git_blob": "0784e5b1afa8e6d4d12c5a1b79d0f5791fcda21e",
+      "kind": "text",
+      "sha256": "344fd5dcfef795696350b6ea1ae315c8f831528cf906962daf8e7da368115921"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Sun_Disc.png",
+      "git_blob": "8b9738aa86e5a43c73320749dbc36986ebf17103",
+      "kind": "lfs",
+      "sha256": "2865cc26980f99962af1b9caa12375a12b38fbeed7a2c5987f4d44c213fa56fd"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Sun_Disc.png.meta",
+      "git_blob": "5fc0c75411d2d9a69e25f02e326cc8731af8299b",
+      "kind": "text",
+      "sha256": "a8362df90d64a6583b31858455a9019e3ae263f20292b4f75993f6fdc01bbfe9"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Sun_Glow.png",
+      "git_blob": "605f12ec1df67401b528bf62d65bc39f4a3d2fa3",
+      "kind": "lfs",
+      "sha256": "6e899eff3b861f80686abd3a413512c23ff32c97dfa64035c412d45a9bd28eed"
+    },
+    {
+      "path": "Assets/_Cloudora/Resources/Splash/Sun_Glow.png.meta",
+      "git_blob": "bc4a71148b54b7d3bac3015caaab99de7fa14481",
+      "kind": "text",
+      "sha256": "8a63db4839568df3d4c41723e9b6b73f2315b3e2cfb182ace9c3f9dcdb733d26"
+    },
+    {
+      "path": "Assets/_Cloudora/Scenes.meta",
+      "git_blob": "3ee93786505836cfc8efbc7b13f7fa8c694a225e",
+      "kind": "text",
+      "sha256": "9c2c2f53af8237ad36cadba4f2c802536fb8b2a78840268fc0e0e3c429a714da"
+    },
+    {
+      "path": "Assets/_Cloudora/Scenes/02_Gameplay.unity",
+      "git_blob": "51b66f65016fd98c30718af6001937d8e889be6e",
+      "kind": "text",
+      "sha256": "d8fd0c508cad74a8d7ef8c863c6ce1c32e3f98993228f7934e39cd420ae10641"
+    },
+    {
+      "path": "Assets/_Cloudora/Scenes/02_Gameplay.unity.meta",
+      "git_blob": "5450826e1a8af058d911ac0ece816612b5bd4dc3",
+      "kind": "text",
+      "sha256": "311e047c040ffbe5159b2ac84dc4c9a1b7668ae0ef1eab123bdb811f0da3bc40"
+    },
+    {
+      "path": "Assets/_Cloudora/ScriptableObjects.meta",
+      "git_blob": "8c0a9ac30515abde2c3167093e0a141c1664deff",
+      "kind": "text",
+      "sha256": "a7bef596ac57727fb17afde14fb051b8aa0cdc3e36563383fe97323ad1c9865e"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts.meta",
+      "git_blob": "e138317d67c2bfcc98d12c185dacb6826b1a2564",
+      "kind": "text",
+      "sha256": "9a6b92e757dc2441ae32da59dd6d0b35b8c43e3af4499e784f3a926128061bc9"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core.meta",
+      "git_blob": "170e3d440e0155401a6fe1cc2238edd88a6bef11",
+      "kind": "text",
+      "sha256": "576e77363c2f77e9b2534ee78d7aff2e62142bcb3194e01a282958fd13b6e714"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/CloudState.cs",
+      "git_blob": "c2e65a097548e1ce0f158daa529826feb6e45000",
+      "kind": "text",
+      "sha256": "3878af54e7759a071dcfc28dcc4e8fc4b5fd61a2329e0b532ba1083307750dc6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/CloudState.cs.meta",
+      "git_blob": "2a7d4f95d431d53b3b91949264b4d4c66fb655f3",
+      "kind": "text",
+      "sha256": "10f01d66f77a79e33df6090a6fc742ec2ac23c53512cb75a8f282afaa8b3cd7f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/MobileRuntimeBootstrap.cs",
+      "git_blob": "5df5f71dc2cbec7f187979b8f94a5eb7e0fb723a",
+      "kind": "text",
+      "sha256": "d3eb6cc96a5b949a01119c4fe00f0abe7848f16e40318e01c249762bfe83d702"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/MobileRuntimeBootstrap.cs.meta",
+      "git_blob": "e366ccc005960894833078d038bdc80bb720209c",
+      "kind": "text",
+      "sha256": "465b794bfc9566b94ee32a85ac25243e7a518579f97dfd522300046a536a62db"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/Move.cs",
+      "git_blob": "35c241f4a22e34ca9b71e811a7ea030e96c0fd76",
+      "kind": "text",
+      "sha256": "81a75449dd85abb1ffcc3fe398f0d6f4b6449e1a869d1bcaaf77ae3c5c6a99c6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/Move.cs.meta",
+      "git_blob": "722d64191d5102535ba8c944b27b0d6897fa2f06",
+      "kind": "text",
+      "sha256": "0e3a7ea81972c94a9b2bd0a0696134cb11d1263653cbcd01898bd1f54f519d61"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/PuzzleRules.cs",
+      "git_blob": "571c0479ef1af80f15fcea6bcfe53232893d5672",
+      "kind": "text",
+      "sha256": "c17a6409f4a9c253e20d8ab31a22ed9d0571fa28b8087a5de9c44754c36a0698"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/PuzzleRules.cs.meta",
+      "git_blob": "72de766b7726d89e9fca3ff84d4a8ad004ee0c4b",
+      "kind": "text",
+      "sha256": "f917d4a9acc7d32680665725ec0875ae1320abd9e82c1ca77e1638c6cd002eb8"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/PuzzleState.cs",
+      "git_blob": "9e06c6534ed4a80be431e91ec7637e3730718bcd",
+      "kind": "text",
+      "sha256": "5325c7ce74e82bbd3496646b2f18ee621be6b393bca7d6f6ae7a60e8d6e54f8e"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Core/PuzzleState.cs.meta",
+      "git_blob": "cbb21f11e6910555be472ea290078d03bbe0aa70",
+      "kind": "text",
+      "sha256": "45a92a9b3c4392eac75cbf45810e297d8e6c177a3d0364d3ed9f841b24509499"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level.meta",
+      "git_blob": "d4ff83fa4560daf1aa850586766916e51a93e783",
+      "kind": "text",
+      "sha256": "7cd86c6d5a0c97a0a67c6db9dfaffe9e1f13987c9a5a9438961ad2a2fe337cee"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/AuthoredLevelCatalog.cs",
+      "git_blob": "0d3cb61a1fb759e51989923b4a93cd774e39fd34",
+      "kind": "text",
+      "sha256": "ebaf08023275459425b0373aac96296f1bdd1fa43cdeb07153e1bf8e7eaa94f6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/AuthoredLevelCatalog.cs.meta",
+      "git_blob": "48aac1a1bc79568e0fd38b7f541c3b8c05d0b855",
+      "kind": "text",
+      "sha256": "14e5d427f4168d54ce123ef5335e79dcddfe8d7f46eb7344aa0732ce6cd9561d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/BalanceProfile.cs",
+      "git_blob": "904bda3f14fbc2bcd8e105a3a0d06487017d030f",
+      "kind": "text",
+      "sha256": "56cc2481af3760a90bf94422479b5b5920c0db91bdf0808d9beb531107d7a210"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/BalanceProfile.cs.meta",
+      "git_blob": "dbe3c068d6801fa61686d2379e7bbf8809ebdd64",
+      "kind": "text",
+      "sha256": "859d29420af78a086d46afd36723b76dda17b44c338b85bb6685cc021c850968"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/BoardFrame.cs",
+      "git_blob": "36dde65c4c14458de9383682dd7663aded79b5b1",
+      "kind": "text",
+      "sha256": "f594983d9aaaf43012fc4e10c9083344d3da7a7d188a4e13687ed980476c03c9"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/BoardFrame.cs.meta",
+      "git_blob": "c5b63918668bc7467415e921ae06aa8af5361898",
+      "kind": "text",
+      "sha256": "88f1718d95ae14d4bdd440269ef9217f86646b82a96ce6044e6e1dba4eb88c4b"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/CloudShuffler.cs",
+      "git_blob": "d120ae3bfde50973d5ab6142f4f9c98a8854aa2b",
+      "kind": "text",
+      "sha256": "741012513ae35d79e9851d29d878c8125a802e090848ba12d006e4ebb0e8a0de"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/CloudShuffler.cs.meta",
+      "git_blob": "600d02fd7e31389b91f20402f243d76a0902817f",
+      "kind": "text",
+      "sha256": "de74f5aaf7307cc5e118a6cd7644446dbda1a479e5fe9bab2c727a038e438f4b"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/DeterministicRandom.cs",
+      "git_blob": "0b2848bc9aa72cd172254a524e36f71c364f452b",
+      "kind": "text",
+      "sha256": "fa0c18e24757110e5c84b2c2aa67c105c818e6ee7f04a1e9336fd4681f4ac6a8"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/DeterministicRandom.cs.meta",
+      "git_blob": "ee5cc9122d99c6cfa9df1b4dace5c69a97acec5e",
+      "kind": "text",
+      "sha256": "2cb43d090bb52c176d9bd21f32c0045cf973ac355b6468da3ca7c9f0da071f4d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/DifficultyCalculator.cs",
+      "git_blob": "f55ef7b3fc5c559d46fa25454882541b710dfc19",
+      "kind": "text",
+      "sha256": "ed6498ccef00ebb3b2cd13b6fa9e6626f51fc051d0668ee1bbacb0642559d243"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/DifficultyCalculator.cs.meta",
+      "git_blob": "0878da656aca042708a116c3c93f4face7eadcfa",
+      "kind": "text",
+      "sha256": "5fdac362384b46df9b727e3df95fed3429427d272e0dedc6f511627418594422"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/LevelDefinition.cs",
+      "git_blob": "0d5e234cdb98378dcc36168b7b7bb3bf4cd1d0c9",
+      "kind": "text",
+      "sha256": "71c98148d8a9ce8797f268b2d0290b172f3c33a2b46ba63cb84ea05271877636"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/LevelDefinition.cs.meta",
+      "git_blob": "9f1fc28bb985705009b9ac8903dbd4039ba962a5",
+      "kind": "text",
+      "sha256": "258f15b70bb86ca8a23066b23614a0f56de601ceaa7447795d168d4f914582a9"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/LevelGenerator.cs",
+      "git_blob": "1a1cea965a82b938a16f2a2abdb58146626f4ec0",
+      "kind": "text",
+      "sha256": "80fd61c75ed2d27c6ea7393911a2495314fea52693d47d3c542eee3764095c37"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/LevelGenerator.cs.meta",
+      "git_blob": "a4d58564f431d5dfb1740ca71eff0692aa54f012",
+      "kind": "text",
+      "sha256": "9b7144a63f18a802debed2964f9b8a9b72f690062b91738a5b25eb8bf7674001"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/PuzzleSolver.cs",
+      "git_blob": "8f25d337078872c0a6d1edbc0a005c674e96f946",
+      "kind": "text",
+      "sha256": "8b92454769a9c2e6d05390d5ba9f66e29a1f6c1887533e30ec46413fabdd259a"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/PuzzleSolver.cs.meta",
+      "git_blob": "553474191af7f3367e80118dc85d16ae48f8b7c4",
+      "kind": "text",
+      "sha256": "22ccb84246448245eac9aed760a29f468c272d02acfa9778e406725ce2ef1cce"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/PuzzleValidator.cs",
+      "git_blob": "7ce52c5d997188d2bb859e843b3c27d01f649f7e",
+      "kind": "text",
+      "sha256": "94c859fc01c9a23dbf3f585a9b83ab76a8f7a835218ef92b485b346ae9ebbce8"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/PuzzleValidator.cs.meta",
+      "git_blob": "40fdea7e3f2d7e485ab4955c4fab101ec18b8e99",
+      "kind": "text",
+      "sha256": "3a40e0813830e8051858d26a6b270f190570df64aca2154c9957c3ba51b73a82"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3BoardText.cs",
+      "git_blob": "fa07ae8333e3a55368f593df11fb72f02c75a7e5",
+      "kind": "text",
+      "sha256": "83184664453576f3b29d1ff04c265fbfcc06c54d87c11ede7d50cc168f6d5b2a"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3BoardText.cs.meta",
+      "git_blob": "957477bc33db503c286cb14aa7cb18bbf740edb5",
+      "kind": "text",
+      "sha256": "76015986f811f2c657f8bda3daa01b2d194dd13c4421733c504a73f098cb5444"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3LevelData.Generated.cs",
+      "git_blob": "82350647cc4b3a4a339e01fcd00d371ba6f62d3f",
+      "kind": "text",
+      "sha256": "cd65b78d7954bae7ada57cb142c0c3c408dbeb39b3bdd66740d244aeb389c5a6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3LevelData.Generated.cs.meta",
+      "git_blob": "37f52f779add37dd18a68e3b0910b2407ef48d23",
+      "kind": "text",
+      "sha256": "ae1b1b40a0f67662cdbfd15ad8bff9454cf04f18cdc26759ff301e01b56314d7"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3LevelData.cs",
+      "git_blob": "7392a0bc907e6da26246dd5759e88db4324bc182",
+      "kind": "text",
+      "sha256": "ecddc9b309e8d361f38b45c70168a2ddf3cc3d60479bea9d6aab67a93c741f62"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3LevelData.cs.meta",
+      "git_blob": "bd8ef70cf32919db95b305c0cc6534b53ed57906",
+      "kind": "text",
+      "sha256": "5f5903816acef81d36b30188f72f7ec144235b911d2644085552ede74e621f6f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3LevelPlan.cs",
+      "git_blob": "5ca212fbd64da417af5b519201b902f3f044f08b",
+      "kind": "text",
+      "sha256": "8429e826fe4549373269983498eda4784f627ffd21095931666580e91553c877"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Level/V3LevelPlan.cs.meta",
+      "git_blob": "021ee88c678cc522d00032f2b319680cec49aae8",
+      "kind": "text",
+      "sha256": "3279b987e4951d7dd2b5fc5c5d5b8038ab4a53c3f9adaec2719557b777ccf099"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers.meta",
+      "git_blob": "f251b1317c9b38f2ab8ca2ed1d89ebc7008a8193",
+      "kind": "text",
+      "sha256": "b49fdd56f22dfe3a504bc0cd36524a1d9e9a268a897f899b62f60f4636105b6b"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/CloudModifierRules.cs",
+      "git_blob": "a1a55b684d3c3210752464880898021e5467ed24",
+      "kind": "text",
+      "sha256": "7baed6552161cdec7eebc761704375a852ce1c53016dd1faa8201da8f56ad711"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/CloudModifierRules.cs.meta",
+      "git_blob": "c0fb2bdbc3ab2e750fb7f6f1cde0a02b1c41158a",
+      "kind": "text",
+      "sha256": "28fbaba05824ecf4e38b35301799b7a74288756638ae4e51b181289609b2562f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ICloudModifierRule.cs",
+      "git_blob": "7a894e0e4d41bdbe5a9708412da5cccca6f49e68",
+      "kind": "text",
+      "sha256": "4f9b02114f052dd22e51b96032d35bfe27c25db9a435194d2d309247a723edef"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ICloudModifierRule.cs.meta",
+      "git_blob": "2ae19430b92b1fff9205f3c8d99e5591133aab83",
+      "kind": "text",
+      "sha256": "9175d750f86c278b961745cd928697580f8c2b5b97ce1ac480444b50f094b97d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ModifierData.cs",
+      "git_blob": "91570f30d1f66099dc2818b5a8b1433f45a036a8",
+      "kind": "text",
+      "sha256": "7169f941552ac50b33078c12ccd25ccbdf1ad90ce61e15aa4e2291d46fef61dd"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ModifierData.cs.meta",
+      "git_blob": "fbe778c609dad54d377eb8da22715a39e7270fad",
+      "kind": "text",
+      "sha256": "7974d4fc1d4c9e8b968c6259a361e8850135a2ab2e8d9b918142fd93aeea04dc"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ModifierRuntime.cs",
+      "git_blob": "9aade7df32e20c96bf8210ec9f79864d2fc689ee",
+      "kind": "text",
+      "sha256": "611ae5e83a16a8b527b6c324f485f76dc7731ba4016f63bcf773c1bcfe4e47a6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ModifierRuntime.cs.meta",
+      "git_blob": "7dfa2f10c2d283a698a8cb9891548eaf731e9320",
+      "kind": "text",
+      "sha256": "50b1c475bb16acdaa75990a92c9ccb2cb3348f7baa28ca1bbd3a45266f972888"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ModifierType.cs",
+      "git_blob": "648507853784871c32f54f3fcf4dd32f220ade01",
+      "kind": "text",
+      "sha256": "41cb134156097ebca35df162c9b3c8e26b4a9ea8755a141ec8bd63209df52eae"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Modifiers/ModifierType.cs.meta",
+      "git_blob": "a5852e62d8df447672c63f39eba5ed647e70a343",
+      "kind": "text",
+      "sha256": "b91dfad407c14642df51cbfc7e1e5cf41b41295381f5bc61069ac2e1931af0c8"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression.meta",
+      "git_blob": "48cd122691bb5cd528121c0b05895573bfc390fc",
+      "kind": "text",
+      "sha256": "b1210efec260ac9c1ee942989a8341bbedb198276adc04f66f69fe6dcdfe5efd"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/BoosterManager.cs",
+      "git_blob": "a2f1b71b358bf1d0d315850d1dfc234d91d639c5",
+      "kind": "text",
+      "sha256": "fae04078c56edd2adf0e787654cc4e2470e91068e42c0dfcfa20fe15e87d4268"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/BoosterManager.cs.meta",
+      "git_blob": "e5702ae879df14e7018573f9076801a6b34517b0",
+      "kind": "text",
+      "sha256": "eb443e2d3feffce1dc6d84b5eae190e1326caef1866da289f88f5ac6e1a3631d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/CoinEconomy.cs",
+      "git_blob": "159e77b89746f674649bbabbc391522ede7ebbb0",
+      "kind": "text",
+      "sha256": "59f1c9834e6c82fe309ab3de505804be9bd15002e489e840ae1f4e42fc25fb38"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/CoinEconomy.cs.meta",
+      "git_blob": "972ce9c454731bf978bb41b3f2e4a24b09359eb9",
+      "kind": "text",
+      "sha256": "87e11ec8a82644430a22b8f70275e3c52fc8490e13bf478261b1e8193837d7c2"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/LifeManager.cs",
+      "git_blob": "af8c922d4b803b4776c9fd3157f1e8e007ee1b5e",
+      "kind": "text",
+      "sha256": "e929e9877bed385e9a9f830a8d2158de8ed23e2c84af37aa1f78273be5529e45"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/LifeManager.cs.meta",
+      "git_blob": "7b4bf05be3db98da923512a87e1fd051f8b6a98e",
+      "kind": "text",
+      "sha256": "0aa6c4ac6a224a3e20b6c4e66f45fd6c962251f42e4c6eaa39372dadf37a7675"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/ProgressionManager.cs",
+      "git_blob": "168d11ba09ed55a0e839a83b2c1a8c6ebf690f67",
+      "kind": "text",
+      "sha256": "94f7b95a281cf47340873c88d76c2b3035951b7e16e770833bb70f9ccf094bf6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/ProgressionManager.cs.meta",
+      "git_blob": "46e89dcd8c2ba62e50a6cb5a5ba047b7d8fe551c",
+      "kind": "text",
+      "sha256": "bc08d3868421faf3bc7b3858d43588d04a8d16d1d8b940c31d2423d878a73539"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/RestorationManager.cs",
+      "git_blob": "1da2d6fe75ce50042fa9e44dd0c1fa69dc114126",
+      "kind": "text",
+      "sha256": "2eb4a5a1e169846129b2128ea12ab348915510fe9d4ffe504b910db0f70ce648"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/RestorationManager.cs.meta",
+      "git_blob": "8068ee30c38fee0a14d00d789015f643a0cbfb26",
+      "kind": "text",
+      "sha256": "7f89577eb474eae6fce6f0c397d3fe72c667b0325694083e4c39251153ae3196"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/WorldCatalog.cs",
+      "git_blob": "ee405e9a3ce2ede2dc6e4d7b39d0528ae438e1ac",
+      "kind": "text",
+      "sha256": "fc0df5baeb142a33d55a35ba184e69c13eedebd989422b9c19520de602cdff75"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/WorldCatalog.cs.meta",
+      "git_blob": "10b0b07c872fc0b1e29203240113515a2dad50c8",
+      "kind": "text",
+      "sha256": "a1c28c373cf13c71f1e32e642b2f820e83d693c0efd0ccd015e2433c803a480c"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/WorldDefinition.cs",
+      "git_blob": "5c0d8601e7c6b1810db426cbe890e58cefb310d4",
+      "kind": "text",
+      "sha256": "13d18170a19489a5f24bf349653fdb372f37c093eff9e4c11b4fefabedeeaa09"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Progression/WorldDefinition.cs.meta",
+      "git_blob": "c522a363c2996d20de91a0e37add04bd6f23fd1f",
+      "kind": "text",
+      "sha256": "be92de61a63025d1d8ad46a3d8552530ace03bd47c308f11fb145164c0507a2f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle.meta",
+      "git_blob": "ac13e7c97b4a2a16463ee7aa6a0e53b5ea67f3cf",
+      "kind": "text",
+      "sha256": "2dcaf5f801b28c696752060aef25073d7ae07357512f5fc48e919b2eb591a614"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/CloudContainerView.cs",
+      "git_blob": "a6d998d78ec405bc68f84cc792c464587a7fb507",
+      "kind": "text",
+      "sha256": "58aab528d3befd8e6c93c9c2a7f3518f9db9073c0ab0b83e6fa50583b76f2b0c"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/CloudContainerView.cs.meta",
+      "git_blob": "bcdaeedf0244c8d31b4c7d1a50e1d5fab973ea44",
+      "kind": "text",
+      "sha256": "9b49d02dbfd796553bc798176f2f3f22f363465b2cedbbe8c577fedc807fc4d6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/MoveAnimator.cs",
+      "git_blob": "d20cec2a0ff0d4263e9845866edadb41f99aff51",
+      "kind": "text",
+      "sha256": "8fef3ae2ed7f58854e91f3783e5a5b4d8e2a46d67d71698d871a4b3b69a30ab4"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/MoveAnimator.cs.meta",
+      "git_blob": "782e23d52b18a0ae4db8b2a04f98b55afecb456d",
+      "kind": "text",
+      "sha256": "8c74293031901388fef7bf919a6f9b9def601c324ca5e87530c43d3af4738598"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/PuzzleController.cs",
+      "git_blob": "b649ebb9b699d0b7281cf19e13dd5020f9099be2",
+      "kind": "text",
+      "sha256": "6b09f78683e80ed8dc8fb4e4d261586372d70163b3070e6621e008f5e80ee7ef"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/PuzzleController.cs.meta",
+      "git_blob": "d9ec944ca00486e5e7f5c6ed23eb558324411964",
+      "kind": "text",
+      "sha256": "500acf761d8164d3dff5d94ee729dd0032d8a068bca8c930393a445a7a45a68d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/WeatherMotionLibrary.cs",
+      "git_blob": "f71fd4848b21e39b811dde65d283ef45ea4c2f0d",
+      "kind": "text",
+      "sha256": "ce68b9ad15f2f4fbecbb8614623cd289cadfe390353ba83eaed01b64e25ae0b4"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/WeatherMotionLibrary.cs.meta",
+      "git_blob": "67d2caae09fc61d1749faf855e302ce14017b920",
+      "kind": "text",
+      "sha256": "379dbdbc4d9fd27ee5626ea2e54ae558b3857568446604c7f817369b3ec46c73"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/WeatherType.cs",
+      "git_blob": "f5536849b14310ace6ce8974c0768b2266574e2c",
+      "kind": "text",
+      "sha256": "1a711621d6a95cd0a72144ff2c76653e9fa908e15415ae9f98103381d4f44e93"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Puzzle/WeatherType.cs.meta",
+      "git_blob": "5c2d92adca8d9cce4de378d6fe1fa0b697f8fc3e",
+      "kind": "text",
+      "sha256": "eb199dd38963bac3488706bc218cec2cf7da5d5fff6dbc17c3be6316bb5426a1"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services.meta",
+      "git_blob": "9dccd02e24811ba99cdeb1dbc23afcb6c35a8ebd",
+      "kind": "text",
+      "sha256": "b0e25d0fadef1263e4e1e4dafe87eac5efa8a252eecd668ea497729229bdcb40"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/AdMobAdService.cs",
+      "git_blob": "529d64953934168eb2cdfc1083444defa2813042",
+      "kind": "text",
+      "sha256": "08a2aa3087a969e450c035fae1460a8cf10c556e0b0fbdd73b8fb7efda2d9521"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/AdMobAdService.cs.meta",
+      "git_blob": "68631f151c1e1da037b56aa2b2f431a53e125284",
+      "kind": "text",
+      "sha256": "6548ffb6e1824b5aedcd29b1eb3de0cc6fa91cd1da109c79190b9f4eaefda518"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/AdPlacementPolicy.cs",
+      "git_blob": "93e7815a54f631373385490809046183947a911f",
+      "kind": "text",
+      "sha256": "4fc17204014caf527890a02f27bb4c8e0392a282287f92bc0cd2d4698394ec98"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/AdPlacementPolicy.cs.meta",
+      "git_blob": "7a01c455aeef720ce66580fd8a40872d09c883b7",
+      "kind": "text",
+      "sha256": "4dbbcb3b12370d48f25c715f666bd14aec7b986f05dd2882964601b317b5a1a5"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/AnalyticsEvents.cs",
+      "git_blob": "7378dad31b4bd42e79a8e6102b2d2939a439f7f1",
+      "kind": "text",
+      "sha256": "4823c0f89595a378ab7cc7a34abbf27717c962229b07e532b29626ae79b3d494"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/AnalyticsEvents.cs.meta",
+      "git_blob": "d52610ef4727981efb18f98bdacb76668b149aea",
+      "kind": "text",
+      "sha256": "33d8b72e1bd7513cb48826f0220e7dcb44ac15129fb49b48c9052c37a96a9bc2"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/DebugAnalyticsService.cs",
+      "git_blob": "2c29d247b936366d30df042cb13a00f9068af04c",
+      "kind": "text",
+      "sha256": "cae1d25d9a069605cc5b971b4ff5166d663e1b824e2b5d8b2e4123b7d181fc6f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/DebugAnalyticsService.cs.meta",
+      "git_blob": "fd6e8ba73855ec2db50962fda8a8595e9276ab48",
+      "kind": "text",
+      "sha256": "4124748cfff8f359f96af3cfebdcefdb29b566c6c4bcf595dd1430d2c91304f3"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/FailRecord.cs",
+      "git_blob": "8d6a01cff769088c44ea6bc5140fc0aea6638492",
+      "kind": "text",
+      "sha256": "d37aa814ef50acd236959da4a4c316fe565dd8cd9fb211696163f2e8dfdcd145"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/FailRecord.cs.meta",
+      "git_blob": "fb562c3fff59d463ed01fb7bc5cb35d8997dfe56",
+      "kind": "text",
+      "sha256": "c2199a42d18e2b9526f3f7f4f5332b344b5c2e111f7aa9d6d17be0d9d557c7f6"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/FakeAdService.cs",
+      "git_blob": "a05696efbb5fb9decef30a9599a4c7020cf559e6",
+      "kind": "text",
+      "sha256": "927f21f59126897b63312eeae4182ccc630bb997ed43571ae27e11a3d3fdfee3"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/FakeAdService.cs.meta",
+      "git_blob": "f515457bfd1cd4a5984287d6ce846b4c60dd49f1",
+      "kind": "text",
+      "sha256": "b0b493ed8e20b3e155784ce65f12c512f0afc4d7a0d9233b3555bde6f9a0965a"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/FirebaseAnalyticsService.cs",
+      "git_blob": "b20970b8bf72b6d66f2298840bcf8e034c5a3e1d",
+      "kind": "text",
+      "sha256": "7160340d2b2147a7c290a239cd61007f8fb7e75a35aff1b35202e073b531e803"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/FirebaseAnalyticsService.cs.meta",
+      "git_blob": "f014f9a6966528444b1ae6e11fe64ca9f4dc4c0d",
+      "kind": "text",
+      "sha256": "1eff3ad6e513f93a06239f5b6fa9dddc35c8138d972fd6d6567ff8ae69b42c69"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/GameFeedbackService.cs",
+      "git_blob": "7cac6fee2a164fcc581a78053d9412ad573383a4",
+      "kind": "text",
+      "sha256": "de3ca3e0f328dd33465be5782abde37b8b2467bb6e714f30b9213c1ec59dc77f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/GameFeedbackService.cs.meta",
+      "git_blob": "3e5dead48833d579699b6b2db9e46eb72fc01cd1",
+      "kind": "text",
+      "sha256": "e46ff529dd3fd1e20eaa25470d4b35e9e256d78ca7fbcca586bf66afee0381bb"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/IAdService.cs",
+      "git_blob": "3eee9446b60a9ab1d67f0c2c624687022360ce58",
+      "kind": "text",
+      "sha256": "c4917c4efde42f317bba83db9b76622823e6d9552fe09e5c53879b9df8672d07"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/IAdService.cs.meta",
+      "git_blob": "35193c6e51eb1c1acf88e989c34cbf02594eecfd",
+      "kind": "text",
+      "sha256": "6beef461625d1cd16d950ca5c9d2383fb5e187d7ec2681d04477b7da54a5e762"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/IAnalyticsService.cs",
+      "git_blob": "e747895f8bab47a8cb57c642864a4aa33b04a80d",
+      "kind": "text",
+      "sha256": "4d0c98a31727f6d734976d1950ef356005e06d4a563c8b338f7c9de86de18594"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/IAnalyticsService.cs.meta",
+      "git_blob": "af2d5ab6262695291321f330836918a7259dedf4",
+      "kind": "text",
+      "sha256": "a501d164eb7f1a3d58c219ca543027869eecfcb6608d0fb2bc114d4ff7447227"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/ISaveService.cs",
+      "git_blob": "d53aefdefa2b4de632916f0b8159b1a0803ab973",
+      "kind": "text",
+      "sha256": "97bbaffb0ab53f5b66529fa5121405e66ad6c787f98474de456a6312a711672d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/ISaveService.cs.meta",
+      "git_blob": "bbe45a924310569dd4cb20c386329abdb46a3acf",
+      "kind": "text",
+      "sha256": "f2568afcd1424545b2402545dab36ac91b35df4dca0dd878ee0003eb75f9cf35"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/LocalJsonSaveService.cs",
+      "git_blob": "12dd80f94b0587e27aba4acc51e48ad094f2139a",
+      "kind": "text",
+      "sha256": "78e6138429899a43d08e88d88b74d2781524f46f287a83a8ba54ab58c3380132"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/LocalJsonSaveService.cs.meta",
+      "git_blob": "461d62f39244d297ff53701d3e5245ca6ca45764",
+      "kind": "text",
+      "sha256": "b24bec4400b64284458c6b1f27fa82f1c87e83c898c4657d4d61d11752ae7a7d"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/ReleaseConfiguration.cs",
+      "git_blob": "fdfcdca7c5a4aca100a762ad1f16cddacd33bf0d",
+      "kind": "text",
+      "sha256": "bd39049e37f2029d536ab3d0dc92844b347af1aab88e2687de8dc333290c52ef"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/ReleaseConfiguration.cs.meta",
+      "git_blob": "f1859da11df2e5b66d7225f539a3f45158fa3838",
+      "kind": "text",
+      "sha256": "fe798f6734752861c39c0204378ab61d5421ea9871a8cd11710ce4511bbf8988"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/SaveData.cs",
+      "git_blob": "8cf0d2ee6fdfe8c596f77a8ec61ef0c780e70522",
+      "kind": "text",
+      "sha256": "35a400fdd3e30907bb8342865b11ad81eb265d5857d04303fc4dd356aa9a7d86"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/Services/SaveData.cs.meta",
+      "git_blob": "eb3c183e88281b5721e037c88e81018741952bb9",
+      "kind": "text",
+      "sha256": "f67396dc3290de77b40014ec7591b9edaaa441bd508f5a88a02b000261de84db"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI.meta",
+      "git_blob": "834bf1cf1e4db1df7825409c37144ca857f3c790",
+      "kind": "text",
+      "sha256": "cf801c077ffe285e91ff55b28a845d988aa6d03493e265fa1947cc11bfd27e3f"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/AdaptiveBoardLayout.cs",
+      "git_blob": "2760f79ce25aa09d884453fee033f2a63604ab6e",
+      "kind": "text",
+      "sha256": "ef37f4b46d2f6161ebdbfd10ca8405bcd7b07aecf4b9ae4544e5bc8b50d28dd9"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/AdaptiveBoardLayout.cs.meta",
+      "git_blob": "c5f60e1392833b6ee040b7664f6935d894dd2237",
+      "kind": "text",
+      "sha256": "a6aaca96a0bf915e04a7ed6def23088af77b96f1f94524c1c9eda37cca573615"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/CloudoraVisuals.cs",
+      "git_blob": "f9c70c884c39df667bdd466e31d065e3479ba87c",
+      "kind": "text",
+      "sha256": "d41ebe2957dfb55f9c5e3d616ec0b48ffcfc39d54559e870db4d7679ee6190fa"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/CloudoraVisuals.cs.meta",
+      "git_blob": "7cedc368ea5fa205b7fbd7677cc2b2b7060f194d",
+      "kind": "text",
+      "sha256": "f00ff875b29d5d536f962098c49ceaca5bc5995f1b09b56da0432a149e72c5df"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/DesignUI.cs",
+      "git_blob": "134b93ec0ec029998f827aeca3fbcb006285e75b",
+      "kind": "text",
+      "sha256": "64a72542bd519094fa7d7e0c822ff87f7e542005279782fc73beba93b12df754"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/DesignUI.cs.meta",
+      "git_blob": "1f71df315bbea1591c3c8cf932abe2c96da12d48",
+      "kind": "text",
+      "sha256": "8862ad6adbb5524e7c8b8237540afd01a40a10960ba9554e1511cbd768e626cc"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/GameplayOverlay.cs",
+      "git_blob": "5bf21653222796bbf3c3b20d507d0fbbd40ac8ce",
+      "kind": "text",
+      "sha256": "b688f5ac4aee1256813d6b019cf4c790d6411c02d69902d91869c0341479a8f8"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/GameplayOverlay.cs.meta",
+      "git_blob": "a75bb469772b0b3cec0ae5fe7732593e568f92dc",
+      "kind": "text",
+      "sha256": "9b10e275ab8a40620e2c46e31f77cc6683a9e13e23dda09a723b521732784430"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/LiquidFillGraphic.cs",
+      "git_blob": "3b16f5159f534a62e7314e928c782410d5ff5b67",
+      "kind": "text",
+      "sha256": "0036d4c986928d66254cbddbefdafe5a08c4be5fa953bbc63b0f0693dbc1cfe5"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/LiquidFillGraphic.cs.meta",
+      "git_blob": "bd1074fcc6d48e7a44d5db3cb71c1f69691ff324",
+      "kind": "text",
+      "sha256": "10555c2231610a9d6fd1ec749e4bf78ad3ad8b2ace39fd82a3c5d3cf7cd57b1c"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/MainMenuController.cs",
+      "git_blob": "9849e7d4f671f915c1b630a44f01aa8640bf1047",
+      "kind": "text",
+      "sha256": "a5c47d6046ed97fbac6c8df21eaf3670e4803679a2157589d7455297b2563388"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/MainMenuController.cs.meta",
+      "git_blob": "ea6f9fde19e607c4de4f26d482a19076646fa98c",
+      "kind": "text",
+      "sha256": "ac368d1097e5f689a0b15e8c5954d608996da336df915b5c66187fcdd7fecde9"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/MilestoneScreen.cs",
+      "git_blob": "19b637460b13bcc00a4aa50272fb02019db0adf6",
+      "kind": "text",
+      "sha256": "87001dc035fc279515ec49ca8863adae3ec10bc4fe1fe48cf1c4f34fa389a27b"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/MilestoneScreen.cs.meta",
+      "git_blob": "3ec6288cfa2bb5895e19c543fafaa2bdac0fb8d3",
+      "kind": "text",
+      "sha256": "d31c111fdc5e9a3b0da79c3d03d5239cc3f8d9448e0761a5046d14df3c873af2"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/OpeningSplash.cs",
+      "git_blob": "a0a400df25c1fdcc8551d7ffdd97ed1dcc83df36",
+      "kind": "text",
+      "sha256": "f6f236de32edc79b3dfd554eb0bb2990b0c6f88b4f0bae3ba25981bedcefe451"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/OpeningSplash.cs.meta",
+      "git_blob": "7bdfaca25e19977e4c634b012a69f09d26f58803",
+      "kind": "text",
+      "sha256": "1406e9e6e09f99423033d4d24e8486832047a45c934bd46757f8a2df8b105dcd"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/SafeAreaFitter.cs",
+      "git_blob": "f626fef5b7ca291b5480694e13d15c7100c5b7c2",
+      "kind": "text",
+      "sha256": "6d5e9ff1c25696dd05e294f21f40a6a2ba0c4ea1f5c347c020e743f5757b4569"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/SafeAreaFitter.cs.meta",
+      "git_blob": "819defa8ac8c1ecbf0bbf0d89a7b10157e089533",
+      "kind": "text",
+      "sha256": "38884d4d8ac696e6b7f0e9002e5fc6c9417b1795482105f36c2687088d674984"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/VectorShapes.cs",
+      "git_blob": "56304af8a22d6007c1d3535669a52a8ee1d6e35e",
+      "kind": "text",
+      "sha256": "3d86222962fd6b4e4401842dd59f36b852b012ad910413c8951b9d6e8eaec312"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/VectorShapes.cs.meta",
+      "git_blob": "35d8bde226e21a7f29b54448e0a74c9e7a9ead42",
+      "kind": "text",
+      "sha256": "af29f69d6e537970bf92f7eea5e473b8f27215f5f8db68bb536fda48960e8aed"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/VesselCompletionFlourish.cs",
+      "git_blob": "b9bf31e3e920f5e8c327133f0e17113b4682e7c0",
+      "kind": "text",
+      "sha256": "8d32634abf6ce54ffb02cd415d5025d1dca2ac7a9151a136b9cb0d86de6dacfd"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/VesselCompletionFlourish.cs.meta",
+      "git_blob": "693eabcca31727525c42c889f3ce53e5e0a809ae",
+      "kind": "text",
+      "sha256": "be1400edc24f88164bd3d96c53b7f0c1e16cf4c8d8687862842b8015136d7eda"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WeatherGlyph.cs",
+      "git_blob": "6bf0638622d5901d9b04ae53245953ea8ffc176a",
+      "kind": "text",
+      "sha256": "4855c4d8ffcec866e65f8146ca4242cd04172dd95771391c4a48a03024c6bfe7"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WeatherGlyph.cs.meta",
+      "git_blob": "5bcdb32bc4dc784eed89cd4f40e085d9ab6d5bad",
+      "kind": "text",
+      "sha256": "7f6a6fccf632c9fc9d3800c8d6a10a340786f7fa8201b8c2abc6f58930066e90"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WorldAtmosphere.cs",
+      "git_blob": "d1be1a5a0f545ba7e5aae5ea16e9e1c5e3ff20eb",
+      "kind": "text",
+      "sha256": "fac1ddd8a9e477b485bd3adc71a478363ab457983a1f6e01c3bbddfb6cf8cf10"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WorldAtmosphere.cs.meta",
+      "git_blob": "8ea16977b2453e71057ddc4a9de9abd8f7a57e1c",
+      "kind": "text",
+      "sha256": "70e8f5291558d0b99beb9431f2040d4ae3703cfd4ce93e9a0348c92ad7395a1e"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WorldRescueReplay.cs",
+      "git_blob": "39a567ee10aa93f40afc1ef3be0451eec12c86ff",
+      "kind": "text",
+      "sha256": "318889f0aaf2e961e8af632a3f45bc4976360ccc44746442dac494a69b382574"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WorldRescueReplay.cs.meta",
+      "git_blob": "c8ddc6d2999c32146f88f986bbf9efa84a8fc671",
+      "kind": "text",
+      "sha256": "5e9c386a471fef00a20f8c2a38746f74b2917e1b800f5a2e3efccf53673bbf8c"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WorldScreenController.cs",
+      "git_blob": "9131eee61075d92a780d1d2dab83ebe3c2631fc7",
+      "kind": "text",
+      "sha256": "8d75db40fdf8371c4348ec78571d4bd392c581f877d6a73bbe9284a21afc6f0a"
+    },
+    {
+      "path": "Assets/_Cloudora/Scripts/UI/WorldScreenController.cs.meta",
+      "git_blob": "e04096ae25333e1ddebb66e4a5520bc76cded731",
+      "kind": "text",
+      "sha256": "bca76652e232c0196beb5d869a51300a747e27a0ce03bde670065822f112fd9b"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests.meta",
+      "git_blob": "dbb49b5e3e02d19d0c9b340a7eb0d21337f2e3fe",
+      "kind": "text",
+      "sha256": "b313b45fe944b481e811ebd7dbf952a710555de6c6206aa910b4c6682131687c"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor.meta",
+      "git_blob": "1a9c2c69d588872c9c92c54525c3f31c66f9c22e",
+      "kind": "text",
+      "sha256": "8dc28668590f345e5763033a757017fcab48206dee36eee28e293730ac7823a7"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/AbandonAttemptTests.cs",
+      "git_blob": "9e20529c0fe83e4d7a05498b73d652cd8ffbf0a9",
+      "kind": "text",
+      "sha256": "150bb44fe7274d73025c37f622cf4702b5337efb47a950165d74be640491526d"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/AbandonAttemptTests.cs.meta",
+      "git_blob": "69bebdc96604976c77d46ce8b0e57daeb97f1001",
+      "kind": "text",
+      "sha256": "0297313abc013ce32f05b40c55fd049277cacdd8374a7b8a30db26dc6d06ec45"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/CampaignReleaseTests.cs",
+      "git_blob": "176e24286b802d6142d749da362e473fd64d6205",
+      "kind": "text",
+      "sha256": "d7626518fd08f8c5562517a9c32d9505e8f996d66b03bc7d94875369dce02fc4"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/CampaignReleaseTests.cs.meta",
+      "git_blob": "8248c465c48deb749ac1f5929022ecd6c30d8820",
+      "kind": "text",
+      "sha256": "575fca88ae087532bbd5b5b23540b6f7110bb8121fefcf8ccdd483da5956aba9"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/CompletionEconomyTests.cs",
+      "git_blob": "e3d5a27dc98f7fad2eb2fdccf5d3e3cd05e2aab7",
+      "kind": "text",
+      "sha256": "020877c6e2d353e7ec84e159eaedc46b167c18780c4291e997ccf43d1532226c"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/CompletionEconomyTests.cs.meta",
+      "git_blob": "7a9abda30c01240a1655520a427e88bdd7fd6b9a",
+      "kind": "text",
+      "sha256": "0c0dc97cdd33cb982f9c802c7549679f235a8bf1410d52784f6416a38f4783a9"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/CompletionFlourishTests.cs",
+      "git_blob": "b04bf0a7ea97168f5dc9c2b3e5a0d36415d033c3",
+      "kind": "text",
+      "sha256": "ea5d74b1fbe444a0e0fc956ca7fada52be6f8d3b62e47a75a96f5347610060c8"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/CompletionFlourishTests.cs.meta",
+      "git_blob": "c952693b66188917d11cee7fadc53fe6aebc1102",
+      "kind": "text",
+      "sha256": "2e15a85a30d7e84d0ec3d069bd02c08ea1898d2a9d33fec1f65a3bfeca78ef29"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/DesignNavigationTests.cs",
+      "git_blob": "e17f994b910ecdfe0a9e830c0e82a3d15319fd35",
+      "kind": "text",
+      "sha256": "8bccbab64c996d861a790d606b5ba22677533645ad2d9c0d13218f360a2c3445"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/DesignNavigationTests.cs.meta",
+      "git_blob": "e96bf60e4758be0b21fe7826cfbf7c4f59e5a1fc",
+      "kind": "text",
+      "sha256": "8189c2af42ad35602d3488f6fc04394e2402b2874e6bac0cb83bd263cb38ef41"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/ElementMotionTests.cs",
+      "git_blob": "7ca6c42795fc852a332c111ecf15376141f4c7b6",
+      "kind": "text",
+      "sha256": "7961860ef37e7b642f687a682337fa539eac63c7ec1fef903f9e001432d95dcd"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/ElementMotionTests.cs.meta",
+      "git_blob": "a528ce74fde00aa327b4c9c01fb6eb7de2c89021",
+      "kind": "text",
+      "sha256": "0e194fbfc2e133113556d6e3d05f253b8a28b5f479ace1b62e5d6b337c6cdf33"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/LevelToolTests.cs",
+      "git_blob": "163ab46fd04c0a896de7ed0adec4db5b0dc899f8",
+      "kind": "text",
+      "sha256": "45ff925c09df432338f1fe954427613f8e07867454c9fcbd44023293821082f7"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/LevelToolTests.cs.meta",
+      "git_blob": "1769d22e720af743a9aafcc2abf92722b894d5b9",
+      "kind": "text",
+      "sha256": "4c3fa76c6e5dfed0caaf68a2f632d36d24fac1ac31b238ee9573645cb557c6e6"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/LiquidMotionTests.cs",
+      "git_blob": "24dfe3fa5030eb6cbe5a9d3ef064ef109463ced6",
+      "kind": "text",
+      "sha256": "ea7b1b2e834a07ff32fc9dbabb6fb1efecbe916684445b75e0f80af10f1649ab"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/LiquidMotionTests.cs.meta",
+      "git_blob": "9af5df98bec1896b75ef0902c86dbcdcc5ebf74c",
+      "kind": "text",
+      "sha256": "9e82b92cb43674308a1a923eaf5343868f8e4ce1d807396a07dd19ec6ce0457a"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/MainMenuLifeTests.cs",
+      "git_blob": "dcbb31d88b0ac80a3cbc42fb2a05ef714f720f77",
+      "kind": "text",
+      "sha256": "1b41527ea7f7ce8886b9f6b55e5abd9fa05c689234755e5361c0b2d08d986d66"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/MainMenuLifeTests.cs.meta",
+      "git_blob": "d7f51ccadfe516229c71e46971f1b93e4d015182",
+      "kind": "text",
+      "sha256": "05f2f02c999bee254a0b95ad236283d60e1ca54a0dd54054e49768359c381afa"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/MoveFlowTests.cs",
+      "git_blob": "c0c0eae1ffccaec3b9759b1da8413af5f40527b5",
+      "kind": "text",
+      "sha256": "7338f786e3cb5e466e14aef3c34977516295558a152611ec793dfefd11809f84"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/MoveFlowTests.cs.meta",
+      "git_blob": "d4d6350a13bc3492891dd060c080f8a79ff963d4",
+      "kind": "text",
+      "sha256": "49a26439207706060babfe398e6b2057be9747d6c1226772ff5e3c70fdd39c60"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/OpeningSplashTests.cs",
+      "git_blob": "e6ae357a78575b4baa0b77471e9c0c6a018741f0",
+      "kind": "text",
+      "sha256": "b0a7154f477b259145574bf50750cc17b177e06858de6fbae26af71fec7dbb57"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/OpeningSplashTests.cs.meta",
+      "git_blob": "e30aba53c555332f3dc1a928fc43039d8d08b00a",
+      "kind": "text",
+      "sha256": "c2c9c80468d8b22d22bca181b2aeb00fc09504471a57c437b2562f624eb9ae3d"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/PointerMotionVisualTests.cs",
+      "git_blob": "184960d00ae667ebf15ccf0e91ebdd1848921cf8",
+      "kind": "text",
+      "sha256": "8391ab0381a62714ae14e36184de40400c18dbfcd3f7b3bd6517bd4a5daf249a"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/PointerMotionVisualTests.cs.meta",
+      "git_blob": "5f432d07da7bf8c5e3103c089e48def64dbe6537",
+      "kind": "text",
+      "sha256": "3f953db3691137f0a8dbde11336581aeb00901f77e36cd6dd34effffbb8e60c3"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/PuzzleFeelTests.cs",
+      "git_blob": "00650d3329640d28f5b48fd0014c9bacd87853bd",
+      "kind": "text",
+      "sha256": "eb801e0731ab9d5085a8484f293726cf69bdef025ef9ef7cc33d5d2c1a86b1ff"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/PuzzleFeelTests.cs.meta",
+      "git_blob": "9a287518c7d9a0694016137f300380bd2c0132c0",
+      "kind": "text",
+      "sha256": "0645b690284b39e98a70f869fff150483bbe8ed50643b3083762a0597823b25e"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/ReachabilityRegressionTests.cs",
+      "git_blob": "1f393e2f5e3585d2d8ffc1cca525b532c69c07fb",
+      "kind": "text",
+      "sha256": "38b28af97b0212a0dd8a78e4bd988303186a03f1a6293e893d63972bbb59c313"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/ReachabilityRegressionTests.cs.meta",
+      "git_blob": "8aa6ed871a0ac2d6e529bfe159c589be3945f1d8",
+      "kind": "text",
+      "sha256": "e68871cf8f16a62c97fd0b64f6644b723d569730ef32c9510603d83be5c7b9e4"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/RenderingReuseTests.cs",
+      "git_blob": "4bd70e2b702f1f9371a4b7f6d7feef3728a7ad5d",
+      "kind": "text",
+      "sha256": "88ebb7e8fae2105de89e91db3aa65700d72b0af05ec9ef5b80775baf22cb92f1"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/RenderingReuseTests.cs.meta",
+      "git_blob": "2b6a5223d784a73e19d5dae1499ff199b382d4d2",
+      "kind": "text",
+      "sha256": "4756d2341604a7097d0370ecadc9a95c0f2cc19250a52e0669dc57acc875a309"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V31GameplayTests.cs",
+      "git_blob": "3a6cbab07422008e6f15df692669b285c998d79c",
+      "kind": "text",
+      "sha256": "764a14c2a47fc80c84c862d398d838f431ad7926b6011ac163e62e20809473af"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V31GameplayTests.cs.meta",
+      "git_blob": "cda95e0f471eb6e92d4645ba4c46b324191b3ba6",
+      "kind": "text",
+      "sha256": "5220482a93033103c3fe89820303c7a697468219eb47f511ae39e0e3b27388d9"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32InputTests.cs",
+      "git_blob": "c26ef4176177f7e762fb58efd33a695598eb9b86",
+      "kind": "text",
+      "sha256": "a3019522257599176e69f6bfe40aba21241dcfa31a472aa849a5c3033a160cdf"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32InputTests.cs.meta",
+      "git_blob": "3410d6fc1ee4cb03fec97b35a16696d7c49f799b",
+      "kind": "text",
+      "sha256": "fbc1b3fb814552a0dc1b99c8c4cfab11fe87227fd7d402dfad39d741932e8169"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32LayoutTests.cs",
+      "git_blob": "062622e31f932f6a9617dedabc9c9058db1f2476",
+      "kind": "text",
+      "sha256": "d4d20d02dacd52da5356b9570ddf6e7466099b3cfe50989cada732d9bb74e3be"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32LayoutTests.cs.meta",
+      "git_blob": "84ed6cd564245d7396a68d8b04b3d53aba8fd8cd",
+      "kind": "text",
+      "sha256": "0b02011c0d9193cf018a95c9cfec6766307125e31df3415dd27f10f7cbefde48"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32NoMovesTests.cs",
+      "git_blob": "b5d0ac4e321769fa5e2fcc9a6b7921215c2e8da8",
+      "kind": "text",
+      "sha256": "db6dc0a67b456956b7f8cefc904329798304fb1424a99643bdaac08346b9a886"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32NoMovesTests.cs.meta",
+      "git_blob": "2dd237d6b3e90d2bfc09ca6c4adb9120dd029b18",
+      "kind": "text",
+      "sha256": "013efdfec63530805d9a83f8b1b1f5a57603739456280f59010422bc50147e53"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32ShuffleLoadProbe.cs",
+      "git_blob": "d2c4d47c2a92d4a130fbf718f315c90627759369",
+      "kind": "text",
+      "sha256": "094609710765a104909a7f6e8b11e69e2a7737d64b0bcfa0986a443ca94617e5"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32ShuffleLoadProbe.cs.meta",
+      "git_blob": "9932bc2e9aa6a593e768954b4ab0a5240510f87d",
+      "kind": "text",
+      "sha256": "2528fb5ebdaa534c4a807dc3cce98efcffc97466a8e595206d8c366f216fd273"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32SolverLoadTests.cs",
+      "git_blob": "5a291fc99d108ea04a6a3a613fd5a5641f23a4ca",
+      "kind": "text",
+      "sha256": "485b0c2e94f27014c0c5ffed4d4b5cbf789c4c61e2756d72cbcc3948b7fd6dd4"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32SolverLoadTests.cs.meta",
+      "git_blob": "847360f99d162af205c18952fca86106fd1840de",
+      "kind": "text",
+      "sha256": "5f71000cc21dff967057e5ca7000b50e340ba1608344687d4fcfe97402149e91"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32VisualTests.cs",
+      "git_blob": "73dc73a9f6308cfaba8f16ee1b2ad3c310706e66",
+      "kind": "text",
+      "sha256": "8d4909fc16b9539f2464f505e7ff0112b682d04b92f9c190bec5f0583be7ab57"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V32VisualTests.cs.meta",
+      "git_blob": "d584f79b8ef37a9236455280fc242441e529b580",
+      "kind": "text",
+      "sha256": "7e1c21675b705912f26646e7981fe69fafa186840982723f0bfbc9cf24c6ad20"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V3LevelBuildTests.cs",
+      "git_blob": "c15ff1bf38423ee8f036940b11d0419950d4e203",
+      "kind": "text",
+      "sha256": "4e00643768a6ca4bb21730e2af8033fc73a962e7a5fbd0eb960a1170d20ef3ca"
+    },
+    {
+      "path": "Assets/_Cloudora/Tests/Editor/V3LevelBuildTests.cs.meta",
+      "git_blob": "1052c33776f7efe476bd9c4da54c4b8a1f2d4f0a",
+      "kind": "text",
+      "sha256": "226119f47bd554da48308f311a6f7d1f1d2e851380eb26d315e4301e23cd0b7e"
+    },
+    {
+      "path": "Assets/_Cloudora/UI.meta",
+      "git_blob": "9aa410acce82c618bba216b482452399a35df871",
+      "kind": "text",
+      "sha256": "97af196e77edfa46b8a01473a3a840abec1068f29d70ac6c3e3adc20b533d838"
+    },
+    {
+      "path": "Build-Android.ps1",
+      "git_blob": "937501cb0f480c9f320d81b287e6618c629803fd",
+      "kind": "text",
+      "sha256": "1ca7e983b5023ae29b724cfd8f9deaac34543730b433fed16c91d04bb24b4202"
+    },
+    {
+      "path": "Build-iOS.sh",
+      "git_blob": "3fae102eb1f9c957062a400a69a21ad11d298215",
+      "kind": "text",
+      "sha256": "60ed48730f5a6db1296d8f37a3ce02f65f1a97a047d1f6748a8c500bfc38d7de"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "git_blob": "a2ee0d65e6616528ef14bacdd25c14ac64ce975e",
+      "kind": "text",
+      "sha256": "484506e739c8ff029e81389432a0ba9f7d015ebc2b21e5979504917986b20a8b"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "git_blob": "716deb5cd0cc9e6836163cdf4ac1ed8c9047255d",
+      "kind": "text",
+      "sha256": "bb51572014ba8142881121cb8f0a2ce69e9cbf644577a2ed24a3953211e1a32d"
+    },
+    {
+      "path": "ProjectSettings/AudioManager.asset",
+      "git_blob": "27287fec5f4e4b712cbdd5b3a6383cbfd900b940",
+      "kind": "text",
+      "sha256": "aeedeb3243f07b61dbbe854aa08b5ef6f0b5274dd9852ad9f6129dde3e105a31"
+    },
+    {
+      "path": "ProjectSettings/ClusterInputManager.asset",
+      "git_blob": "e7886b266a005f4d9d80f2fef8d1649dcfd3ed2b",
+      "kind": "text",
+      "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+    },
+    {
+      "path": "ProjectSettings/DynamicsManager.asset",
+      "git_blob": "fc90ab9589af00aa403b7aeb17cf53779a9aa571",
+      "kind": "text",
+      "sha256": "b7c9a9dc08b98990109d4346f68745e15e238de400f96c583e53e1c83c743a78"
+    },
+    {
+      "path": "ProjectSettings/EditorBuildSettings.asset",
+      "git_blob": "b1e7a7a6dbf62fcbd0bf5bb92bdf09d408ee44c4",
+      "kind": "text",
+      "sha256": "f16052a241ca25c543285077af9a97c19ffd3364e3a494efa8284dc7bc4954d1"
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "git_blob": "b294ad6f8c8f4f93ddcc03f2e4420e7e2f3d7fa2",
+      "kind": "text",
+      "sha256": "3d39340d125716248ba7ed54b8f01df59d76ac0e674fe9dff04ec7844da36022"
+    },
+    {
+      "path": "ProjectSettings/GraphicsSettings.asset",
+      "git_blob": "05b2b19faa174fb9bd68aa9254e0f2a73a1d65b7",
+      "kind": "text",
+      "sha256": "633877667963839cb174fcf4022a0c12675e785532b98861c0545c4725152f85"
+    },
+    {
+      "path": "ProjectSettings/InputManager.asset",
+      "git_blob": "b16147e954fd861c2e2db769449894d310aa7b26",
+      "kind": "text",
+      "sha256": "7a1bb836a1008d26d0860d143e9d9df7ca41731d30a72901b518063819c62df2"
+    },
+    {
+      "path": "ProjectSettings/MemorySettings.asset",
+      "git_blob": "5b5facecace9276319b6e497953ab0429de65b61",
+      "kind": "text",
+      "sha256": "1e8379a461b10ae09f3f696911088c16875d63e87ed5f2d95df9e1892703f9fd"
+    },
+    {
+      "path": "ProjectSettings/MultiplayerManager.asset",
+      "git_blob": "2a936644e0d87339f17484efc93de6f0de5774b1",
+      "kind": "text",
+      "sha256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd"
+    },
+    {
+      "path": "ProjectSettings/NavMeshAreas.asset",
+      "git_blob": "3b0b7c3d183abdd300112f56965916ef11667f54",
+      "kind": "text",
+      "sha256": "80106cfa7e6181a1928b142c075f3e510d527441e3d79bc83590e4ac91e7cd66"
+    },
+    {
+      "path": "ProjectSettings/NetworkManager.asset",
+      "git_blob": "5dc6a831d9f2a11f08ed96571e0f602e3c3908b5",
+      "kind": "text",
+      "sha256": "46395def99a6b5ae38ebb19b3e18f75215a9d4172c219361521a5a51e051f386"
+    },
+    {
+      "path": "ProjectSettings/PackageManagerSettings.asset",
+      "git_blob": "86e9ee0abc22ae245184c371325738f5d7380fbe",
+      "kind": "text",
+      "sha256": "d12c3cd5ba61f749666a2697476470d9c8e458476011fe398968a91f145cfcfe"
+    },
+    {
+      "path": "ProjectSettings/Physics2DSettings.asset",
+      "git_blob": "6cfcddaacd6468d283a2d3f7017eaca4762ca6a7",
+      "kind": "text",
+      "sha256": "50e61d70bc38c632cb0e6efe364a9c5bcfd9a8dbcf4e7b5ecfb06a2030c4518f"
+    },
+    {
+      "path": "ProjectSettings/PhysicsCoreProjectSettings2D.asset",
+      "git_blob": "049c7454b5cb1220c8440514c5628548672a661e",
+      "kind": "text",
+      "sha256": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e"
+    },
+    {
+      "path": "ProjectSettings/PresetManager.asset",
+      "git_blob": "67a94daefe2e6bce3ec73546ad7cda94f702ad22",
+      "kind": "text",
+      "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+    },
+    {
+      "path": "ProjectSettings/ProjectAuditorSettings.asset",
+      "git_blob": "e34a87af2fe59eb6932b7aa58bc968a3c25ef368",
+      "kind": "text",
+      "sha256": "5e40807b54a51f2fafb156c8deeba785328010ec5d296c089cfa74f146b751f4"
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "git_blob": "6f75cf869ea2030ed0cd61b871ffd86d1b866323",
+      "kind": "text",
+      "sha256": "4cab4de4b8b023c16479d7f3491bbaf614bd07bd901c15e309c4c86a8133dc97"
+    },
+    {
+      "path": "ProjectSettings/ProjectVersion.txt",
+      "git_blob": "ea3a685cc819b22d7d5b1c448ae490249130a859",
+      "kind": "text",
+      "sha256": "e06e05029943a1f6537d7cf3ca00ae2fb38dfe68d41075504802051e78c1d707"
+    },
+    {
+      "path": "ProjectSettings/QualitySettings.asset",
+      "git_blob": "cf7744e9965f157c2041bde25fc39dbbb61b3649",
+      "kind": "text",
+      "sha256": "556c0728f9f067a788a491a93bea29925a04c94a3d36538a62f6b476a3f738a6"
+    },
+    {
+      "path": "ProjectSettings/SceneTemplateSettings.json",
+      "git_blob": "ede5887b3a3e5e7ce4e90f0d893a1e4cdb2c7451",
+      "kind": "text",
+      "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+    },
+    {
+      "path": "ProjectSettings/ShaderGraphSettings.asset",
+      "git_blob": "0421697b3840b0cec6d1f80c1465df9d0f0701bc",
+      "kind": "text",
+      "sha256": "5c432c9c73fdf73fee91c8823ea02ab98e3b7a8edf341b5ae6901d699cce52a7"
+    },
+    {
+      "path": "ProjectSettings/TagManager.asset",
+      "git_blob": "1c92a7840ec11895c76785f65d949a3d20d53355",
+      "kind": "text",
+      "sha256": "8e18b1c820e9c09e16bbd1f1b7842e9fb3b0158a0921b0964e0b8fa12c6e2c01"
+    },
+    {
+      "path": "ProjectSettings/TimeManager.asset",
+      "git_blob": "558a017e1f50b2db73414a1abad3c033922774f8",
+      "kind": "text",
+      "sha256": "1a83e54adbbda7c9f4851103a0c6ab7f6448a3343d4ea5b7620452fa08416ecd"
+    },
+    {
+      "path": "ProjectSettings/URPProjectSettings.asset",
+      "git_blob": "6ad563183467c100d393c4c910b8cf697e956ca9",
+      "kind": "text",
+      "sha256": "c317fe22b9488785c0611f0642429922e5d324430d929bffb41648130f30c218"
+    },
+    {
+      "path": "ProjectSettings/UnityConnectSettings.asset",
+      "git_blob": "37dc212c9ececcf58dab90e18f0d54f90a99c04b",
+      "kind": "text",
+      "sha256": "5708d55516a4774c1e94778c30cb80efbb6cb90c039cead510a8b426aa27f111"
+    },
+    {
+      "path": "ProjectSettings/VFXManager.asset",
+      "git_blob": "3a95c98bec50cf72538061fd26eee95398f72128",
+      "kind": "text",
+      "sha256": "f066c6483919961332415ee64204f74fe52f38c02e82892eb02b7a5b2e381f0e"
+    },
+    {
+      "path": "ProjectSettings/VersionControlSettings.asset",
+      "git_blob": "979fd8eca84fae8dac89c1021ef6049be95ee5f6",
+      "kind": "text",
+      "sha256": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b"
+    },
+    {
+      "path": "ProjectSettings/XRSettings.asset",
+      "git_blob": "482590c196f7a82116679f58176b9d1aff21d7f9",
+      "kind": "text",
+      "sha256": "edd2beb4a2e388312b4b7da241aa51070434005d82c59363f1237dd2e567585f"
+    },
+    {
+      "path": "StoreAssets/Export-PlayAssets.ps1",
+      "git_blob": "6556d143b4b0181f12a7b2e2490f78db71b1e25d",
+      "kind": "text",
+      "sha256": "936bf35d7b98fbb91ae2bac55d77ec1715d4dd6c8efd088bfaea95e926478d43"
+    },
+    {
+      "path": "StoreAssets/Play/cloudora-adaptive-background-512.png",
+      "git_blob": "57ef3c00e5185a83689c87200d288223552853a2",
+      "kind": "lfs",
+      "sha256": "7d26cf242e072e0123abb7c2cf8a40bc7e50915985b32bdfff047532d77d6291"
+    },
+    {
+      "path": "StoreAssets/Play/cloudora-adaptive-foreground-512.png",
+      "git_blob": "edd1b56819b249bbbd4d265a48ab197fb9637d9c",
+      "kind": "lfs",
+      "sha256": "19f563eeb1b9ee16f18c02b571209f85b644bf06132685887123c8e9d6f4d49e"
+    },
+    {
+      "path": "StoreAssets/Play/cloudora-feature-1024x500.png",
+      "git_blob": "7c3767bfac892cd6969877252635c024bd50a756",
+      "kind": "lfs",
+      "sha256": "c07add2aa5ee6d93c4235083e1600bed3df593cbf176fb15b70664559d8e7ce6"
+    },
+    {
+      "path": "StoreAssets/Play/cloudora-icon-512.png",
+      "git_blob": "51667bc96306cfb544c5bd1854286b99e85d18cc",
+      "kind": "lfs",
+      "sha256": "1ccc9ec9b8ef412752ab900293d3a6509d2346e089ab5c06a3c44e39f0b429b3"
+    },
+    {
+      "path": "StoreAssets/README.md",
+      "git_blob": "9187b3a28ccd3ac11d56a38031c067fbbdab941e",
+      "kind": "text",
+      "sha256": "b8d563a98137b776bf53537567c8fda6a2daf97f432dabd5bc4014e033aab76d"
+    },
+    {
+      "path": "StoreAssets/STORE_COPY.md",
+      "git_blob": "ba035261658ada0b1af7fca29bd105da7334b954",
+      "kind": "text",
+      "sha256": "517593a71a8f8e690ae658ca9b0563ed040a25bcf0aa9f18291b8f2352b6699f"
+    },
+    {
+      "path": "StoreAssets/Source/cloudora-feature-master.png",
+      "git_blob": "b6644d1959566326c760051b7157a1c8586ece13",
+      "kind": "lfs",
+      "sha256": "33d7d308c547109a7257a761d80d2c484b9981050ed44377bcaefb8f2f17061d"
+    },
+    {
+      "path": "StoreAssets/Source/cloudora-icon-master.png",
+      "git_blob": "d665011cfd3217519656d65f3df301ccac1bfa46",
+      "kind": "lfs",
+      "sha256": "879f4f2e7ed13e0804ab92154a3bf11622f1fff756d9f9b3dfc56dc3aa86e6e4"
+    }
+  ]
+}

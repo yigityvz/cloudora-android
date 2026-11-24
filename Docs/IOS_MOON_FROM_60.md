@@ -1,5 +1,7 @@
 # Ay: beşinci element 60. bölümden itibaren — 19 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Kullanıcı tercihi: Ay 60'tan itibaren mevcut dört elemente beşinci olarak eklensin; zorluk hedeflerine göre doğrulansın. Önceki başlangıç 81 idi. Güncel yayımlanan katalogda 60–100 Güneş/Yağmur/Kar/Rüzgâr/Ay içerir; mevcut dört element kaldırılmaz.
 
 ## Kapsam ve mimari

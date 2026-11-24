@@ -1,5 +1,7 @@
 # Cloudora iOS tasarım aktarımı — 17 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Bu belge ilk aktarımı kaydeder. Sonraki kullanıcı isteğiyle kapsam 100 bölüm / 3 dünya olarak güncellendi; güncel kalite ve kampanya davranışı için `IOS_QUALITY_CAMPAIGN.md` esas alınır.
 
 Figma kaynağı: `PfPK72jwbGPBJ8Ah0RlwWx`. Native Unity uGUI kullanılır; React/Tailwind veya web görünümü eklenmedi. Ham Figma görselleri `Docs/DesignSources`, yerel çalışma zamanı kaynakları `Assets/_Cloudora/Resources/Design` altındadır. Nunito ExtraBold lisansı kaynak klasöründedir.

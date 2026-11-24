@@ -1,5 +1,7 @@
 # Cloudora açılış animasyonu
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Kaynak: Figma `PfPK72jwbGPBJ8Ah0RlwWx`, normal zaman çizelgesi `2028:1974`, bekleme `2028:2050`, azaltılmış hareket `2028:2382`, üretim planı `2028:2126`.
 
 ## Kapsam

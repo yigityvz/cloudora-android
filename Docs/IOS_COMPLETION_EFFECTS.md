@@ -1,5 +1,7 @@
 # Hazne bitirişi ve altın kuralları — 18 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Tamamlanan haznede güneş ışınları, yağmur ve halka, kar kristalleri, rüzgâr kıvrımları, ay yıldızları, dallanan şimşek veya gökkuşağı yayı gösterilir. Cam sabit kalır; efekt yerel, yeniden kullanılan bir vektör katmanıdır. Küçük şişe içi simgeler korunur. Azaltılmış hareket ayarında kısa bir kenar parlaması kullanılır. Son haznenin efekti sonuç paneli açılmadan gösterilir; ödül bu beklemeden önce kaydedilir.
 
 Tam dolu ve hedef kurallarına göre tamamlanmış hazne seçilemez, boşaltılamaz veya karıştırılamaz. Kural görüntü, veri modeli, animasyon ve çalışma anındaki çözüm aramasında aynıdır. Gökkuşağı uyumluluğu korunur. Geri Al, önceki hamleyi geri çevirebilir; bu durumda bitiriş efekti durdurulur.
