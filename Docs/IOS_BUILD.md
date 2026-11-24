@@ -1,5 +1,7 @@
 # Cloudora iOS development build
 
+> **Okuma notu — 24 Kasım 2026:** Derleme akışı iOS referansına aittir; girişteki v3.2 adı bugünkü oyun kapsamının etiketi değildir. Android kaynak aynalaması hazır APK anlamına gelmez. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 This repository builds Cloudora v3.2 for iPhone. Use Unity 6000.5.9f1 (b57deb96f08d), macOS, iOS Build Support and Xcode. See IOS_STATUS.md for current evidence and PROJE_HAFIZASI.md for source behavior. IOS_ARCHITECTURE.md describes the project structure; IOS_DEVICE_QA.md tracks device acceptance.
 
 ## Setup

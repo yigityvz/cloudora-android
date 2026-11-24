@@ -1,5 +1,7 @@
 # v3 Çerçeve Envanteri — Faz 1.1 ölçümleri
 
+> **Okuma notu — 24 Kasım 2026:** Tarihsel çerçeve/ölçüm envanteridir; bugünkü oynanabilirlik veya görev listesi olarak alınmaz. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 > Ölçüm: 2026-10-15 16:17 · Araç: **Cloudora/V3/Çerçeve Envanteri (Faz 1.1)** (`V3LevelTool.RunInventoryReportBatch`) · Ham veri: `Logs/v3-inventory-summary.txt`, `Logs/v3-inventory-candidates.csv` (git dışı; araçla yeniden üretilebilir).
 > Puan ağırlıkları ölçüm anında: hamle ×1, tuzak ×15, yanıltıcılık ×10, **çıkmaz ×20**, sanal oyuncu fazla hamlesi ×1,5, takılma ×10. Ağırlık değişirse puan sütunları geçersizleşir; yeniden ölçülmeli.
 > Bağlam: tasarım dokümanı §11j–11l (1–100 faz planı). Bu dosya Faz 1.2–1.3 (yenilik sırası, hedef eğrisi) için temeldir.

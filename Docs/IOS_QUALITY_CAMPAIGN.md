@@ -1,5 +1,7 @@
 # Görüntü kalitesi, akış ve 100 bölüm — 17 Ekim 2026
 
+> **Okuma notu — 24 Kasım 2026:** Bu belgedeki ilk dünya aralıkları daha sonra değiştirilmiştir; bugün tanıtım1–14, dünyalar15–30/31–60/61–100. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 Bu değişiklik, kullanıcının cihaz ekran görüntüleri ve yeni 100 bölüm / 3 dünya kapsamı üzerine yapıldı.
 
 ## Oynanabilir kapsam

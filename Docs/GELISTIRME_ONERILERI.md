@@ -1,5 +1,7 @@
 # Cloudora — Geliştirme Önerileri (v1 sonrası)
 
+> **Okuma notu — 24 Kasım 2026:** v1 döneminden öneri arşividir. Bazıları sonraki sürümlerde değişti/uygulandı; bu listeyi otomatik görev olarak yürütme. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 > Hazırlanma: 2026-10-12 · Temel: `bahadir-claude-versions` @ `755cbbc` (v1)
 > Kaynaklar: kaynak kodun tamamı, Unity Editor testi, Galaxy S24 FE cihaz testi (logcat + analytics), kullanıcı yorumları (`crVersion.md` → v1).
 > Bu doküman bir **öneri listesidir**; hiçbir madde onay olmadan uygulanmaz.

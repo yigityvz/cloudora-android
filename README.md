@@ -1,60 +1,46 @@
-# Cloudora iOS
+# Cloudora — Yiğit'in güncel oyun tabanı
 
-**Gökyüzünü düzelt. Dünyayı yeniden canlandır.**
+**Gökyüzünü düzelt. Dünyayı yeniden canlandır.** Dikey ekranda kaynak ve hedef hazneye dokunarak hava türlerini ayırdığımız Unity bulmacası.
 
-Cloudora, iPhone için Unity ile geliştirilmiş, dikey ekranda oynanan bir hava olaylarını sıralama bulmacasıdır. Bu depo iOS uygulamasının kaynak kodunu, oyun içeriklerini ve Xcode derleme araçlarını içerir.
+Bu dal, telefona kurulan **`cloudora-ios/main@1ee4334`** oyun sürümünün `cloudora-android/cloudora-yigit` kaynak teslimidir. Oyun, bölüm verileri, testler, görseller ve Unity ayarları referansla aynıdır. Daha yüksek numaralı başka APK veya `cloudora-bahadir` dalı bu tabanın yerine geçirilmemiştir.
 
-## Gereksinimler
+**Yeni ekip üyesi / Claude Code: önce [CLAUDE.md](CLAUDE.md) dosyasını oku.** İçindeki yönerge seni oyun, kod, test, tasarım ve tarihsel belgelerin tamamına doğru sırayla götürür.
 
-- macOS ve Xcode
-- Unity **6000.5.9f1**, **iOS Build Support** modülüyle
-- Git LFS
-- Cihazda çalıştırmak için yerel Apple geliştirme imzası ve Geliştirici Modu açık bir iPhone
+- [Güncel durum ve korunacak kararlar](Docs/GUNCEL_DURUM.md)
+- [Adım adım öğrenme rotası](Docs/EKIP_ONBOARDING.md)
+- [Tüm kod ve belge okuma haritası](Docs/DOSYA_OKUMA_HARITASI.md)
+- [Diğer dallarla farklar](Docs/DAL_KARSILASTIRMASI_2026-11-24.md)
+- [Sonraki adımlar ve karar bekleyen konular](Docs/SONRAKI_ADIMLAR.md)
 
-Hedef: **iOS 15.0+**, iPhone, dikey ekran, **IL2CPP / ARM64 / Metal**. Bundle ID: `com.yigityvz.cloudora`.
+## İndir ve aç
 
-## Kurulum
+Git ve **Git LFS** kullan. Unity **6000.5.9f1** sürümünü kur; paket sürümlerini otomatik yükseltme.
 
 ```sh
-git clone https://github.com/yigityvz/cloudora-ios.git
-cd cloudora-ios
+git clone --branch cloudora-yigit --single-branch https://github.com/yigityvz/cloudora-android.git cloudora-yigit
+cd cloudora-yigit
 git lfs install --local
 git lfs pull
+git lfs fsck
+python3 Tools/verify_reference_snapshot.py
 ```
 
-Projeyi Unity Hub üzerinden açın. Ana sahne: `Assets/_Cloudora/Scenes/02_Gameplay.unity`.
+Windows'ta Python komutu `py -3` olabilir. Unity Hub'a bu kök klasörü ekle; sahne `Assets/_Cloudora/Scenes/02_Gameplay.unity`. Kaynaklar, `.meta`, `Packages` ve `ProjectSettings` birlikte tutulur. Play Mode ve EditMode Test Runner ile başla.
 
-## Test ve derleme
+## Güncel kapsam
 
-Aynı projeyi açan Unity oturumunu kapatıp depo kökünde çalıştırın:
+100 bölüm; tanıtım1–14, Yeşil Vadi15–30, Rainy Coast31–60, Frost Peaks61–100. Ay60'ta beşinci elementtir. Bitmiş hazneler kilitli; çıkmaz algısı kazanma yolunun kalmamasına dayanır. Ödüller100/200/300, ücretli devam500, Karıştır16'da. Sabit cam, elemente özel üstten giriş, sıvı iç dolum ve yedi bitiriş efekti korunur. Ayrıntı [güncel sözleşmede](Docs/GUNCEL_DURUM.md).
 
-```sh
-./Build-iOS.sh test
-./Build-iOS.sh build
-```
+## Platformlar ve test kanıtı
 
-Oluşan `Builds/iOS/Cloudora/Unity-iPhone.xcodeproj` dosyasını Xcode ile açın. **Unity-iPhone → Signing & Capabilities** bölümünden kendi Team'inizi seçin, iPhone'u bağlayıp **Run** ile çalıştırın. Mevcut export klasörü doluysa yeniden üretmeden önce başka bir konuma taşıyın.
+**iOS referansı:** macOS/Xcode, iOS Build Support; iPhone, iOS15+, IL2CPP/ARM64/Metal, `com.yigityvz.cloudora`. Derleme [IOS_BUILD.md](Docs/IOS_BUILD.md) ve `Build-iOS.sh` ile yapılır. Unity kapalıyken `./Build-iOS.sh test`; kapsam gerekiyorsa `./Build-iOS.sh build`.
 
-Ayrıntılar: [iOS derleme rehberi](Docs/IOS_BUILD.md) · [Doğrulama durumu](Docs/IOS_STATUS.md) · [Cihaz testleri](Docs/IOS_DEVICE_QA.md).
+**Android kaynak teslimi:** aynı Unity oyun kodunu Android ekibi çekebilir. Android Build Support/SDK/NDK/JDK kurulup Build Profiles'tan Android'e geçilir. Bu eşlemede Android build aracı/profili eklenmedi, APK üretilmedi ve Android cihaz testi yapılmadı. Platform uyarlaması, oyun algoritmasını başka daldan taşımakla aynı iş değildir; [öğrenme rotasındaki Android bölümünü](Docs/EKIP_ONBOARDING.md) oku.
 
-## Açılış ekranı
+Son kayıtlı iOS test sonucu19 Ekim:241 toplam,235 geçti,6 atlama,0 hata; iOS export, imzalı Xcode Release ve iPhone kurulum/açılış kanıtı var. Bu teslimde oyun değişmediği için eski sonuç **bugün yeniden çalıştırılmış** gibi sunulmaz. Kaynak eşliği manifesto aracıyla doğrulanır. [Durum ve kanıt sınırları](Docs/GUNCEL_DURUM.md).
 
-Figma tasarımından alınan bulut ve logo katmanlarıyla animasyonlu açılış, mevcut ana ekrana otomatik geçer. iOS “Hareketi Azalt” ayarı desteklenir. [Uygulama notları](Docs/IOS_OPENING_SPLASH.md).
+## Kayıt ve paylaşım
 
-## Oyun ve proje yapısı
+İlerleme `cloudora-save.json` ile yereldir; yedek kurtarma mevcut. Derlemeler, cihaz kayıtları, Library/Logs, imza/sertifika ve gizli bilgiler Git dışında kalır. `CLOUDORA_DEVICE_QA` test ödül servisini açar; gerçek reklam veya mağaza yayını değildir. `main`e birleştirme ve üretim yayını ayrı kullanıcı kararıdır.
 
-- Oynanabilir kapsam 100 bölüm ve 3 dünyadır: tanıtım 1–14, Yeşil Vadi 15–30, Rainy Coast 31–60, Frost Peaks 61–100. Bölümler mevcut sabit tahta verilerini kullanır; 101 ve sonrası kapalıdır.
-- Ay, 60. bölümden itibaren beşinci elementtir. Zorluk ve üretim doğrulaması: [Ay geçişi](Docs/IOS_MOON_FROM_60.md).
-- Bulutlar arasında uyumlu hava olayları dokunarak taşınır. Bölümler, zorluk, can, jeton ve yardımcı mekanikleri mevcut oyun sürümüyle korunur.
-- İlerleme ve ayarlar yerel JSON kaydında tutulur; yedek kurtarma desteklenir.
-- `Assets/_Cloudora/Scripts`: oyun kuralları, arayüz ve servisler.
-- `Assets/_Cloudora/Editor`: iOS derleme ve bölüm araçları.
-- `Assets/_Cloudora/Tests`: EditMode testleri.
-- `Docs`: iOS rehberleri ve bölüm tasarım belgeleri.
-
-Derleme çıktıları, cihaz kayıtları ve imzalama bilgileri Git'e eklenmez. Yerel cihaz derlemesi `CLOUDORA_DEVICE_QA` tanımıyla test reklam/ödül servisini korur; Development Build filigranı içermez. Bu bir App Store dağıtımı değildir; mağaza derlemesi QA tanımı olmadan ayrıca hazırlanmalıdır.
-
-## Katkıda bulunanlar
-
-- [@yigityvz](https://github.com/yigityvz)
-- [@bahadir-aktas](https://github.com/bahadir-aktas)
+Katkıda bulunanlar: [@yigityvz](https://github.com/yigityvz), [@bahadir-aktas](https://github.com/bahadir-aktas). Geçmiş geliştirme kararları Git geçmişinde ve tarihli belgelerde korunur.

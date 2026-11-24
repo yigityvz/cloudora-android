@@ -1,5 +1,7 @@
 > 19 Ekim 2026 güncellemesi: Ay artık beşinci element olarak 60. bölümde başlar. Bu dosya tarihsel kalibrasyon kararlarını içerir; güncel yayımlama kuralı ve doğrulama: [IOS_MOON_FROM_60.md](IOS_MOON_FROM_60.md).
 
+> **Okuma notu — 24 Kasım 2026:** Tarihsel bölüm/kalibrasyon tasarımıdır; güncel Ay60 yayımlama katmanı ve runtime kilitli kural ayrıca okunur. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 # v3 — Bölüm ve Zorluk Tasarımı (1–100)
 
 Kullanıcının (Bahadır) 2026-10-14'te verdiği tasarım tanımı ve soru-cevaplar. v3 çalışmasının referansıdır; kararlar netleştikçe güncellenir.

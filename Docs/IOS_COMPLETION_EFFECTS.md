@@ -1,5 +1,7 @@
 # Hazne bitirişi ve altın kuralları — 18 Ekim 2026
 
+> **Okuma notu — 24 Kasım 2026:** Bu belge ilk ve ikinci tasarımı kronolojik anlatır. Sürelerde son bölüm, Ay için IOS_ITEM_TRANSFER_RESTORE.md ve gerçek VesselCompletionFlourish kodu esas alınır. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 Tamamlanan haznede güneş ışınları, yağmur ve halka, kar kristalleri, rüzgâr kıvrımları, ay yıldızları, dallanan şimşek veya gökkuşağı yayı gösterilir. Cam sabit kalır; efekt yerel, yeniden kullanılan bir vektör katmanıdır. Küçük şişe içi simgeler korunur. Azaltılmış hareket ayarında kısa bir kenar parlaması kullanılır. Son haznenin efekti sonuç paneli açılmadan gösterilir; ödül bu beklemeden önce kaydedilir.
 
 Tam dolu ve hedef kurallarına göre tamamlanmış hazne seçilemez, boşaltılamaz veya karıştırılamaz. Kural görüntü, veri modeli, animasyon ve çalışma anındaki çözüm aramasında aynıdır. Gökkuşağı uyumluluğu korunur. Geri Al, önceki hamleyi geri çevirebilir; bu durumda bitiriş efekti durdurulur.

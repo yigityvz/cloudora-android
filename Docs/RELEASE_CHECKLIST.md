@@ -1,5 +1,7 @@
 # iOS dağıtım kontrolü
 
+> **Okuma notu — 24 Kasım 2026:** Yayın öncesi kontrol kaydıdır; kaynak dalının mevcut olması mağaza yayını veya Android cihaz kabulü değildir. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 - [x] Unity Xcode export ve ARM64 native derleme.
 - [x] Yerel geliştirme imzasıyla iPhone kurulumu ve açılışı.
 - [ ] Tam cihaz testi ve desteklenen ekran boyutları.

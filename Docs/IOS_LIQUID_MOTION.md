@@ -1,5 +1,7 @@
 > Güncel kapsam: `IOS_ITEM_TRANSFER_RESTORE.md`. Aşağıdaki kesintisiz sıvı şeridi denemesi kullanıcının düzeltmesiyle kaldırıldı; hazne içi sıvı yükselmesi korundu.
 
+> **Okuma notu — 24 Kasım 2026:** Dışarıda kesintisiz sıvı şeridi denemesi kullanıcı tarafından geri alındı. Güncel aktarım için IOS_ITEM_TRANSFER_RESTORE.md okunmalıdır; son Ay dolunay tasarımı korunur. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 # Kesintisiz sıvı aktarımı ve ay ışığı — 18 Ekim 2026
 
 Aktarımda uçan element simgeleri ve ayrı paketler kaldırıldı. Kaynaktaki sıvı kesintisiz süzülür; parlak merkez ve yumuşak kenarlı tek bir şerit ağızlar arasındaki yolu izler. Renk ve hareket profilleri bütün elementlerde, ileride eklenecek profillerde ve farklı hazne kapasitelerinde aynı altyapıdan çözülür. Gökkuşağı akışta spektral renk, şimşek hafif iç parıltı kullanır; büyük logo taşınmaz.

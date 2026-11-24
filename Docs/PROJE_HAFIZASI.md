@@ -1,5 +1,7 @@
 # Cloudora iOS — proje hafızası
 
+> **Okuma notu — 24 Kasım 2026:** Kronolojik proje hafızasıdır. Aşağıdaki eski dünya/üretici/animasyon kararlarını son durum sanma; 24 Kasım ortak kaynak teslimi güncel sözleşmede açıklanır. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 Bu depo yalnızca `yigityvz/cloudora-ios` içindir. Çalışma dalı `main`.
 
 - Unity 6000.5.9f1; iPhone, iOS 15+, IL2CPP ARM64, Metal, dikey ekran.
@@ -53,3 +55,11 @@ Kullanıcı beşinci element seçeneğini açıkça seçti. Ay 81 yerine 60'ta b
 ## 19 Ekim: GitHub kaynak teslimi
 
 Kullanıcı güncel oyunun cloudora-ios reposuna pushlanmasını istedi. Teslim hedefi origin/main; açılıştan Ay60 güncellemesine kadar mevcut kaynaklar, kaynak görseller/metalar, testler ve iOS belgeleri birlikte commit edilir. Bu teslimde oyun davranışı değiştirilmez. Logs/Builds/Library, cihaz kayıtları ve imzalama bilgileri paylaşılmaz; Unity Project Auditor’ın numaralı yerel kopyaları ignore edilir. Son doğrulama: 235 geçti, 6 atlandı, 0 hata; iOS Release cihaz kurulumu başarılı.
+
+## 24 Kasım 2026 — yetkili tabanın ekip teslimi
+
+Yiğit, asıl projenin telefona kurulan iOS sürümü olduğunu belirtti. cloudora-ios/main@1ee4334 oyun tabanı cloudora-android/cloudora-yigit dalına kaynak eşlemesi olarak hazırlanır; eski cloudora-yigit geçmişi ve iOS kaynak atası korunur, force push yapılmaz. main veya cloudora-bahadir bu görevde değiştirilmez. Android v4.1 veya v4.5.0 APK ürün tabanı seçilmez.
+
+CLAUDE.md, EKIP_ONBOARDING, GUNCEL_DURUM, DOSYA_OKUMA_HARITASI, SONRAKI_ADIMLAR ve dal karşılaştırması eklendi. REFERANS_TABAN.json + Tools/verify_reference_snapshot.py, 478 oyun/Editor/test/varlık/paket/ayar dosyasını iOS kaynağına göre denetler;90 LFS nesnesi içerir. Oynanışa dokunulmadı. Android APK/cihaz doğrulaması bu teslimde yapılmış sayılmaz. Tarihsel iOS sonucu235 geçti/6 atlama/0 hata olarak açıkça ayrılır.
+
+Bahadır v4.1 ile99 başlangıç tahtası farklı (yalnız3. bölümün board metni aynı; tam kayıtları yine farklı). Başarısızlık, Ay60/61, Shuffle16/15, kapasite ve üretim araçları farklıdır. Dar öğretici yerleşimi/milestone sayacı/Android platform araçları inceleme adayıdır; otomatik alınmadı. Ayrıntı DAL_KARSILASTIRMASI_2026-11-24.md.

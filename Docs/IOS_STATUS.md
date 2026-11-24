@@ -1,5 +1,7 @@
 # iOS aktarım ve tasarım durumu — 2026-10-17
 
+> **Okuma notu — 24 Kasım 2026:** Kronolojik test/cihaz kaydıdır. Eski satırlar bugün yeniden yapılmış doğrulama veya güncel gereksinim sayılmaz. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 Kaynak: `yigityvz/cloudora-android`, `cloudora-bahadir`, `d7c9416` (v3.2 + belge kayıtları). Hedef: `yigityvz/cloudora-ios`, `main`.
 
 ## İlk platform aktarımında korunan kapsam (16 Ekim)

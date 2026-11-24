@@ -1,5 +1,7 @@
 # Cloudora iOS mimarisi
 
+> **Okuma notu — 24 Kasım 2026:** İlk iOS aktarımının kısa mimari özetidir. Ortak kaynakların cloudora-yigit teslimi ve güncel kapsam ayrıca belgelenmiştir. Güncel başlangıç: [GUNCEL_DURUM.md](GUNCEL_DURUM.md) ve [ekip öğrenme rotası](EKIP_ONBOARDING.md).
+
 - Oyun: `Assets/_Cloudora/Scripts/` altında saf C# bulmaca kuralları, bölüm verileri, ilerleme, kayıt ve Unity arayüzü.
 - Ana sahne: `Assets/_Cloudora/Scenes/02_Gameplay.unity`.
 - Editor: iOS derleme aracı, bölüm üretim/kalibrasyon araçları ve içerik doğrulaması.

@@ -1,5 +1,12 @@
 # Cloudora iOS değişiklik kaydı
 
+## 2026-11-24 — cloudora-yigit kaynak eşlemesi ve ekip yönergesi
+
+- Ürün tabanı cloudora-ios/main@1ee4334 olarak sabitlendi; Android reposunun cloudora-yigit dalına aynı oyun kaynakları teslim edilir. Önceki dal geçmişi korunur; main'e birleştirme yapılmaz.
+- CLAUDE.md giriş dosyası, aşamalı ekip okuma rotası, tüm kaynak/doküman haritası, güncel sözleşme ve gelecek iş/karar ayrımı eklendi. Eski belgeler için okuma önceliği işaretlendi.
+- Salt okunur kaynak denetimi478 korunan dosyanın ve90 LFS nesnesinin referans eşliğini kontrol eder. Runtime/Editor/test/varlık/Unity ayarı değişmedi; Android APK/cihaz testi yapılmadı.
+- Bahadır v4.1 dalıyla kod/veri karşılaştırması eklendi;99 başlangıç tahtası farkı ve kural ayrımları raporlandı. Bu farklar oyuna otomatik taşınmadı.
+
 ## 2026-10-19 — güncel iOS kaynak sürümü
 
 - Açılış, ana ekran, dünyalar ve oyun arayüzü; sabit hazneler, elemente özel aktarım ve yedi bitiriş efekti bir araya getirildi.
