@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="G&#195;&#188;ne&#197;&#159; kabartmal&#196;&#177; alt&#196;&#177;n">
+<rect x="1" y="1" width="32" height="32" rx="16" fill="url(#paint0_linear_0_4)"/>
+<rect x="1" y="1" width="32" height="32" rx="16" stroke="#FFE390" stroke-width="2"/>
+<path id="Sembol" d="M17 11.5009C24.3322 11.5009 24.3322 22.4991 17 22.4991C9.66783 22.4991 9.66783 11.5009 17 11.5009ZM16.0835 6.46H17.9165V9.66783H16.0835V6.46ZM16.0835 24.3322H17.9165V27.54H16.0835V24.3322ZM6.46 16.0835H9.66783V17.9165H6.46V16.0835ZM24.3322 16.0835H27.54V17.9165H24.3322V16.0835ZM8.7513 9.66783L10.1261 8.29304L12.4174 11.0426L11.0426 12.4174L8.7513 9.66783ZM21.5826 22.9574L22.9574 21.5826L25.707 23.8739L24.3322 25.707L21.5826 22.9574ZM8.7513 24.3322L11.0426 21.5826L12.4174 22.9574L10.1261 25.707L8.7513 24.3322ZM21.5826 11.0426L24.3322 8.29304L25.707 9.66783L22.9574 12.4174L21.5826 11.0426Z" fill="#BD7829"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="0" y1="0" x2="0" y2="34" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFEFA4"/>
+<stop offset="1" stop-color="#E9A538"/>
+</linearGradient>
+</defs>
+</svg>

@@ -8,8 +8,8 @@ namespace Cloudora.Progression
 
         public ProgressionManager(int currentLevel, int highestCompletedLevel = 0)
         {
-            CurrentLevel = System.Math.Max(1, currentLevel);
-            HighestCompletedLevel = System.Math.Max(0, highestCompletedLevel);
+            CurrentLevel = System.Math.Clamp(currentLevel,1,WorldCatalog.MaxLevel);
+            HighestCompletedLevel = System.Math.Clamp(highestCompletedLevel,0,WorldCatalog.MaxLevel);
         }
 
         public void CompleteCurrentLevel()
@@ -19,11 +19,11 @@ namespace Cloudora.Progression
 
         public void Advance()
         {
-            if (HighestCompletedLevel >= CurrentLevel) CurrentLevel++;
+            if (HighestCompletedLevel >= CurrentLevel) CurrentLevel=System.Math.Min(WorldCatalog.MaxLevel,CurrentLevel+1);
         }
 
-        public int ResumeLevel(bool currentAttemptCompleted) => currentAttemptCompleted ? CurrentLevel + 1 : CurrentLevel;
+        public int ResumeLevel(bool currentAttemptCompleted) => currentAttemptCompleted ? System.Math.Min(WorldCatalog.MaxLevel,CurrentLevel + 1) : CurrentLevel;
 
-        public void DebugJump(int level) => CurrentLevel = System.Math.Max(1, level);
+        public void DebugJump(int level) => CurrentLevel = System.Math.Clamp(level,1,WorldCatalog.MaxLevel);
     }
 }

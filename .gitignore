@@ -113,3 +113,22 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# iOS generated artifacts and local signing material
+*.ipa
+*.xcarchive/
+*.dSYM/
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.p8
+*.cer
+*.key
+**/xcuserdata/
+/DerivedData/
+
+# Local IDE configuration
+/.vscode/
+
+# Unity Project Auditor duplicate local settings
+/ProjectSettings/ProjectAuditorSettings [0-9]*.asset

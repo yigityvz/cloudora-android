@@ -1,0 +1,17 @@
+> Güncel kapsam: `IOS_ITEM_TRANSFER_RESTORE.md`. Aşağıdaki kesintisiz sıvı şeridi denemesi kullanıcının düzeltmesiyle kaldırıldı; hazne içi sıvı yükselmesi korundu.
+
+# Kesintisiz sıvı aktarımı ve ay ışığı — 18 Ekim 2026
+
+Aktarımda uçan element simgeleri ve ayrı paketler kaldırıldı. Kaynaktaki sıvı kesintisiz süzülür; parlak merkez ve yumuşak kenarlı tek bir şerit ağızlar arasındaki yolu izler. Renk ve hareket profilleri bütün elementlerde, ileride eklenecek profillerde ve farklı hazne kapasitelerinde aynı altyapıdan çözülür. Gökkuşağı akışta spektral renk, şimşek hafif iç parıltı kullanır; büyük logo taşınmaz.
+
+Kaynak yüzeyi azalırken hedef yüzeyi yükselir. Giden ve gelen miktar arasındaki fark yoldaki sıvıdır; hedefe varıştan önce dolum yapılmaz. Şerit her karede gerçek sıvı yüzeylerine bağlanır. Aynı element geldiğinde var olan renk bölgesi uzar; ek blok, ikinci simge veya ara gradyan dikişi oluşmaz. Farklı elementlerin kurala uygun renk katmanları korunur. Yeni LiquidFillGraphic, hareket sırasında dalga/salınım ve durulma, sabitken ince menisküs ve yüzey yansıması çizer. Boşaltma/dolum yalnızca görsel önizlemedir; tahta verisini denetleyici animasyon sonunda bir kez değiştirir. İptal/Geri Al orijinal görünümü geri getirir.
+
+Cam yer değiştirmez ve eğilmez. Azaltılmış hareket kısa, dalgasız dolum kullanır. Aynı sütunda yol camın yanından geçer. Uzun karede animasyon ilerlemesi en fazla 40 ms alınır; takılmanın ardından tek karede tüm aktarım atlanmaz. Normal 30/60 FPS zamanlaması aynı kalır. İçerik ve akış nesneleri tekrar kullanılır; ısıtılmış sıvı/şerit çiziminde geçici managed tahsis ölçülmez. Telefonlarda evrensel FPS garantisi verilmez.
+
+Ay bitirişi yeniden tasarlandı: koyu gölge açılarak kraterli inci beyazı dolunayı ortaya çıkarır. Ay ışığı haznenin içine düşer, gümüş parıltılar iner ve küçük bir takımyıldız yazılır. Önceki hilal/yörünge sahnesi kullanılmaz. Diğer elementlerin bitirişleri ve 100/200/300 ödül, 500 devam ekonomisi korunur.
+
+Doğrulama: `Logs/liquid-motion.xml` içinde 11 test geçti; kare sayısına bağlı eski bitiriş önizleme süresi testi başarısız oldu. Test gerçek zaman sınırıyla düzeltildi; `Logs/liquid-final.xml` içinde 7/7 test geçti. Kapsam: hacim/varış sırası, tek gövdede birleştirme, iptal, dalga sınırları, sıvı meshinde tahsis, yedi bitiriş, sabit cam ve farklı tahta boyutları. Son aktarım zamanlama/dokunma testi `Logs/liquid-timing.xml`. Görseller `Logs/ElementMotionReview` ve `Logs/CompletionReview` içinde; hareket önizlemesi kare sırasını 30 FPS olarak örnekler.
+
+Kullanıcının isteğiyle bağlı cihaz 60. bölüme geri alınacak. 100/100 tamamlanmış asıl kayıt `Logs/device-backup-before-liquid-20261018` içinde yedeklendi. Can, altın ve yardım hakları korunur; canlı kayıt 60. bölüm / 59 tamamlanmış bölüm olarak hazırlanır; böylece bitmiş kampanya paneli yerine 60. bölüm oynanabilir. Bu bir yerel cihaz QA değişikliğidir; uygulamanın varsayılan başlangıcı veya depo oyun verileri değiştirilmez.
+
+Cihaz sonucu: Unity export 0 hata / 5 mevcut ikon uyarısı, imzalı Xcode Release başarılı (`Logs/liquid-xcode.log`). `/private/tmp/cloudora-ios-liquid-20261018/Cloudora.app` iPhone SE’ye silmeden kuruldu ve açıldı. Kullanıcı isteğiyle canlı kayıt bölüm 60 / tamamlanan 59 olarak ayarlandı; 3630 altın, 5 can, yardım hakları ve tercihler korundu. 100/100 bitmiş kayıt ayrı yedekte durur. Açılış sonrası okuma ile doğrulandı (`Logs/liquid-level60-check.json`). Fiziksel görsel beğeni ve cihaz FPS ölçümü kullanıcı kontrolüne açıktır.

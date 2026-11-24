@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Durum amblemi">
+<rect x="1" y="1" width="54" height="54" rx="27" fill="url(#paint0_linear_0_81)"/>
+<rect x="1" y="1" width="54" height="54" rx="27" stroke="#69ABC6" stroke-width="2"/>
+<path id="Sembol" d="M12.5 12.5H23.66V43.5H12.5V12.5ZM32.34 12.5H43.5V43.5H32.34V12.5Z" fill="#FFD464"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_81" x1="0" y1="0" x2="0" y2="56" gradientUnits="userSpaceOnUse">
+<stop stop-color="#367F9A"/>
+<stop offset="1" stop-color="#173B5B"/>
+</linearGradient>
+</defs>
+</svg>

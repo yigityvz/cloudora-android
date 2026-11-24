@@ -58,6 +58,8 @@ namespace Cloudora.Services
             data.undoCharges = Math.Max(0, data.undoCharges);
             data.extraCloudCharges = Math.Max(0, data.extraCloudCharges);
             data.safeShuffleCharges = Math.Max(0, data.safeShuffleCharges);
+            data.coins = Math.Max(0, data.coins);
+            if (data.failRecord == null || data.failRecord.level < 0) data.failRecord = new FailRecord();
             data.currentLevel = Math.Max(1, data.currentLevel);
             data.highestCompletedLevel = Math.Max(0, data.highestCompletedLevel);
             data.lives = Math.Max(0, Math.Min(Progression.LifeManager.MaxLives, data.lives));

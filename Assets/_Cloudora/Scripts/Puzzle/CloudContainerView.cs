@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +11,15 @@ namespace Cloudora.Puzzle
     public class CloudContainerView : MonoBehaviour
     {
         private readonly List<WeatherType> _elements = new();
-        private readonly List<Image> _slotImages = new();
-        private readonly List<Text> _slotLabels = new();
+        private readonly List<EssenceRegion> _regions=new();
+        private EssenceRegion _incoming;
+        private int _activeRegionCount;
+        private sealed class EssenceRegion
+        {
+            public RectTransform Rect;public LiquidFillGraphic Fill;public WeatherGlyph Glyph;
+            public WeatherType Type;public bool Hidden,Styled;
+        }
+        private RectTransform _essenceRoot;
 
         private Button _button;
 
@@ -27,6 +34,16 @@ namespace Cloudora.Puzzle
         private bool _hideContents;
         private Text _modifierBadge;
         private bool _visualPrepared;
+        private RectTransform _visualBody;
+        private GlassVesselGraphic _glass;
+        private bool _selected;
+        private float _selectionGlow;
+        private VesselCompletionFlourish _completion;
+        public RectTransform VisualBody=>_visualBody;
+        private RectTransform _transferRegion,_transferTop;
+        private Vector2 _transferTopMax;
+        private EssenceRegion _receivingTop;
+        private Vector2 _receivingTopMax;
 
         public int Capacity { get; private set; }
 
@@ -37,6 +54,7 @@ namespace Cloudora.Puzzle
         public bool IsEmpty => _elements.Count == 0;
 
         public bool IsFull => _elements.Count >= Capacity;
+        public bool IsComplete => !IsEmpty&&IsSolved();
 
         private void Awake()
         {
@@ -54,12 +72,9 @@ namespace Cloudora.Puzzle
             if (!_visualPrepared)
             {
                 _visualPrepared = true;
-                _background.sprite = CloudoraVisuals.CloudVessel;
-                _background.type = Image.Type.Sliced;
-                _background.color = new Color(0.93f, 0.97f, 1f, 0.96f);
-                Shadow shadow = GetComponent<Shadow>() ?? gameObject.AddComponent<Shadow>();
-                shadow.effectColor = new Color(0.15f, 0.28f, 0.42f, 0.16f);
-                shadow.effectDistance = new Vector2(0f, -7f);
+                _background.sprite=null;
+                _background.type=Image.Type.Simple;
+                _background.color=Color.clear;
                 _normalBackgroundColor = _background.color;
             }
         }
@@ -71,6 +86,8 @@ namespace Cloudora.Puzzle
         {
             EnsureComponents();
             Capacity = capacity;
+            string glass=capacity==5?"c190e":capacity==6?"91521":capacity>=7?"b3e5d":"b44ef";
+            _background.sprite=null;
 
             _elements.Clear();
             _elements.AddRange(initialElements);
@@ -91,119 +108,107 @@ namespace Cloudora.Puzzle
 
         private void BuildSlots()
         {
-            _slotImages.Clear();
-            _slotLabels.Clear();
-
-            for (int i = transform.childCount - 1; i >= 0; i--)
-            {
-                Destroy(transform.GetChild(i).gameObject);
-            }
-
-            GameObject slotRoot = new GameObject(
-                "Slots",
-                typeof(RectTransform),
-                typeof(VerticalLayoutGroup));
-
-            slotRoot.transform.SetParent(transform, false);
-
-            RectTransform rootRect =
-                slotRoot.GetComponent<RectTransform>();
-
-            rootRect.anchorMin = Vector2.zero;
-            rootRect.anchorMax = Vector2.one;
-
-            rootRect.offsetMin = new Vector2(15f, 15f);
-            rootRect.offsetMax = new Vector2(-15f, -15f);
-
-            VerticalLayoutGroup layout =
-                slotRoot.GetComponent<VerticalLayoutGroup>();
-
-            layout.padding = new RectOffset(10, 10, 10, 10);
-            layout.spacing = 8f;
-
-            layout.childAlignment = TextAnchor.UpperCenter;
-
-            layout.childControlWidth = true;
-            layout.childControlHeight = true;
-
-            layout.childForceExpandWidth = true;
-            layout.childForceExpandHeight = true;
-
-            for (int i = 0; i < Capacity; i++)
-            {
-                GameObject slotObject = new GameObject(
-                    $"Slot_{i + 1}",
-                    typeof(RectTransform),
-                    typeof(Image),
-                    typeof(LayoutElement));
-
-                slotObject.transform.SetParent(
-                    slotRoot.transform,
-                    false);
-
-                Image slotImage =
-                    slotObject.GetComponent<Image>();
-
-                slotImage.raycastTarget = false;
-                slotImage.sprite = CloudoraVisuals.RoundedPanel;
-                slotImage.type = Image.Type.Sliced;
-
-                var labelObject = new GameObject("Pattern", typeof(RectTransform), typeof(Text));
-                labelObject.transform.SetParent(slotObject.transform, false);
-                Text label = labelObject.GetComponent<Text>();
-                label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-                label.fontSize = 22;
-                label.fontStyle = FontStyle.Bold;
-                label.alignment = TextAnchor.MiddleCenter;
-                label.color = new Color(0.15f, 0.22f, 0.29f, 0.85f);
-                label.raycastTarget = false;
-                label.rectTransform.anchorMin = Vector2.zero;
-                label.rectTransform.anchorMax = Vector2.one;
-                label.rectTransform.offsetMin = label.rectTransform.offsetMax = Vector2.zero;
-
-                LayoutElement layoutElement =
-                    slotObject.GetComponent<LayoutElement>();
-
-                layoutElement.flexibleHeight = 1f;
-                layoutElement.flexibleWidth = 1f;
-
-                _slotImages.Add(slotImage);
-                _slotLabels.Add(label);
-            }
+            for(int i=transform.childCount-1;i>=0;i--){DesignUI.Remove(transform.GetChild(i).gameObject);}
+            _regions.Clear();_incoming=null;_transferTop=null;_transferRegion=null;_receivingTop=null;_activeRegionCount=0;
+            _visualBody=DesignUI.Rect(transform,"Vessel body",0,0,0,0);_visualBody.anchorMin=Vector2.zero;_visualBody.anchorMax=Vector2.one;_visualBody.pivot=new Vector2(.5f,.5f);_visualBody.offsetMin=_visualBody.offsetMax=Vector2.zero;
+            _essenceRoot=DesignUI.Rect(_visualBody,"Essence regions",0,0,0,0);
+            _essenceRoot.anchorMin=new Vector2(.14f,9f/(Capacity*36+43));_essenceRoot.anchorMax=new Vector2(.86f,1-13f/(Capacity*36+43));_essenceRoot.offsetMin=_essenceRoot.offsetMax=Vector2.zero;
+            var mask=_essenceRoot.gameObject.AddComponent<VesselFillMask>();mask.raycastTarget=false;_essenceRoot.gameObject.AddComponent<Mask>().showMaskGraphic=false;
+            var glassRect=DesignUI.Rect(_visualBody,"Glass",0,0,0,0);glassRect.pivot=new Vector2(.5f,.5f);glassRect.anchorMin=Vector2.zero;glassRect.anchorMax=Vector2.one;glassRect.offsetMin=glassRect.offsetMax=Vector2.zero;
+            _glass=glassRect.gameObject.AddComponent<GlassVesselGraphic>();_glass.raycastTarget=false;_glass.Selected=_selected;_glass.SelectionGlow=_selectionGlow;
         }
-
+        private EssenceRegion CreateRegion(string name)
+        {
+            var r=DesignUI.Rect(_essenceRoot,name,0,0,0,0);r.offsetMin=r.offsetMax=Vector2.zero;
+            var fill=r.gameObject.AddComponent<LiquidFillGraphic>();fill.raycastTarget=false;
+            return new EssenceRegion{Rect=r,Fill=fill};
+        }
+        private void StyleRegion(EssenceRegion region,WeatherType type,bool hidden,bool incoming=false)
+        {
+            if(region.Styled&&region.Type==type&&region.Hidden==hidden)return;
+            region.Styled=true;region.Type=type;region.Hidden=hidden;
+            if(!incoming)region.Rect.name="Essence "+type;
+            Color c=hidden?new Color(.72f,.78f,.86f,.22f):GetColor(type);
+            region.Fill.Top=hidden?c:Color.Lerp(c,Color.white,.16f);region.Fill.Bottom=hidden?c:Color.Lerp(c,Color.black,.12f);region.Fill.SetVerticesDirty();
+            if(!hidden&&!region.Glyph){var r=DesignUI.Rect(region.Rect,"Weather symbol",0,0,18,18);CenterSymbol(r);region.Glyph=r.gameObject.AddComponent<WeatherGlyph>();region.Glyph.raycastTarget=false;}
+            if(region.Glyph){region.Glyph.SetElement(type);if(region.Glyph.gameObject.activeSelf==hidden)region.Glyph.gameObject.SetActive(!hidden);}
+        }
+        private static void CenterSymbol(RectTransform r){r.anchorMin=r.anchorMax=new Vector2(.5f,.5f);r.pivot=new Vector2(.5f,.5f);r.anchoredPosition=Vector2.zero;r.gameObject.AddComponent<EssenceSymbolFit>();}
         private void RefreshVisuals()
         {
-            int emptySlotCount =
-                Capacity - _elements.Count;
-
-            for (int visualIndex = 0;
-                 visualIndex < Capacity;
-                 visualIndex++)
+            if(!_essenceRoot)return;
+            ClearTransferPreview();int group=0;
+            for(int i=0;i<_elements.Count;)
             {
-                Image slotImage =
-                    _slotImages[visualIndex];
-
-                if (visualIndex < emptySlotCount)
-                {
-                    slotImage.color =
-                        new Color(1f, 1f, 1f, 0.08f);
-                    _slotLabels[visualIndex].text = string.Empty;
-
-                    continue;
-                }
-
-                int elementIndex =
-                    Capacity - 1 - visualIndex;
-
-                WeatherType element =
-                    _elements[elementIndex];
-
-                slotImage.color = GetColor(element);
-                _slotLabels[visualIndex].text = GetPattern(element);
-                if (_hideContents && visualIndex > emptySlotCount)
-                    slotImage.color = new Color(0.72f, 0.78f, 0.86f, 0.22f);
+                WeatherType type=_elements[i];int count=1;while(i+count<_elements.Count&&_elements[i+count]==type)count++;
+                if(group==_regions.Count)_regions.Add(CreateRegion("Essence"));
+                var region=_regions[group++];StyleRegion(region,type,_hideContents&&i+count<_elements.Count);
+                region.Rect.anchorMin=new Vector2(0,i/(float)Capacity);region.Rect.anchorMax=new Vector2(1,(i+count)/(float)Capacity);
+                region.Fill.SetSurface(i+count==_elements.Count);
+                if(!region.Rect.gameObject.activeSelf)region.Rect.gameObject.SetActive(true);
+                i+=count;
             }
+            _activeRegionCount=group;
+            for(int i=group;i<_regions.Count;i++)if(_regions[i].Rect.gameObject.activeSelf)_regions[i].Rect.gameObject.SetActive(false);
+            bool solved=IsComplete;if(!solved&&_completion)_completion.StopEffect();
+            if(_glass.Solved!=solved){_glass.Solved=solved;_glass.SetVerticesDirty();}
+        }
+
+        public Vector3 MouthPosition => _visualBody ? _visualBody.TransformPoint(new Vector3(_visualBody.rect.center.x, _visualBody.rect.yMax - _visualBody.rect.width / 90f * 8, 0)) : transform.position;
+
+        public void SetTransferHighlight(Color tint, float strength)
+        {
+            if (!_glass) return;
+            strength=Mathf.Clamp01(strength);
+            if(_glass.TransferTint==tint&&Mathf.Approximately(_glass.TransferGlow,strength))return;
+            _glass.TransferTint = tint; _glass.TransferGlow = strength; _glass.SetVerticesDirty();
+        }
+
+        public Vector3 FluidSurfacePosition(float additional=0)
+        {
+            if(!_essenceRoot)return transform.position;var r=_essenceRoot.rect;
+            return _essenceRoot.TransformPoint(new Vector3(r.center.x,Mathf.Lerp(r.yMin,r.yMax,(ElementCount+additional)/Capacity),0));
+        }
+        public void SetTransferPreview(WeatherType type,int count,float progress,float phase=0,float energy=0)
+        {
+            if(!_essenceRoot)return;
+            if(progress<0)
+            {
+                if(!_transferTop&&_activeRegionCount>0){_transferTop=_regions[_activeRegionCount-1].Rect;_transferTopMax=_transferTop.anchorMax;}
+                if(_transferTop)
+                {
+                    _transferTop.anchorMax=new Vector2(1,Mathf.Max(_transferTop.anchorMin.y,_transferTopMax.y+progress*count/Capacity));
+                    _regions[_activeRegionCount-1].Fill.SetSurface(true,phase,energy*.45f);
+                }
+            }
+            else if(progress>0)
+            {
+                // Grow the existing fluid body: no second rectangle, gradient seam or duplicate icon.
+                var top=_activeRegionCount>0?_regions[_activeRegionCount-1]:null;
+                if(top!=null&&top.Type==type&&!top.Hidden)
+                {
+                    if(_receivingTop==null){_receivingTop=top;_receivingTopMax=top.Rect.anchorMax;}
+                    top.Rect.anchorMax=new Vector2(1,_receivingTopMax.y+progress*count/Capacity);
+                    top.Fill.SetSurface(true,phase,energy);
+                }
+                else
+                {
+                    if(_incoming==null)_incoming=CreateRegion("Incoming weather");
+                    _transferRegion=_incoming.Rect;StyleRegion(_incoming,type,false,true);
+                    if(!_transferRegion.gameObject.activeSelf)_transferRegion.gameObject.SetActive(true);
+                    _transferRegion.anchorMin=new Vector2(0,ElementCount/(float)Capacity);_transferRegion.anchorMax=new Vector2(1,(ElementCount+progress*count)/Capacity);_transferRegion.offsetMin=_transferRegion.offsetMax=Vector2.zero;
+                    _incoming.Fill.SetSurface(true,phase,energy);
+                    if(top!=null)top.Fill.SetSurface(false);
+                }
+            }
+        }
+        public void ClearTransferPreview()
+        {
+            if(_transferTop)_transferTop.anchorMax=_transferTopMax;
+            if(_receivingTop!=null)_receivingTop.Rect.anchorMax=_receivingTopMax;
+            if(_transferRegion&&_transferRegion.gameObject.activeSelf)_transferRegion.gameObject.SetActive(false);
+            for(int i=0;i<_activeRegionCount;i++)_regions[i].Fill.SetSurface(i==_activeRegionCount-1);
+            _transferTop=null;_transferRegion=null;_receivingTop=null;
         }
 
         public static Color GetColor(
@@ -217,49 +222,42 @@ namespace Cloudora.Puzzle
                 WeatherType.Rain =>
                     new Color(0.20f, 0.55f, 1f),
 
-                WeatherType.Snow =>
-                    new Color(0.82f, 0.94f, 1f),
-
-                WeatherType.Wind => new Color(0.56f, 0.84f, 0.78f),
+                // Güncel hava paleti: Kar cyan, Rüzgar mint, Şimşek gece mavisi.
+                WeatherType.Snow => new Color32(0x7F, 0xE3, 0xF5, 0xFF),
+                WeatherType.Wind => new Color32(0x43, 0xB8, 0xA0, 0xFF),
                 WeatherType.Moon => new Color(0.56f, 0.49f, 0.95f),
-                WeatherType.Lightning => new Color(1f, 0.82f, 0.40f),
+                WeatherType.Lightning => new Color32(0x25, 0x35, 0x8A, 0xFF),
                 WeatherType.Rainbow => new Color(0.95f, 0.55f, 0.78f),
 
                 _ => Color.magenta
             };
         }
 
+        private static readonly Color DarkPatternColor = new Color(0.15f, 0.22f, 0.29f, 0.85f);
+
+        // Koyu renkli parçada (Şimşek) desen beyaz, diğerlerinde koyu.
+        public static Color GetPatternColor(WeatherType element)
+        {
+            Color color = GetColor(element);
+            float brightness = color.r * 0.299f + color.g * 0.587f + color.b * 0.114f;
+            return brightness < 0.43f ? Color.white : DarkPatternColor;
+        }
+
         // Oyuncu bu cloud'u seçtiğinde görünüşünü değiştirir.
         public void SetSelected(bool selected)
         {
-            if (selected)
-            {
-                _background.color =
-                    Color.Lerp(
-                        _normalBackgroundColor,
-                        Color.white,
-                        0.35f);
-                transform.localScale = Vector3.one * 1.04f;
-            }
-            else
-            {
-                _background.color =
-                    _normalBackgroundColor;
-                transform.localScale = Vector3.one;
-            }
+            if(selected&&IsComplete)return;
+            if(_selected==selected)return;_selected=selected;
+            if(_glass){_glass.Selected=selected;_glass.SetVerticesDirty();}
         }
 
-        private static string GetPattern(WeatherType type) => type switch
+        private void Update()
         {
-            WeatherType.Sun => "*",
-            WeatherType.Rain => "///",
-            WeatherType.Snow => "+",
-            WeatherType.Wind => "~~~",
-            WeatherType.Moon => ")",
-            WeatherType.Lightning => "!!",
-            WeatherType.Rainbow => "<>",
-            _ => "?"
-        };
+            float next=Mathf.MoveTowards(_selectionGlow,_selected?1:0,Time.unscaledDeltaTime*9);
+            if(Mathf.Approximately(next,_selectionGlow))return;
+            _selectionGlow=next;
+            if(_glass){_glass.SelectionGlow=next;_glass.SetVerticesDirty();}
+        }
 
         public WeatherType[] CaptureElements()
         {
@@ -338,7 +336,7 @@ namespace Cloudora.Puzzle
         public bool TryMoveTopGroupTo(
             CloudContainerView target, int maxCount = int.MaxValue)
         {
-            if (target == this)
+            if (IsComplete || target == this)
             {
                 return false;
             }
@@ -363,7 +361,7 @@ namespace Cloudora.Puzzle
                 target.Capacity - target.ElementCount;
 
             int moveCount =
-                Mathf.Min(groupCount, availableSpace, maxCount);
+                Mathf.Min(groupCount,Mathf.Min(availableSpace,maxCount));
 
             if (moveCount <= 0)
             {
@@ -421,8 +419,8 @@ namespace Cloudora.Puzzle
                 var badge = new GameObject("ModifierBadge", typeof(RectTransform), typeof(Text));
                 badge.transform.SetParent(transform, false);
                 _modifierBadge = badge.GetComponent<Text>();
-                _modifierBadge.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-                _modifierBadge.fontSize = 24;
+                _modifierBadge.font = DesignUI.Font;
+                _modifierBadge.fontSize = 20;
                 _modifierBadge.alignment = TextAnchor.UpperCenter;
                 _modifierBadge.raycastTarget = false;
                 _modifierBadge.rectTransform.anchorMin = new Vector2(0f, 0.82f);
@@ -441,7 +439,15 @@ namespace Cloudora.Puzzle
 
         public void PlaySolvedFeedback()
         {
-            StartFeedback(SolvedFeedbackRoutine());
+            if(!IsComplete)return;
+            WeatherType element=WeatherType.Rainbow;
+            foreach(var type in _elements)if(type!=WeatherType.Rainbow){element=type;break;}
+            if(!_completion)
+            {
+                var r=DesignUI.Rect(_visualBody,"Element completion",0,0,0,0);r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;
+                r.gameObject.AddComponent<Canvas>();_completion=r.gameObject.AddComponent<VesselCompletionFlourish>();_completion.raycastTarget=false;
+            }
+            _completion.Play(this,element);
         }
 
         private void StartFeedback(IEnumerator routine)
@@ -474,24 +480,5 @@ namespace Cloudora.Puzzle
             _feedbackRoutine = null;
         }
 
-        private IEnumerator SolvedFeedbackRoutine()
-        {
-            const float duration = 0.34f;
-            float elapsed = 0f;
-            Color originColor = _background.color;
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.unscaledDeltaTime;
-                float wave = Mathf.Sin(elapsed / duration * Mathf.PI);
-                transform.localScale = Vector3.one * (1f + wave * 0.08f);
-                _background.color = Color.Lerp(originColor, new Color(0.75f, 1f, 0.9f), wave * 0.55f);
-                yield return null;
-            }
-
-            transform.localScale = Vector3.one;
-            _background.color = originColor;
-            _feedbackRoutine = null;
-        }
     }
 }

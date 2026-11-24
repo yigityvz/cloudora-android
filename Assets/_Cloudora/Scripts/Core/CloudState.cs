@@ -14,6 +14,16 @@ namespace Cloudora.Core
         public int Count => _elements.Count;
         public bool IsEmpty => Count == 0;
         public bool IsFull => Count == Capacity;
+        public bool IsComplete
+        {
+            get
+            {
+                if(IsEmpty||!IsFull)return false;
+                WeatherType? resolved=null;
+                for(int i=0;i<Count;i++){var type=_elements[i];if(type==WeatherType.Rainbow)continue;if(resolved.HasValue&&resolved.Value!=type)return false;resolved=type;}
+                return true;
+            }
+        }
         public WeatherType Top => _elements[^1];
 
         public CloudState(int capacity, IEnumerable<WeatherType> elements)

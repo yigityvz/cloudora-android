@@ -4,163 +4,166 @@ using UnityEngine.UI;
 
 namespace Cloudora.UI
 {
+    // "No Moves" (bölüm başarısız) ekranında gösterilecek seçenekler.
+    public readonly struct FailOptions : IEquatable<FailOptions>
+    {
+        public readonly bool RetryAvailable;  // can var (ya da 1–5'te ücretsiz)
+        public readonly bool RetryFree;       // 1–5: can götürmez
+        public readonly bool AdAvailable;
+        public readonly int CoinCost;
+        public readonly bool CoinsAffordable;
+
+        public FailOptions(bool retryAvailable, bool retryFree, bool adAvailable, int coinCost, bool coinsAffordable)
+        {
+            RetryAvailable = retryAvailable;
+            RetryFree = retryFree;
+            AdAvailable = adAvailable;
+            CoinCost = coinCost;
+            CoinsAffordable = coinsAffordable;
+        }
+
+        public bool Equals(FailOptions o) => RetryAvailable == o.RetryAvailable && RetryFree == o.RetryFree &&
+                                             AdAvailable == o.AdAvailable && CoinCost == o.CoinCost && CoinsAffordable == o.CoinsAffordable;
+        public override bool Equals(object obj) => obj is FailOptions other && Equals(other);
+        public override int GetHashCode() => HashCode.Combine(RetryAvailable, RetryFree, AdAvailable, CoinCost, CoinsAffordable);
+    }
+
     public sealed class GameplayOverlay : MonoBehaviour
     {
-        private Button _undoButton;
-        private Button _shuffleButton;
-        private GameObject _completePanel;
-        private Text _levelLabel;
-        private Text _tutorialLabel;
-        private Text _livesLabel;
-        private Text _boosterLabel;
-        private GameObject _blockingPanel;
-        private float _pulse;
-
-        private void Update()
+        private Button _undoButton,_extraButton,_shuffleButton,_retryButton,_adButton,_coinsButton;
+        private Text _boardHint,_difficultyLabel,_shuffleName;
+        private DesignPanel _difficulty;
+        private Text _coinsLabel,_livesLabel,_status,_levelLabel,_worldLabel,_tutorialLabel,_modeLabel,_adHintLabel;
+        private Text _undoBadge,_extraBadge,_shuffleBadge,_completeReward,_completeTitle,_failDetail,_blockTitle,_blockDetail;
+        private GameObject _completePanel,_failPanel,_blockingPanel,_pausePanel;
+        private RectTransform _helpers;
+        private int _level;private int _shownLives=int.MinValue;private string _shownCountdown;private bool _busyKnown,_busy;private FailOptions _shownFail;private bool _failKnown;private float _layoutHeight=-1;
+        private MilestoneScreen _milestone;
+        private GameplayBackdrop _backdrop;
+        private Button _pauseButton;
+        private Text _pauseHomeLabel,_failHomeLabel;
+        private CanvasGroup _helperGroup;
+        private GameObject _toast;
+        private Coroutine _toastRoutine;
+        public static GameplayOverlay Create(Canvas canvas,Action onUndo,Action onContinue,Action onWorld,Action onExtraCloud,Action onSafeShuffle,Action onMenu,Action onRetry,Action onContinueWithAd,Action onContinueWithCoins,Action onLifeAd,Action onSettings=null)
         {
-            if (_tutorialLabel == null || string.IsNullOrEmpty(_tutorialLabel.text)) return;
-            _pulse += Time.unscaledDeltaTime * 4f;
-            _tutorialLabel.transform.localScale = Vector3.one * (1f + Mathf.Sin(_pulse) * 0.035f);
+            var host=new GameObject("GameplaySafeArea",typeof(RectTransform));host.transform.SetParent(canvas.transform,false);SafeAreaFitter.Attach(host);
+            var root=DesignUI.Screen(host.transform,"GameplayOverlay");var o=root.gameObject.AddComponent<GameplayOverlay>();
+            o._backdrop=GameplayBackdrop.Create(canvas);
+            DesignUI.ResourcesBar(root,out o._coinsLabel,out o._livesLabel,out o._status);
+            o._worldLabel=DesignUI.Label(root,"",30,84,330,18,12,DesignUI.Muted,TextAnchor.MiddleCenter);
+            o._levelLabel=DesignUI.Label(root,"",30,108,330,34,26,null,TextAnchor.MiddleCenter);
+            o._tutorialLabel=DesignUI.Label(root,"",28,155,334,35,12,DesignUI.Muted,TextAnchor.MiddleCenter);
+            o._modeLabel=DesignUI.Label(root,"",28,155,334,35,12,DesignUI.C("#ffd464"),TextAnchor.MiddleCenter);
+            o._difficulty=DesignUI.Panel(root,"Difficulty",145,146,100,22,"#366c7788","#23475788",11,"#a8d5df44",1);o._difficulty.raycastTarget=false;
+            o._difficultyLabel=DesignUI.Label(o._difficulty.transform,"",0,0,100,22,10,null,TextAnchor.MiddleCenter);
+
+            o._boardHint=DesignUI.Label(root,"Aynı hava türlerini bir araya getir.",28,650,334,20,12,DesignUI.Muted,TextAnchor.MiddleCenter);
+            o._helpers=DesignUI.Rect(root,"Helpers",20,710,350,92);
+            o._helperGroup=o._helpers.gameObject.AddComponent<CanvasGroup>();
+            o._undoButton=Helper(o._helpers,"Undo","Geri Al","Undo",0,onUndo,out o._undoBadge);
+            o._extraButton=Helper(o._helpers,"Extra","Ek Bulut","Extra",121,onExtraCloud,out o._extraBadge);
+            o._shuffleButton=Helper(o._helpers,"Shuffle","Karıştır","Shuffle",242,onSafeShuffle,out o._shuffleBadge);
+            o._shuffleName=o._shuffleButton.GetComponentsInChildren<Text>()[0];
+            o._pausePanel=o.Modal("PausePanel",376,out var pause);
+            DesignUI.SymbolButton(pause,"Pause",24,22,42,()=>o._pausePanel.SetActive(false));
+            DesignUI.Label(pause,"Duraklatıldı",82,21,240,30,24);
+            DesignUI.Label(pause,"Hazır olduğunda devam edebilirsin.",82,53,240,20,12,DesignUI.Muted);
+            DesignUI.Button(pause,"Devam Et",24,98,298,52,()=>o._pausePanel.SetActive(false),"green");
+            DesignUI.Button(pause,"Dünyalar",24,164,142,44,()=>{o._pausePanel.SetActive(false);onWorld?.Invoke();});
+            DesignUI.Button(pause,"Ayarlar",180,164,142,44,onSettings);
+            var home=DesignUI.Button(pause,"Ana Sayfaya Dön · −1 can",24,222,298,48,()=>{o._pausePanel.SetActive(false);onMenu?.Invoke();});home.name="PauseHomeButton";o._pauseHomeLabel=home.GetComponentInChildren<Text>();
+            DesignUI.Label(pause,"Bölüm baştan başlar.",24,278,298,20,12,DesignUI.Muted,TextAnchor.MiddleCenter);
+            DesignUI.Button(pause,"Can Kazan · +1",24,314,298,40,onLifeAd).name="LifeAdButton";
+            o._pauseButton=DesignUI.SymbolButton(root,"Pause",330,21,40,()=>o._pausePanel.SetActive(true));
+            o._completePanel=o.Modal("LevelCompletePanel",400,out var complete);
+            DesignUI.Art(complete,"a5f3a",145,22,56,56);
+            o._completeTitle=DesignUI.Label(complete,"",24,94,298,60,24,null,TextAnchor.MiddleCenter);
+            DesignUI.Label(complete,"Gökyüzü biraz daha aydınlandı.",24,157,298,23,14,DesignUI.Muted,TextAnchor.MiddleCenter);
+            DesignUI.Art(complete,"4c96c",117,195,32,32);o._completeReward=DesignUI.Label(complete,"",158,192,100,38,27,DesignUI.C("#ffd884"));
+            DesignUI.Button(complete,"Devam Et",24,256,298,52,()=>o.ContinueWithMilestone(onContinue,onWorld,onSettings),"green");
+            DesignUI.Button(complete,"Ana Sayfa",24,326,142,44,onMenu).name="WinHomeButton";
+            DesignUI.Button(complete,"Dünyalar",180,326,142,44,onWorld);
+            o._failPanel=o.Modal("FailPanel",452,out var fail);
+            DesignUI.Art(fail,"22aa2",149,20,48,48);
+            DesignUI.Label(fail,"Bölüm kaybedildi",24,84,298,34,24,DesignUI.C("#ffb3ab"),TextAnchor.MiddleCenter);
+            o._failDetail=DesignUI.Label(fail,"",24,130,298,42,14,DesignUI.Muted,TextAnchor.MiddleCenter);
+            o._coinsButton=DesignUI.Button(fail,"Güvenli Hamleye Dön",24,192,298,50,onContinueWithCoins,"green");o._coinsButton.name="CoinsButton";
+            o._retryButton=DesignUI.Button(fail,"Yeniden Başlat",24,256,298,48,onRetry);o._retryButton.name="RetryButton";
+            o._adButton=DesignUI.Button(fail,"Ödülle Devam Et",24,318,298,44,onContinueWithAd);o._adButton.name="AdButton";
+            o._failHomeLabel=DesignUI.Button(fail,"Ana Sayfa · −1 can",24,380,298,44,onMenu).GetComponentInChildren<Text>();
+            o._blockingPanel=o.Modal("BlockingPanel",264,out var block);
+            o._blockingPanel.AddComponent<Button>().onClick.AddListener(o.HideBlock);
+            o._blockTitle=DesignUI.Label(block,"",24,30,298,54,22,DesignUI.C("#ffd464"),TextAnchor.MiddleCenter);
+            o._blockDetail=DesignUI.Label(block,"",24,102,298,74,15,DesignUI.Muted,TextAnchor.MiddleCenter);
+            DesignUI.Button(block,"Anladım",24,194,298,46,()=>o.HideBlock());
+            o._pausePanel.SetActive(false);o._completePanel.SetActive(false);o._failPanel.SetActive(false);o._blockingPanel.SetActive(false);
+            return o;
+        }
+        private void ContinueWithMilestone(Action next,Action worlds,Action settings)
+        {
+            var world=Cloudora.Progression.WorldCatalog.ForLevel(_level);
+            if(_level!=Cloudora.Progression.WorldCatalog.IntroLastLevel && _level!=world.LastLevel){next?.Invoke();return;}
+            if(_milestone) return;
+            _milestone=MilestoneScreen.Create(transform,_level,next,worlds,settings);
+            _milestone.SetResources(_coinsLabel.text,_livesLabel.text,_status.text);
+        }
+        private GameObject Modal(string name,float height,out RectTransform card)
+        {
+            var root=DesignUI.Rect(transform,name,0,0,390,844);root.anchorMin=Vector2.zero;root.anchorMax=Vector2.one;root.offsetMin=root.offsetMax=Vector2.zero;
+            var dim=root.gameObject.AddComponent<Image>();dim.color=new Color(.02f,.1f,.18f,.68f);
+            card=DesignUI.Panel(root,"Card",22,0,346,height).rectTransform;card.anchorMin=card.anchorMax=new Vector2(.5f,.5f);card.pivot=new Vector2(.5f,.5f);card.anchoredPosition=Vector2.zero;
+            root.gameObject.AddComponent<DesignModalFit>();root.gameObject.AddComponent<PanelPresence>();return root.gameObject;
+        }
+        private static Button Helper(Transform parent,string name,string label,string asset,float x,Action action,out Text badge)
+        {
+            var face=DesignUI.Panel(parent,name+"Button",x,0,108,88,"#214b60ee","#123247ee",20,"#c2edf044",1);
+            var b=face.gameObject.AddComponent<Button>();b.targetGraphic=face;
+            b.onClick.AddListener(()=>{if(Debug.isDebugBuild)Debug.Log($"[Input] button={name} frame={Time.frameCount} t={Time.realtimeSinceStartup.ToString("0.000",System.Globalization.CultureInfo.InvariantCulture)}");action?.Invoke();});
+            face.gameObject.AddComponent<ButtonMotion>();
+            var icon=DesignUI.Rect(face.transform,"Icon",38,14,32,32).gameObject.AddComponent<GameIcon>();icon.Kind=asset;icon.color=DesignUI.White;icon.raycastTarget=false;
+            DesignUI.Label(face.transform,label,6,56,96,22,12,null,TextAnchor.MiddleCenter);
+            var bubble=DesignUI.Panel(face.transform,"CountBadge",83,-5,21,21,"#ffe1a0","#f4c566",11,"#fff0ca88",.8f);bubble.raycastTarget=false;
+            badge=DesignUI.Label(bubble.transform,"",0,0,21,21,11,DesignUI.Ink,TextAnchor.MiddleCenter);return b;
         }
 
-        public static GameplayOverlay Create(Canvas canvas, Action onRestart, Action onUndo, Action onContinue, Action onWorld, Action onExtraCloud, Action onSafeShuffle, Action onMenu)
+        private void LateUpdate()
         {
-            var root = new GameObject("GameplayOverlay", typeof(RectTransform));
-            root.transform.SetParent(canvas.transform, false);
-            RectTransform rootRect = root.GetComponent<RectTransform>();
-            rootRect.anchorMin = Vector2.zero;
-            rootRect.anchorMax = Vector2.one;
-            rootRect.offsetMin = rootRect.offsetMax = Vector2.zero;
-            SafeAreaFitter.Attach(root);
-
-            var overlay = root.AddComponent<GameplayOverlay>();
-            overlay._levelLabel = CreateTopLabel(root.transform, "Level 1", new Vector2(0f, -80f), 42);
-            overlay._tutorialLabel = CreateTopLabel(root.transform, string.Empty, new Vector2(0f, -145f), 30);
-            overlay._livesLabel = CreateTopLabel(root.transform, "♥ 5", new Vector2(390f, -80f), 34);
-            CreateButton(root.transform, "Restart", new Vector2(-130f, 120f), onRestart);
-            overlay._undoButton = CreateButton(root.transform, "Undo", new Vector2(130f, 120f), onUndo);
-            Button worldButton = CreateButton(root.transform, "World", new Vector2(390f, 120f), onWorld);
-            worldButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 88f);
-            Button extraButton = CreateButton(root.transform, "Extra", new Vector2(-390f, 22f), onExtraCloud);
-            extraButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 76f);
-            overlay._shuffleButton = CreateButton(root.transform, "Shuffle", new Vector2(-155f, 22f), onSafeShuffle);
-            overlay._shuffleButton.GetComponent<RectTransform>().sizeDelta = new Vector2(220f, 76f);
-            Button menuButton = CreateButton(root.transform, "Menu", new Vector2(350f, 22f), onMenu);
-            menuButton.GetComponent<RectTransform>().sizeDelta = new Vector2(190f, 76f);
-            overlay._boosterLabel = CreateTopLabel(root.transform, string.Empty, new Vector2(250f, -150f), 25);
-            overlay._completePanel = CreateCompletePanel(root.transform, onContinue);
-            overlay._blockingPanel = CreateBlockingPanel(root.transform);
-            overlay._completePanel.SetActive(false);
-            overlay._blockingPanel.SetActive(false);
-            return overlay;
+            var fit=GetComponent<DesignScreenFit>();fit.Apply();float h=fit.Height;if(h==_layoutHeight)return;_layoutHeight=h;
+            _helpers.anchoredPosition=new Vector2(20,-(h-112));_boardHint.rectTransform.anchoredPosition=new Vector2(28,-(h-150));
         }
-
-        public void SetUndoAvailable(bool available) => _undoButton.interactable = available;
-        public void SetShuffleAvailable(bool available) => _shuffleButton.interactable = available;
-        public void ShowComplete(bool show) => _completePanel.SetActive(show);
-        public void SetLevelInfo(int level, string world) => _levelLabel.text = $"{ToTitle(world)}  •  Level {level}";
-        public void SetTutorialCue(string cue) => _tutorialLabel.text = string.IsNullOrWhiteSpace(cue) ? string.Empty : $"☝  {cue}";
-        public void SetLives(int lives, string countdown) => _livesLabel.text = lives >= 5 ? "♥ 5" : $"♥ {lives}  {countdown}";
-        public void SetBoosters(int undo, int extra, int shuffle) => _boosterLabel.text = $"Undo {undo}  •  Extra {extra}  •  Shuffle {shuffle}";
-        public void ShowBlock(string title, string detail)
+        public void SetBusy(bool busy){if(_busyKnown&&_busy==busy)return;_busyKnown=true;_busy=busy;_pauseButton.interactable=!busy;_helperGroup.interactable=!busy;}
+        public void SetUndoAvailable(bool available)=>_undoButton.interactable=available;
+        public void SetShuffleAvailable(bool available)=>_shuffleButton.interactable=available;
+        public void SetExtraAvailable(bool available){var g=_extraButton.GetComponent<CanvasGroup>();if(!g)g=_extraButton.gameObject.AddComponent<CanvasGroup>();g.alpha=available?1:.45f;}
+        public void SetLevelInfo(int level,string world){_backdrop.SetWorld(level,world);_level=level;_shuffleName.text=level<16?"16. bölümde":"Karıştır";var band=Cloudora.Level.V3LevelPlan.BandFor(Mathf.Clamp(level,1,100));_difficultyLabel.text=band==Cloudora.Level.DifficultyBand.VeryHard?"ÇOK ZOR":band==Cloudora.Level.DifficultyBand.Hard?"ZOR":"ORTA";UpdateDifficulty();_levelLabel.text=$"Bölüm {level}";_worldLabel.text=level<=15?"":DesignUI.WorldName(world);}
+        public void SetTutorialCue(string cue){_tutorialLabel.text=cue??"";UpdateDifficulty();}
+        public void SetModeHint(string hint){_modeLabel.text=hint??"";UpdateDifficulty();}
+        private void UpdateDifficulty(){_difficulty.gameObject.SetActive(_level>=15&&string.IsNullOrEmpty(_tutorialLabel.text)&&string.IsNullOrEmpty(_modeLabel.text));}
+        public void SetLives(int lives,string countdown){if(_shownLives==lives&&_shownCountdown==countdown)return;_shownLives=lives;_shownCountdown=countdown;_livesLabel.text=$"{lives}/5";_status.text=lives>=5?"DOLU":countdown;_pauseHomeLabel.text=lives>0?"Ana Sayfaya Dön · −1 can":"Ana Sayfaya Dön · Bölümü bırak";_failHomeLabel.text=lives>0?"Ana Sayfa · −1 can":"Ana Sayfa · Bölümü bırak";}
+        public void SetCoins(int coins){_coinsLabel.text=coins.ToString("N0",System.Globalization.CultureInfo.GetCultureInfo("tr-TR"));if(_milestone)_milestone.SetResources(_coinsLabel.text,_livesLabel.text,_status.text);}
+        public void SetBoosters(int undo,int extra,int shuffle,bool adAvailable){_undoBadge.text=Charge(undo,adAvailable);_extraBadge.text=Charge(extra,adAvailable);_shuffleBadge.text=Charge(shuffle,adAvailable);}
+        private static string Charge(int value,bool ad)=>value<=0&&ad?"+":value.ToString();
+        public void ShowComplete(bool show,int coinsEarned=0){if(!show && _milestone){DesignUI.Remove(_milestone.gameObject);_milestone=null;}_completePanel.SetActive(show);_completeTitle.text=$"Bölüm {_level} tamamlandı!";_completeReward.text=$"+{coinsEarned}";}
+        public void ShowFail(FailOptions o){if(_failKnown&&_shownFail.Equals(o)&&_failPanel.activeSelf)return;_shownFail=o;_failKnown=true;_failPanel.SetActive(true);_retryButton.interactable=o.RetryAvailable;_adButton.interactable=o.AdAvailable;_coinsButton.interactable=o.CoinsAffordable;_retryButton.GetComponentInChildren<Text>().text=o.RetryFree?"Yeniden Başlat • Ücretsiz":"Yeniden Başlat · −1 can";_coinsButton.GetComponentInChildren<Text>().text=$"Devam Et · {o.CoinCost} jeton";_failDetail.text="Bu dizilimden çözüme ulaşılamıyor. Baştan dene veya son güvenli hamlene dön.";}
+        public void HideFail()=>_failPanel.SetActive(false);
+        public void ShowBlock(string title,string detail){
+            if(title.Contains("Yenilendi")){HideBlock();ShowToast(title,detail);return;}
+_blockingPanel.transform.SetAsLastSibling();_blockingPanel.SetActive(true);_blockTitle.text=title;_blockDetail.text=detail;}
+        private void ShowToast(string title,string detail)
         {
-            _blockingPanel.SetActive(true);
-            Text[] labels = _blockingPanel.GetComponentsInChildren<Text>();
-            labels[0].text = title;
-            labels[1].text = detail;
+            if(_toastRoutine!=null)StopCoroutine(_toastRoutine);
+            if(_toast)DesignUI.Remove(_toast);
+            float h=GetComponent<DesignScreenFit>().Height;
+            var p=DesignUI.Panel(transform,"Reward toast",28,h-228,334,66,"#173d4ef2","#0c273bf2",18,"#4ad2b566",1);p.raycastTarget=false;_toast=p.gameObject;
+            DesignUI.Label(p.transform,title,16,10,302,22,14);DesignUI.Label(p.transform,detail,16,34,302,24,11,DesignUI.Muted);
+            _toastRoutine=StartCoroutine(ClearToast());
         }
-        public void HideBlock() => _blockingPanel.SetActive(false);
-
-        private static Text CreateTopLabel(Transform parent, string value, Vector2 position, int size)
-        {
-            Text text = CreateText(parent, value, size, TextAnchor.MiddleCenter);
-            RectTransform rect = text.rectTransform;
-            rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 1f);
-            rect.sizeDelta = new Vector2(880f, 60f);
-            rect.anchoredPosition = position;
-            text.color = new Color(0.15f, 0.22f, 0.29f);
-            return text;
-        }
-
-        private static string ToTitle(string value)
-        {
-            return string.IsNullOrWhiteSpace(value)
-                ? "Cloudora"
-                : System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(value.Replace('-', ' '));
-        }
-
-        private static Button CreateButton(Transform parent, string label, Vector2 position, Action action)
-        {
-            var go = new GameObject(label + "Button", typeof(RectTransform), typeof(Image), typeof(Button));
-            go.transform.SetParent(parent, false);
-            RectTransform rect = go.GetComponent<RectTransform>();
-            rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0f);
-            rect.pivot = new Vector2(0.5f, 0f);
-            rect.anchoredPosition = position;
-            rect.sizeDelta = new Vector2(220f, 88f);
-            go.GetComponent<Image>().color = new Color(0.36f, 0.49f, 0.98f, 0.95f);
-            Button button = go.GetComponent<Button>();
-            button.onClick.AddListener(() => action?.Invoke());
-            CreateText(go.transform, label, 34, TextAnchor.MiddleCenter);
-            return button;
-        }
-
-        private static GameObject CreateCompletePanel(Transform parent, Action onContinue)
-        {
-            var panel = new GameObject("LevelCompletePanel", typeof(RectTransform), typeof(Image));
-            panel.transform.SetParent(parent, false);
-            RectTransform rect = panel.GetComponent<RectTransform>();
-            rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
-            rect.sizeDelta = new Vector2(760f, 440f);
-            panel.GetComponent<Image>().color = new Color(0.96f, 0.98f, 1f, 0.98f);
-
-            Text title = CreateText(panel.transform, "Sky Balanced!", 58, TextAnchor.MiddleCenter);
-            title.color = new Color(0.15f, 0.22f, 0.29f);
-            title.rectTransform.anchorMin = new Vector2(0.1f, 0.55f);
-            title.rectTransform.anchorMax = new Vector2(0.9f, 0.9f);
-            title.rectTransform.offsetMin = title.rectTransform.offsetMax = Vector2.zero;
-            CreateButton(panel.transform, "Continue", new Vector2(0f, 58f), onContinue);
-            return panel;
-        }
-
-        private static GameObject CreateBlockingPanel(Transform parent)
-        {
-            var panel = new GameObject("BlockingPanel", typeof(RectTransform), typeof(Image), typeof(Button));
-            panel.transform.SetParent(parent, false);
-            RectTransform rect = panel.GetComponent<RectTransform>();
-            rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
-            rect.sizeDelta = new Vector2(760f, 380f);
-            panel.GetComponent<Image>().color = new Color(0.96f, 0.98f, 1f, 0.99f);
-            panel.GetComponent<Button>().onClick.AddListener(() => panel.SetActive(false));
-            Text title = CreateText(panel.transform, "No Moves", 50, TextAnchor.MiddleCenter);
-            title.color = new Color(0.15f, 0.22f, 0.29f);
-            title.rectTransform.anchorMin = new Vector2(0.08f, 0.55f);
-            title.rectTransform.anchorMax = new Vector2(0.92f, 0.88f);
-            title.rectTransform.offsetMin = title.rectTransform.offsetMax = Vector2.zero;
-            Text detail = CreateText(panel.transform, "Use a safe option below", 29, TextAnchor.MiddleCenter);
-            detail.color = new Color(0.25f, 0.34f, 0.44f);
-            detail.rectTransform.anchorMin = new Vector2(0.08f, 0.18f);
-            detail.rectTransform.anchorMax = new Vector2(0.92f, 0.55f);
-            detail.rectTransform.offsetMin = detail.rectTransform.offsetMax = Vector2.zero;
-            return panel;
-        }
-
-        private static Text CreateText(Transform parent, string value, int size, TextAnchor alignment)
-        {
-            var go = new GameObject("Label", typeof(RectTransform), typeof(Text));
-            go.transform.SetParent(parent, false);
-            RectTransform rect = go.GetComponent<RectTransform>();
-            rect.anchorMin = Vector2.zero;
-            rect.anchorMax = Vector2.one;
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
-            Text text = go.GetComponent<Text>();
-            text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            text.text = value;
-            text.fontSize = size;
-            text.alignment = alignment;
-            text.color = Color.white;
-            text.raycastTarget = false;
-            return text;
-        }
+        private System.Collections.IEnumerator ClearToast(){yield return new WaitForSecondsRealtime(2.5f);if(_toast)DesignUI.Remove(_toast);_toastRoutine=null;}
+        public void HideBlock()=>_blockingPanel.SetActive(false);
+    }
+    public sealed class DesignModalFit : MonoBehaviour
+    {
+        private void LateUpdate(){var root=(RectTransform)transform;var card=transform.Find("Card") as RectTransform;if(!card)return;float scale=Mathf.Min(1,(root.rect.height-80)/card.sizeDelta.y);card.localScale=Vector3.one*Mathf.Max(.5f,scale);}
     }
 }

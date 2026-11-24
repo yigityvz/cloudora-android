@@ -1,10 +1,7 @@
-# Store visual pack
+# Cloudora görsel kaynakları
 
-`Source/` holds the original generated Cloudora icon and feature illustration. `Play/` contains deterministic, center-cropped PNG exports at 512×512 and 1024×500, plus a padded transparent foreground and solid sky-blue background for Android adaptive icons. Re-export with `Export-PlayAssets.ps1` after changing a source image. Do not overwrite an existing asset casually; review the generated output at actual store size.
+`Source/` özgün ikon ve tanıtım çizimlerini, `Artwork/` mevcut türevlerini içerir. Oyun içi görseller `Assets/_Cloudora/Art/` altındadır.
 
-The graphics are original Cloudora-branded art. The icon and banner were generated with the built-in image-generation tool using the Cloudora sky palette, then resized/cropped by the checked-in export script. The two final prompts are recorded below for reproducibility. No third-party licensed art was introduced.
+Bu dosyalar oyun ekran görüntüsü değildir. App Store için 1024 × 1024 opak ikon ve gerçek iPhone ekran görüntüleri ayrıca hazırlanmalıdır; mevcut 512 piksel ikon geliştirme içindir.
 
-- Icon prompt: original centered cloud-and-weather emblem for a cozy puzzle, integrating white cloud, sun, raindrop and snowflake; soft vector-like finish; Cloudora sky palette; no text, watermark, hard outline, or mockup.
-- Feature prompt: wide calm sky-restoration illustration with clouds, sun, rain, snow and wind; Cloudora palette, rounded soft shapes, generous left negative space; no text, watermark, UI, or mockup.
-
-`Play/` is a store-art candidate, not evidence of gameplay. Authentic screenshots must be captured from a verified Android build during device QA. Do not submit mock gameplay screenshots or treat the visual pack alone as release approval.
+Görseller Cloudora için üretilmiştir: ikon bulut, güneş, yağmur ve kar sembollerini; tanıtım çizimi yumuşak gökyüzü ve hava olaylarını içerir.

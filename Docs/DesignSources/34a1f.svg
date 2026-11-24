@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="84" height="16" viewBox="0 0 84 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Belirgin cam a&#196;&#159;&#196;&#177;z">
+<path d="M84 8C84 12.4183 65.196 16 42 16C18.804 16 0 12.4183 0 8C0 3.58172 18.804 0 42 0C65.196 0 84 3.58172 84 8Z" fill="#B9ECF1" fill-opacity="0.168627"/>
+<mask id="stroke0_0_4" fill="white">
+<path d="M84 8C84 12.4183 65.196 16 42 16C18.804 16 0 12.4183 0 8C0 3.58172 18.804 0 42 0C65.196 0 84 3.58172 84 8Z"/>
+</mask>
+<path d="M84 8C84 12.4183 65.196 16 42 16C18.804 16 0 12.4183 0 8C0 3.58172 18.804 0 42 0C65.196 0 84 3.58172 84 8Z" stroke-width="6" stroke="#E2F8FF" mask="url(#stroke0_0_4)"/>
+</g>
+</svg>

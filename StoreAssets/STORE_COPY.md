@@ -2,7 +2,7 @@
 
 ## Positioning
 
-Cozy, one-finger weather sorting with world restoration and evolving rules. Android-first; no account or internet connection required for the puzzle loop.
+Cozy, one-finger weather sorting with world restoration and evolving rules. For iPhone; no account or internet connection required for the puzzle loop.
 
 ## English
 

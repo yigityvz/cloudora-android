@@ -17,8 +17,8 @@ namespace Cloudora.UI
             _capacity = Mathf.Clamp(capacity, 4, 7);
             _grid = GetComponent<GridLayoutGroup>();
             _rect = (RectTransform)transform;
-            _rect.anchorMin = new Vector2(0.05f, 0.2f);
-            _rect.anchorMax = new Vector2(0.95f, 0.82f);
+            _rect.anchorMin = new Vector2(0.05f, 0.25f);
+            _rect.anchorMax = new Vector2(0.95f, 0.76f);
             _rect.offsetMin = _rect.offsetMax = Vector2.zero;
             Apply();
         }
@@ -32,8 +32,12 @@ namespace Cloudora.UI
         {
             if (_grid == null || _rect == null || _cloudCount <= 0) return;
             (Vector2 safeMin, Vector2 safeMax) = SafeAreaFitter.CalculateAnchors(Screen.safeArea, new Vector2(Screen.width, Screen.height));
-            _rect.anchorMin = new Vector2(Mathf.Lerp(safeMin.x, safeMax.x, 0.05f), Mathf.Lerp(safeMin.y, safeMax.y, 0.2f));
-            _rect.anchorMax = new Vector2(Mathf.Lerp(safeMin.x, safeMax.x, 0.95f), Mathf.Lerp(safeMin.y, safeMax.y, 0.82f));
+            var parent=(RectTransform)_rect.parent;
+            float safeHeight=parent.rect.height*(safeMax.y-safeMin.y);
+            float designScale=parent.rect.width*(safeMax.x-safeMin.x)/390f;
+            float lower=Mathf.Max(.25f,174f*designScale/Mathf.Max(1,safeHeight));
+            _rect.anchorMin = new Vector2(Mathf.Lerp(safeMin.x, safeMax.x, 0.05f), Mathf.Lerp(safeMin.y, safeMax.y, lower));
+            _rect.anchorMax = new Vector2(Mathf.Lerp(safeMin.x, safeMax.x, 0.95f), Mathf.Lerp(safeMin.y, safeMax.y, 0.76f));
             _lastSize = _rect.rect.size;
             LayoutMetrics metrics = Calculate(_lastSize, _cloudCount, _capacity);
             _grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
@@ -45,11 +49,11 @@ namespace Cloudora.UI
 
         public static LayoutMetrics Calculate(Vector2 available, int cloudCount, int capacity)
         {
-            int columns = cloudCount <= 6 ? 3 : cloudCount <= 10 ? 4 : 5;
+            int columns = cloudCount <= 4 ? Mathf.Max(1,cloudCount) : cloudCount <= 6 ? 3 : cloudCount<=8?4:cloudCount<=10?5:6;
             int rows = Mathf.CeilToInt(cloudCount / (float)columns);
-            float gap = Mathf.Clamp(available.x * 0.018f, 10f, 28f);
+            float gap=available.x/350f*(columns>=5?10:18);
             float width = (available.x - gap * (columns - 1)) / columns;
-            float preferredAspect = Mathf.Lerp(1.5f, 2.05f, (capacity - 4f) / 3f);
+            float preferredAspect = (capacity * 36f + 43f) / 90f;
             float height = Mathf.Min(width * preferredAspect, (available.y - gap * (rows - 1)) / rows);
             width = Mathf.Min(width, height / preferredAspect);
             return new LayoutMetrics(columns, new Vector2(Mathf.Max(80f, width), Mathf.Max(150f, height)), new Vector2(gap, gap));

@@ -6,7 +6,10 @@ namespace Cloudora.Services
         public const string LevelStarted = "level_started";
         public const string LevelCompleted = "level_completed";
         public const string LevelFailed = "level_failed";
-        public const string LevelRestarted = "level_restarted";
+        public const string LevelRetried = "level_retried";       // başarısızlıktan sonra canla baştan
+        public const string LevelContinued = "level_continued";   // başarısızlıktan sonra reklam/coin ile devam
+        public const string CoinsEarned = "coins_earned";
+        public const string CoinsSpent = "coins_spent";
         public const string UndoUsed = "undo_used";
         public const string ExtraCloudUsed = "extra_cloud_used";
         public const string SafeShuffleUsed = "safe_shuffle_used";

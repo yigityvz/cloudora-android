@@ -163,15 +163,6 @@ namespace Cloudora.Tests.Editor
             Object.DestroyImmediate(root);
         }
 
-        [Test]
-        public void ManifestFilterRemovesOnlyInternetPermission()
-        {
-            const string manifest = "<manifest xmlns:android='http://schemas.android.com/apk/res/android'><uses-permission android:name='android.permission.INTERNET'/><uses-permission android:name='android.permission.VIBRATE'/><application/></manifest>";
-            string filtered = CloudoraAndroidManifestPostprocessor.RemoveInternetPermission(manifest);
-            Assert.That(filtered, Does.Not.Contain("android.permission.INTERNET"));
-            Assert.That(filtered, Does.Contain("android.permission.VIBRATE"));
-        }
-
         private static string BoardKey(LevelDefinition definition)
         {
             var parts = new System.Collections.Generic.List<string>();
@@ -200,14 +191,14 @@ namespace Cloudora.Tests.Editor
         public void WorldProgressionCrossesBoundaryAndRestoresInStages()
         {
             WorldDefinition valley = WorldCatalog.ForLevel(1);
-            Assert.That(RestorationManager.GetStage(valley, 5), Is.EqualTo(1));
-            Assert.That(RestorationManager.GetStage(valley, 20), Is.EqualTo(4));
-            Assert.That(RestorationManager.GetProgress(valley, 20), Is.EqualTo(1f));
+            Assert.That(RestorationManager.GetStage(valley, 16), Is.EqualTo(1));
+            Assert.That(RestorationManager.GetStage(valley, 40), Is.EqualTo(4));
+            Assert.That(RestorationManager.GetProgress(valley, 40), Is.EqualTo(1f));
 
-            var progression = new ProgressionManager(20, 19);
+            var progression = new ProgressionManager(40, 39);
             progression.CompleteCurrentLevel();
             progression.Advance();
-            Assert.That(progression.CurrentLevel, Is.EqualTo(21));
+            Assert.That(progression.CurrentLevel, Is.EqualTo(41));
             Assert.That(progression.CurrentWorld.Id, Is.EqualTo("rainy-coast"));
         }
 
@@ -389,9 +380,9 @@ namespace Cloudora.Tests.Editor
         [Test]
         public void DifficultyWaveHasFinaleAndEasyWorldReset()
         {
-            Assert.That(BalanceProfile.BandFor(20), Is.EqualTo(DifficultyBand.WorldFinale));
-            Assert.That(BalanceProfile.BandFor(21), Is.EqualTo(DifficultyBand.Easy));
-            Assert.That(BalanceProfile.BandFor(22), Is.EqualTo(DifficultyBand.Easy));
+            Assert.That(BalanceProfile.BandFor(30), Is.EqualTo(DifficultyBand.WorldFinale));
+            Assert.That(BalanceProfile.BandFor(31), Is.EqualTo(DifficultyBand.Easy));
+            Assert.That(BalanceProfile.BandFor(32), Is.EqualTo(DifficultyBand.Easy));
             Assert.That(BalanceProfile.ShuffleDepth(100), Is.GreaterThan(BalanceProfile.ShuffleDepth(101)));
             Assert.That(BalanceProfile.DurationTarget(10), Is.EqualTo((30, 60)));
         }

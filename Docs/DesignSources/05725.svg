@@ -1,0 +1,22 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="44" height="49" viewBox="0 0 44 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Simge d&#195;&#188;&#196;&#159;mesi" filter="url(#filter0_d_0_27)">
+<rect width="44" height="44" rx="16" fill="url(#paint0_linear_0_27)"/>
+<rect x="0.75" y="0.75" width="42.5" height="42.5" rx="15.25" stroke="#528FB3" stroke-width="1.5"/>
+<path id="Sembol" d="M10.5 10.5H18.78V33.5H10.5V10.5ZM25.22 10.5H33.5V33.5H25.22V10.5Z" fill="#F5FCFF"/>
+</g>
+<defs>
+<filter id="filter0_d_0_27" x="0" y="0" width="44" height="49" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0705882 0 0 0 0 0.235294 0 0 0 0 0.294118 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_27"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_27" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_27" x1="0" y1="0" x2="0" y2="44" gradientUnits="userSpaceOnUse">
+<stop stop-color="#36708F"/>
+<stop offset="1" stop-color="#163F5D"/>
+</linearGradient>
+</defs>
+</svg>

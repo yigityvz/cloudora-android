@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Sembol" d="M7 14C5.33333 11.8899 0 8.02129 0 4.15271C0 -1.12262 5.66667 -1.12262 7 2.74596C8.33333 -1.12262 14 -1.12262 14 4.15271C14 8.02129 8.66667 12.2416 7 14Z" fill="url(#paint0_linear_0_20)"/>
+<defs>
+<linearGradient id="paint0_linear_0_20" x1="0" y1="1.33372e-08" x2="0" y2="14" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFA79F"/>
+<stop offset="1" stop-color="#DE6377"/>
+</linearGradient>
+</defs>
+</svg>

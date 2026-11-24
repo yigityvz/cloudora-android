@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Can simgesi">
+<rect width="36" height="36" rx="18" fill="#09273C"/>
+<rect x="0.5" y="0.5" width="35" height="35" rx="17.5" stroke="#6DA6B1" stroke-opacity="0.54902"/>
+<path id="Sembol" d="M18 32.5C14.5476 28.129 3.5 20.1155 3.5 12.102C3.5 1.17458 15.2381 1.17458 18 9.18806C20.7619 1.17458 32.5 1.17458 32.5 12.102C32.5 20.1155 21.4524 28.8575 18 32.5Z" fill="url(#paint0_linear_0_4)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="3.5" y1="3.5" x2="3.5" y2="32.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFA79F"/>
+<stop offset="1" stop-color="#DE6377"/>
+</linearGradient>
+</defs>
+</svg>

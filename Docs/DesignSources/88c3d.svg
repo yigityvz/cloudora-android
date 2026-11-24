@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="28" viewBox="0 0 48 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Anahtar">
+<rect x="0.5" y="0.5" width="47" height="27" rx="13.5" fill="#77C988"/>
+<rect x="0.5" y="0.5" width="47" height="27" rx="13.5" stroke="#9BC7D4"/>
+<circle id="Anahtar tutamac&#196;&#177;" cx="34" cy="14" r="11" fill="url(#paint0_linear_0_16)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_16" x1="23" y1="3" x2="23" y2="25" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#C3E1EA"/>
+</linearGradient>
+</defs>
+</svg>

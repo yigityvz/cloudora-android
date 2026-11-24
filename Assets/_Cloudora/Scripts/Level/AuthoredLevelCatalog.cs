@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Cloudora.Puzzle;
 
 namespace Cloudora.Level
 {
@@ -15,35 +14,56 @@ namespace Cloudora.Level
             return Levels[index];
         }
 
+        // 1–15: v3'te zorluğu ölçülüp seçilen tahtalar (V3LevelData). Öğretici yazılar, kapasite ve
+        // "elle tasarlanmış" durumu (Shuffle 16'ya kadar kilitli) eski bölümlerle aynı.
+        // v2'ye kadarki elle yazılmış tahtalar git geçmişinde (etiket v2).
         private static IReadOnlyList<LevelDefinition> Build()
         {
-            WeatherType S = WeatherType.Sun;
-            WeatherType R = WeatherType.Rain;
-            WeatherType N = WeatherType.Snow;
-            WeatherType[] E() => System.Array.Empty<WeatherType>();
             return new[]
             {
-                L(1, "Tap a cloud", new[] { S, R, S, R }, new[] { R, S, R, S }, E(), E()),
-                L(2, "Tap a matching target", new[] { S, S, R, R }, new[] { R, R, S, S }, E(), E()),
-                L(3, "Groups move together", new[] { R, S, S, R }, new[] { S, R, R, S }, E(), E()),
-                L(4, "Empty clouds create room", new[] { S, R, R, S }, new[] { R, S, S, R }, E(), E()),
-                L(5, "Restore the sky", new[] { S, R, S, R }, new[] { R, S, R, S }, E(), E()),
-                L(6, null, new[] { S, R, N, S }, new[] { R, N, S, R }, new[] { N, S, R, N }, E(), E()),
-                L(7, null, new[] { S, S, R, N }, new[] { R, R, N, S }, new[] { N, N, S, R }, E(), E()),
-                L(8, null, new[] { N, R, S, S }, new[] { S, N, R, R }, new[] { R, S, N, N }, E(), E()),
-                L(9, null, new[] { R, S, N, R }, new[] { N, R, S, N }, new[] { S, N, R, S }, E(), E()),
-                L(10, "Undo is always safe", new[] { S, N, R, S }, new[] { R, S, N, R }, new[] { N, R, S, N }, E(), E()),
-                L(11, null, new[] { S, R, R, N }, new[] { N, S, S, R }, new[] { R, N, N, S }, E(), E()),
-                L(12, null, new[] { N, S, R, N }, new[] { R, N, S, R }, new[] { S, R, N, S }, E(), E()),
-                L(13, null, new[] { R, N, S, S }, new[] { S, R, N, N }, new[] { N, S, R, R }, E(), E()),
-                L(14, null, new[] { S, R, N, R }, new[] { R, N, S, N }, new[] { N, S, R, S }, E(), E()),
-                L(15, "The world is waking up", new[] { N, R, S, R }, new[] { S, N, R, N }, new[] { R, S, N, S }, E(), E())
+                V(1, "Bir hazneye dokun."),
+                V(2, "Aynı hava türünün olduğu hazneyi seç."),
+                V(3, "Aynı türden parçalar birlikte akar."),
+                V(4, "Boş hazneler sana yer açar."),
+                V(5, "Gökyüzünü dengele."),
+                V(6, null),
+                V(7, null),
+                V(8, null),
+                V(9, null),
+                V(10, "Geri Al ile son hamleni geri çevirebilirsin."),
+                V(11, null),
+                V(12, null),
+                V(13, null),
+                V(14, null),
+                V(15, "İlk dünyanı keşfetmeye hazırsın.")
             };
         }
 
-        private static LevelDefinition L(int id, string cue, params WeatherType[][] clouds)
+        // 16+: v3 bölüm aracıyla kurulmuş parçalar (V3LevelData). Kurulmamış bölümler eski üreticiden gelir.
+        // Dünya kimliği şimdilik mevcut dünya listesinden (yeni aralıklara geçiş ayrı adım).
+        public static bool TryGetBuilt(int levelNumber, out LevelDefinition definition)
         {
-            return new LevelDefinition(id, "green-valley", 4, cue, clouds);
+            definition = null;
+            if (levelNumber <= Count) return false;
+            V3LevelEntry entry = V3LevelData.Find(levelNumber);
+            if (entry == null) return false;
+            definition = new LevelDefinition(levelNumber, Progression.WorldCatalog.ForLevel(levelNumber).Id, entry.Capacity, null, entry.CreateBoard())
+            {
+                seed = entry.Seed,
+                difficultyScore = entry.Score
+            };
+            return true;
+        }
+
+        private static LevelDefinition V(int id, string cue)
+        {
+            V3LevelEntry entry = V3LevelData.Find(id)
+                ?? throw new System.InvalidOperationException($"V3 level data missing for level {id}; run Cloudora/V3/Bölüm Verisini Üret.");
+            return new LevelDefinition(id, "green-valley", entry.Capacity, cue, entry.CreateBoard())
+            {
+                seed = entry.Seed,
+                difficultyScore = entry.Score
+            };
         }
     }
 }

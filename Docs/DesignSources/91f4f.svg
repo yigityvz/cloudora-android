@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Can" d="M14.5 29C11.0476 24.629 0 16.6155 0 8.60205C0 -2.32542 11.7381 -2.32542 14.5 5.68806C17.2619 -2.32542 29 -2.32542 29 8.60205C29 16.6155 17.9524 25.3575 14.5 29Z" fill="url(#paint0_linear_0_9)"/>
+<defs>
+<linearGradient id="paint0_linear_0_9" x1="0" y1="-2.20706e-07" x2="0" y2="29" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFA79F"/>
+<stop offset="1" stop-color="#DE6377"/>
+</linearGradient>
+</defs>
+</svg>

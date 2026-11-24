@@ -1,26 +1,60 @@
-# Cloudora
+# Cloudora iOS
 
-**Fix the sky. Restore the world.** Cloudora is an Android-first, portrait, cozy weather-sorting puzzle built in Unity 6000.5.9f1 (Universal 2D). Tap a source cloud and then a compatible destination; matching top weather moves as a group. No level countdown or drag gesture is required.
+**Gökyüzünü düzelt. Dünyayı yeniden canlandır.**
 
-![Cloudora feature art](StoreAssets/Play/cloudora-feature-1024x500.png)
+Cloudora, iPhone için Unity ile geliştirilmiş, dikey ekranda oynanan bir hava olaylarını sıralama bulmacasıdır. Bu depo iOS uygulamasının kaynak kodunu, oyun içeriklerini ve Xcode derleme araçlarını içerir.
 
-## Product and architecture
-   
-- Fifteen authored onboarding levels lead into seed-reproducible generated puzzles. The generator reverse-shuffles solved boards and records a legal solution, then validates invariants before accepting a level.
-- Cloud capacity progresses from four to seven slots. Thirteen world definitions span levels 1–400, with restoration milestones, new weather, modifiers, and difficulty waves.
-- Rule logic lives in pure C# state and move classes; Unity cloud views, animations, responsive board layout, HUD, world screen, and settings sit around that core. Modifier rules are registered independently of the views.
-- Local JSON save data includes progress, life regeneration, tutorial flags, settings and boosters, with schema migration and backup recovery. No account, backend, or cloud-save service is required for the puzzle loop.
-- Analytics and advertising are behind interfaces. This repository binds fake ads and a credential-free analytics fallback. Real AdMob is not enabled; no public release is authorized.
+## Gereksinimler
 
-## Run and test
+- macOS ve Xcode
+- Unity **6000.5.9f1**, **iOS Build Support** modülüyle
+- Git LFS
+- Cihazda çalıştırmak için yerel Apple geliştirme imzası ve Geliştirici Modu açık bir iPhone
 
-1. Open the project in Unity 6000.5.9f1 and load `Assets/_Cloudora/Scenes/02_Gameplay.unity`.
-2. Enter Play Mode to inspect the initial menu, one-finger puzzle loop, world and settings surfaces.
-3. Run EditMode tests in Unity Test Runner. `Cloudora/Validate 10,000 Levels` runs the deterministic content stress check.
-4. Use `Cloudora/Build/Android Development APK` for an internal build. See [Android build and device QA](Docs/ANDROID_BUILD.md) for the ASCII-only path requirement and open physical-device checks.
+Hedef: **iOS 15.0+**, iPhone, dikey ekran, **IL2CPP / ARM64 / Metal**. Bundle ID: `com.yigityvz.cloudora`.
 
-The latest fresh EditMode result passed 26/26 tests after package cleanup; a separate content stress check passed 10,000/10,000 generated-level validations. These checks do not substitute for Android PlayMode/device smoke tests or prove real-world difficulty quality. See [phase progress](Docs/PROJECT_PROGRESS.md) and the [release checklist](Docs/RELEASE_CHECKLIST.md) for exact status and blockers.
+## Kurulum
 
-## Store/portfolio package
+```sh
+git clone https://github.com/yigityvz/cloudora-ios.git
+cd cloudora-ios
+git lfs install --local
+git lfs pull
+```
 
-The [store-art pack](StoreAssets/README.md) contains an original icon and feature illustration, plus exact-size PNG candidates; [English and Turkish store copy](StoreAssets/STORE_COPY.md) is a draft. These are not gameplay screenshots. Authentic Android screenshots, release signing, privacy-policy approval, and publication remain separate owner-controlled gates. See the [privacy release review](Docs/PRIVACY_RELEASE_REVIEW.md).
+Projeyi Unity Hub üzerinden açın. Ana sahne: `Assets/_Cloudora/Scenes/02_Gameplay.unity`.
+
+## Test ve derleme
+
+Aynı projeyi açan Unity oturumunu kapatıp depo kökünde çalıştırın:
+
+```sh
+./Build-iOS.sh test
+./Build-iOS.sh build
+```
+
+Oluşan `Builds/iOS/Cloudora/Unity-iPhone.xcodeproj` dosyasını Xcode ile açın. **Unity-iPhone → Signing & Capabilities** bölümünden kendi Team'inizi seçin, iPhone'u bağlayıp **Run** ile çalıştırın. Mevcut export klasörü doluysa yeniden üretmeden önce başka bir konuma taşıyın.
+
+Ayrıntılar: [iOS derleme rehberi](Docs/IOS_BUILD.md) · [Doğrulama durumu](Docs/IOS_STATUS.md) · [Cihaz testleri](Docs/IOS_DEVICE_QA.md).
+
+## Açılış ekranı
+
+Figma tasarımından alınan bulut ve logo katmanlarıyla animasyonlu açılış, mevcut ana ekrana otomatik geçer. iOS “Hareketi Azalt” ayarı desteklenir. [Uygulama notları](Docs/IOS_OPENING_SPLASH.md).
+
+## Oyun ve proje yapısı
+
+- Oynanabilir kapsam 100 bölüm ve 3 dünyadır: tanıtım 1–14, Yeşil Vadi 15–30, Rainy Coast 31–60, Frost Peaks 61–100. Bölümler mevcut sabit tahta verilerini kullanır; 101 ve sonrası kapalıdır.
+- Ay, 60. bölümden itibaren beşinci elementtir. Zorluk ve üretim doğrulaması: [Ay geçişi](Docs/IOS_MOON_FROM_60.md).
+- Bulutlar arasında uyumlu hava olayları dokunarak taşınır. Bölümler, zorluk, can, jeton ve yardımcı mekanikleri mevcut oyun sürümüyle korunur.
+- İlerleme ve ayarlar yerel JSON kaydında tutulur; yedek kurtarma desteklenir.
+- `Assets/_Cloudora/Scripts`: oyun kuralları, arayüz ve servisler.
+- `Assets/_Cloudora/Editor`: iOS derleme ve bölüm araçları.
+- `Assets/_Cloudora/Tests`: EditMode testleri.
+- `Docs`: iOS rehberleri ve bölüm tasarım belgeleri.
+
+Derleme çıktıları, cihaz kayıtları ve imzalama bilgileri Git'e eklenmez. Yerel cihaz derlemesi `CLOUDORA_DEVICE_QA` tanımıyla test reklam/ödül servisini korur; Development Build filigranı içermez. Bu bir App Store dağıtımı değildir; mağaza derlemesi QA tanımı olmadan ayrıca hazırlanmalıdır.
+
+## Katkıda bulunanlar
+
+- [@yigityvz](https://github.com/yigityvz)
+- [@bahadir-aktas](https://github.com/bahadir-aktas)

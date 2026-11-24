@@ -2,7 +2,7 @@ using System;
 
 namespace Cloudora.Services
 {
-    public enum RewardedPlacement { Life, ExtraCloud, Undo, SafeShuffle }
+    public enum RewardedPlacement { Life, ExtraCloud, Undo, SafeShuffle, Continue }
 
     public interface IAdService
     {

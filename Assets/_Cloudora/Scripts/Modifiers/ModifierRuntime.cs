@@ -51,6 +51,14 @@ namespace Cloudora.Modifiers
             ApplyVisuals();
         }
 
+        // Modifier'lı bulutlar (v3.1 Shuffle bunlara dokunmaz).
+        public HashSet<int> ProtectedClouds()
+        {
+            var result = new HashSet<int>();
+            foreach (ModifierData data in _data) result.Add(data.cloudIndex);
+            return result;
+        }
+
         public bool CanMove(int source, int target)
         {
             foreach (ModifierData data in _data)
