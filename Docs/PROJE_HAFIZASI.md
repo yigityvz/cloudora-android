@@ -1,5 +1,15 @@
 # Cloudora — Proje Hafızası (Claude için oturum başlangıcı)
 
+## 0A. Güncel ekip teslimi — 2026-11-24 16:10 +03
+
+- **Yiğit'in son açık kararı: Bahadır'ın dalı son güncel sürüm.** Yetkili kaynak `cloudora-bahadir@5a838a104cdce93e342c353c930288e08099ceab`; ekip hedefi `yigityvz/cloudora-android/main`. Main'e bu kaynak + yeni ekip yönergesinin gönderimi açıkça istendi. Aşağıdaki eski “takım main'ine dokunulmaz / başka remote'a push” iş akışı bu yetkilendirilmiş teslimi engellemez; otomatik olarak başka repolara push da gerektirmez.
+- Önce [CLAUDE](../CLAUDE.md), [GUNCEL_DURUM](GUNCEL_DURUM.md), [EKIP_ONBOARDING](EKIP_ONBOARDING.md), tam dosya haritası ve V41_TASARIM okunur. Eski iOS1ee4334/cloudora-yigit@cc04e5e tabanı Android main için artık zorunlu değildir.
+- Oyun dosyaları aynen korunur: No Moves fail, Ay61, Shuffle15, kapasite4/5/6, V41LevelBuilder ve yayımlanmış100 tablo. Bu işlemde yeni oyun özelliği/sürüm etiketi yok. iOS reposu/telefon değişmez.
+- Kontrol kapsamı kaynak/varlık/ayar hash eşliği, LFS, okuma haritası ve bağlantılardır. Tarihsel197/194/0/3 testi bugün yeniden çalıştırılmış veya yeni APK kurulmuş sayılmaz.
+- Yeni açık görev verilene kadar Atlas/coin sayfaları seçim bekleyen fikirler; oyuncu kaydı ve imzalar korunur. Aşağıdaki24 Ekim bölümünü geçmiş bağlam olarak oku.
+
+---
+
 > Her oturumun başında **ilk iş bu dosyayı oku.** Projeyi anlamak için nelere bakılacağını, hangi kuralların geçerli olduğunu ve işin nerede kaldığını özetler. Ayrıntı her zaman kaynak dosyadadır; burada yazanla kaynak çelişirse **kaynak doğrudur**, bu dosya düzeltilir.
 > Son güncelleme: 2026-10-24 11:04 (2026-10-24 docs commit'i ve push öncesi).
 

@@ -1,5 +1,7 @@
 > Güncel kapsam: `IOS_ITEM_TRANSFER_RESTORE.md`. Aşağıdaki kesintisiz sıvı şeridi denemesi kullanıcının düzeltmesiyle kaldırıldı; hazne içi sıvı yükselmesi korundu.
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 # Kesintisiz sıvı aktarımı ve ay ışığı — 18 Ekim 2026
 
 Aktarımda uçan element simgeleri ve ayrı paketler kaldırıldı. Kaynaktaki sıvı kesintisiz süzülür; parlak merkez ve yumuşak kenarlı tek bir şerit ağızlar arasındaki yolu izler. Renk ve hareket profilleri bütün elementlerde, ileride eklenecek profillerde ve farklı hazne kapasitelerinde aynı altyapıdan çözülür. Gökkuşağı akışta spektral renk, şimşek hafif iç parıltı kullanır; büyük logo taşınmaz.

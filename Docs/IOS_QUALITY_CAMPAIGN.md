@@ -1,5 +1,7 @@
 # Görüntü kalitesi, akış ve 100 bölüm — 17 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Bu değişiklik, kullanıcının cihaz ekran görüntüleri ve yeni 100 bölüm / 3 dünya kapsamı üzerine yapıldı.
 
 ## Oynanabilir kapsam

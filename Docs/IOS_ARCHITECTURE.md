@@ -1,5 +1,7 @@
 # Cloudora iOS mimarisi
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 - Oyun: `Assets/_Cloudora/Scripts/` altında saf C# bulmaca kuralları, bölüm verileri, ilerleme, kayıt ve Unity arayüzü.
 - Ana sahne: `Assets/_Cloudora/Scenes/02_Gameplay.unity`.
 - Editor: iOS derleme aracı, bölüm üretim/kalibrasyon araçları ve içerik doğrulaması.

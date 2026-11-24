@@ -1,5 +1,7 @@
 # Üstten element ekleme ve hazne içi sıvı yükselmesi — 18 Ekim 2026
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 Kullanıcının son düzeltmesi: onaylanmış elemente özel aktarım korunacak; yalnızca hazne içindeki aynı element birleşmesi/yükselmesi sıvı gibi olacak. Uçuşu sıvı borusuna dönüştürmek kapsam dışıdır.
 
 Önceki üstten giriş hareketi geri getirildi: güneş, yağmur, kar, rüzgâr, hilal, şimşek ve gökkuşağı kendi hareketli simgesi, izi ve küçük parçacıklarıyla kavis çizip hedefin ağzından girer. Şişeler yerinden oynamaz. Hareket profili/ilerideki element desteği korunur. Sıvı şeridi denemesi kaldırıldı.

@@ -4,6 +4,12 @@ Claude Code tarafından bu projede yapılan her işlemin kaydı. En yeni kayıt 
 
 ---
 
+## 2026-11-24 16:10 +03 — Bahadır v4.1 tabanının ekip main dalına alınması
+- **Kullanıcı:** “bahadırın dalı son güncel sürüm ona göre düzenleyip ... maine”. Kaynak `cloudora-bahadir@5a838a104cdce93e342c353c930288e08099ceab`, hedef `yigityvz/cloudora-android/main`; force yok, iOS/Bahadır/Yiğit dallarında oyun değişikliği yok.
+- Ekip/Claude Code giriş yönergesi, aşamalı öğrenme rotası, güncel sözleşme, tam dosya envanteri, gelecek fikir ayrımı ve salt okunur kaynak doğrulaması eklendi. README/hafıza güncel tabana göre düzenlendi; eski karşılaştırma tarihsel olarak işaretlendi.
+- Oyun/Editor/test/varlık/ayar dosyaları kaynaktan aynen korunur. Ay61, Shuffle15, No Moves ve v4.1 tabloları güncel kabul edildi; önceki iOS tabanı koruma şartı kaldırıldı.
+- Doğrulama kaynak/hash/LFS/belge kapsamındadır. Unity testleri/APK/iPhone kurulumu yeniden yapılmadı;197 toplam/194 geçti/3 atlama eski v4.1 kanıtıdır. Yeni ürün sürümü/etiket veya mağaza yayını oluşturulmadı.
+
 ## 2026-10-24 11:04 — Başka makineden devam için docs commit'i ve push (kullanıcı onayı)
 - **Kullanıcı:** şehir dışına çıkıyor, bilgisayarı kapatacak; "github üzerinden yapalım, güncel dosyaları ekle" (Remote Control yerine GitHub yolu).
 - **Push öncesi:** `Docs/PROJE_HAFIZASI.md` §0 güncellendi (durum, başka makineden / bulut oturumundan devam notu: Unity/test/APK yok, yerel kalıcı hafızadaki ek kurallar, Artifact güncelleme yolu; sıradaki işler).

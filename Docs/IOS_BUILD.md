@@ -1,5 +1,7 @@
 # Cloudora iOS development build
 
+> **Android main için okuma notu (24 Kasım2026):** Bu belge iOS/v4 geçmişidir. Güncel taban Bahadır v4.1; Ay61, Shuffle15 ve yalnız No Moves başarısızlığı için [GUNCEL_DURUM](GUNCEL_DURUM.md) ve [V41_TASARIM](V41_TASARIM.md) esas alınır. Görsel/teknik kayıtları yeni kural sanarak eski davranışı geri getirme.
+
 This repository builds Cloudora v3.2 for iPhone. Use Unity 6000.5.9f1 (b57deb96f08d), macOS, iOS Build Support and Xcode. See IOS_STATUS.md for current evidence and PROJE_HAFIZASI.md for source behavior. IOS_ARCHITECTURE.md describes the project structure; IOS_DEVICE_QA.md tracks device acceptance.
 
 ## Setup
